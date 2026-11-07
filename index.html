@@ -1,122 +1,317 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>هايس محمد عقيل العنزي — مطور مواقع ويب | معرض الأعمال</title>
-<meta name="description" content="معرض أعمال هايس محمد عقيل العنزي، مطور مواقع ويب متخصص في المواقع سهلة الوصول (WCAG) وقوالب المتاجر الإلكترونية.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>هايس محمد عقيل العنزي | معلم، ونماذج لصفحات الهبوط والمحتوى الرقمي</title>
+<meta name="description" content="معلم سعودي للطلاب ذوي الإعاقة البصرية منذ 2012، ومستخدم يومي لقارئ الشاشة VoiceOver. خمسة نماذج تجريبية لعلامات افتراضية. خدمات صفحات الهبوط ونصوص المتاجر والفيديو القصير قيد الإعداد على خمسات وغير منشورة.">
+<meta property="og:title" content="هايس محمد عقيل العنزي | معلم، ونماذج لصفحات الهبوط والمحتوى الرقمي">
+<meta property="og:description" content="معلم سعودي للطلاب ذوي الإعاقة البصرية منذ 2012، ومستخدم يومي لقارئ الشاشة VoiceOver. خمسة نماذج تجريبية. خدمات المحتوى قيد الإعداد على خمسات وغير منشورة.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:url" content="https://hayismohammed.github.io/portfolio/">
+<link rel="canonical" href="https://hayismohammed.github.io/portfolio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c2340'/%3E%3Crect x='6' y='8' width='20' height='4' rx='2' fill='%23f0c14b'/%3E%3Crect x='6' y='16' width='14' height='4' rx='2' fill='%23ffffff'/%3E%3C/svg%3E">
 <style>
-:root{--pri:#123c69;--acc:#e8a317;--bg:#f6f8fb;--fg:#13202f;--muted:#4a5a6b;--line:#dbe3ec}
+:root{
+  --bg:#f4f1ea;
+  --paper:#fffdf8;
+  --ink:#14202b;
+  --muted:#3f342b;
+  --line:#d9d0c4;
+  --hero:#0c2340;
+  --on-hero:#ffffff;
+  --gold:#f0c14b;
+  --gold-ink:#1a1408;
+  --link:#08342f;
+  --btn:#0e4d45;
+  --status-bg:#e8f3ec;
+  --status-ink:#1e4d3e;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:"Cairo","Noto Sans Arabic","Tajawal",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.8;font-size:1.05rem}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.skip{position:absolute;right:-999px}.skip:focus{right:1rem;top:.5rem;background:#000;color:#fff;padding:.5rem 1rem;z-index:9}
-:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
-a{color:var(--pri)}
-header.hero{background:linear-gradient(135deg,#0d2c4f,#1d5a96);color:#fff;padding:3rem 1.5rem 2.5rem}
-.in{max-width:1080px;margin:auto}
-.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);margin:0;line-height:1.4}
-.hero .en{opacity:.85;margin:0}
-.hero .role{display:inline-block;background:var(--acc);color:#13202f;font-weight:800;padding:.2rem 1rem;border-radius:99px;margin:.8rem 0}
-.contact{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;padding:0;list-style:none}
-.contact a{color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);padding:.4rem .9rem;border-radius:10px;text-decoration:none}
-section{padding:2.2rem 1.5rem}
-h2{font-size:1.6rem;margin:0 0 1rem;border-inline-start:6px solid var(--acc);padding-inline-start:.8rem}
-h2 small{font-size:.9rem;color:var(--muted);font-weight:400}
-.about{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem}
-.box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.5rem}
+html{scroll-padding-top:1rem}
+body{
+  margin:0;
+  font-family:"Noto Naskh Arabic","Noto Sans Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.85;
+  font-size:1.125rem;
+}
+:focus{scroll-margin-top:1rem;scroll-margin-bottom:1rem}
+:focus-visible{
+  outline:3px solid #111;
+  outline-offset:3px;
+  box-shadow:0 0 0 3px #fff;
+}
+.skip{
+  position:absolute;
+  inset-inline-start:1rem;
+  top:0;
+  transform:translateY(-150%);
+  background:var(--gold);
+  color:var(--gold-ink);
+  font-weight:800;
+  text-decoration:none;
+  padding:.7rem 1rem;
+  z-index:20;
+  border-radius:0 0 10px 10px;
+}
+.skip:focus{position:static;display:block;transform:none}
+a{color:var(--link)}
+.in{max-width:1080px;margin-inline:auto;padding-inline:1.15rem}
+header.hero{background:var(--hero);color:var(--on-hero);padding:2.2rem 0 1.6rem}
+header.hero a{color:#fff}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:0}
+.en{margin:.35rem 0 0;color:#e7eef6;text-align:right}
+.role{
+  display:inline-block;
+  max-width:100%;
+  margin:.9rem 0 0;
+  background:var(--gold);
+  color:var(--gold-ink);
+  font-weight:800;
+  padding:.4rem 1rem;
+  border-radius:999px;
+}
+.lead{max-width:42rem;margin:1rem 0 0;color:#e7eef6}
+nav ul{display:flex;flex-wrap:wrap;gap:.55rem;list-style:none;padding:0;margin:1.1rem 0 0}
+nav a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:.4rem .95rem;
+  color:#fff;
+  text-decoration:underline;
+  text-underline-offset:.18em;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  font-weight:700;
+}
+main{padding-bottom:1rem}
+main:focus{outline:3px solid #111;outline-offset:4px}
+section{padding:1.6rem 0}
+h2{
+  font-size:1.55rem;
+  line-height:1.4;
+  margin:0 0 1rem;
+  border-inline-start:6px solid var(--btn);
+  padding-inline-start:.75rem;
+}
+h3{font-size:1.2rem;line-height:1.45;margin:.2rem 0 .45rem}
+.note{color:var(--muted);margin-top:0}
+.box,.card,.service{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:1.15rem 1.2rem;
+}
+.about{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1rem}
+.services,.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem}
+.service p:last-child{margin-bottom:0}
+.status{
+  display:inline-block;
+  margin:.35rem 0 0;
+  background:var(--status-bg);
+  color:var(--status-ink);
+  border:1px solid var(--status-ink);
+  border-radius:999px;
+  padding:.3rem .85rem;
+  font-weight:800;
+}
+.tag{
+  display:inline-block;
+  background:#fff4dc;
+  color:#5c3b00;
+  border-radius:999px;
+  padding:.15rem .7rem;
+  font-size:.95rem;
+  font-weight:800;
+}
+.work{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.work img{width:100%;height:auto;display:block;background:#efeae2}
+.wb{padding:1rem 1.1rem 1.15rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.wb p{margin:0}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  margin-top:.4rem;
+  align-self:flex-start;
+  background:var(--btn);
+  color:#fff;
+  text-decoration:none;
+  padding:.5rem 1rem;
+  border-radius:10px;
+  font-weight:800;
+}
 .skills{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:0}
-.skills li{background:#e8f0fa;color:var(--pri);border-radius:99px;padding:.25rem .9rem;font-weight:600;font-size:.95rem}
-.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem}
-.work{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.work img{width:100%;height:auto;display:block;border-bottom:1px solid var(--line)}
-.wb{padding:1rem 1.2rem 1.3rem;display:flex;flex-direction:column;flex:1}
-.wb h3{margin:.3rem 0;font-size:1.2rem}.wb h3 small{display:block;color:var(--muted);font-size:.85rem;font-weight:400}
-.wb p{margin:.3rem 0}.tech{color:var(--muted);font-size:.9rem;text-align:right}
-.tag{align-self:flex-start;background:#fff4dc;color:#7a5200;font-size:.8rem;font-weight:700;padding:.1rem .7rem;border-radius:99px}
-.btn{margin-top:auto;align-self:flex-start;background:var(--pri);color:#fff;text-decoration:none;padding:.5rem 1.2rem;border-radius:10px;font-weight:700}
-.cert{display:flex;gap:1rem;align-items:center}
-.cert .ic{font-size:2.4rem}
-.note{color:var(--muted);font-size:.95rem}
-footer{text-align:center;padding:1.5rem;color:var(--muted);border-top:1px solid var(--line);font-size:.9rem}
-@media(max-width:780px){.about{grid-template-columns:1fr}}
+.skills li{background:#e7eeeb;color:#08342f;border-radius:999px;padding:.35rem .85rem;font-weight:700}
+.contact a{font-weight:800;overflow-wrap:anywhere}
+footer{
+  padding:1.3rem 1rem 1.6rem;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid var(--line);
+}
+@media (max-width:760px){
+  .about{grid-template-columns:1fr}
+  body{font-size:1.05rem}
+}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<header class="hero"><div class="in">
-  <h1>هايس محمد عقيل العنزي</h1>
-  <p class="en" lang="en" dir="ltr" style="text-align:right">Hayis Mohammed Aqeel Alanazi</p>
-  <span class="role">مطور مواقع ويب · Web Developer</span>
-  <ul class="contact" aria-label="معلومات التواصل">
-    <li><a href="tel:+966580047776">الجوال: <span dir="ltr">058 004 7776</span></a></li>
-    <li><a href="https://wa.me/966580047776">واتساب: <span dir="ltr">+966 58 004 7776</span></a></li>
-    <li><a href="mailto:hayismohammed@yahoo.com">البريد: <span dir="ltr">hayismohammed@yahoo.com</span></a></li>
-  </ul>
-</div></header>
-<main id="main" class="in">
-<section aria-labelledby="about-h">
-  <h2 id="about-h">نبذة عني <small lang="en">About</small></h2>
-  <div class="about">
-    <div class="box">
-      <p>معلم لذوي الإعاقة البصرية، وكفيف أستخدم قارئ الشاشة VoiceOver يوميًا. أصمم وأطور مواقع ويب عربية متجاوبة، وأتخصص في <strong>المواقع سهلة الوصول</strong> وفق إرشادات WCAG، بحيث يستخدمها الجميع بما فيهم المكفوفون وضعاف البصر وكبار السن.</p>
-      <p>أختبر كل صفحة بنفسي بقارئ الشاشة ولوحة المفاتيح، وهذه ميزة عملية أقدمها لأصحاب المتاجر والجهات التي تريد مواقع يصل إليها كل العملاء.</p>
-      <p lang="en" dir="ltr" style="text-align:left" class="note">Teacher of visually impaired students and a daily VoiceOver user. I build responsive Arabic (RTL) websites with a focus on accessibility (WCAG 2.1) and e‑store themes for Salla and Zid, tested hands‑on with a screen reader.</p>
-    </div>
-    <div class="box"><h3 style="margin-top:0">الخدمات</h3>
-      <ul><li>تصميم وبرمجة مواقع تعريفية</li><li>صفحات هبوط للمنتجات والدورات</li><li>قوالب متاجر سلة وزد</li><li>تدقيق إمكانية الوصول وتحسينها</li></ul></div>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<main id="main" tabindex="-1">
+<header class="hero">
+  <div class="in">
+    <h1>هايس محمد عقيل العنزي</h1>
+    <p class="en" lang="en" dir="ltr">Hayis Mohammed Aqeel Alanazi</p>
+    <p class="role">معلم للطلاب ذوي الإعاقة البصرية</p>
+    <p class="lead">النماذج أدناه تجريبية لعلامات افتراضية. خدمات صفحات الهبوط ونصوص المتاجر والفيديو القصير قيد الإعداد على خمسات، ولم تُنشر.</p>
+    <nav aria-label="أقسام الصفحة">
+      <ul>
+        <li><a href="#about">النبذة</a></li>
+        <li><a href="#services">الخدمات</a></li>
+        <li><a href="#samples">النماذج</a></li>
+        <li><a href="#contact">التواصل</a></li>
+      </ul>
+    </nav>
   </div>
-</section>
-<section aria-labelledby="skills-h">
-  <h2 id="skills-h">المهارات <small lang="en">Skills</small></h2>
-  <ul class="skills"><li>HTML5</li><li>CSS3 (Flexbox / Grid)</li><li>JavaScript</li><li>التصميم المتجاوب Responsive</li><li>إمكانية الوصول WCAG 2.1 / ARIA</li><li>قوالب متاجر سلة وزد</li><li>الاختبار بقارئ الشاشة VoiceOver</li><li>واجهات عربية RTL</li></ul>
-</section>
-<section aria-labelledby="work-h">
-  <h2 id="work-h">نماذج الأعمال <small lang="en">Work Samples</small></h2>
-  <p class="note">نماذج أعمال ومشاريع تجريبية صممتها وبرمجتها بنفسي، وكل نموذج موقع حي يعمل ويمكن فتحه وتجربته. أسماء العيادة والمطعم والمتجر وأسعارها افتراضية لأغراض العرض.</p>
-  <div class="works"><article class="work" aria-labelledby="w1">
-  <img src="assets/shots/voiceover-course.png" alt="لقطة شاشة لـصفحة هبوط لدورة VoiceOver" loading="lazy" width="1280" height="860">
-  <div class="wb"><span class="tag">مشروع حقيقي لمنتجي الخاص</span>
-  <h3 id="w1">صفحة هبوط لدورة VoiceOver <small lang="en" dir="ltr">Landing page — VoiceOver course</small></h3>
-  <p>صفحة هبوط عربية لدورتي الصوتية «تعلّم VoiceOver على الآيفون للمكفوفين المبتدئين وأهاليهم» المنشورة على Gumroad، مبنية بتباين عالٍ وعناوين منظمة ورابط تخطٍّ وأسئلة شائعة قابلة للطي.</p><p class="tech" lang="en" dir="ltr">HTML · CSS · WCAG 2.1</p>
-  <a class="btn" href="samples/voiceover-course/index.html">افتح النموذج الحي<span class="vh"> لـصفحة هبوط لدورة VoiceOver</span></a></div>
-</article>
-<article class="work" aria-labelledby="w2">
-  <img src="assets/shots/cosmetics-store.png" alt="لقطة شاشة لـقالب متجر عناية وتجميل" loading="lazy" width="1280" height="860">
-  <div class="wb"><span class="tag">مشروع تجريبي</span>
-  <h3 id="w2">قالب متجر عناية وتجميل <small lang="en" dir="ltr">E‑store theme — cosmetics</small></h3>
-  <p>واجهة متجر إلكتروني متجاوبة بأسلوب قوالب سلة وزد: تصفية المنتجات حسب الفئة، وسلة مشتريات تفاعلية تُعلن الإضافة لقارئ الشاشة (aria-live).</p><p class="tech" lang="en" dir="ltr">HTML · CSS Grid · JavaScript · ARIA</p>
-  <a class="btn" href="samples/cosmetics-store/index.html">افتح النموذج الحي<span class="vh"> لـقالب متجر عناية وتجميل</span></a></div>
-</article>
-<article class="work" aria-labelledby="w3">
-  <img src="assets/shots/clinic.png" alt="لقطة شاشة لـموقع عيادة مع حجز موعد" loading="lazy" width="1280" height="860">
-  <div class="wb"><span class="tag">مشروع تجريبي</span>
-  <h3 id="w3">موقع عيادة مع حجز موعد <small lang="en" dir="ltr">Clinic website + booking form</small></h3>
-  <p>موقع تعريفي لعيادة أسنان: خدمات، جدول أوقات عمل، ونموذج حجز يتحقق من الاسم ورقم الجوال السعودي والتاريخ ويعرض رسائل خطأ واضحة ومقروءة.</p><p class="tech" lang="en" dir="ltr">HTML · CSS · JavaScript Form Validation</p>
-  <a class="btn" href="samples/clinic/index.html">افتح النموذج الحي<span class="vh"> لـموقع عيادة مع حجز موعد</span></a></div>
-</article>
-<article class="work" aria-labelledby="w4">
-  <img src="assets/shots/restaurant.png" alt="لقطة شاشة لـقائمة طعام رقمية لمطعم" loading="lazy" width="1280" height="860">
-  <div class="wb"><span class="tag">مشروع تجريبي</span>
-  <h3 id="w4">قائمة طعام رقمية لمطعم <small lang="en" dir="ltr">Restaurant digital menu</small></h3>
-  <p>قائمة طعام رقمية بأقسام على شكل تبويبات (Tabs) تعمل بالفأرة واللمس وأسهم لوحة المفاتيح، مناسبة للربط برمز QR على الطاولات.</p><p class="tech" lang="en" dir="ltr">HTML · CSS · JavaScript · ARIA Tabs</p>
-  <a class="btn" href="samples/restaurant/index.html">افتح النموذج الحي<span class="vh"> لـقائمة طعام رقمية لمطعم</span></a></div>
-</article>
-<article class="work" aria-labelledby="w5">
-  <img src="assets/shots/serum-landing.png" alt="لقطة شاشة لـصفحة هبوط لمنتج سيروم" loading="lazy">
-  <div class="wb"><span class="tag">مشروع تجريبي</span>
-  <h3 id="w5">صفحة هبوط لمنتج تجميل <small lang="en" dir="ltr">Product landing page — serum</small></h3>
-  <p>صفحة هبوط متجاوبة لسيروم بشرة: تبدأ بالمشكلة، ثم المميزات وطريقة الاستخدام وآراء العملاء والضمان، وتنتهي بزر شراء واضح.</p><p class="tech" lang="en" dir="ltr">HTML · CSS · Responsive</p>
-  <a class="btn" href="samples/serum-landing/index.html">افتح النموذج الحي<span class="vh"> لـصفحة هبوط لمنتج تجميل</span></a></div>
-</article></div>
-</section>
-<section aria-labelledby="cert-h">
-  <h2 id="cert-h">الشهادات <small lang="en">Certificates</small></h2>
-  <div class="box cert"><span class="ic" aria-hidden="true">🎓</span>
-    <div><strong>تطوير تطبيقات الويب</strong> <span lang="en" dir="ltr">(Web Applications Development)</span><br>
-    منصة دروب — صندوق تنمية الموارد البشرية (هدف) · ساعتان تدريبيتان · تاريخ الإصدار: 6‑11‑2026</div></div>
-</section>
+</header>
+<div class="in">
+  <section id="about" aria-labelledby="about-h">
+    <h2 id="about-h">نبذة</h2>
+    <div class="about">
+      <div class="box">
+        <p>أنا معلم سعودي للطلاب ذوي الإعاقة البصرية منذ عام 2012، وحاصل على بكالوريوس التاريخ من جامعة الملك سعود في الرياض. أنا كفيف، وأجيد برايل، وأستخدم قارئ الشاشة VoiceOver يوميًا.</p>
+        <p>أبني هذه النماذج بلغة HTML وCSS وJavaScript، وأراجعها بلوحة المفاتيح لأن هذا جزء من استعمالي اليومي. هذا وصف لطريقة العمل في المعرض، وليس إعلانًا عن خدمة تدقيق منشورة.</p>
+        <p>دورة تعليم VoiceOver على الآيفون قيد المراجعة لدى يوديمي. ليست متاحة للشراء من هذه الصفحة، ولا يوجد لها رابط دفع هنا.</p>
+        <p lang="en" dir="ltr">I am a Saudi teacher of visually impaired students since 2012, with a BA in History from King Saud University in Riyadh. I am blind, fluent in Braille, and I use VoiceOver daily. The five samples are fictional demos. My VoiceOver course is under review and is not for sale here. Landing-page, store-copy, and short product-video services are being prepared for Khamsat and are not published yet.</p>
+      </div>
+      <div class="box">
+        <h3>ما لا تعرضه هذه الصفحة</h3>
+        <ul>
+          <li>لا شهادات عملاء.</li>
+          <li>لا أرقام مبيعات.</li>
+          <li>لا مشاريع لعملاء حقيقيين.</li>
+          <li>لا زر شراء أو حجز.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" aria-labelledby="services-h">
+    <h2 id="services-h">خدمات قيد الإعداد</h2>
+    <p class="note">هذه ثلاث خدمات يجري إعدادها على منصة خمسات. لم تُعتمد ولم تُنشر، لذلك لا رابط لحساب خمسات ولا زر طلب. بعد النشر يمكن إضافة الرابط.</p>
+    <div class="services">
+      <article class="service">
+        <h3>تصميم صفحات الهبوط</h3>
+        <p>صفحة واحدة مرتبة تعرض المنتج أو الدورة أو الخدمة، وتجيب عن أسئلة الزائر، وتناسب شاشة الجوال. تفيد من يريد رابطًا واضحًا يرسله للناس بدل موقع كبير.</p>
+        <p class="status">قريبًا على خمسات</p>
+      </article>
+      <article class="service">
+        <h3>كتابة نصوص المتاجر ووصف المنتجات</h3>
+        <p>نص عربي مفهوم لصفحة المنتج: ماذا يقدّم، ولمن يناسب، وكيف يُستخدم. يفيد الزائر حين يقرر، ويفيد صاحب المتجر في صفحة أوضح.</p>
+        <p class="status">قريبًا على خمسات</p>
+      </article>
+      <article class="service">
+        <h3>فيديوهات إعلانية قصيرة للمنتجات</h3>
+        <p>مقطع من 15 إلى 30 ثانية، بتعليق صوتي سعودي، ونص عربي ظاهر على الصورة. يُبنى من صور المنتج التي يرسلها العميل، ويفيد في عرض المنتج بسرعة.</p>
+        <p class="status">قريبًا على خمسات</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="samples" aria-labelledby="samples-h">
+    <h2 id="samples-h">نماذج تجريبية</h2>
+    <p class="note">النماذج الخمسة أعمال تجريبية لعلامات افتراضية، وليست مشاريع نُفذت لعملاء. الأسماء والأسعار والحجوزات داخلها للعرض فقط، ولا يُشترى منها شيء ولا يُحجز موعد.</p>
+    <div class="works">
+      <article class="work">
+        <img src="assets/shots/voiceover-course.webp" width="960" height="645" alt="لقطة للجزء العلوي من صفحة هبوط تجريبية لدورة صوتية" loading="lazy" decoding="async">
+        <div class="wb">
+          <p class="tag">نموذج تجريبي</p>
+          <h3>صفحة هبوط لدورة صوتية</h3>
+          <p>نموذج لصفحة تعريف بدورة عن VoiceOver: جمهور، محاور، وأسئلة شائعة. دورة صاحب المعرض الحقيقية قيد المراجعة، وهذه الصفحة لا تبيعها.</p>
+          <a class="btn" href="samples/voiceover-course/index.html">افتح نموذج صفحة الدورة</a>
+        </div>
+      </article>
+      <article class="work">
+        <img src="assets/shots/cosmetics-store.webp" width="960" height="645" alt="لقطة للجزء العلوي من متجر تجميلي تجريبي" loading="lazy" decoding="async">
+        <div class="wb">
+          <p class="tag">نموذج تجريبي</p>
+          <h3>واجهة متجر عناية</h3>
+          <p>علامة افتراضية اسمها لمسة. تعرض تصفية المنتجات وسلة محلية تعلن الإضافة لقارئ الشاشة. لا دفع حقيقي.</p>
+          <a class="btn" href="samples/cosmetics-store/index.html">افتح نموذج المتجر</a>
+        </div>
+      </article>
+      <article class="work">
+        <img src="assets/shots/clinic.webp" width="960" height="645" alt="لقطة للجزء العلوي من موقع عيادة تجريبي" loading="lazy" decoding="async">
+        <div class="wb">
+          <p class="tag">نموذج تجريبي</p>
+          <h3>موقع عيادة مع نموذج موعد</h3>
+          <p>عيادة افتراضية. النموذج يتحقق من الاسم ورقم الجوال والتاريخ ويعرض الخطأ، ثم يوضح أن البيانات لم تُرسل.</p>
+          <a class="btn" href="samples/clinic/index.html">افتح نموذج العيادة</a>
+        </div>
+      </article>
+      <article class="work">
+        <img src="assets/shots/restaurant.webp" width="960" height="645" alt="لقطة للجزء العلوي من قائمة طعام تجريبية" loading="lazy" decoding="async">
+        <div class="wb">
+          <p class="tag">نموذج تجريبي</p>
+          <h3>قائمة طعام رقمية</h3>
+          <p>مطعم افتراضي. أقسام القائمة تبويبات تعمل باللمس وبأسهم لوحة المفاتيح، والنص يُقرأ دون الاعتماد على صورة.</p>
+          <a class="btn" href="samples/restaurant/index.html">افتح نموذج المطعم</a>
+        </div>
+      </article>
+      <article class="work">
+        <img src="assets/shots/serum-landing.webp" width="960" height="645" alt="لقطة للجزء العلوي من صفحة هبوط تجريبية لسيروم" loading="lazy" decoding="async">
+        <div class="wb">
+          <p class="tag">نموذج تجريبي</p>
+          <h3>صفحة هبوط لمنتج</h3>
+          <p>علامة افتراضية اسمها صفاء. صفحة منتج: مشكلة، مزايا، طريقة استخدام، وسعر ظاهر على أنه افتراضي. لا زر طلب ولا آراء عملاء مختلقة.</p>
+          <a class="btn" href="samples/serum-landing/index.html">افتح نموذج صفحة المنتج</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">ما يظهر في هذا المعرض</h2>
+    <ul class="skills">
+      <li>تدريس الطلاب ذوي الإعاقة البصرية منذ 2012</li>
+      <li>برايل</li>
+      <li>استخدام VoiceOver يوميًا</li>
+      <li lang="en" dir="ltr">HTML</li>
+      <li lang="en" dir="ltr">CSS</li>
+      <li lang="en" dir="ltr">JavaScript</li>
+      <li>صفحات عربية من اليمين إلى اليسار</li>
+      <li>صفحات تناسب الجوال</li>
+      <li>مراجعة النماذج بلوحة المفاتيح</li>
+    </ul>
+  </section>
+
+  <section id="certificate" aria-labelledby="cert-h">
+    <h2 id="cert-h">شهادة</h2>
+    <div class="box">
+      <p><strong>تطوير تطبيقات الويب</strong> <span lang="en" dir="ltr">(Web Applications Development)</span></p>
+      <p>منصة دروب، صندوق تنمية الموارد البشرية (هدف). ساعتان تدريبيتان. تاريخ الإصدار: 6 نوفمبر 2026.</p>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">التواصل</h2>
+    <div class="box contact">
+      <p>البريد الإلكتروني ظاهر للعموم في هذه الصفحة مؤقتًا، إلى أن تُعتمد وسيلة لا تعرض العنوان نفسه:</p>
+      <p><a href="mailto:hayismohammed@yahoo.com" lang="en" dir="ltr">hayismohammed@yahoo.com</a></p>
+      <p>رقم الجوال وواتساب غير معروضين هنا. لا نموذج حجز في هذه الصفحة، حتى لا تُجمع بيانات بلا مسار واضح. بعد اعتماد الخدمات على خمسات يمكن استقبال الطلب من هناك دون نشر الجوال أو البريد، ويُضاف الرابط عندها فقط.</p>
+    </div>
+  </section>
+</div>
 </main>
-<footer>© 2026 هايس محمد عقيل العنزي · <span dir="ltr">058 004 7776</span> · <span dir="ltr">hayismohammed@yahoo.com</span></footer>
-</body></html>
+<footer>
+  <p>© 2026 هايس محمد عقيل العنزي. النماذج تجريبية، والخدمات على خمسات غير منشورة بعد.</p>
+</footer>
+</body>
+</html>

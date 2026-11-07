@@ -3,86 +3,102 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>دورة VoiceOver على الآيفون للمكفوفين المبتدئين | صفحة هبوط</title>
-<meta name="description" content="دورة صوتية عملية بالعربي لتعليم قارئ الشاشة VoiceOver على الآيفون، للمكفوفين المبتدئين وأهاليهم.">
+<title>صفحة هبوط لدورة صوتية | نموذج تجريبي</title>
+<meta name="description" content="نموذج تجريبي لصفحة هبوط لدورة صوتية عن VoiceOver. العلامة افتراضية، ولا يوجد شراء أو رابط دفع في هذه الصفحة.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1d33'/%3E%3Crect x='6' y='14' width='20' height='4' rx='2' fill='%23ffd34d'/%3E%3C/svg%3E">
 <style>
 :root{--bg:#0b1d33;--fg:#ffffff;--accent:#ffd34d;--card:#14304f;--muted:#d6e2f0}
 *{box-sizing:border-box}
-body{margin:0;font-family:"Cairo","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.8;font-size:1.1rem}
-.skip{position:absolute;right:-999px;top:0;background:var(--accent);color:#000;padding:.6rem 1rem;font-weight:700}
-.skip:focus{right:1rem;z-index:10}
+html{scroll-padding-top:1rem}
+body{margin:0;font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.85;font-size:1.1rem}
+:focus{scroll-margin-top:1rem;scroll-margin-bottom:1rem}
+:focus-visible{outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 3px #ffd34d}
+.skip{position:absolute;inset-inline-start:1rem;top:0;transform:translateY(-150%);background:var(--accent);color:#1a1408;padding:.7rem 1rem;font-weight:800;text-decoration:none;z-index:10}
+.skip:focus{position:static;display:block;transform:none}
 a{color:var(--accent)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-header{padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #284a70}
-header strong{font-size:1.2rem}
-nav a{margin-inline-start:1rem;text-decoration:none;color:var(--muted)}
-.hero{padding:4rem 1.5rem 3rem;max-width:960px;margin:auto;text-align:center}
-.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.4;margin:.2rem 0 1rem}
-.badge{display:inline-block;background:#1f4a78;color:var(--accent);padding:.2rem .9rem;border-radius:99px;font-size:.95rem}
-.hero p{color:var(--muted);max-width:680px;margin:0 auto 2rem}
-.btn{display:inline-block;background:var(--accent);color:#0b1d33;font-weight:800;padding:.9rem 2rem;border-radius:12px;text-decoration:none;font-size:1.15rem}
-.btn:hover{background:#ffe48a}
-section{max-width:960px;margin:auto;padding:2rem 1.5rem}
-h2{font-size:1.6rem;border-inline-start:6px solid var(--accent);padding-inline-start:.8rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
-.card{background:var(--card);border-radius:14px;padding:1.2rem 1.4rem}
+.banner{background:#14304f;color:#fff;margin:0;padding:1rem 1.2rem;border-bottom:3px solid var(--accent)}
+.banner a{color:#ffd34d;font-weight:800}
+header{border-bottom:1px solid #284a70}
+.bar{padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:.75rem 1rem;flex-wrap:wrap}
+.brand{font-size:1.2rem;font-weight:800;margin:0}
+nav ul{display:flex;flex-wrap:wrap;gap:.35rem .9rem;list-style:none;padding:0;margin:0}
+nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:.15em;color:var(--muted)}
+.hero{padding:2.5rem 1.2rem 2rem;max-width:960px;margin:auto;text-align:center}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.4;margin:.2rem 0 1rem}
+.badge{display:inline-block;background:#1f4a78;color:var(--accent);padding:.25rem .9rem;border-radius:99px;font-size:1rem}
+.hero p{color:var(--muted);max-width:40rem;margin:0 auto 1rem}
+.notice{background:#14304f;border:2px solid var(--accent);border-radius:12px;padding:1rem 1.1rem;color:#fff;font-weight:700}
+section{max-width:960px;margin:auto;padding:1.5rem 1.2rem}
+h2{font-size:1.55rem;border-inline-start:6px solid var(--accent);padding-inline-start:.8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem}
+.card{background:var(--card);border-radius:14px;padding:1.1rem 1.2rem}
 .card h3{margin:.2rem 0 .4rem;color:var(--accent);font-size:1.15rem}
-ol.steps li{margin-bottom:.6rem}
-details{background:var(--card);border-radius:12px;padding:.8rem 1.2rem;margin-bottom:.7rem}
-summary{cursor:pointer;font-weight:700}
-footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid #284a70;font-size:.95rem}
-.demo{font-size:.85rem;color:#9fb6cf}
+ol.steps li{margin-bottom:.55rem}
+details{background:var(--card);border-radius:12px;padding:.8rem 1.1rem;margin-bottom:.7rem}
+summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
+footer{text-align:center;padding:1.5rem 1rem;color:var(--muted);border-top:1px solid #284a70}
+main:focus{outline:3px solid #ffd34d;outline-offset:4px}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
 <header>
-  <strong>تعلّم VoiceOver</strong>
-  <nav aria-label="القائمة الرئيسية"><a href="#for">لمن الدورة</a><a href="#learn">ماذا ستتعلم</a><a href="#faq">أسئلة شائعة</a></nav>
+  <p class="banner" role="note">نموذج تجريبي لعلامة افتراضية، وليس عملًا لعميل حقيقي. لا اشتراك ولا دفع من هذه الصفحة. الدورة الحقيقية لصاحب المعرض قيد المراجعة وليست للبيع هنا. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
+  <div class="bar">
+  <p class="brand">تعلّم VoiceOver</p>
+  <nav aria-label="أقسام هذه الصفحة التجريبية">
+    <ul>
+      <li><a href="#for">لمن الدورة</a></li>
+      <li><a href="#learn">ماذا ستتعلم</a></li>
+      <li><a href="#faq">أسئلة شائعة</a></li>
+    </ul>
+  </nav>
+  </div>
 </header>
-<main id="main">
+<main id="main" tabindex="-1">
   <div class="hero">
-    <span class="badge">دورة صوتية بالعربي</span>
+    <span class="badge">نص تجريبي لدورة صوتية</span>
     <h1>تعلّم استخدام الآيفون بدون نظر، خطوة بخطوة</h1>
-    <p>دورة صوتية عملية لتعليم قارئ الشاشة VoiceOver على الآيفون، مصممة للمكفوفين المبتدئين ولأهالي الأطفال المكفوفين الذين يريدون تعليم أبنائهم.</p>
-    <a class="btn" href="https://hayismohammed.gumroad.com/l/oeuvzz" rel="noopener">اشترك في الدورة الآن</a>
+    <p>هذا نص صفحة هبوط للعرض: دورة صوتية عن قارئ الشاشة VoiceOver، بأسلوب يناسب مبتدئًا أو أهل طفل كفيف. التفاصيل أدناه افتراضية لبيان شكل الصفحة.</p>
+    <p class="notice">لا زر شراء في هذا النموذج. صفحة الدفع لا تُربط إلا بعد نشر الدورة فعلًا، وذلك ليس حال هذه الصفحة.</p>
   </div>
   <section id="for" aria-labelledby="for-h">
     <h2 id="for-h">لمن هذه الدورة؟</h2>
     <div class="grid">
-      <div class="card"><h3>المكفوف المبتدئ</h3><p>لمن يبدأ لأول مرة مع الآيفون ويريد الاعتماد على نفسه.</p></div>
-      <div class="card"><h3>أهالي الأطفال المكفوفين</h3><p>لمن يريد أن يفهم VoiceOver ليعلّمه لأبنائه في البيت.</p></div>
-      <div class="card"><h3>المعلمون والمهتمون</h3><p>لمن يعمل مع ذوي الإعاقة البصرية ويحتاج أساسًا عمليًا.</p></div>
+      <article class="card"><h3>المكفوف المبتدئ</h3><p>لمن يبدأ مع الآيفون ويريد خطوات عملية يعتمد عليها.</p></article>
+      <article class="card"><h3>أهالي الأطفال المكفوفين</h3><p>لمن يريد أن يفهم VoiceOver ليعلّمه في البيت.</p></article>
+      <article class="card"><h3>المعلمون والمهتمون</h3><p>لمن يعمل مع ذوي الإعاقة البصرية ويحتاج أساسًا عمليًا.</p></article>
     </div>
   </section>
   <section id="learn" aria-labelledby="learn-h">
-    <h2 id="learn-h">ماذا ستتعلم؟</h2>
+    <h2 id="learn-h">مثال لمحاور صفحة الهبوط</h2>
+    <p>القائمة التالية نص تجريبي لشكل الصفحة، وليست وصفًا منشورًا لدورة معروضة للبيع.</p>
     <ol class="steps">
       <li>مقدمة وتشغيل التعليق الصوتي وإيقافه</li>
       <li>الإيماءات الأساسية</li>
       <li>الدوّار واستخداماته</li>
       <li>الكتابة: لوحة المفاتيح والإملاء وبرايل</li>
-      <li>المكالمات وجهات الاتصال والرسائل وواتساب</li>
-      <li>سيري والاختصارات المفيدة</li>
-      <li>تخصيص الإعدادات: السرعة والأصوات والإسهاب وستار الشاشة</li>
-      <li>نصائح للأهل وخطة التمرين وحل المشكلات</li>
+      <li>المكالمات وجهات الاتصال والرسائل</li>
+      <li>سيري واختصارات مفيدة</li>
+      <li>تخصيص السرعة والأصوات والإسهاب وستار الشاشة</li>
+      <li>نصائح للأهل وخطة تمرين وحل مشكلات</li>
     </ol>
-    <div class="grid" style="margin-top:1.2rem">
-      <div class="card"><h3>8 دروس صوتية</h3><p>ملفات MP3 بمدة إجمالية حوالي 45 دقيقة.</p></div>
-      <div class="card"><h3>النص الكامل</h3><p>ملف Word للمتابعة والمراجعة.</p></div>
-      <div class="card"><h3>تحميل فوري</h3><p>بعد الشراء مباشرة، والملفات لك مدى الحياة.</p></div>
+    <div class="grid">
+      <article class="card"><h3>دروس صوتية</h3><p>في الصفحة الحقيقية يُذكر هنا عدد الدروس بعد تثبيته. لا رقم ملزِم في هذا النموذج.</p></article>
+      <article class="card"><h3>مادة مكتوبة</h3><p>مكان لوصف الملف المرافق، إن وُجد، بعد اعتماد الدورة.</p></article>
+      <article class="card"><h3>لا تسليم من هنا</h3><p>هذا النموذج لا يسلّم ملفات ولا يفتح صفحة دفع.</p></article>
     </div>
   </section>
   <section id="faq" aria-labelledby="faq-h">
     <h2 id="faq-h">أسئلة شائعة</h2>
-    <details><summary>هل الدورة مناسبة لمن لم يستخدم الآيفون من قبل؟</summary><p>نعم، تبدأ من الصفر وتشرح كل خطوة بالصوت.</p></details>
-    <details><summary>كيف أحصل على الدورة؟</summary><p>عبر صفحة الدورة على منصة Gumroad من زر الاشتراك أعلاه، والتحميل فوري بعد الشراء.</p></details>
-    <details><summary>من أعدّ الدورة؟</summary><p>معلم عوق بصري كفيف يستخدم VoiceOver يوميًا. الدروس مسجلة بصوت مولّد بالذكاء الاصطناعي.</p></details>
+    <details><summary>هل النص مناسب لمن لم يستخدم الآيفون من قبل؟</summary><p>في هذا النموذج، نعم: الصفحة تبدأ من الصفر لبيان أسلوب الشرح.</p></details>
+    <details><summary>هل أستطيع شراء الدورة من هذه الصفحة؟</summary><p>لا. هذه صفحة عرض فقط. دورة صاحب المعرض قيد المراجعة، ولا رابط شراء هنا.</p></details>
+    <details><summary>هل الآراء أو الأرقام في مثل هذه الصفحات حقيقية؟</summary><p>لا توجد شهادات عملاء في هذا النموذج، حتى لا تُفهم الأسماء المختلقة على أنها تجارب حقيقية.</p></details>
   </section>
 </main>
 <footer>
-  <p>صفحة هبوط مصممة وفق إرشادات الوصول WCAG 2.1: تباين عالٍ، عناوين منظمة، رابط تخطٍّ، وتنقّل كامل بلوحة المفاتيح وقارئ الشاشة.</p>
-  <p class="demo">تصميم وتطوير: هايس محمد عقيل العنزي — نموذج عمل</p>
+  <p>نموذج تجريبي لبيان صفحة هبوط عربية: اتجاه من اليمين إلى اليسار، وعناوين مرتبة، ورابط تخطٍّ، وتنقّل بلوحة المفاتيح.</p>
+  <p>تصميم للعرض: هايس محمد عقيل العنزي. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
 </footer>
 </body>
 </html>

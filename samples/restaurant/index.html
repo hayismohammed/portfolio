@@ -1,55 +1,122 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مطعم بيت الكرم — قائمة طعام رقمية (نموذج)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>قائمة طعام رقمية | نموذج تجريبي</title>
+<meta name="description" content="نموذج تجريبي لقائمة طعام رقمية لمطعم افتراضي. الأقسام تبويبات بلوحة المفاتيح، والأسعار افتراضية، ولا يوجد طلب من الصفحة.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233a2416'/%3E%3Crect x='6' y='14' width='20' height='4' rx='2' fill='%23e0a23a'/%3E%3C/svg%3E">
 <style>
-:root{--pri:#7a3e12;--acc:#e0a23a;--bg:#fbf6ef;--fg:#2b1a0e;--line:#ead9c3}
+:root{--pri:#7a3e12;--acc:#e0a23a;--bg:#fbf6ef;--fg:#2b1a0e;--line:#ead9c3;--muted:#4a3828}
 *{box-sizing:border-box}
-body{margin:0;font-family:"Cairo","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
-.skip{position:absolute;right:-999px}.skip:focus{right:1rem;top:.5rem;background:#000;color:#fff;padding:.5rem 1rem;z-index:9}
-:focus-visible{outline:3px solid #1a5fb4;outline-offset:2px}
-.hero{background:linear-gradient(rgba(43,26,14,.75),rgba(43,26,14,.75)),repeating-linear-gradient(45deg,#7a3e12 0 18px,#8d4a19 18px 36px);color:#fff;text-align:center;padding:3.5rem 1.5rem}
-.hero h1{font-size:clamp(1.9rem,4vw,2.8rem);margin:0}
-.hero p{color:#f3e3cc;margin:.4rem 0 1.2rem}
-.btn{background:var(--acc);color:#2b1a0e;padding:.7rem 1.6rem;border-radius:99px;text-decoration:none;font-weight:800}
-.wrap{max-width:900px;margin:auto;padding:2rem 1.5rem}
+html{scroll-padding-top:1rem}
+body{margin:0;font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:1.08rem}
+:focus{scroll-margin-top:1rem;scroll-margin-bottom:1rem}
+:focus-visible{outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 3px #fff}
+.skip{position:absolute;inset-inline-start:1rem;top:0;transform:translateY(-150%);background:#111;color:#fff;padding:.7rem 1rem;z-index:9;text-decoration:none;font-weight:800}
+.skip:focus{position:static;display:block;transform:none}
+.banner{background:#fff4dc;color:#3f342b;margin:0;padding:1rem 1.2rem;border-bottom:3px solid #7a3e12}
+.banner a{color:#6d3308;font-weight:800}
+.hero{background:#3a2416;color:#fff;text-align:center;padding:2.6rem 1.2rem}
+.hero h1{font-size:clamp(1.9rem,4vw,2.6rem);margin:0}
+.hero p{color:#f6eadc;margin:.45rem 0 1rem}
+.btn{display:inline-flex;align-items:center;min-height:44px;background:var(--acc);color:#2b1a0e;padding:.55rem 1.2rem;border-radius:999px;text-decoration:none;font-weight:800}
+.wrap{max-width:900px;margin:auto;padding:1.5rem 1.15rem 2rem}
 [role=tablist]{display:flex;gap:.5rem;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:.6rem}
-[role=tab]{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.45rem 1.1rem;font:inherit;cursor:pointer;color:var(--pri);font-weight:700}
-[role=tab][aria-selected=true]{background:var(--pri);color:#fff}
+[role=tab]{background:#fff;border:2px solid #c9b59a;border-radius:10px;padding:.5rem 1rem;font:inherit;cursor:pointer;color:#3a2416;font-weight:800;min-height:44px}
+[role=tab][aria-selected=true]{background:var(--pri);color:#fff;border-color:var(--pri)}
 .item{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px dashed var(--line)}
-.item h3{margin:0;font-size:1.1rem}.item p{margin:.1rem 0 0;color:#6b5440;font-size:.95rem}
-.pr{font-weight:800;color:var(--pri);white-space:nowrap}
-.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.item h3{margin:0;font-size:1.12rem}
+.item p{margin:.15rem 0 0;color:var(--muted)}
+.pr{font-weight:800;color:#6d3308;white-space:nowrap}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1rem;margin-top:1.4rem}
 .info div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem}
-footer{text-align:center;padding:1.5rem;font-size:.9rem;color:#6b5440}
+.info h3{margin-top:0}
+footer{text-align:center;padding:1.3rem 1rem;color:var(--muted)}
+main:focus{outline:3px solid #111;outline-offset:4px}
 </style>
 </head>
 <body>
-<a class="skip" href="#menu">تخطَّ إلى قائمة الطعام</a>
-<header class="hero"><h1>بيت الكرم</h1><p>أطباق سعودية شعبية بنكهة البيت</p><a class="btn" href="#menu">تصفّح القائمة</a></header>
-<main class="wrap">
-  <h2 id="menu" tabindex="-1">قائمة الطعام</h2>
-  <div role="tablist" aria-label="أقسام القائمة" id="tabs"></div>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<main id="main" tabindex="-1">
+<p class="banner" role="note">نموذج تجريبي لمطعم افتراضي اسمه بيت الكرم. الأطباق والأسعار غير حقيقية، ولا يُرسل طلب من هذه الصفحة. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
+<header class="hero">
+  <h1>بيت الكرم</h1>
+  <p>نموذج قائمة طعام رقمية بنص واضح، بلا صورة ضرورية للقراءة.</p>
+  <a class="btn" href="#menu">تصفّح القائمة</a>
+</header>
+<div class="wrap">
+  <h2 id="menu">قائمة الطعام</h2>
+  <div role="tablist" aria-label="أقسام القائمة" aria-orientation="horizontal" id="tabs"></div>
   <div id="panel" role="tabpanel" tabindex="0"></div>
   <div class="info">
-    <div><h3>أوقات العمل</h3><p>يوميًا من 12 ظهرًا حتى 12 منتصف الليل</p></div>
-    <div><h3>الطلبات</h3><p>محلي وسفري وطلبات المناسبات</p></div>
-    <div><h3>سهولة الوصول</h3><p>القائمة نصية بالكامل وتُقرأ بقارئ الشاشة، والأقسام تتنقل بالأسهم.</p></div>
+    <div><h3>أوقات العمل</h3><p>نص افتراضي: يوميًا من 12 ظهرًا حتى 12 منتصف الليل.</p></div>
+    <div><h3>الطلبات</h3><p>لا طلب من هذه الصفحة. النص يبيّن مكان شرح المحلي والسفري في القائمة الحقيقية.</p></div>
+    <div><h3>لوحة المفاتيح</h3><p>عند التركيز على تبويب: السهم الأيسر للقسم التالي، والسهم الأيمن للقسم السابق، ومفتاح Home لأول قسم، ومفتاح End لآخر قسم.</p></div>
   </div>
+</div>
 </main>
-<footer>تصميم وتطوير: هايس محمد عقيل العنزي — مشروع تجريبي (المطعم والأسعار افتراضية)</footer>
+<footer>
+  <p>تصميم للعرض: هايس محمد عقيل العنزي. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
+</footer>
 <script>
-const menu={"الأطباق الرئيسية":[["كبسة لحم","أرز بسمتي مع لحم حاشي وتوابل البيت",65],["مندي دجاج","دجاج مطهو على الحطب مع أرز مندي",45],["مرقوق","خضار ولحم مع عجينة رقيقة",38]],
-"المقبلات":[["سمبوسة","6 حبات محشوة لحم أو جبن",18],["سلطة دقوس","طماطم وفلفل حار",12]],
-"الحلى":[["كليجا","معمول بالتمر والهيل",15],["لقيمات","مع دبس التمر",16]],
-"المشروبات":[["قهوة سعودية","دلة صغيرة مع تمر",20],["شاي بالنعناع","إبريق",12]]};
-const tabs=document.getElementById('tabs'),panel=document.getElementById('panel');const keys=Object.keys(menu);
-function show(i){[...tabs.children].forEach((t,j)=>{t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1});
- panel.setAttribute('aria-labelledby','t'+i);
- panel.innerHTML=menu[keys[i]].map(([n,d,p])=>`<div class="item"><div><h3>${n}</h3><p>${d}</p></div><div class="pr">${p} ر.س</div></div>`).join('');}
-keys.forEach((k,i)=>{const b=document.createElement('button');b.role='tab';b.setAttribute('role','tab');b.id='t'+i;b.textContent=k;b.onclick=()=>show(i);
- b.onkeydown=e=>{let n=null;if(e.key==='ArrowLeft')n=(i+1)%keys.length;if(e.key==='ArrowRight')n=(i-1+keys.length)%keys.length;if(n!==null){show(n);tabs.children[n].focus();}};tabs.appendChild(b);});
+const menu={
+  "الأطباق الرئيسية":[["كبسة لحم","أرز مع لحم وتوابل. وصف افتراضي.",65],["مندي دجاج","دجاج مع أرز. وصف افتراضي.",45],["مرقوق","خضار ولحم مع عجينة. وصف افتراضي.",38]],
+  "المقبلات":[["سمبوسة","ست حبات. وصف افتراضي.",18],["سلطة","طماطم وفلفل. وصف افتراضي.",12]],
+  "الحلى":[["كليجا","معمول بالتمر. وصف افتراضي.",15],["لقيمات","مع دبس. وصف افتراضي.",16]],
+  "المشروبات":[["قهوة سعودية","مع تمر. وصف افتراضي.",20],["شاي بالنعناع","إبريق. وصف افتراضي.",12]]
+};
+const tabs=document.getElementById("tabs");
+const panel=document.getElementById("panel");
+const keys=Object.keys(menu);
+function show(i){
+  [...tabs.children].forEach((t,j)=>{
+    const on=j===i;
+    t.setAttribute("aria-selected",on?"true":"false");
+    t.tabIndex=on?0:-1;
+  });
+  panel.setAttribute("aria-labelledby","t"+i);
+  panel.replaceChildren();
+  menu[keys[i]].forEach(([name,desc,price])=>{
+    const row=document.createElement("div");
+    row.className="item";
+    const text=document.createElement("div");
+    const h=document.createElement("h3");
+    h.textContent=name;
+    const p=document.createElement("p");
+    p.textContent=desc;
+    text.append(h,p);
+    const pr=document.createElement("div");
+    pr.className="pr";
+    pr.dir="ltr";
+    pr.textContent=price+" ر.س";
+    row.append(text,pr);
+    panel.append(row);
+  });
+}
+keys.forEach((label,i)=>{
+  const b=document.createElement("button");
+  b.type="button";
+  b.id="t"+i;
+  b.setAttribute("role","tab");
+  b.setAttribute("aria-controls","panel");
+  b.textContent=label;
+  b.addEventListener("click",()=>show(i));
+  b.addEventListener("keydown",e=>{
+    let n=null;
+    if(e.key==="ArrowLeft")n=(i+1)%keys.length;
+    if(e.key==="ArrowRight")n=(i-1+keys.length)%keys.length;
+    if(e.key==="Home")n=0;
+    if(e.key==="End")n=keys.length-1;
+    if(n===null)return;
+    e.preventDefault();
+    show(n);
+    tabs.children[n].focus();
+  });
+  tabs.append(b);
+});
 show(0);
 </script>
-</body></html>
+<noscript><p class="wrap">أقسام القائمة في هذا النموذج تحتاج إلى جافاسكربت.</p></noscript>
+</body>
+</html>
