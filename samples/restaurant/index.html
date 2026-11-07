@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مطعم بيت الكرم — قائمة طعام رقمية (نموذج)</title>
+<style>
+:root{--pri:#7a3e12;--acc:#e0a23a;--bg:#fbf6ef;--fg:#2b1a0e;--line:#ead9c3}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Cairo","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
+.skip{position:absolute;right:-999px}.skip:focus{right:1rem;top:.5rem;background:#000;color:#fff;padding:.5rem 1rem;z-index:9}
+:focus-visible{outline:3px solid #1a5fb4;outline-offset:2px}
+.hero{background:linear-gradient(rgba(43,26,14,.75),rgba(43,26,14,.75)),repeating-linear-gradient(45deg,#7a3e12 0 18px,#8d4a19 18px 36px);color:#fff;text-align:center;padding:3.5rem 1.5rem}
+.hero h1{font-size:clamp(1.9rem,4vw,2.8rem);margin:0}
+.hero p{color:#f3e3cc;margin:.4rem 0 1.2rem}
+.btn{background:var(--acc);color:#2b1a0e;padding:.7rem 1.6rem;border-radius:99px;text-decoration:none;font-weight:800}
+.wrap{max-width:900px;margin:auto;padding:2rem 1.5rem}
+[role=tablist]{display:flex;gap:.5rem;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:.6rem}
+[role=tab]{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.45rem 1.1rem;font:inherit;cursor:pointer;color:var(--pri);font-weight:700}
+[role=tab][aria-selected=true]{background:var(--pri);color:#fff}
+.item{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px dashed var(--line)}
+.item h3{margin:0;font-size:1.1rem}.item p{margin:.1rem 0 0;color:#6b5440;font-size:.95rem}
+.pr{font-weight:800;color:var(--pri);white-space:nowrap}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.info div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem}
+footer{text-align:center;padding:1.5rem;font-size:.9rem;color:#6b5440}
+</style>
+</head>
+<body>
+<a class="skip" href="#menu">تخطَّ إلى قائمة الطعام</a>
+<header class="hero"><h1>بيت الكرم</h1><p>أطباق سعودية شعبية بنكهة البيت</p><a class="btn" href="#menu">تصفّح القائمة</a></header>
+<main class="wrap">
+  <h2 id="menu" tabindex="-1">قائمة الطعام</h2>
+  <div role="tablist" aria-label="أقسام القائمة" id="tabs"></div>
+  <div id="panel" role="tabpanel" tabindex="0"></div>
+  <div class="info">
+    <div><h3>أوقات العمل</h3><p>يوميًا من 12 ظهرًا حتى 12 منتصف الليل</p></div>
+    <div><h3>الطلبات</h3><p>محلي وسفري وطلبات المناسبات</p></div>
+    <div><h3>سهولة الوصول</h3><p>القائمة نصية بالكامل وتُقرأ بقارئ الشاشة، والأقسام تتنقل بالأسهم.</p></div>
+  </div>
+</main>
+<footer>تصميم وتطوير: هايس محمد عقيل العنزي — مشروع تجريبي (المطعم والأسعار افتراضية)</footer>
+<script>
+const menu={"الأطباق الرئيسية":[["كبسة لحم","أرز بسمتي مع لحم حاشي وتوابل البيت",65],["مندي دجاج","دجاج مطهو على الحطب مع أرز مندي",45],["مرقوق","خضار ولحم مع عجينة رقيقة",38]],
+"المقبلات":[["سمبوسة","6 حبات محشوة لحم أو جبن",18],["سلطة دقوس","طماطم وفلفل حار",12]],
+"الحلى":[["كليجا","معمول بالتمر والهيل",15],["لقيمات","مع دبس التمر",16]],
+"المشروبات":[["قهوة سعودية","دلة صغيرة مع تمر",20],["شاي بالنعناع","إبريق",12]]};
+const tabs=document.getElementById('tabs'),panel=document.getElementById('panel');const keys=Object.keys(menu);
+function show(i){[...tabs.children].forEach((t,j)=>{t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1});
+ panel.setAttribute('aria-labelledby','t'+i);
+ panel.innerHTML=menu[keys[i]].map(([n,d,p])=>`<div class="item"><div><h3>${n}</h3><p>${d}</p></div><div class="pr">${p} ر.س</div></div>`).join('');}
+keys.forEach((k,i)=>{const b=document.createElement('button');b.role='tab';b.setAttribute('role','tab');b.id='t'+i;b.textContent=k;b.onclick=()=>show(i);
+ b.onkeydown=e=>{let n=null;if(e.key==='ArrowLeft')n=(i+1)%keys.length;if(e.key==='ArrowRight')n=(i-1+keys.length)%keys.length;if(n!==null){show(n);tabs.children[n].focus();}};tabs.appendChild(b);});
+show(0);
+</script>
+</body></html>

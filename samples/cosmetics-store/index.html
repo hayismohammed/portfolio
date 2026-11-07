@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>متجر لمسة — قالب متجر إلكتروني للعناية والتجميل (نموذج)</title>
+<style>
+:root{--pri:#8a2f5b;--pri2:#b8467e;--bg:#fff8fb;--fg:#2a1520;--card:#fff;--line:#f0d6e3}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Cairo","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
+.skip{position:absolute;right:-999px}.skip:focus{right:1rem;top:.5rem;background:#000;color:#fff;padding:.5rem 1rem;z-index:9}
+:focus-visible{outline:3px solid #1a5fb4;outline-offset:2px}
+.top{background:var(--pri);color:#fff;text-align:center;font-size:.9rem;padding:.35rem}
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.logo{font-size:1.6rem;font-weight:800;color:var(--pri)}
+.cart{background:var(--pri);color:#fff;border:0;border-radius:99px;padding:.5rem 1.1rem;font:inherit;font-weight:700;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center;max-width:1100px;margin:auto;padding:2.5rem 1.5rem}
+.hero h1{font-size:clamp(1.7rem,3.5vw,2.6rem);line-height:1.4;margin:0 0 .8rem}
+.hero p{color:#6b4a5a}
+.art{aspect-ratio:4/3;border-radius:24px;background:radial-gradient(circle at 30% 30%,#ffd6e8,#f3a6c8 45%,#b8467e);display:flex;align-items:center;justify-content:center;font-size:5rem}
+.btn{background:var(--pri);color:#fff;text-decoration:none;padding:.75rem 1.6rem;border-radius:12px;font-weight:700;display:inline-block;border:0;font:inherit;cursor:pointer}
+.btn:hover,.cart:hover{background:var(--pri2)}
+main{max-width:1100px;margin:auto;padding:0 1.5rem 2rem}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.filters button{border:1px solid var(--pri);background:#fff;color:var(--pri);border-radius:99px;padding:.35rem 1rem;font:inherit;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--pri);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;list-style:none;padding:0}
+.p{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem;display:flex;flex-direction:column}
+.p .img{height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:.6rem}
+.p h3{margin:.1rem 0;font-size:1.05rem}
+.price{color:var(--pri);font-weight:800;margin:.3rem 0 .7rem}
+.p .btn{margin-top:auto;text-align:center;padding:.5rem}
+#status{min-height:1.5rem;font-weight:700;color:var(--pri)}
+footer{text-align:center;padding:1.5rem;border-top:1px solid var(--line);font-size:.9rem;color:#6b4a5a}
+@media(max-width:720px){.hero{grid-template-columns:1fr}.art{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#products">تخطَّ إلى المنتجات</a>
+<div class="top">توصيل لجميع مناطق المملكة — نموذج تجريبي لقالب متجر</div>
+<header>
+  <div class="logo" aria-label="لمسة">لمسة ✿</div>
+  <button class="cart" id="cartBtn" aria-live="polite">السلة: <span id="count">0</span> منتج</button>
+</header>
+<section class="hero" aria-labelledby="h1">
+  <div>
+    <h1 id="h1">جمالك يبدأ بعناية بسيطة كل يوم</h1>
+    <p>قالب متجر إلكتروني لمنتجات العناية والتجميل، متجاوب مع الجوال وسهل الوصول لمستخدمي قارئات الشاشة، مناسب لمنصات مثل سلة وزد.</p>
+    <a class="btn" href="#products">تسوّقي الآن</a>
+  </div>
+  <div class="art" aria-hidden="true">🌸</div>
+</section>
+<main>
+  <h2 id="products" tabindex="-1">المنتجات</h2>
+  <div class="filters" role="group" aria-label="تصفية حسب الفئة">
+    <button aria-pressed="true" data-f="all">الكل</button>
+    <button aria-pressed="false" data-f="skin">العناية بالبشرة</button>
+    <button aria-pressed="false" data-f="hair">العناية بالشعر</button>
+    <button aria-pressed="false" data-f="perfume">العطور</button>
+  </div>
+  <p id="status" role="status" aria-live="polite"></p>
+  <ul class="grid" id="grid"></ul>
+</main>
+<footer>تصميم وتطوير: هايس محمد عقيل العنزي — مشروع تجريبي (أسماء وأسعار المنتجات افتراضية)</footer>
+<script>
+const items=[
+ {n:"غسول وجه لطيف",c:"skin",p:45,e:"🧴",bg:"#fde4ef"},
+ {n:"مرطب بشرة يومي",c:"skin",p:69,e:"💧",bg:"#e4f1fd"},
+ {n:"واقي شمس SPF50",c:"skin",p:79,e:"☀️",bg:"#fff4d6"},
+ {n:"زيت شعر طبيعي",c:"hair",p:55,e:"🌿",bg:"#e6f7e9"},
+ {n:"بلسم مغذٍّ للشعر",c:"hair",p:49,e:"🫧",bg:"#efe6fd"},
+ {n:"عطر ورد طائفي",c:"perfume",p:189,e:"🌹",bg:"#fde4e4"},
+ {n:"عطر عود فاخر",c:"perfume",p:240,e:"🪵",bg:"#f3e9df"},
+ {n:"مقشر شفاه",c:"skin",p:29,e:"💋",bg:"#fde4ef"}];
+let count=0;const g=document.getElementById('grid'),st=document.getElementById('status');
+function render(f){g.innerHTML='';items.filter(i=>f==='all'||i.c===f).forEach(i=>{
+ const li=document.createElement('li');li.className='p';
+ li.innerHTML=`<div class="img" style="background:${i.bg}" aria-hidden="true">${i.e}</div><h3>${i.n}</h3><div class="price">${i.p} ر.س</div><button class="btn">أضيفي إلى السلة<span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">: ${i.n}</span></button>`;
+ li.querySelector('button').onclick=()=>{count++;document.getElementById('count').textContent=count;st.textContent=`تمت إضافة ${i.n} إلى السلة. عدد المنتجات في السلة: ${count}`};
+ g.appendChild(li);});}
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed','false'));
+ b.setAttribute('aria-pressed','true');render(b.dataset.f);st.textContent='تم عرض: '+b.textContent;});
+render('all');
+</script>
+</body></html>
