@@ -226,12 +226,17 @@
               id="period"
               name="period"
               required
-              aria-describedby="period-error"
+              aria-describedby="period-help period-error"
             >
               <option value="">اختر الفترة</option>
               <option value="morning">صباحًا — 9 إلى 12</option>
+              <option value="afternoon">ظهرًا — 12 إلى 4</option>
               <option value="evening">مساءً — 4 إلى 9</option>
             </select>
+            <p id="period-help" class="muted" role="status" aria-live="polite">
+              اختَر تاريخًا لعرض الفترات المناسبة. الأحد إلى الخميس: 9 صباحًا
+              إلى 9 مساءً. السبت: 4 مساءً إلى 10 مساءً. الجمعة مغلق.
+            </p>
             <div class="err" id="period-error"></div>
             <button type="submit" class="btn">اعرض خلاصة التجربة</button>
             <p
@@ -277,8 +282,12 @@
       <div class="wrap">
         <p>كتابة وتصميم: هايس محمد عقيل العنزي</p>
         <a href="../../index.html#samples">استكشف النماذج السبعة</a>
-        <p>© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
-        <p lang="en" dir="ltr">© 2026 Hayis Alanazi. All rights reserved.</p>
+        <p class="site-copyright">
+          © 2026 هايس محمد عقيل العنزي. جميع الحقوق محفوظة.
+          <span lang="en" dir="ltr"
+            >Hayis Mohammed Aqeel Alanazi. All rights reserved.</span
+          >
+        </p>
       </div>
     </footer>
     <script src="../../assets/js/clinic-demo.js" defer></script>

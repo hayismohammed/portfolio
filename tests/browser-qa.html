@@ -50,7 +50,7 @@
   </header>
   <iframe id="frame" title="Portfolio test viewport" width="390"></iframe>
   <pre id="result"></pre>
-  <script src="axe.min.js"></script>
+
   <script>
     const paths = [
       "/index.html",
@@ -77,7 +77,7 @@
       return new Promise((resolve, reject) => {
         frame.onload = () => resolve();
         frame.onerror = reject;
-        frame.src = path;
+        frame.src = new URL(".." + path, location.href).href;
       });
     }
     document.querySelector("#show").onclick = async () => {
@@ -97,7 +97,8 @@
           const win = frame.contentWindow,
             doc = frame.contentDocument;
           const script = doc.createElement("script");
-          script.src = "/__qa__/axe.min.js";
+          script.src =
+            "https://cdn.jsdelivr.net/npm/axe-core@4.10.3/axe.min.js";
           await new Promise((r, j) => {
             script.onload = r;
             script.onerror = j;
