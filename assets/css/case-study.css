@@ -1,0 +1,34 @@
+.case-study {
+  padding: 1.4rem;
+  margin-block: 2rem;
+  border: 1px solid #c7d1c7;
+  border-radius: 16px;
+  background: #fffcf5;
+}
+.case-study summary {
+  cursor: pointer;
+  min-height: 44px;
+  font-weight: 750;
+  list-style-position: inside;
+}
+.case-study dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+.case-study dt {
+  font-weight: 750;
+  color: #174f48;
+}
+.case-study dd {
+  margin: 0.4rem 0 0;
+}
+.grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 760px) {
+  .case-study dl,
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+}

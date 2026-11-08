@@ -1,143 +1,305 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>قائمة طعام رقمية | نموذج تجريبي</title>
-<meta name="description" content="نموذج تجريبي لقائمة طعام رقمية لمطعم افتراضي. الأقسام تبويبات بلوحة المفاتيح، والأسعار افتراضية، ولا يوجد طلب من الصفحة.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233a2416'/%3E%3Crect x='6' y='14' width='20' height='4' rx='2' fill='%23e0a23a'/%3E%3C/svg%3E">
-<style>
-:root{--pri:#7a3e12;--acc:#e0a23a;--bg:#fbf6ef;--fg:#2b1a0e;--line:#ead9c3;--muted:#4a3828}
-*{box-sizing:border-box}
-html{scroll-padding-top:1rem}
-body{margin:0;font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:1.08rem}
-:focus{scroll-margin-top:1rem;scroll-margin-bottom:1rem}
-:focus-visible{outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 3px #fff}
-.skip{position:absolute;inset-inline-start:1rem;top:0;transform:translateY(-150%);background:#111;color:#fff;padding:.7rem 1rem;z-index:9;text-decoration:none;font-weight:800}
-.skip:focus{position:static;display:block;transform:none}
-.banner{background:#fff4dc;color:#3f342b;margin:0;padding:1rem 1.2rem;border-bottom:3px solid #7a3e12}
-.banner a{color:#6d3308;font-weight:800}
-.hero{background:#3a2416;color:#fff;text-align:center;padding:2.6rem 1.2rem}
-.hero h1{font-size:clamp(1.9rem,4vw,2.6rem);margin:0}
-.hero p{color:#f6eadc;margin:.45rem 0 1rem}
-.btn{display:inline-flex;align-items:center;min-height:44px;background:var(--acc);color:#2b1a0e;padding:.55rem 1.2rem;border-radius:999px;text-decoration:none;font-weight:800}
-.wrap{max-width:900px;margin:auto;padding:1.5rem 1.15rem 2rem}
-[role=tablist]{display:flex;gap:.5rem;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:.6rem}
-[role=tab]{background:#fff;border:2px solid #c9b59a;border-radius:10px;padding:.5rem 1rem;font:inherit;cursor:pointer;color:#3a2416;font-weight:800;min-height:44px}
-[role=tab][aria-selected=true]{background:var(--pri);color:#fff;border-color:var(--pri)}
-.item{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px dashed var(--line)}
-.item h3{margin:0;font-size:1.12rem}
-.item p{margin:.15rem 0 0;color:var(--muted)}
-.pr{font-weight:800;color:#6d3308;white-space:nowrap}
-.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1rem;margin-top:1.4rem}
-.info div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem}
-.info h3{margin-top:0}
-footer{text-align:center;padding:1.3rem 1rem;color:var(--muted)}
-main:focus{outline:3px solid #111;outline-offset:4px}
-</style>
-<link rel="stylesheet" href="../../assets/css/samples.css">
-<link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/restaurant/">
-<meta property="og:title" content="قائمة طعام رقمية | نموذج تجريبي">
-<meta property="og:description" content="نموذج تجريبي لقائمة طعام رقمية لمطعم افتراضي. الأقسام تبويبات بلوحة المفاتيح، والأسعار افتراضية، ولا يوجد طلب من الصفحة.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_SA">
-<meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/restaurant/">
-<meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="قائمة طعام رقمية | نموذج تجريبي">
-<meta name="twitter:description" content="نموذج تجريبي لقائمة طعام رقمية لمطعم افتراضي. الأقسام تبويبات بلوحة المفاتيح، والأسعار افتراضية، ولا يوجد طلب من الصفحة.">
-<meta name="twitter:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-</head>
-<body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<main id="main" tabindex="-1">
-<p class="banner" role="note">نموذج تجريبي لمطعم افتراضي اسمه بيت الكرم. الأطباق والأسعار غير حقيقية، ولا يُرسل طلب من هذه الصفحة. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
-<header class="hero">
-  <h1>بيت الكرم</h1>
-  <p>نموذج قائمة طعام رقمية بنص واضح، بلا صورة ضرورية للقراءة.</p>
-  <a class="btn" href="#menu">تصفّح القائمة</a>
-</header>
-<div class="wrap"><section class="sample-overview" aria-labelledby="overview-h"><h2 id="overview-h">قائمة نصية سهلة التصفح</h2><p>أقسام واضحة، وأوصاف وأسعار قابلة للقراءة، مع تبويبات تدعم أسهم لوحة المفاتيح في الاتجاه العربي.</p><p class="sample-meta">المطعم والقائمة والأسعار افتراضية، ولا يوجد إرسال طلب.</p><a href="../../index.html#samples">استكشف النماذج السبعة</a></section>
-  <h2 id="menu">قائمة الطعام</h2>
-  <noscript><section class="noscript-menu"><h3>قائمة الطعام النصية</h3><p>الأطباق الرئيسية: كبسة لحم 65 ر.س، مندي دجاج 45 ر.س، مرقوق 38 ر.س.</p><p>المقبلات: سمبوسة 18 ر.س، سلطة 12 ر.س.</p><p>الحلى: كليجا 15 ر.س، لقيمات 16 ر.س.</p><p>المشروبات: قهوة سعودية 20 ر.س، شاي بالنعناع 12 ر.س.</p><p>جميع الأصناف والأسعار افتراضية.</p></section></noscript>
-  <div role="tablist" aria-label="أقسام القائمة" aria-orientation="horizontal" id="tabs"></div>
-  <div id="panel" role="tabpanel" tabindex="0"></div>
-  <div class="info">
-    <div><h3>أوقات العمل</h3><p>نص افتراضي: يوميًا من 12 ظهرًا حتى 12 منتصف الليل.</p></div>
-    <div><h3>الطلبات</h3><p>لا طلب من هذه الصفحة. النص يبيّن مكان شرح المحلي والسفري في القائمة الحقيقية.</p></div>
-    <div><h3>لوحة المفاتيح</h3><p>عند التركيز على تبويب: السهم الأيسر للقسم التالي، والسهم الأيمن للقسم السابق، ومفتاح Home لأول قسم، ومفتاح End لآخر قسم.</p></div>
-  </div>
-</div>
-</main>
-<footer>
-  <p>تصميم للعرض: هايس محمد عقيل العنزي. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
-
-    <div class="site-copyright" style="font-family:inherit;color:inherit;font-size:inherit;line-height:1.8">
-      <p lang="ar" dir="rtl" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
-      <p lang="en" dir="ltr" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 Hayis Alanazi. All rights reserved.</p>
-    </div>
-</footer>
-<script>
-const menu={
-  "الأطباق الرئيسية":[["كبسة لحم","أرز مع لحم وتوابل. وصف افتراضي.",65],["مندي دجاج","دجاج مع أرز. وصف افتراضي.",45],["مرقوق","خضار ولحم مع عجينة. وصف افتراضي.",38]],
-  "المقبلات":[["سمبوسة","ست حبات. وصف افتراضي.",18],["سلطة","طماطم وفلفل. وصف افتراضي.",12]],
-  "الحلى":[["كليجا","معمول بالتمر. وصف افتراضي.",15],["لقيمات","مع دبس. وصف افتراضي.",16]],
-  "المشروبات":[["قهوة سعودية","مع تمر. وصف افتراضي.",20],["شاي بالنعناع","إبريق. وصف افتراضي.",12]]
-};
-const tabs=document.getElementById("tabs");
-const panel=document.getElementById("panel");
-const keys=Object.keys(menu);
-function show(i){
-  [...tabs.children].forEach((t,j)=>{
-    const on=j===i;
-    t.setAttribute("aria-selected",on?"true":"false");
-    t.tabIndex=on?0:-1;
-  });
-  panel.setAttribute("aria-labelledby","t"+i);
-  panel.replaceChildren();
-  menu[keys[i]].forEach(([name,desc,price])=>{
-    const row=document.createElement("div");
-    row.className="item";
-    const text=document.createElement("div");
-    const h=document.createElement("h3");
-    h.textContent=name;
-    const p=document.createElement("p");
-    p.textContent=desc;
-    text.append(h,p);
-    const pr=document.createElement("div");
-    pr.className="pr";
-    pr.dir="ltr";
-    pr.textContent=price+" ر.س";
-    row.append(text,pr);
-    panel.append(row);
-  });
-}
-keys.forEach((label,i)=>{
-  const b=document.createElement("button");
-  b.type="button";
-  b.id="t"+i;
-  b.setAttribute("role","tab");
-  b.setAttribute("aria-controls","panel");
-  b.textContent=label;
-  b.addEventListener("click",()=>show(i));
-  b.addEventListener("keydown",e=>{
-    let n=null;
-    if(e.key==="ArrowLeft")n=(i+1)%keys.length;
-    if(e.key==="ArrowRight")n=(i-1+keys.length)%keys.length;
-    if(e.key==="Home")n=0;
-    if(e.key==="End")n=keys.length-1;
-    if(n===null)return;
-    e.preventDefault();
-    show(n);
-    tabs.children[n].focus();
-  });
-  tabs.append(b);
-});
-show(0);
-</script>
-
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>بيت الكرم | قائمة طعام تجريبية | هايس العنزي</title>
+    <meta
+      name="description"
+      content="قائمة طعام سعودية افتراضية برسوم أطباق أصلية وأوصاف وأسعار نصية وتبويبات تدعم لوحة المفاتيح."
+    />
+    <link
+      rel="canonical"
+      href="https://hayismohammed.github.io/portfolio/samples/restaurant/"
+    />
+    <meta property="og:title" content="بيت الكرم | قائمة طعام تجريبية" />
+    <meta
+      property="og:description"
+      content="قائمة طعام سعودية افتراضية برسوم أطباق أصلية وأوصاف وأسعار نصية وتبويبات تدعم لوحة المفاتيح."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_SA" />
+    <meta
+      property="og:url"
+      content="https://hayismohammed.github.io/portfolio/samples/restaurant/"
+    />
+    <meta
+      property="og:image"
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="../../assets/media/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+    <style>
+      :root {
+        --pri: #75401e;
+        --dark: #3a2416;
+        --bg: #faf4ea;
+        --ink: #35271a;
+        --muted: #66503d;
+        --line: #e1d2bd;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+    <header class="topbar">
+      <div class="wrap bar">
+        <a class="brand" href="../../index.html#samples">بيت الكرم</a>
+        <nav aria-label="أقسام الصفحة">
+          <a href="#menu">قائمة الطعام</a
+          ><a href="../../index.html#samples">العودة إلى المعرض</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap" tabindex="-1">
+      <p class="demo-note">
+        مطعم افتراضي لعرض المهارات. الأطباق والأسعار تخيلية، ولا يُرسل طلب من
+        الصفحة.
+      </p>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">بيت الكرم / مذاق يجمعنا</span>
+          <h1>على المائدة،<br />حكاية كرم.</h1>
+          <p class="lead">
+            أطباق مستوحاة من المطبخ السعودي، من الكبسة والمندي إلى القهوة
+            والحلى.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#menu">تصفّح القائمة</a>
+          </div>
+          <p class="art-note">
+            رسوم أصلية للأطباق، والمعلومات والأسعار تخيلية.
+          </p>
+        </div>
+        <img
+          src="../../assets/media/demo/restaurant-hero.svg"
+          width="640"
+          height="480"
+          alt="رسم توضيحي لطبق أرز ولحم على مائدة دافئة"
+        />
+      </section>
+      <section class="section" aria-labelledby="menu">
+        <span class="eyebrow">القائمة</span>
+        <h2 id="menu">اختر ما يطيب لك</h2>
+        <div
+          role="tablist"
+          aria-label="أقسام قائمة الطعام"
+          aria-orientation="horizontal"
+          id="menu-tabs"
+          hidden
+        ></div>
+        <div
+          id="menu-panel"
+          class="menu-panel"
+          role="tabpanel"
+          tabindex="0"
+          hidden
+        ></div>
+        <div id="menu-fallback">
+          <section>
+            <h3>الأطباق الرئيسية</h3>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/kabsa.svg"
+                width="640"
+                height="480"
+                alt="كبسة لحم"
+                loading="lazy"
+              />
+              <div>
+                <h3>كبسة لحم</h3>
+                <p>
+                  أرز متبّل مع قطع لحم وتزيين بالخضرة، بتقديم مستوحى من المائدة
+                  السعودية.
+                </p>
+              </div>
+              <p class="price">65 ر.س</p>
+            </article>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/mandi.svg"
+                width="640"
+                height="480"
+                alt="مندي دجاج"
+                loading="lazy"
+              />
+              <div>
+                <h3>مندي دجاج</h3>
+                <p>
+                  دجاج مع أرز طويل الحبة وتوابل دافئة، في طبق للمشاركة على
+                  المائدة.
+                </p>
+              </div>
+              <p class="price">45 ر.س</p>
+            </article>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/marqooq.svg"
+                width="640"
+                height="480"
+                alt="مرقوق"
+                loading="lazy"
+              />
+              <div>
+                <h3>مرقوق</h3>
+                <p>رقائق عجين مع خضار ولحم في مرق غني، بطابع منزلي.</p>
+              </div>
+              <p class="price">38 ر.س</p>
+            </article>
+          </section>
+          <section>
+            <h3>المقبلات</h3>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/samosa.svg"
+                width="640"
+                height="480"
+                alt="سمبوسة"
+                loading="lazy"
+              />
+              <div>
+                <h3>سمبوسة</h3>
+                <p>ست حبات مقرمشة بتقديم بسيط، لبداية خفيفة مع الوجبة.</p>
+              </div>
+              <p class="price">18 ر.س</p>
+            </article>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/salad.svg"
+                width="640"
+                height="480"
+                alt="سلطة"
+                loading="lazy"
+              />
+              <div>
+                <h3>سلطة</h3>
+                <p>تشكيلة خضار بألوان متنوعة، لترافق الأطباق الرئيسية.</p>
+              </div>
+              <p class="price">12 ر.س</p>
+            </article>
+          </section>
+          <section>
+            <h3>الحلى</h3>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/kleija.svg"
+                width="640"
+                height="480"
+                alt="كليجا"
+                loading="lazy"
+              />
+              <div>
+                <h3>كليجا</h3>
+                <p>أقراص حلوى سعودية متبّلة، تُقدَّم مع القهوة.</p>
+              </div>
+              <p class="price">15 ر.س</p>
+            </article>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/luqaimat.svg"
+                width="640"
+                height="480"
+                alt="لقيمات"
+                loading="lazy"
+              />
+              <div>
+                <h3>لقيمات</h3>
+                <p>كرات عجين ذهبية مع لمسة دبس، بتقديم للمشاركة.</p>
+              </div>
+              <p class="price">16 ر.س</p>
+            </article>
+          </section>
+          <section>
+            <h3>المشروبات</h3>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/coffee.svg"
+                width="640"
+                height="480"
+                alt="قهوة سعودية"
+                loading="lazy"
+              />
+              <div>
+                <h3>قهوة سعودية</h3>
+                <p>قهوة بلمسة هيل، تُقدَّم مع التمر لإكمال الجلسة.</p>
+              </div>
+              <p class="price">20 ر.س</p>
+            </article>
+            <article class="menu-item">
+              <img
+                src="../../assets/media/demo/tea.svg"
+                width="640"
+                height="480"
+                alt="شاي بالنعناع"
+                loading="lazy"
+              />
+              <div>
+                <h3>شاي بالنعناع</h3>
+                <p>إبريق شاي بنكهة النعناع، يناسب جلسة ما بعد الطعام.</p>
+              </div>
+              <p class="price">12 ر.س</p>
+            </article>
+          </section>
+        </div>
+        <p class="art-note">
+          القائمة للعرض فقط؛ لا طلبات أو حجوزات. أوصاف المكونات لا تُستخدم
+          مرجعًا للحساسية الغذائية.
+        </p>
+      </section>
+      <section class="section grid two">
+        <div class="card">
+          <h2 style="font-size: 1.4rem">أوقات العمل</h2>
+          <p>في هذا المثال: يوميًا من 12 ظهرًا حتى 12 منتصف الليل.</p>
+        </div>
+        <div class="card">
+          <h2 style="font-size: 1.4rem">التنقل بين الأقسام</h2>
+          <p>
+            اختر القسم باللمس، أو استخدم السهم الأيسر للتالي والأيمن للسابق عند
+            التركيز على التبويبات. Home للأول وEnd للأخير.
+          </p>
+        </div>
+      </section>
+      <details class="case-study">
+        <summary>عن هذا العمل: الفكرة ودوري في التنفيذ</summary>
+        <dl>
+          <div>
+            <dt>الفكرة والجمهور</dt>
+            <dd>زائر قائمة مطعم يريد الوصول إلى الطبق والسعر بسرعة.</dd>
+          </div>
+          <div>
+            <dt>ما أنجزته</dt>
+            <dd>
+              كتابة أوصاف موجزة، ورسم الأطباق، وتصميم أقسام تفاعلية مع بديل نصي
+              عند تعطيل JavaScript.
+            </dd>
+          </div>
+          <div>
+            <dt>سبب الاختيارات</dt>
+            <dd>
+              إبقاء الاسم والوصف والسعر كنص، وجعل الصور مكملة للمعلومة، ودعم
+              اتجاه الأسهم العربي.
+            </dd>
+          </div>
+        </dl>
+      </details>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <p>كتابة وتصميم: هايس محمد عقيل العنزي</p>
+        <a href="../../index.html#samples">استكشف النماذج السبعة</a>
+        <p>© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
+        <p lang="en" dir="ltr">© 2026 Hayis Alanazi. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="../../assets/js/menu-demo.js" defer></script>
+  </body>
 </html>

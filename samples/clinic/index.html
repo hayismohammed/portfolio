@@ -1,171 +1,286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>موقع عيادة مع نموذج موعد | نموذج تجريبي</title>
-<meta name="description" content="نموذج تجريبي لموقع عيادة أسنان افتراضية. نموذج الموعد يتحقق من الحقول محليًا ولا يرسل البيانات ولا يحجز موعدًا.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f3d3c'/%3E%3Crect x='6' y='14' width='20' height='4' rx='2' fill='%23f0c14b'/%3E%3C/svg%3E">
-<style>
-:root{--pri:#0f3d3c;--bg:#f4fbfb;--fg:#10302f;--line:#cfe6e6;--muted:#3d4f4e}
-*{box-sizing:border-box}
-html{scroll-padding-top:1rem}
-body{margin:0;font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:1.08rem}
-:focus{scroll-margin-top:1rem;scroll-margin-bottom:1rem}
-:focus-visible{outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 3px #fff}
-.skip{position:absolute;inset-inline-start:1rem;top:0;transform:translateY(-150%);background:#111;color:#fff;padding:.7rem 1rem;z-index:9;text-decoration:none;font-weight:800}
-.skip:focus{position:static;display:block;transform:none}
-.banner{margin:0;padding:1rem 1.2rem;border-bottom:3px solid var(--pri)}
-.banner a{color:#08342f;font-weight:800}
-header{background:var(--pri);color:#fff}
-.bar{padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap}
-.banner{background:#e7f4f3;color:#10302f}
-.brand{font-size:1.3rem;font-weight:800;margin:0}
-nav ul{display:flex;flex-wrap:wrap;gap:.35rem 1rem;list-style:none;padding:0;margin:0}
-nav a{color:#fff;text-decoration:underline;text-underline-offset:.15em;display:inline-flex;align-items:center;min-height:44px}
-.hero{background:var(--pri);color:#fff;padding:2.4rem 1.2rem;text-align:center}
-.hero h1{font-size:clamp(1.7rem,3.5vw,2.4rem);margin:0 0 .6rem}
-.hero p{margin:0 auto;max-width:40rem;color:#f4fbfb}
-.wrap{max-width:1050px;margin:auto;padding:1.5rem 1.15rem 2rem}
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1rem}
-.svc article{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem}
-.svc h3{margin:.2rem 0;color:var(--pri)}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.2rem}
-form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.2rem}
-label{display:block;font-weight:800;margin-top:.85rem}
-input,select{width:100%;padding:.65rem;border:2px solid #0f3d3c;border-radius:10px;font:inherit;background:#fff;color:#10302f}
-input[aria-invalid="true"]{border-color:#8e1b12;background:#fff5f5}
-.err{color:#8e1b12;font-weight:700;min-height:1.3rem}
-button{margin-top:1rem;background:var(--pri);color:#fff;border:0;border-radius:10px;padding:.7rem 1.2rem;font:inherit;font-weight:800;cursor:pointer;min-height:44px}
-#ok{font-weight:800;color:var(--pri)}
-table{width:100%;border-collapse:collapse;background:#fff}
-caption{text-align:start;font-weight:800;padding:.3rem 0 .5rem}
-th,td{border:1px solid var(--line);padding:.55rem;text-align:start}
-th{background:#e3f3f3}
-footer{text-align:center;padding:1.3rem 1rem;color:var(--muted)}
-main:focus{outline:3px solid #111;outline-offset:4px}
-@media(max-width:760px){.cols{grid-template-columns:1fr}}
-</style>
-<link rel="stylesheet" href="../../assets/css/samples.css">
-<link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/clinic/">
-<meta property="og:title" content="موقع عيادة مع نموذج موعد | نموذج تجريبي">
-<meta property="og:description" content="نموذج تجريبي لموقع عيادة أسنان افتراضية. نموذج الموعد يتحقق من الحقول محليًا ولا يرسل البيانات ولا يحجز موعدًا.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_SA">
-<meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/clinic/">
-<meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="موقع عيادة مع نموذج موعد | نموذج تجريبي">
-<meta name="twitter:description" content="نموذج تجريبي لموقع عيادة أسنان افتراضية. نموذج الموعد يتحقق من الحقول محليًا ولا يرسل البيانات ولا يحجز موعدًا.">
-<meta name="twitter:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-</head>
-<body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<header>
-  <p class="banner" role="note">نموذج تجريبي لعيادة افتراضية اسمها عيادة الشفاء. لا تُرسل البيانات إلى أي خادم، ولا يُحجز موعد حقيقي. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
-  <div class="bar">
-  <p class="brand">عيادة الشفاء</p>
-  <nav aria-label="أقسام هذه الصفحة التجريبية">
-    <ul>
-      <li><a href="#services">الخدمات</a></li>
-      <li><a href="#hours">أوقات العمل</a></li>
-      <li><a href="#book">نموذج الموعد</a></li>
-    </ul>
-  </nav>
-  </div>
-</header>
-<main id="main" tabindex="-1">
-<div class="hero">
-  <h1>ابتسامتك بين أيدٍ أمينة</h1>
-  <p>نص تجريبي لصفحة تعريف بعيادة، مع نموذج يبيّن رسائل الخطأ دون حفظ ما يُكتب.</p>
-</div>
-<div class="wrap"><section class="sample-overview" aria-labelledby="overview-h"><h2 id="overview-h">تصميم خدمة مع نموذج واضح</h2><p>تعريف بالخدمات وساعات العمل، ثم تجربة تحقق من المدخلات برسائل مرتبطة بالحقول.</p><p class="sample-meta">البيانات تبقى في الصفحة ولا تُرسل، واستخدم بيانات تجريبية فقط.</p><a href="../../index.html#samples">استكشف النماذج السبعة</a></section>
-  <h2 id="services">خدمات افتراضية</h2>
-  <div class="svc">
-    <article><h3>تنظيف الأسنان</h3><p>وصف افتراضي لتنظيف وتلميع دوري.</p></article>
-    <article><h3>حشوات تجميلية</h3><p>وصف افتراضي لحشوات بلون السن.</p></article>
-    <article><h3>تقويم الأسنان</h3><p>وصف افتراضي لاستشارة وخطة علاج.</p></article>
-    <article><h3>طب أسنان الأطفال</h3><p>وصف افتراضي لزيارة الطفل.</p></article>
-  </div>
-  <div class="cols">
-    <section aria-labelledby="hours">
-      <h2 id="hours">أوقات العمل</h2>
-      <table>
-        <caption>جدول افتراضي لأوقات العيادة</caption>
-        <thead>
-          <tr><th scope="col">اليوم</th><th scope="col">الفترة</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>الأحد إلى الخميس</td><td>9 صباحًا إلى 9 مساءً</td></tr>
-          <tr><td>السبت</td><td>4 مساءً إلى 10 مساءً</td></tr>
-          <tr><td>الجمعة</td><td>مغلق</td></tr>
-        </tbody>
-      </table>
-    </section>
-    <section aria-labelledby="book">
-      <h2 id="book">جرّب التحقق من النموذج</h2>
-      <p>اكتب بيانات تجريبية إن شئت. التحقق يعمل في المتصفح فقط، والرسالة التالية تؤكد أن الطلب لم يُرسل.</p>
-      <form id="f" novalidate aria-describedby="form-help">
-<p id="form-help">جميع الحقول مطلوبة ما عدا اختيار الخدمة المحدد مسبقًا. استخدم بيانات تجريبية. لا تُرسل المدخلات.</p>
-        <label for="nm">الاسم الكامل</label>
-        <input id="nm" name="name" autocomplete="off" aria-describedby="e1" required>
-        <div class="err" id="e1"></div>
-        <label for="ph">رقم الجوال</label>
-        <input id="ph" name="tel" type="tel" dir="ltr" inputmode="tel" autocomplete="off" placeholder="05xxxxxxxx" aria-describedby="e2" required>
-        <div class="err" id="e2"></div>
-        <label for="sv">الخدمة</label>
-        <select id="sv" name="service">
-          <option>تنظيف الأسنان</option>
-          <option>حشوات تجميلية</option>
-          <option>تقويم الأسنان</option>
-          <option>طب أسنان الأطفال</option>
-        </select>
-        <label for="dt">التاريخ المفضل</label>
-        <input id="dt" name="date" type="date" aria-describedby="e3" required>
-        <div class="err" id="e3"></div>
-        <button type="submit">تحقق من الحقول</button>
-        <p id="ok" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-  </div>
-</div>
-</main>
-<footer>
-  <p>تصميم للعرض: هايس محمد عقيل العنزي. النموذج لا يرسل البيانات. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
-
-    <div class="site-copyright" style="font-family:inherit;color:inherit;font-size:inherit;line-height:1.8">
-      <p lang="ar" dir="rtl" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
-      <p lang="en" dir="ltr" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 Hayis Alanazi. All rights reserved.</p>
-    </div>
-</footer>
-<script>
-const dateInput=document.getElementById("dt");
-const today=new Date();
-const localToday=[today.getFullYear(),String(today.getMonth()+1).padStart(2,"0"),String(today.getDate()).padStart(2,"0")].join("-");
-dateInput.min=localToday;
-const normalizeDigits=v=>v.replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-1632)).replace(/[۰-۹]/g,c=>String(c.charCodeAt(0)-1776));
-document.getElementById("f").addEventListener("submit",e=>{
-  e.preventDefault();
-  const checks=[
-    ["nm","e1",v=>v.trim().length>=3,"اكتب الاسم الكامل، ثلاثة أحرف على الأقل."],
-    ["ph","e2",v=>/^05\d{8}$/.test(normalizeDigits(v.trim())),"اكتب رقم جوال سعودي تجريبيًا: يبدأ بـ 05 ومكوّن من 10 أرقام."],
-    ["dt","e3",v=>!!v&&v>=localToday,"اختر تاريخ اليوم أو تاريخًا لاحقًا."]
-  ];
-  let first=null;
-  checks.forEach(([id,err,ok,msg])=>{
-    const el=document.getElementById(id);
-    const good=ok(el.value);
-    el.setAttribute("aria-invalid",good?"false":"true");
-    document.getElementById(err).textContent=good?"":msg;
-    if(!good&&!first)first=el;
-  });
-  const out=document.getElementById("ok");
-  if(first){first.focus();out.textContent="";return;}
-  out.textContent="تحقق تجريبي فقط. لم يُرسل شيء، ولم يُحجز موعد لخدمة "+document.getElementById("sv").value+".";
-});
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>الشفاء | نموذج عيادة | هايس العنزي</title>
+    <meta
+      name="description"
+      content="نموذج عيادة أسنان افتراضية يعرض الخدمات وساعات العمل وتجربة موعد محلية دون إرسال بيانات."
+    />
+    <link
+      rel="canonical"
+      href="https://hayismohammed.github.io/portfolio/samples/clinic/"
+    />
+    <meta property="og:title" content="الشفاء | نموذج عيادة" />
+    <meta
+      property="og:description"
+      content="نموذج عيادة أسنان افتراضية يعرض الخدمات وساعات العمل وتجربة موعد محلية دون إرسال بيانات."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_SA" />
+    <meta
+      property="og:url"
+      content="https://hayismohammed.github.io/portfolio/samples/clinic/"
+    />
+    <meta
+      property="og:image"
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="../../assets/media/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+    <header class="topbar">
+      <div class="wrap bar">
+        <a class="brand" href="../../index.html#samples">عيادة الشفاء</a>
+        <nav aria-label="أقسام الصفحة">
+          <a href="#services">الخدمات</a><a href="#hours">أوقات العمل</a
+          ><a href="#book">نموذج الموعد</a
+          ><a href="../../index.html#samples">العودة إلى المعرض</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap" tabindex="-1">
+      <p class="demo-note">
+        عيادة افتراضية لعرض التصميم. نموذج الموعد للتجربة فقط ولا يحجز موعدًا
+        حقيقيًا.
+      </p>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">الشفاء / عناية تبدأ بالفهم</span>
+          <h1>ابتسامتك بين<br />أيدٍ أمينة.</h1>
+          <p class="lead">
+            تعرّف على الخدمات وساعات العمل، ثم استكشف نموذج اختيار الموعد في
+            خطوات واضحة.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#book">جرّب نموذج الموعد</a
+            ><a class="btn secondary" href="#services">تعرّف على الخدمات</a>
+          </div>
+        </div>
+        <img
+          src="../../assets/media/demo/clinic.svg"
+          width="640"
+          height="480"
+          alt="رسم توضيحي لصفحة عيادة أسنان مع بطاقة موعد"
+        />
+      </section>
+      <section class="section" aria-labelledby="services">
+        <span class="eyebrow">الخدمات</span>
+        <h2 id="services">معلومات واضحة قبل الزيارة</h2>
+        <div class="grid two">
+          <article class="card">
+            <h3>تنظيف الأسنان</h3>
+            <p>
+              زيارة دورية لتنظيف الأسنان، مع إرشادات للعناية اليومية يناقشها
+              المراجع مع المختص.
+            </p>
+          </article>
+          <article class="card">
+            <h3>الحشوات التجميلية</h3>
+            <p>
+              تعرف على خيارات ترميم السن ومظهر الحشوات، ثم ناقش ما يناسب الحالة
+              أثناء الاستشارة.
+            </p>
+          </article>
+          <article class="card">
+            <h3>استشارة التقويم</h3>
+            <p>
+              زيارة أولية لفحص الحالة ومناقشة خطة التقويم وخطوات المتابعة مع
+              المختص.
+            </p>
+          </article>
+          <article class="card">
+            <h3>طب أسنان الأطفال</h3>
+            <p>
+              تعريف الأسرة بالزيارة الأولى وكيفية تهيئة الطفل لتجربة العيادة
+              خطوة بخطوة.
+            </p>
+          </article>
+        </div>
+        <p class="art-note">
+          أوصاف لعيادة افتراضية، وليست استشارة أو توصية علاجية.
+        </p>
+      </section>
+      <section class="section" aria-labelledby="visit">
+        <h2 id="visit">كيف تبدأ الزيارة؟</h2>
+        <div class="grid">
+          <article class="card">
+            <span class="eyebrow">01 / اكتشف</span>
+            <h3>اختر الخدمة</h3>
+            <p>اقرأ وصف الخدمة وحدد سبب الزيارة الذي ترغب بمناقشته.</p>
+          </article>
+          <article class="card">
+            <span class="eyebrow">02 / اختر</span>
+            <h3>حدد وقتًا مناسبًا</h3>
+            <p>
+              استعرض ساعات العمل، ثم اختر تاريخًا وفترة في النموذج التجريبي.
+            </p>
+          </article>
+          <article class="card">
+            <span class="eyebrow">03 / راجع</span>
+            <h3>تحقق من التفاصيل</h3>
+            <p>
+              ستظهر خلاصة محلية للاختيارات. لا تُرسل البيانات ولا يُحجز موعد.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section cols">
+        <div>
+          <h2 id="hours">أوقات العمل</h2>
+          <table>
+            <caption>
+              جدول العيادة الافتراضية
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">اليوم</th>
+                <th scope="col">الفترة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">الأحد إلى الخميس</th>
+                <td>9 صباحًا إلى 9 مساءً</td>
+              </tr>
+              <tr>
+                <th scope="row">السبت</th>
+                <td>4 مساءً إلى 10 مساءً</td>
+              </tr>
+              <tr>
+                <th scope="row">الجمعة</th>
+                <td>مغلق</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card" style="margin-top: 1.5rem">
+            <h3>خصوصية التجربة</h3>
+            <p>
+              استخدم اسمًا ورقمًا تجريبيين. لا يوجد اتصال بخادم أو حفظ دائم،
+              وتختفي المدخلات عند إغلاق الصفحة.
+            </p>
+          </div>
+        </div>
+        <div>
+          <h2 id="book">جرّب اختيار الموعد</h2>
+          <form
+            id="appointment-form"
+            class="card"
+            novalidate
+            aria-describedby="form-help"
+          >
+            <p id="form-help">
+              جميع الحقول مطلوبة. التجربة تتحقق من البيانات فقط.
+            </p>
+            <label for="nm">الاسم الكامل</label
+            ><input
+              id="nm"
+              name="name"
+              autocomplete="off"
+              required
+              aria-describedby="name-error"
+            />
+            <div class="err" id="name-error"></div>
+            <label for="ph">رقم الجوال التجريبي</label
+            ><input
+              id="ph"
+              name="tel"
+              type="tel"
+              dir="ltr"
+              inputmode="tel"
+              autocomplete="off"
+              placeholder="05xxxxxxxx"
+              required
+              aria-describedby="phone-error"
+            />
+            <div class="err" id="phone-error"></div>
+            <label for="sv">الخدمة</label
+            ><select id="sv" name="service">
+              <option>تنظيف الأسنان</option>
+              <option>الحشوات التجميلية</option>
+              <option>استشارة التقويم</option>
+              <option>طب أسنان الأطفال</option></select
+            ><label for="dt">التاريخ المفضل</label
+            ><input
+              id="dt"
+              name="date"
+              type="date"
+              required
+              aria-describedby="date-error"
+            />
+            <div class="err" id="date-error"></div>
+            <label for="period">الفترة المفضلة</label
+            ><select
+              id="period"
+              name="period"
+              required
+              aria-describedby="period-error"
+            >
+              <option value="">اختر الفترة</option>
+              <option value="morning">صباحًا — 9 إلى 12</option>
+              <option value="evening">مساءً — 4 إلى 9</option>
+            </select>
+            <div class="err" id="period-error"></div>
+            <button type="submit" class="btn">اعرض خلاصة التجربة</button>
+            <p
+              id="appointment-status"
+              class="status"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+            <noscript
+              ><p>
+                التحقق والخلاصة يحتاجان إلى JavaScript. لا يوجد حجز من الصفحة.
+              </p></noscript
+            >
+          </form>
+        </div>
+      </section>
+      <details class="case-study">
+        <summary>عن هذا العمل: الفكرة ودوري في التنفيذ</summary>
+        <dl>
+          <div>
+            <dt>الفكرة والجمهور</dt>
+            <dd>مراجع يريد فهم الخدمات واختيار موعد بسهولة.</dd>
+          </div>
+          <div>
+            <dt>ما أنجزته</dt>
+            <dd>
+              تنظيم الخدمات وساعات العمل، وتصميم رحلة موعد محلية مع تحقق من
+              المدخلات وخلاصة للاختيارات.
+            </dd>
+          </div>
+          <div>
+            <dt>سبب الاختيارات</dt>
+            <dd>
+              ربط الأخطاء بالحقول، ودعم الأرقام العربية، وفحص تعارض اليوم
+              والفترة، دون جمع بيانات حقيقية.
+            </dd>
+          </div>
+        </dl>
+      </details>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <p>كتابة وتصميم: هايس محمد عقيل العنزي</p>
+        <a href="../../index.html#samples">استكشف النماذج السبعة</a>
+        <p>© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
+        <p lang="en" dir="ltr">© 2026 Hayis Alanazi. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="../../assets/js/clinic-demo.js" defer></script>
+  </body>
 </html>
