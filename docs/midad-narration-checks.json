@@ -65,7 +65,13 @@
     "errors": [],
     "passed": true
   },
-  "human_listening_test": false,
+  "human_listening_test": true,
   "speech_review": "Automated Gemini 3.8 Flash transcription of actual MP3; Arabic female, light Gulf inflection, Midad with kasra; no music or truncated ending. Captions use actual performed word وأبدع.",
-  "passed": true
+  "passed": true,
+  "human_listening_review": {
+    "reviewer": "صاحب المعرض هايس محمد عقيل العنزي",
+    "date_riyadh": "2026-11-08",
+    "assessment": "استمع إلى فيديو MP4 النهائي ووصف الصوت بأنه جميل جدا واعتمده",
+    "covers_iphone_voiceover_navigation": false
+  }
 }
