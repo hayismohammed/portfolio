@@ -351,13 +351,24 @@
         width: calc(100% - 2rem);
       }
     </style>
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        clip-path: inset(50%);
+      }
+    </style>
   </head>
   <body>
     <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
     <nav aria-label="أقسام هذه الصفحة التجريبية">
       <div class="w">
         <p class="logo">صفاء</p>
-        <a class="btn" href="#order">تفاصيل العبوة</a>
+        <a class="btn" href="#order">الحجم والسعر التجريبي</a>
       </div>
     </nav>
     <main id="main" tabindex="-1">
@@ -372,7 +383,7 @@
             <h1>بشرة مرتاحة ولمعة طبيعية <span>كل يوم</span></h1>
             <p>قطّارة صغيرة، وقوام خفيف، ومساحة أبسط لروتين العناية اليومي.</p>
             <div class="row">
-              <a class="btn" href="#order">استكشفي تفاصيل العبوة</a>
+              <a class="btn" href="#order">استكشفي الحجم والسعر التجريبي</a>
               <a class="btn o" href="#how">طريقة الاستخدام</a>
             </div>
           </div>
@@ -553,7 +564,8 @@
             <h2>الحجم والسعر التجريبي</h2>
             <p>عبوة 30 مل. السعر التالي افتراضي للعرض فقط.</p>
             <p class="price">
-              <span dir="ltr">99 ر.س</span> <s dir="ltr">129 ر.س</s>
+              <span class="sr-only">السعر الحالي: </span><span dir="ltr">99 ر.س</span>
+              <span class="sr-only">، السعر قبل الخصم: </span><s dir="ltr">129 ر.س</s>
             </p>
             <p>
               السعر افتراضي ولا يمكن شراء صفاء. لمتابعة تجربة اختيار المنتجات
@@ -571,7 +583,7 @@
         </div>
       </section>
       <details class="case-study">
-        <summary>عن هذا العمل: الفكرة ودوري في التنفيذ</summary>
+        <summary>عن هذا النموذج: الفكرة وطريقة العرض</summary>
         <dl>
           <div>
             <dt>الفكرة والجمهور</dt>
@@ -580,7 +592,7 @@
             </dd>
           </div>
           <div>
-            <dt>ما أنجزته</dt>
+            <dt>ما يقدمه النموذج</dt>
             <dd>
               تنظيم صفحة منتج من الفكرة والمزايا إلى الصور والحجم والسعر
               والأسئلة الشائعة.
@@ -601,16 +613,15 @@
         نموذج تخيلي لعرض الأعمال. العلامة والأسعار غير حقيقية. الصور من Pexels.
       </p>
       <p>
-        تصميم للعرض: هايس محمد عقيل العنزي.
+        إعداد ومراجعة النموذج: هايس محمد عقيل العنزي.
         <a href="../../index.html#samples">العودة إلى المعرض</a>
       </p>
 
       <p class="site-copyright">
-        © 2026 هايس محمد عقيل العنزي. جميع الحقوق محفوظة.
-        <span lang="en" dir="ltr"
-          >Hayis Mohammed Aqeel Alanazi. All rights reserved.</span
-        >
-      </p>
+          © 2026 هايس محمد عقيل العنزي
+          (<span lang="en" dir="ltr">Hayis Mohammed Aqeel Alanazi</span>).
+          جميع الحقوق محفوظة.
+        </p>
     </footer>
   </body>
 </html>
