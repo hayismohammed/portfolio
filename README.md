@@ -14,7 +14,7 @@
 | قائمة بيت الكرم الافتراضي | `samples/restaurant/index.html` |
 | صفحة منتج صفاء الافتراضي | `samples/serum-landing/index.html` |
 | وصف دفتر مِداد الافتراضي | `samples/product-copy/index.html` |
-| إعلان مِداد الأصلي بصوت عربي، 20 ثانية | `samples/short-ad/index.html` |
+| إعلان مِداد الأصلي الصامت، 20 ثانية | `samples/short-ad/index.html` |
 
 الدورة الصوتية: https://hayismohammed.gumroad.com/l/oeuvzz
 
