@@ -25,7 +25,7 @@ jobs:
       - name: Install no-cost audio dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg espeak-ng
+          sudo apt-get install -y -qq ffmpeg espeak-ng fonts-noto-core
           python -m pip install --disable-pip-version-check 'piper-tts==1.8.0' 'numpy<3' 'faster-whisper==1.2.1' 'Pillow>=10'
       - name: Download and verify commercial-use MIT Arabic voice
         run: |
