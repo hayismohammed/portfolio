@@ -1,128 +1,249 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>صفحة هبوط لدورة صوتية | نموذج تجريبي</title>
-<meta name="description" content="نموذج تجريبي لصفحة هبوط. الدورة الصوتية لتعليم VoiceOver متاحة على Gumroad، والنسخة المصوّرة متاحة الآن على يوديمي.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1d33'/%3E%3Crect x='6' y='14' width='20' height='4' rx='2' fill='%23ffd34d'/%3E%3C/svg%3E">
-<style>
-:root{--bg:#0b1d33;--fg:#ffffff;--accent:#ffd34d;--card:#14304f;--muted:#d6e2f0}
-*{box-sizing:border-box}
-html{scroll-padding-top:1rem}
-body{margin:0;font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.85;font-size:1.1rem}
-:focus{scroll-margin-top:1rem;scroll-margin-bottom:1rem}
-:focus-visible{outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 3px #ffd34d}
-.skip{position:absolute;inset-inline-start:1rem;top:0;transform:translateY(-150%);background:var(--accent);color:#1a1408;padding:.7rem 1rem;font-weight:800;text-decoration:none;z-index:10}
-.skip:focus{position:static;display:block;transform:none}
-a{color:var(--accent)}
-.banner{background:#14304f;color:#fff;margin:0;padding:1rem 1.2rem;border-bottom:3px solid var(--accent)}
-.banner a{color:#ffd34d;font-weight:800}
-header{border-bottom:1px solid #284a70}
-.bar{padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:.75rem 1rem;flex-wrap:wrap}
-.brand{font-size:1.2rem;font-weight:800;margin:0}
-nav ul{display:flex;flex-wrap:wrap;gap:.35rem .9rem;list-style:none;padding:0;margin:0}
-nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:.15em;color:var(--muted)}
-.hero{padding:2.5rem 1.2rem 2rem;max-width:960px;margin:auto;text-align:center}
-.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.4;margin:.2rem 0 1rem}
-.badge{display:inline-block;background:#1f4a78;color:var(--accent);padding:.25rem .9rem;border-radius:99px;font-size:1rem}
-.hero p{color:var(--muted);max-width:40rem;margin:0 auto 1rem}
-.notice{background:#14304f;border:2px solid var(--accent);border-radius:12px;padding:1rem 1.1rem;color:#fff;font-weight:700}
-.buy{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:.4rem;background:var(--accent);color:#1a1408;font-weight:800;text-decoration:none;padding:.8rem 1.2rem;border-radius:12px}
-section{max-width:960px;margin:auto;padding:1.5rem 1.2rem}
-h2{font-size:1.55rem;border-inline-start:6px solid var(--accent);padding-inline-start:.8rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem}
-.card{background:var(--card);border-radius:14px;padding:1.1rem 1.2rem}
-.card h3{margin:.2rem 0 .4rem;color:var(--accent);font-size:1.15rem}
-ol.steps li{margin-bottom:.55rem}
-details{background:var(--card);border-radius:12px;padding:.8rem 1.1rem;margin-bottom:.7rem}
-summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
-footer{text-align:center;padding:1.5rem 1rem;color:var(--muted);border-top:1px solid #284a70}
-main:focus{outline:3px solid #ffd34d;outline-offset:4px}
-</style>
-<link rel="stylesheet" href="../../assets/css/samples.css">
-<link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/voiceover-course/">
-<meta property="og:title" content="صفحة هبوط لدورة صوتية | نموذج تجريبي">
-<meta property="og:description" content="نموذج تجريبي لصفحة هبوط. الدورة الصوتية لتعليم VoiceOver متاحة على Gumroad، والنسخة المصوّرة متاحة الآن على يوديمي.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_SA">
-<meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/voiceover-course/">
-<meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="صفحة هبوط لدورة صوتية | نموذج تجريبي">
-<meta name="twitter:description" content="نموذج تجريبي لصفحة هبوط. الدورة الصوتية لتعليم VoiceOver متاحة على Gumroad، والنسخة المصوّرة متاحة الآن على يوديمي.">
-<meta name="twitter:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-</head>
-<body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<header>
-  <p class="banner" role="note">هذه الصفحة نموذج تجريبي لشكل الهبوط وليست عملًا لعميل. الدفع لا يتم عليها. الدورة الصوتية متاحة على Gumroad. النسخة المصوّرة متاحة على يوديمي. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
-  <div class="bar">
-  <p class="brand">تعلّم VoiceOver</p>
-  <nav aria-label="أقسام هذه الصفحة التجريبية">
-    <ul>
-      <li><a href="#for">لمن الدورة</a></li>
-      <li><a href="#learn">ماذا ستتعلم</a></li>
-      <li><a href="#faq">أسئلة شائعة</a></li>
-    </ul>
-  </nav>
-  </div>
-</header>
-<main id="main" tabindex="-1">
-  <div class="hero">
-    <span class="badge">نص تجريبي لدورة صوتية</span>
-    <h1>تعلّم استخدام الآيفون بدون نظر، خطوة بخطوة</h1>
-    <p>هذا نص صفحة هبوط للعرض: دورة صوتية عن قارئ الشاشة VoiceOver، بأسلوب يناسب مبتدئًا أو أهل طفل كفيف. التفاصيل أدناه افتراضية لبيان شكل الصفحة.</p>
-    <p class="notice">الدورة الصوتية متاحة الآن على Gumroad. السعر الحالي وتفاصيل المحتوى في صفحة الشراء. والنسخة المصوّرة دورة مستقلة متاحة الآن على يوديمي.</p>
-    <p><a class="buy" href="https://hayismohammed.gumroad.com/l/oeuvzz">اشترِ الدورة الصوتية على Gumroad</a></p>
-    <p><a class="buy" href="https://www.udemy.com/course/voiceover-x/">اشترِ الدورة المصوّرة على يوديمي</a></p>
-  </div>
-<section class="sample-overview" aria-labelledby="overview-h"><h2 id="overview-h">صفحة تعريف لدورة رقمية</h2><p>عرض الفئات المستهدفة والمحاور والأسئلة الشائعة في تسلسل واضح.</p><p class="sample-meta">تصميم الصفحة ومحاور المثال تجريبية. رابطا Gumroad وUdemy يخصان دورتين حقيقيتين مستقلتين؛ راجع التفاصيل في منصة الشراء.</p><a href="../../index.html#samples">استكشف النماذج السبعة</a></section>
-  <section id="for" aria-labelledby="for-h">
-    <h2 id="for-h">لمن هذه الدورة؟</h2>
-    <div class="grid">
-      <article class="card"><h3>المكفوف المبتدئ</h3><p>لمن يبدأ مع الآيفون ويريد خطوات عملية يعتمد عليها.</p></article>
-      <article class="card"><h3>أهالي الأطفال المكفوفين</h3><p>لمن يريد أن يفهم VoiceOver ليعلّمه في البيت.</p></article>
-      <article class="card"><h3>المعلمون والمهتمون</h3><p>لمن يعمل مع ذوي الإعاقة البصرية ويحتاج أساسًا عمليًا.</p></article>
-    </div>
-  </section>
-  <section id="learn" aria-labelledby="learn-h">
-    <h2 id="learn-h">مثال لمحاور صفحة الهبوط</h2>
-    <p>القائمة التالية نص تجريبي لشكل الصفحة، وليست وصفًا منشورًا لدورة معروضة للبيع.</p>
-    <ol class="steps">
-      <li>مقدمة وتشغيل التعليق الصوتي وإيقافه</li>
-      <li>الإيماءات الأساسية</li>
-      <li>الدوّار واستخداماته</li>
-      <li>الكتابة: لوحة المفاتيح والإملاء وبرايل</li>
-      <li>المكالمات وجهات الاتصال والرسائل</li>
-      <li>سيري واختصارات مفيدة</li>
-      <li>تخصيص السرعة والأصوات والإسهاب وستار الشاشة</li>
-      <li>نصائح للأهل وخطة تمرين وحل مشكلات</li>
-    </ol>
-    <div class="grid">
-      <article class="card"><h3>دروس صوتية</h3><p>في الصفحة الحقيقية يُذكر هنا عدد الدروس بعد تثبيته. لا رقم ملزِم في هذا النموذج.</p></article>
-      <article class="card"><h3>مادة مكتوبة</h3><p>مكان لوصف الملف المرافق، إن وُجد، وفق التفاصيل المعتمدة في منصة الدورة.</p></article>
-      <article class="card"><h3>لا تسليم من هنا</h3><p>هذا النموذج لا يسلّم ملفات ولا يفتح صفحة دفع.</p></article>
-    </div>
-  </section>
-  <section id="faq" aria-labelledby="faq-h">
-    <h2 id="faq-h">أسئلة شائعة</h2>
-    <details><summary>هل النص مناسب لمن لم يستخدم الآيفون من قبل؟</summary><p>في هذا النموذج، نعم: الصفحة تبدأ من الصفر لبيان أسلوب الشرح.</p></details>
-    <details><summary>هل أستطيع شراء الدورة من هذه الصفحة؟</summary><p>الدورة الصوتية تُشترى من Gumroad عبر رابط «اشترِ الدورة الصوتية على Gumroad». هذه الصفحة نموذج للشكل، والدفع يتم على Gumroad. أما النسخة المصوّرة فتُشترى من يوديمي عبر رابط «اشترِ الدورة المصوّرة على يوديمي».</p></details>
-    <details><summary>هل الآراء أو الأرقام في مثل هذه الصفحات حقيقية؟</summary><p>لا توجد شهادات عملاء في هذا النموذج، حتى لا تُفهم الأسماء المختلقة على أنها تجارب حقيقية.</p></details>
-  </section>
-</main>
-<footer>
-  <p>نموذج تجريبي لبيان صفحة هبوط عربية: اتجاه من اليمين إلى اليسار، وعناوين مرتبة، ورابط تخطٍّ، وتنقّل بلوحة المفاتيح.</p>
-  <p>تصميم للعرض: هايس محمد عقيل العنزي. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
-
-    <div class="site-copyright" style="font-family:inherit;color:inherit;font-size:inherit;line-height:1.8">
-      <p lang="ar" dir="rtl" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
-      <p lang="en" dir="ltr" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 Hayis Alanazi. All rights reserved.</p>
-    </div>
-</footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>دورات VoiceOver على الآيفون | هايس العنزي</title>
+    <meta
+      name="description"
+      content="قارن بين دورة VoiceOver الصوتية على Gumroad والمصوّرة على Udemy: ثمانية دروس ونحو 45 دقيقة لكل دورة."
+    />
+    <link
+      rel="canonical"
+      href="https://hayismohammed.github.io/portfolio/samples/voiceover-course/"
+    />
+    <meta property="og:title" content="دورات VoiceOver على الآيفون" />
+    <meta
+      property="og:description"
+      content="قارن بين دورة VoiceOver الصوتية على Gumroad والمصوّرة على Udemy: ثمانية دروس ونحو 45 دقيقة لكل دورة."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_SA" />
+    <meta
+      property="og:url"
+      content="https://hayismohammed.github.io/portfolio/samples/voiceover-course/"
+    />
+    <meta
+      property="og:image"
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="../../assets/media/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+    <header class="topbar">
+      <div class="wrap bar">
+        <a class="brand" href="../../index.html#samples">تعلّم VoiceOver</a>
+        <nav aria-label="أقسام الصفحة">
+          <a href="#courses">الدورتان</a><a href="#learn">المنهج</a
+          ><a href="#faq">أسئلة شائعة</a
+          ><a href="../../index.html#samples">العودة إلى المعرض</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap" tabindex="-1">
+      <p class="demo-note">
+        صفحة من معرض الأعمال تعرض دورتين فعليتين مستقلتين. الشراء والتعلّم عبر
+        المنصة المختارة؛ خدمات التصميم غير متاحة للطلب.
+      </p>
+      <section class="hero">
+        <div>
+          <span class="eyebrow">تعلّم VoiceOver / بالعربية</span>
+          <h1>الآيفون بين يديك.<br />خطوة بخطوة.</h1>
+          <p class="lead">
+            دورتان مستقلتان للمكفوفين وضعاف البصر المبتدئين، ولأهاليهم
+            والمعلمين. من إعداد معلم كفيف يستخدم VoiceOver يوميًا.
+          </p>
+          <ul class="facts">
+            <li>8 دروس في كل دورة</li>
+            <li>نحو 45 دقيقة</li>
+            <li>جهاز آيفون</li>
+            <li>لا تحتاج خبرة سابقة</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="#courses">قارن بين الدورتين</a
+            ><a class="btn secondary" href="#learn">استعرض المنهج</a>
+          </div>
+        </div>
+        <img
+          src="../../assets/media/demo/course.svg"
+          width="640"
+          height="480"
+          alt="رسم لهاتف آيفون مع رمز الصوت والتنقل المسموع"
+        />
+      </section>
+      <section class="section" aria-labelledby="courses">
+        <span class="eyebrow">اختر الصيغة المناسبة</span>
+        <h2 id="courses">صوتية أم مصوّرة؟</h2>
+        <div class="grid two">
+          <article class="card">
+            <span class="course-kind">Gumroad / ملفات صوتية</span>
+            <h3>الدورة الصوتية لتعلّم VoiceOver</h3>
+            <p>
+              ثمانية دروس بصيغة MP3، بإجمالي نحو 45 دقيقة، مع النص الكامل للدورة
+              في ملف Word للمتابعة والمراجعة.
+            </p>
+            <ul>
+              <li>تحميل الملفات بعد الشراء عبر Gumroad.</li>
+              <li>مناسبة لمن يفضّل الاستماع إلى الدروس والرجوع للنص.</li>
+              <li>الدروس مسجلة بصوت مولّد بالذكاء الاصطناعي.</li>
+            </ul>
+            <a class="btn" href="https://hayismohammed.gumroad.com/l/oeuvzz"
+              >اشترِ الدورة الصوتية على Gumroad</a
+            >
+          </article>
+          <article class="card">
+            <span class="course-kind">Udemy / دروس مصوّرة</span>
+            <h3>تعلّم VoiceOver على الآيفون من الصفر</h3>
+            <p>
+              ثمانية دروس قصيرة، بإجمالي نحو 45 دقيقة، تشرح الإيماءات والكتابة
+              والمكالمات والإعدادات بالعربية.
+            </p>
+            <ul>
+              <li>التعلّم والمعاينات المتاحة عبر Udemy.</li>
+              <li>مناسبة لمن يفضّل متابعة الدروس على منصة تعليمية.</li>
+              <li>
+                التعليق الصوتي مولّد بالذكاء الاصطناعي، والشرائح مصممة بمساعدة
+                أدواته.
+              </li>
+            </ul>
+            <a class="btn" href="https://www.udemy.com/course/voiceover-x/"
+              >اشترِ الدورة المصوّرة على يوديمي</a
+            >
+            <p>
+              <a href="https://www.udemy.com/course/voiceover-x/"
+                >افتح معاينات الدروس المتاحة على Udemy</a
+              >
+            </p>
+          </article>
+        </div>
+        <p class="muted">
+          كل دورة شراء مستقل. السعر وطرق الوصول وشروط الشراء المعتمدة تظهر في
+          صفحة المنصة قبل الدفع.
+        </p>
+      </section>
+      <section class="section" aria-labelledby="learn">
+        <span class="eyebrow">المنهج</span>
+        <h2 id="learn">ثماني خطوات للاستخدام اليومي</h2>
+        <p>
+          المحاور التالية منشورة في وصف الدورتين. الأزمنة بجوار العناوين تخص
+          دروس Udemy.
+        </p>
+        <ol class="lesson-list">
+          <li>
+            مقدمة وتشغيل التعليق الصوتي وإيقافه<time dir="ltr">6:09</time>
+          </li>
+          <li>الإيماءات الأساسية<time dir="ltr">6:33</time></li>
+          <li>الدوار واستخداماته<time dir="ltr">5:10</time></li>
+          <li>
+            الكتابة: لوحة المفاتيح والإملاء وبرايل<time dir="ltr">6:03</time>
+          </li>
+          <li>
+            المكالمات وجهات الاتصال والرسائل وواتساب<time dir="ltr">4:44</time>
+          </li>
+          <li>سيري والاختصارات المفيدة<time dir="ltr">4:24</time></li>
+          <li>
+            تخصيص الإعدادات: السرعة والأصوات والإسهاب وستار الشاشة<time
+              dir="ltr"
+              >5:31</time
+            >
+          </li>
+          <li>
+            نصائح للأهل وخطة التمرين وحل المشكلات<time dir="ltr">6:21</time>
+          </li>
+        </ol>
+      </section>
+      <section class="section" aria-labelledby="for">
+        <h2 id="for">لمن تناسب الدورتان؟</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>المستخدم المبتدئ</h3>
+            <p>
+              لمن يبدأ مع الآيفون ويريد تعلّم التنقل والكتابة والتواصل باستخدام
+              قارئ الشاشة.
+            </p>
+          </article>
+          <article class="card">
+            <h3>أهالي الأطفال المكفوفين</h3>
+            <p>
+              لمن يريد فهم الإيماءات الأساسية ومساعدة طفله على التطبيق خطوة
+              بخطوة.
+            </p>
+          </article>
+          <article class="card">
+            <h3>المعلمون والمهتمون</h3>
+            <p>لمن يحتاج شرحًا عربيًا منظمًا للأساسيات وخطة تمرين للمبتدئ.</p>
+          </article>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="faq">
+        <h2 id="faq">قبل أن تبدأ</h2>
+        <details>
+          <summary>ماذا أحتاج للتطبيق؟</summary>
+          <p>
+            جهاز آيفون، مع تطبيق كل درس عمليًا وإعادته عند الحاجة. وصف دورة
+            Udemy يوضح أن الخبرة السابقة غير مطلوبة.
+          </p>
+        </details>
+        <details>
+          <summary>هل شراء إحدى الدورتين يشمل الأخرى؟</summary>
+          <p>
+            لا. الدورة الصوتية على Gumroad والمصوّرة على Udemy منتجان مستقلان.
+            اختر المنصة والصيغة المناسبة لك.
+          </p>
+        </details>
+        <details>
+          <summary>هل المحتوى هنا تجريبي؟</summary>
+          <p>
+            تصميم الصفحة ضمن معرض الأعمال، لكن معلومات الدورتين وروابط شرائهما
+            فعلية. جرت مراجعة وصف المنصتين في 8 نوفمبر 2026؛ صفحة الشراء هي
+            المرجع لأحدث التفاصيل.
+          </p>
+        </details>
+      </section>
+      <details class="case-study">
+        <summary>عن هذا العمل: الفكرة ودوري في التنفيذ</summary>
+        <dl>
+          <div>
+            <dt>الفكرة والجمهور</dt>
+            <dd>
+              متعلم يريد فهم الفرق بين دورة صوتية وأخرى مصوّرة قبل الشراء.
+            </dd>
+          </div>
+          <div>
+            <dt>ما أنجزته</dt>
+            <dd>
+              تنظيم المعلومات الفعلية المنشورة، ومقارنة صيغ التعلّم، وعرض
+              المحاور وروابط المعاينات والشراء.
+            </dd>
+          </div>
+          <div>
+            <dt>سبب الاختيارات</dt>
+            <dd>
+              فصل المنتجين وتوضيح استخدام الذكاء الاصطناعي، مع عناوين وروابط
+              يمكن تصفحها بقارئ الشاشة.
+            </dd>
+          </div>
+        </dl>
+      </details>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <p>كتابة وتصميم: هايس محمد عقيل العنزي</p>
+        <a href="../../index.html#samples">استكشف النماذج السبعة</a>
+        <p>© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
+        <p lang="en" dir="ltr">© 2026 Hayis Alanazi. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>

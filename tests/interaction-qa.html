@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <title>Portfolio interaction regression checks</title>
+  <style>
+    body {
+      font: 16px system-ui;
+      margin: 20px;
+    }
+    iframe {
+      width: 390px;
+      height: 650px;
+      border: 2px solid #174f48;
+    }
+    button {
+      font: inherit;
+      padding: 12px;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+  <h1>Portfolio interaction regression checks</h1>
+  <p>
+    Local QA only. All form values are fictional; no requests are submitted.
+  </p>
+  <button id="run">Run interaction checks</button>
+  <p id="progress" role="status">Ready</p>
+  <iframe id="frame" title="Local sample under test"></iframe>
+  <pre id="result"></pre>
+  <script>
+    const frame = document.getElementById("frame");
+    const results = [];
+    const check = (name, ok, actual) => {
+      results.push({ name, passed: Boolean(ok), actual });
+      if (!ok) throw new Error(name + ": " + JSON.stringify(actual));
+    };
+    const load = (path) =>
+      new Promise((resolve, reject) => {
+        frame.onload = () => resolve(frame.contentDocument);
+        frame.onerror = reject;
+        frame.src = path;
+      });
+    const nextDate = (day) => {
+      const d = new Date();
+      d.setHours(12, 0, 0, 0);
+      do {
+        d.setDate(d.getDate() + 1);
+      } while (d.getDay() !== day);
+      return [
+        d.getFullYear(),
+        String(d.getMonth() + 1).padStart(2, "0"),
+        String(d.getDate()).padStart(2, "0"),
+      ].join("-");
+    };
+    document.getElementById("run").onclick = async () => {
+      results.length = 0;
+      document.getElementById("run").disabled = true;
+      try {
+        document.getElementById("progress").textContent = "Testing store";
+        let d = await load("/samples/cosmetics-store/index.html");
+        const value = (id) => d.getElementById(id).textContent;
+        check(
+          "Cart initially empty",
+          value("cart-total") === "0",
+          value("cart-total"),
+        );
+        d.querySelector('[data-add="cleanser"]').click();
+        d.querySelector('[data-add="hair-oil"]').click();
+        check(
+          "45 + 55 = 100",
+          value("cart-total") === "100" && value("summary-count") === "2",
+          value("cart-total"),
+        );
+        d.querySelector('[data-id="cleanser"][data-action="plus"]').click();
+        check(
+          "Increase one quantity: 145",
+          value("cart-total") === "145" && value("summary-count") === "3",
+          value("cart-total"),
+        );
+        check(
+          "Focus stays on edited product",
+          d.activeElement.dataset.id === "cleanser",
+          d.activeElement.outerHTML,
+        );
+        d.querySelector('[data-id="cleanser"][data-action="minus"]').click();
+        check(
+          "Decrease quantity: 100",
+          value("cart-total") === "100",
+          value("cart-total"),
+        );
+        d.querySelector('[data-id="hair-oil"][data-action="remove"]').click();
+        check(
+          "Remove a product: 45",
+          value("cart-total") === "45",
+          value("cart-total"),
+        );
+        d.querySelector('[data-id="cleanser"][data-action="remove"]').click();
+        check(
+          "Remove last product: empty and focus on heading",
+          value("cart-total") === "0" &&
+            !d.getElementById("empty-cart").hidden &&
+            d.activeElement.id === "cart",
+          d.activeElement.id,
+        );
+        d.querySelector('[data-filter="perfume"]').click();
+        check(
+          "Perfume filter shows two products",
+          d.querySelectorAll("[data-category]:not([hidden])").length === 2,
+          d.querySelectorAll("[data-category]:not([hidden])").length,
+        );
+        d.querySelector('[data-filter="all"]').click();
+        check(
+          "All filter restores eight products",
+          d.querySelectorAll("[data-category]:not([hidden])").length === 8,
+          d.querySelectorAll("[data-category]:not([hidden])").length,
+        );
+        d.querySelector('[data-add="cleanser"]').click();
+        d = await load("/samples/cosmetics-store/index.html?reload-check");
+        check(
+          "Cart resets on reload",
+          d.getElementById("cart-total").textContent === "0",
+          d.getElementById("cart-total").textContent,
+        );
+        document.getElementById("progress").textContent = "Testing clinic";
+        d = await load("/samples/clinic/index.html");
+        const submit = () => d.querySelector('button[type="submit"]').click();
+        submit();
+        check(
+          "Empty form focuses name",
+          d.activeElement.id === "nm",
+          d.activeElement.id,
+        );
+        check(
+          "Required fields report errors",
+          d.querySelectorAll('[aria-invalid="true"]').length === 4,
+          d.querySelectorAll('[aria-invalid="true"]').length,
+        );
+        d.getElementById("nm").value = "تجربة اختبار";
+        d.getElementById("ph").value = "٠٥٠٠٠٠٠٠٠٠";
+        d.getElementById("dt").value = nextDate(0);
+        d.getElementById("period").value = "morning";
+        submit();
+        check(
+          "Arabic numerals accepted with local success",
+          d
+            .getElementById("appointment-status")
+            .textContent.includes("لم يُرسل شيء"),
+          d.getElementById("appointment-status").textContent,
+        );
+        d.getElementById("dt").value = nextDate(5);
+        submit();
+        check(
+          "Friday is rejected",
+          d.getElementById("dt").getAttribute("aria-invalid") === "true",
+          d.getElementById("date-error").textContent,
+        );
+        d.getElementById("dt").value = nextDate(6);
+        d.getElementById("period").value = "morning";
+        submit();
+        check(
+          "Saturday morning is rejected",
+          d.getElementById("period").getAttribute("aria-invalid") === "true",
+          d.getElementById("period-error").textContent,
+        );
+        d.getElementById("period").value = "evening";
+        submit();
+        check(
+          "Saturday evening accepted",
+          d.querySelectorAll('[aria-invalid="true"]').length === 0,
+          d.getElementById("appointment-status").textContent,
+        );
+        document.getElementById("progress").textContent = "Testing restaurant";
+        d = await load("/samples/restaurant/index.html");
+        check(
+          "Initial menu has three dishes",
+          d.querySelectorAll("#menu-panel article").length === 3,
+          d.querySelectorAll("#menu-panel article").length,
+        );
+        d.getElementById("menu-tab-3").click();
+        check(
+          "Beverages tab has two items",
+          d.querySelectorAll("#menu-panel article").length === 2 &&
+            d.getElementById("menu-panel").textContent.includes("قهوة سعودية"),
+          d.getElementById("menu-panel").textContent,
+        );
+        d.getElementById("menu-tab-3").dispatchEvent(
+          new frame.contentWindow.KeyboardEvent("keydown", {
+            key: "ArrowLeft",
+            bubbles: true,
+          }),
+        );
+        check(
+          "RTL left arrow wraps to first tab and focuses it",
+          d.activeElement.id === "menu-tab-0" &&
+            d.activeElement.getAttribute("aria-selected") === "true",
+          d.activeElement.id,
+        );
+        d.activeElement.dispatchEvent(
+          new frame.contentWindow.KeyboardEvent("keydown", {
+            key: "End",
+            bubbles: true,
+          }),
+        );
+        check(
+          "End key selects final tab",
+          d.activeElement.id === "menu-tab-3",
+          d.activeElement.id,
+        );
+        document.getElementById("progress").textContent =
+          "DONE — " + results.length + " checks passed";
+      } catch (error) {
+        document.getElementById("progress").textContent =
+          "FAILED — " + error.message;
+      }
+      document.getElementById("result").textContent = JSON.stringify(
+        results,
+        null,
+        2,
+      );
+      document.getElementById("run").disabled = false;
+    };
+  </script>
+</html>

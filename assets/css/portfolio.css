@@ -672,3 +672,6 @@ bdi,
     padding-block: 1rem;
   }
 }
+
+/* Project role stays next to the preview, with restrained emphasis. */
+.work-role{font-size:.9rem;color:var(--green);border-top:1px solid var(--line);padding-top:.7rem;font-weight:700}.work img{object-fit:cover}

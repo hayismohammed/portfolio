@@ -1,165 +1,312 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>متجر لمسة | نموذج تجريبي لواجهة متجر</title>
-<meta name="description" content="نموذج تجريبي لواجهة متجر عناية بعلامة افتراضية اسمها لمسة. السلة محلية في المتصفح، ولا يوجد دفع.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%238a2f5b'/%3E%3Crect x='6' y='14' width='20' height='4' rx='2' fill='%23ffffff'/%3E%3C/svg%3E">
-<style>
-:root{--pri:#8a2f5b;--pri2:#6d2448;--bg:#fff8fb;--fg:#2a1520;--card:#fff;--line:#f0d6e3;--muted:#5c3a48}
-*{box-sizing:border-box}
-html{scroll-padding-top:5.5rem}
-body{margin:0;font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7;font-size:1.06rem}
-:focus{scroll-margin-top:5.5rem;scroll-margin-bottom:1rem}
-:focus-visible{outline:3px solid #111;outline-offset:3px;box-shadow:0 0 0 3px #fff}
-.skip{position:absolute;inset-inline-start:1rem;top:0;transform:translateY(-150%);background:#111;color:#fff;padding:.7rem 1rem;z-index:9;text-decoration:none;font-weight:800}
-.skip:focus{position:static;display:block;transform:none}
-.banner{background:#fff;color:#2a1520;margin:0;padding:1rem 1.2rem;border-bottom:3px solid var(--pri)}
-.banner a{color:#6d2448;font-weight:800}
-.top{background:var(--pri);color:#fff;text-align:center;padding:.45rem .8rem}
-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.8rem 1.15rem}
-.logo{font-size:1.5rem;font-weight:800;color:var(--pri);margin:0}
-.cart{background:var(--pri);color:#fff;border:0;border-radius:999px;padding:.55rem 1rem;font:inherit;font-weight:800;cursor:pointer;min-height:44px}
-.cart:hover{background:var(--pri2)}
-.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1.5rem;align-items:center;max-width:1100px;margin:auto;padding:2rem 1.15rem}
-.hero h1{font-size:clamp(1.7rem,3.5vw,2.5rem);line-height:1.4;margin:0 0 .7rem}
-.hero p{color:var(--muted)}
-.art{aspect-ratio:4/3;border-radius:24px;background:radial-gradient(circle at 30% 30%,#ffd6e8,#f3a6c8 45%,#b8467e);display:flex;align-items:center;justify-content:center;font-size:4rem}
-.btn{background:var(--pri);color:#fff;text-decoration:none;padding:.7rem 1.1rem;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;border:0;font:inherit;font-weight:800;cursor:pointer;min-height:44px}
-.btn:hover{background:var(--pri2)}
-main{margin:0;padding:0 0 2rem}
-main > h2,.filters,#status,.grid{max-width:1100px;margin-inline:auto;padding-inline:1.15rem}
-.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem auto}
-.filters button{border:2px solid var(--pri);background:#fff;color:var(--pri);border-radius:999px;padding:.4rem 1rem;font:inherit;font-weight:700;cursor:pointer;min-height:44px}
-.filters button[aria-pressed="true"]{background:var(--pri);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,12.5rem),1fr));gap:1rem;list-style:none;padding-block:0;padding-inline:1.15rem}
-.p{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem;display:flex;flex-direction:column}
-.p .img{height:110px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;margin-bottom:.5rem}
-.p h3{margin:.1rem 0;font-size:1.08rem}
-.price{color:var(--pri);font-weight:800;margin:.3rem 0 .7rem}
-.p .btn{margin-top:auto}
-.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-#status{min-height:1.5rem;font-weight:800;color:var(--pri)}
-footer{text-align:center;padding:1.3rem 1rem;border-top:1px solid var(--line);color:var(--muted)}
-main:focus{outline:3px solid #111;outline-offset:4px}
-@media(max-width:720px){.hero{grid-template-columns:1fr}.art{display:none}}
-</style>
-<link rel="stylesheet" href="../../assets/css/samples.css">
-<link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/cosmetics-store/">
-<meta property="og:title" content="متجر لمسة | نموذج تجريبي لواجهة متجر">
-<meta property="og:description" content="نموذج تجريبي لواجهة متجر عناية بعلامة افتراضية اسمها لمسة. السلة محلية في المتصفح، ولا يوجد دفع.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_SA">
-<meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/cosmetics-store/">
-<meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="متجر لمسة | نموذج تجريبي لواجهة متجر">
-<meta name="twitter:description" content="نموذج تجريبي لواجهة متجر عناية بعلامة افتراضية اسمها لمسة. السلة محلية في المتصفح، ولا يوجد دفع.">
-<meta name="twitter:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
-</head>
-<body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<header>
-  <p class="top">واجهة متجر للعرض، بلا توصيل وبلا حساب عميل</p>
-  <div class="bar">
-  <p class="logo">لمسة</p>
-  <button class="cart" id="cartBtn" type="button">السلة: <span id="count">0</span> منتج</button>
-  </div>
-</header>
-<main id="main" tabindex="-1">
-<p class="banner" role="note">نموذج تجريبي لعلامة افتراضية اسمها لمسة. المنتجات والأسعار غير حقيقية، والسلة تبقى في هذه الصفحة فقط، ولا يوجد دفع. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
-<section class="hero" aria-labelledby="h1">
-  <div>
-    <h1 id="h1">عناية يومية بنص واضح وسعر ظاهر</h1>
-    <p>نموذج واجهة متجر عربي يناسب الجوال، مع تصفية وسلة تُعلن لقارئ الشاشة. ليس متجرًا على سلة أو زد، ولا يستقبل طلبات.</p>
-    <a class="btn" href="#products">انتقلي إلى المنتجات</a>
-  </div>
-  <div class="art" aria-hidden="true">🌸</div>
-</section>
-<section class="sample-overview" aria-labelledby="overview-h"><h2 id="overview-h">واجهة متجر قابلة للاستكشاف</h2><p>تصفية حسب الفئة، وبطاقات منتجات بأسماء واضحة، وتحديثات للسلة يعلنها قارئ الشاشة.</p><p class="sample-meta">المنتجات والأسعار افتراضية، ولا يوجد دفع أو حفظ دائم للسلة.</p><a href="../../index.html#samples">استكشف النماذج السبعة</a></section>
-  <h2 id="products">المنتجات</h2>
-  <div class="filters" role="group" aria-label="تصفية حسب الفئة">
-    <button type="button" aria-pressed="true" data-f="all">الكل</button>
-    <button type="button" aria-pressed="false" data-f="skin">العناية بالبشرة</button>
-    <button type="button" aria-pressed="false" data-f="hair">العناية بالشعر</button>
-    <button type="button" aria-pressed="false" data-f="perfume">العطور</button>
-  </div>
-  <p id="status" role="status" aria-live="polite"></p>
-  <ul class="grid" id="grid"></ul><noscript><section class="sample-overview"><h3>قائمة المنتجات النصية</h3><p>غسول وجه لطيف 45 ر.س، مرطب بشرة يومي 69 ر.س، واقي شمس 79 ر.س، زيت شعر 55 ر.س، بلسم للشعر 49 ر.س، عطر ورد 189 ر.س، عطر عود 240 ر.س، مقشر شفاه 29 ر.س.</p><p>الأسعار افتراضية. التصفية والسلة تحتاجان إلى جافاسكربت؛ لا يوجد دفع.</p></section></noscript>
-</main>
-<footer>تصميم للعرض: هايس محمد عقيل العنزي. <a href="../../index.html#samples">العودة إلى المعرض</a>
-    <div class="site-copyright" style="font-family:inherit;color:inherit;font-size:inherit;line-height:1.8">
-      <p lang="ar" dir="rtl" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
-      <p lang="en" dir="ltr" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 Hayis Alanazi. All rights reserved.</p>
-    </div>
-</footer>
-<script>
-const items=[
- {n:"غسول وجه لطيف",c:"skin",p:45,e:"🧴",bg:"#fde4ef"},
- {n:"مرطب بشرة يومي",c:"skin",p:69,e:"💧",bg:"#e4f1fd"},
- {n:"واقي شمس",c:"skin",p:79,e:"☀️",bg:"#fff4d6"},
- {n:"زيت شعر",c:"hair",p:55,e:"🌿",bg:"#e6f7e9"},
- {n:"بلسم للشعر",c:"hair",p:49,e:"🫧",bg:"#efe6fd"},
- {n:"عطر ورد",c:"perfume",p:189,e:"🌹",bg:"#fde4e4"},
- {n:"عطر عود",c:"perfume",p:240,e:"🪵",bg:"#f3e9df"},
- {n:"مقشر شفاه",c:"skin",p:29,e:"💋",bg:"#fde4ef"}
-];
-let count=0;
-const g=document.getElementById("grid");
-const st=document.getElementById("status");
-function render(f){
-  g.replaceChildren();
-  items.filter(i=>f==="all"||i.c===f).forEach(i=>{
-    const li=document.createElement("li");
-    li.className="p";
-    const img=document.createElement("div");
-    img.className="img";
-    img.style.background=i.bg;
-    img.setAttribute("aria-hidden","true");
-    img.textContent=i.e;
-    const h=document.createElement("h3");
-    h.textContent=i.n;
-    const price=document.createElement("div");
-    price.className="price";
-    const amount=document.createElement("span");
-    amount.dir="ltr";
-    amount.textContent=i.p+" ر.س";
-    price.append(amount, "، سعر افتراضي");
-    const btn=document.createElement("button");
-    btn.className="btn";
-    btn.type="button";
-    btn.append("أضيفي إلى السلة");
-    const vh=document.createElement("span");
-    vh.className="vh";
-    vh.textContent=": "+i.n;
-    btn.append(vh);
-    btn.addEventListener("click",()=>{
-      count++;
-      document.getElementById("count").textContent=String(count);
-      st.textContent="تمت إضافة "+i.n+" إلى السلة التجريبية. العدد الآن "+count+". لا يوجد دفع.";
-    });
-    li.append(img,h,price,btn);
-    g.append(li);
-  });
-}
-document.querySelectorAll(".filters button").forEach(b=>{
-  b.addEventListener("click",()=>{
-    document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed","false"));
-    b.setAttribute("aria-pressed","true");
-    render(b.dataset.f);
-    st.textContent="تم عرض: "+b.textContent;
-  });
-});
-document.getElementById("cartBtn").addEventListener("click",()=>{
-  st.textContent="هذه سلة تجريبية داخل الصفحة فقط، ولا يوجد دفع. عدد المنتجات: "+count+".";
-});
-render("all");
-</script>
-
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>لمسة | متجر عناية تجريبي | هايس العنزي</title>
+    <meta
+      name="description"
+      content="واجهة متجر تجريبية بصور منتجات أصلية وتصفية وسلة قابلة للتعديل، دون دفع أو إرسال طلب."
+    />
+    <link
+      rel="canonical"
+      href="https://hayismohammed.github.io/portfolio/samples/cosmetics-store/"
+    />
+    <meta property="og:title" content="لمسة | متجر عناية تجريبي" />
+    <meta
+      property="og:description"
+      content="واجهة متجر تجريبية بصور منتجات أصلية وتصفية وسلة قابلة للتعديل، دون دفع أو إرسال طلب."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_SA" />
+    <meta
+      property="og:url"
+      content="https://hayismohammed.github.io/portfolio/samples/cosmetics-store/"
+    />
+    <meta
+      property="og:image"
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="../../assets/media/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+    <style>
+      :root {
+        --pri: #803653;
+        --dark: #422634;
+        --bg: #fcf5f7;
+        --ink: #30202b;
+        --muted: #654d59;
+        --line: #e0cdd5;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+    <header class="topbar">
+      <div class="wrap bar">
+        <a class="brand" href="../../index.html#samples">لمسة</a>
+        <nav aria-label="أقسام الصفحة">
+          <a href="#products">المنتجات</a><a href="#cart">السلة</a
+          ><a href="../../index.html#samples">العودة إلى المعرض</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap" tabindex="-1">
+      <p class="demo-note">
+        متجر افتراضي لعرض المهارات. المنتجات والأسعار تخيلية، ولا يستقبل طلبات.
+      </p>
+      <section class="hero" aria-labelledby="store-title">
+        <div>
+          <span class="eyebrow">لمسة / العناية بتفاصيل يومك</span>
+          <h1 id="store-title">اختيارات صغيرة.<br />لروتين يشبهك.</h1>
+          <p class="lead">
+            استكشفي مجموعة العناية والعطور، وقارني المنتجات والأسعار في مكان
+            واحد.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#products">استكشفي المجموعة</a
+            ><a class="btn secondary" id="cart-link" href="#cart"
+              >السلة: <span id="cart-count">0</span
+              ><span class="sr-only"> وحدة</span></a
+            >
+          </div>
+        </div>
+        <img
+          src="../../assets/media/demo/store-hero.svg"
+          width="640"
+          height="480"
+          alt="رسوم توضيحية لعبوات لمسة بألوان وردية وخضراء"
+        />
+      </section>
+      <section class="section" aria-labelledby="products">
+        <div class="section-head">
+          <span class="eyebrow">المجموعة</span>
+          <h2 id="products">العناية، على طريقتك</h2>
+          <p>
+            صور توضيحية أصلية لعبوات افتراضية. الأسعار والمواصفات في هذه التجربة
+            للعرض.
+          </p>
+        </div>
+        <div class="filters" role="group" aria-label="تصفية المنتجات">
+          <button type="button" data-filter="all" aria-pressed="true">
+            الكل</button
+          ><button type="button" data-filter="skin" aria-pressed="false">
+            العناية بالبشرة</button
+          ><button type="button" data-filter="hair" aria-pressed="false">
+            العناية بالشعر</button
+          ><button type="button" data-filter="perfume" aria-pressed="false">
+            العطور
+          </button>
+        </div>
+        <p
+          id="store-status"
+          class="status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+        <ul class="grid" id="product-grid" style="list-style: none; padding: 0">
+          <li class="card product-card" data-category="skin">
+            <img
+              src="../../assets/media/demo/cleanser.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>غسول وجه لطيف</h3>
+            <p>عبوة بمضخة لتوزيع الكمية بسهولة، ضمن مجموعة العناية اليومية.</p>
+            <p class="price">45 ر.س</p>
+            <button class="btn" type="button" data-add="cleanser">
+              أضيفي إلى السلة<span class="sr-only">: غسول وجه لطيف</span>
+            </button>
+          </li>
+          <li class="card product-card" data-category="skin">
+            <img
+              src="../../assets/media/demo/moisturizer.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>مرطب بشرة يومي</h3>
+            <p>عبوة بغطاء لولبي وتصميم بسيط، لتكتمل بها مجموعة العناية.</p>
+            <p class="price">69 ر.س</p>
+            <button class="btn" type="button" data-add="moisturizer">
+              أضيفي إلى السلة<span class="sr-only">: مرطب بشرة يومي</span>
+            </button>
+          </li>
+          <li class="card product-card" data-category="skin">
+            <img
+              src="../../assets/media/demo/sunscreen.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>واقي شمس</h3>
+            <p>عبوة صغيرة بلون رملي، بتصميم يناسب حقيبة العناية اليومية.</p>
+            <p class="price">79 ر.س</p>
+            <button class="btn" type="button" data-add="sunscreen">
+              أضيفي إلى السلة<span class="sr-only">: واقي شمس</span>
+            </button>
+          </li>
+          <li class="card product-card" data-category="hair">
+            <img
+              src="../../assets/media/demo/hair-oil.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>زيت شعر</h3>
+            <p>عبوة كهرمانية بقطّارة تساعد على توزيع كمية صغيرة في كل مرة.</p>
+            <p class="price">55 ر.س</p>
+            <button class="btn" type="button" data-add="hair-oil">
+              أضيفي إلى السلة<span class="sr-only">: زيت شعر</span>
+            </button>
+          </li>
+          <li class="card product-card" data-category="hair">
+            <img
+              src="../../assets/media/demo/conditioner.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>بلسم للشعر</h3>
+            <p>عبوة بمضخة بلون هادئ، من قسم العناية بالشعر.</p>
+            <p class="price">49 ر.س</p>
+            <button class="btn" type="button" data-add="conditioner">
+              أضيفي إلى السلة<span class="sr-only">: بلسم للشعر</span>
+            </button>
+          </li>
+          <li class="card product-card" data-category="perfume">
+            <img
+              src="../../assets/media/demo/rose.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>عطر ورد</h3>
+            <p>
+              عبوة وردية بسيطة بغطاء داكن، تضيف لونًا هادئًا إلى ركن العطور.
+            </p>
+            <p class="price">189 ر.س</p>
+            <button class="btn" type="button" data-add="rose">
+              أضيفي إلى السلة<span class="sr-only">: عطر ورد</span>
+            </button>
+          </li>
+          <li class="card product-card" data-category="perfume">
+            <img
+              src="../../assets/media/demo/oud.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>عطر عود</h3>
+            <p>تصوّر لعطر بطابع خشبي، بعبوة داكنة وتفاصيل هادئة.</p>
+            <p class="price">240 ر.س</p>
+            <button class="btn" type="button" data-add="oud">
+              أضيفي إلى السلة<span class="sr-only">: عطر عود</span>
+            </button>
+          </li>
+          <li class="card product-card" data-category="skin">
+            <img
+              src="../../assets/media/demo/lip.svg"
+              width="640"
+              height="480"
+              alt=""
+              loading="lazy"
+            />
+            <h3>مقشر شفاه</h3>
+            <p>عبوة دائرية صغيرة تكمل تشكيلة العناية اليومية.</p>
+            <p class="price">29 ر.س</p>
+            <button class="btn" type="button" data-add="lip">
+              أضيفي إلى السلة<span class="sr-only">: مقشر شفاه</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+      <section class="section" aria-labelledby="cart">
+        <h2 id="cart" tabindex="-1">سلتك التجريبية</h2>
+        <p id="cart-help">
+          الإضافة والتعديل يعملان داخل هذه الصفحة فقط. لا دفع ولا إرسال طلب،
+          وتُفرغ السلة عند إعادة تحميل الصفحة.
+        </p>
+        <div class="cart-layout">
+          <div>
+            <p id="empty-cart">
+              السلة فارغة. اختاري منتجًا من المجموعة لتجربة الإضافة.
+            </p>
+            <ul
+              id="cart-items"
+              class="cart-list"
+              aria-describedby="cart-help"
+            ></ul>
+          </div>
+          <section class="cart-summary" aria-labelledby="summary-title">
+            <h3 id="summary-title">ملخص السلة</h3>
+            <p>عدد الوحدات: <span id="summary-count">0</span></p>
+            <p class="cart-total">
+              الإجمالي: <span id="cart-total">0</span> ر.س
+            </p>
+            <p class="muted">
+              لا تُحتسب رسوم شحن أو ضرائب؛ هذه تجربة واجهة فقط.
+            </p>
+            <a href="#products">العودة إلى المنتجات</a>
+          </section>
+        </div>
+        <noscript
+          ><p>
+            عرض المنتجات متاح. لتجربة التصفية والسلة، فعّلي JavaScript في
+            المتصفح.
+          </p></noscript
+        >
+      </section>
+      <details class="case-study">
+        <summary>عن هذا العمل: الفكرة ودوري في التنفيذ</summary>
+        <dl>
+          <div>
+            <dt>الفكرة والجمهور</dt>
+            <dd>واجهة لمتسوّقة تبحث عن العناية والعطور وتقارن الخيارات.</dd>
+          </div>
+          <div>
+            <dt>ما أنجزته</dt>
+            <dd>
+              تصميم بطاقات المنتجات، ورسوم العبوات، والتصفية، وسلة بكميات
+              وإجمالي وحذف.
+            </dd>
+          </div>
+          <div>
+            <dt>سبب الاختيارات</dt>
+            <dd>
+              صور موحدة ونص قابل للقراءة، مع إعلان التغييرات لقارئ الشاشة
+              والحفاظ على التركيز عند التعديل.
+            </dd>
+          </div>
+        </dl>
+      </details>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <p>كتابة وتصميم: هايس محمد عقيل العنزي</p>
+        <a href="../../index.html#samples">استكشف النماذج السبعة</a>
+        <p>© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
+        <p lang="en" dir="ltr">© 2026 Hayis Alanazi. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="../../assets/js/store-demo.js" defer></script>
+  </body>
 </html>

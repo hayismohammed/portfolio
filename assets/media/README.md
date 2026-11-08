@@ -35,3 +35,11 @@ ffmpeg -y -i assets/media/midad-ad.mp4 -i assets/media/midad-narration-source.mp
 ```
 
 لا يعيد `scripts/render_media.py` توليد الصوت؛ وظيفته الأصلية إنتاج النسخة الصامتة والرسوم.
+
+## تطوير العرض — 8 نوفمبر 2026
+
+- `demo/*.svg`: رسوم أصلية مكتوبة بلغة SVG لعبوات لمسة وأطباق بيت الكرم وعيادة الشفاء والدورات؛ ليست صورًا لمنتجات حقيقية. لا مصادر أو خطوط خارجية مضمّنة. تخضع للأحكام الخاصة بالمحتوى الأصلي في LICENSE.
+- `midad-ad-polished.mp4` و`midad-ad-polished-silent.mp4`: نسخة بصرية مطورة، بحركة قلم وعلامات إنجاز وبطاقات مواصفات وانتقالات هادئة. الصوت في الأولى منسوخ بترميزه الأصلي من النسخة المعتمدة، دون تغيير أو إعادة توليد.
+- `midad-polished-poster.png` و`midad-polished-card.png`: معاينات مستخرجة من الرسم الجديد.
+- `midad-polished-scenes.vtt` و`midad-polished-storyboard.txt`: وصف المشاهد الجديدة. ملف ترجمة الكلام `midad-voice-ar.vtt` محفوظ كما هو.
+- إعادة الإنتاج: `python scripts/render_midad_polish.py`. لا يُستبدل الإعلان السابق أو أي أصل سابق.
