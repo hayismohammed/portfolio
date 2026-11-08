@@ -1,0 +1,78 @@
+name: Temporary Midad NAMAA audition only
+on:
+  push:
+    branches:
+      - rashed/portfolio-upgrade-2026-11-08
+    paths:
+      - .github/workflows/temporary-midad-namaa-audition.yml
+permissions:
+  contents: read
+jobs:
+  audition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install audio tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install -q gradio_client
+      - name: Generate noncommercial audition separately from website
+        run: |
+          mkdir -p audition
+          python - <<'PY'
+          from gradio_client import Client
+          from pathlib import Path
+          import subprocess,json,shutil,math
+          lines=[
+            'كل فكرة تستاهل مساحة. مِداد.',
+            'خطط ليومك، ودوّن أفكارك.',
+            'صفحات منقّطة، ترافق تفاصيل يومك.',
+            'ابدأ بصفحة. مِداد، مساحة لفكرتك.'
+          ]
+          client=Client('omarelshehy/NAMAA-Saudi-Voice')
+          def find_file(v):
+            if isinstance(v,str) and Path(v).is_file():return v
+            if isinstance(v,dict):
+              for k in ('path','name','value'):
+                if k in v:
+                  x=find_file(v[k])
+                  if x:return x
+            if isinstance(v,(list,tuple)):
+              for item in v:
+                x=find_file(item)
+                if x:return x
+            return None
+          report=[]
+          for i,line in enumerate(lines):
+            result=client.predict(line,None,0.5,0.8,0,0.5,api_name='/generate_tts_audio')
+            src=find_file(result)
+            if not src:raise RuntimeError('No audio file for line '+str(i+1))
+            raw=Path('audition')/f'raw-{i+1}.wav'
+            subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',src,'-ac','1','-ar','24000',str(raw)],check=True)
+            info=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_format','-of','json',str(raw)]))
+            duration=float(info['format']['duration'])
+            if not 1.0<duration<6.2:raise RuntimeError(f'Unexpected clip {i+1} duration {duration}')
+            factor=max(1.0,duration/4.55)
+            if factor>1.32:raise RuntimeError(f'Clip {i+1} would require unnatural speed {factor}')
+            out=Path('audition')/f'line-{i+1}.wav'
+            subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(raw),'-af',f'atempo={factor:.5f},apad=pad_dur=5,atrim=duration=5,asetpts=PTS-STARTPTS','-ac','1','-ar','24000',str(out)],check=True)
+            report.append({'line':i+1,'text':line,'duration_before_adjustment':round(duration,3),'tempo':round(factor,3)})
+          subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i','audition/line-1.wav','-i','audition/line-2.wav','-i','audition/line-3.wav','-i','audition/line-4.wav','-filter_complex','[0:a][1:a][2:a][3:a]concat=n=4:v=0:a=1,alimiter=limit=0.90[a]','-map','[a]','-ac','1','-ar','24000','audition/midad-namaa-audition.wav'],check=True)
+          subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i','assets/media/midad-ad.mp4','-i','audition/midad-namaa-audition.wav','-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','128k','-t','20','-movflags','+faststart','audition/midad-namaa-private-preview.mp4'],check=True)
+          for file in ['audition/midad-namaa-audition.wav','audition/midad-namaa-private-preview.mp4']:
+            subprocess.run(['ffmpeg','-v','error','-i',file,'-f','null','-'],check=True)
+          report.append({'commercial_use':'NOT CLEARED: the demo uses refrence.flac with unverified speaker recording rights','status':'Preview only; not committed to site'})
+          Path('audition/README.txt').write_text('هذه معاينة غير منشورة وليست مرخصة للاستخدام التجاري قبل التحقق من حقوق التسجيل المرجعي.\n'+json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Upload private audition outside repository tree
+        uses: actions/upload-artifact@v4
+        with:
+          name: midad-namaa-audition-only
+          path: |
+            audition/midad-namaa-audition.wav
+            audition/midad-namaa-private-preview.mp4
+            audition/README.txt
+          retention-days: 7
