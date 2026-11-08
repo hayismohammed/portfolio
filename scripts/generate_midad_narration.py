@@ -77,13 +77,16 @@ replacements=[
 ('النموذج الصامت مكتمل. لا يتضمن تعليقًا صوتيًا سعوديًا؛ إضافة تعليق\n            بشري أو موسيقى مرخّصة تحتاج قرارًا مستقلًا، وليست جزءًا من النسخة\n            الحالية.',
 'أُضيف تعليق صوتي آلي عربي باستخدام صوت إماراتي مرخّص MIT.\n            المحتوى تجريبي لمنتج افتراضي ولا يحتوي على موسيقى.')]
 for old,new in replacements:
-    if old not in html: raise RuntimeError(f'HTML expected string absent: {old[:30]}')
-    html=html.replace(old,new)
+    if old in html:
+        html=html.replace(old,new)
+    elif new not in html:
+        raise RuntimeError(f'HTML expected string absent: {old[:30]}')
 readme=root/'README.md'
 md=readme.read_text().replace('إعلان مِداد الأصلي الصامت، 20 ثانية','إعلان مِداد الأصلي بصوت عربي، 20 ثانية')
 medreadme=media/'README.md'
 mr=medreadme.read_text().replace('إعلان صامت أصلي','إعلان أصلي بصوت عربي مولّد آليًا').replace('لا تعليق صوتي أو موسيقى أو لقطات خارجية.','لا موسيقى أو لقطات خارجية.')
-mr+='\n## الصوت والترخيص\nالصوت الاصطناعي: vadimbelsky/arabic-emirati-female-piper، يصفه الناشر بترخيص MIT المجيز للاستخدام التجاري. صوت إماراتي لا سعودي، وليس تسجيلًا بشريًا. https://huggingface.co/vadimbelsky/arabic-emirati-female-piper\nالمحرك: Piper 1.8.0، GPL-3.0-or-later؛ لم تُضمّن شيفرته أو الأوزان في المستودع. https://github.com/OHF-Voice/piper1-gpl\nGitHub Actions على مشغّل قياسي في مستودع عام مجاني؛ دون اشتراك أو رصيد مدفوع. لا موسيقى. إعادة تشغيل scripts/render_media.py تعيد الفيديو للصمت؛ أعد سير عمل الصوت بعده.\n'
+if '## الصوت والترخيص' not in mr:
+    mr+='\n## الصوت والترخيص\nالصوت الاصطناعي: vadimbelsky/arabic-emirati-female-piper، يصفه الناشر بترخيص MIT المجيز للاستخدام التجاري. صوت إماراتي لا سعودي، وليس تسجيلًا بشريًا. https://huggingface.co/vadimbelsky/arabic-emirati-female-piper\nالمحرك: Piper 1.8.0، GPL-3.0-or-later؛ لم تُضمّن شيفرته أو الأوزان في المستودع. https://github.com/OHF-Voice/piper1-gpl\nGitHub Actions على مشغّل قياسي في مستودع عام مجاني؛ دون اشتراك أو رصيد مدفوع. لا موسيقى. إعادة تشغيل scripts/render_media.py تعيد الفيديو للصمت؛ أعد سير عمل الصوت بعده.\n'
 qa={'voice':'Piper 1.8.0, Emirati female','license':'MIT model; GPL-3.0-or-later engine','commercial_use':True,
 'duration':20,'segment_duration_seconds':durations,'peak':round(float(np.max(np.abs(track))),3),
 'rms':round(float(np.sqrt(np.mean(track**2))),4),'asr_match':round(similarity,3),'asr_text':heard,
