@@ -252,6 +252,11 @@ select {
   flex-wrap: wrap;
   margin-block: 1.4rem;
 }
+.store-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 1rem;
+}
 .filters button,
 [role="tab"] {
   border: 2px solid var(--pri);
@@ -524,6 +529,9 @@ details p {
   }
 }
 @media (max-width: 480px) {
+  .store-tools {
+    grid-template-columns: 1fr;
+  }
   .grid,
   .grid.two {
     grid-template-columns: 1fr;

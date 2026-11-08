@@ -96,17 +96,50 @@
             للعرض.
           </p>
         </div>
-        <div class="filters" role="group" aria-label="تصفية المنتجات">
-          <button type="button" data-filter="all" aria-pressed="true">
-            الكل</button
-          ><button type="button" data-filter="skin" aria-pressed="false">
-            العناية بالبشرة</button
-          ><button type="button" data-filter="hair" aria-pressed="false">
-            العناية بالشعر</button
-          ><button type="button" data-filter="perfume" aria-pressed="false">
-            العطور
+        <div id="store-tools" hidden>
+          <div class="store-tools">
+            <div>
+              <label for="product-search">ابحثي عن منتج</label>
+              <input
+                id="product-search"
+                type="search"
+                placeholder="مثل: غسول أو عطر"
+                aria-controls="product-grid"
+              />
+            </div>
+            <div>
+              <label for="product-sort">ترتيب المنتجات</label>
+              <select id="product-sort" aria-controls="product-grid">
+                <option value="default">الترتيب الأصلي</option>
+                <option value="price-asc">السعر: من الأقل إلى الأعلى</option>
+                <option value="price-desc">السعر: من الأعلى إلى الأقل</option>
+              </select>
+            </div>
+          </div>
+          <div class="filters" role="group" aria-label="تصفية المنتجات">
+            <button type="button" data-filter="all" aria-pressed="true">
+              الكل</button
+            ><button type="button" data-filter="skin" aria-pressed="false">
+              العناية بالبشرة</button
+            ><button type="button" data-filter="hair" aria-pressed="false">
+              العناية بالشعر</button
+            ><button type="button" data-filter="perfume" aria-pressed="false">
+              العطور
+            </button>
+          </div>
+          <button class="btn secondary" id="reset-products" type="button">
+            مسح البحث والتصفية والفرز
           </button>
         </div>
+        <p
+          id="product-results"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+        <p id="no-products" hidden>
+          لا توجد منتجات مطابقة. جرّبي كلمة أخرى أو امسحي البحث والتصفية.
+        </p>
         <p
           id="store-status"
           class="status"
@@ -242,8 +275,12 @@
       <section class="section" aria-labelledby="cart">
         <h2 id="cart" tabindex="-1">سلتك التجريبية</h2>
         <p id="cart-help">
-          الإضافة والتعديل يعملان داخل هذه الصفحة فقط. لا دفع ولا إرسال طلب،
-          وتُفرغ السلة عند إعادة تحميل الصفحة.
+          السلة للتجربة فقط؛ لا دفع ولا إرسال طلب. عند توفر الحفظ في المتصفح،
+          تبقى المنتجات والكميات بعد تحديث الصفحة أو العودة إليها من المتصفح
+          نفسه.
+        </p>
+        <p class="muted" id="cart-storage-note">
+          يحتاج حفظ السلة إلى JavaScript وإتاحة التخزين في المتصفح.
         </p>
         <div class="cart-layout">
           <div>
@@ -265,13 +302,21 @@
             <p class="muted">
               لا تُحتسب رسوم شحن أو ضرائب؛ هذه تجربة واجهة فقط.
             </p>
+            <button
+              class="btn secondary"
+              type="button"
+              id="clear-cart"
+              disabled
+            >
+              إفراغ السلة التجريبية
+            </button>
             <a href="#products">العودة إلى المنتجات</a>
           </section>
         </div>
         <noscript
           ><p>
-            عرض المنتجات متاح. لتجربة التصفية والسلة، فعّلي JavaScript في
-            المتصفح.
+            عرض المنتجات متاح. لتجربة البحث والفرز والتصفية والسلة، فعّلي
+            JavaScript في المتصفح.
           </p></noscript
         >
       </section>
@@ -285,8 +330,8 @@
           <div>
             <dt>ما أنجزته</dt>
             <dd>
-              تصميم بطاقات المنتجات، ورسوم العبوات، والتصفية، وسلة بكميات
-              وإجمالي وحذف.
+              تصميم بطاقات المنتجات ورسوم العبوات، والبحث والفرز والتصفية، وسلة
+              محفوظة في المتصفح بكميات وإجمالي وحذف.
             </dd>
           </div>
           <div>
@@ -303,8 +348,12 @@
       <div class="wrap">
         <p>كتابة وتصميم: هايس محمد عقيل العنزي</p>
         <a href="../../index.html#samples">استكشف النماذج السبعة</a>
-        <p>© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
-        <p lang="en" dir="ltr">© 2026 Hayis Alanazi. All rights reserved.</p>
+        <p class="site-copyright">
+          © 2026 هايس محمد عقيل العنزي. جميع الحقوق محفوظة.
+          <span lang="en" dir="ltr"
+            >Hayis Mohammed Aqeel Alanazi. All rights reserved.</span
+          >
+        </p>
       </div>
     </footer>
     <script src="../../assets/js/store-demo.js" defer></script>

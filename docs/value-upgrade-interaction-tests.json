@@ -1,0 +1,228 @@
+{
+  "environment": "JSDOM 26.1.0 simulated DOM; not a browser or VoiceOver test",
+  "status": "DONE — 36 checks passed",
+  "errors": [],
+  "results": [
+    {
+      "name": "Cart initially empty",
+      "passed": true,
+      "actual": "0"
+    },
+    {
+      "name": "45 + 55 = 100",
+      "passed": true,
+      "actual": "100"
+    },
+    {
+      "name": "Increase one quantity: 145",
+      "passed": true,
+      "actual": "145"
+    },
+    {
+      "name": "Focus stays on edited product",
+      "passed": true,
+      "actual": "<button type=\"button\" data-id=\"cleanser\" data-action=\"plus\" aria-label=\"زيادة كمية غسول وجه لطيف\">+</button>"
+    },
+    {
+      "name": "Decrease quantity: 100",
+      "passed": true,
+      "actual": "100"
+    },
+    {
+      "name": "Remove a product: 45",
+      "passed": true,
+      "actual": "45"
+    },
+    {
+      "name": "Remove last product: empty and focus on heading",
+      "passed": true,
+      "actual": "cart"
+    },
+    {
+      "name": "Perfume filter shows two products",
+      "passed": true,
+      "actual": 2
+    },
+    {
+      "name": "All filter restores eight products",
+      "passed": true,
+      "actual": 8
+    },
+    {
+      "name": "Cart persists on reload",
+      "passed": true,
+      "actual": "45"
+    },
+    {
+      "name": "Arabic search ignores diacritics",
+      "passed": true,
+      "actual": [
+        "عطر ورد",
+        "عطر عود"
+      ]
+    },
+    {
+      "name": "Search combines with category",
+      "passed": true,
+      "actual": [
+        "عطر عود"
+      ]
+    },
+    {
+      "name": "Empty results are announced",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "Reset restores products and search focus",
+      "passed": true,
+      "actual": [
+        "غسول وجه لطيف",
+        "مرطب بشرة يومي",
+        "واقي شمس",
+        "زيت شعر",
+        "بلسم للشعر",
+        "عطر ورد",
+        "عطر عود",
+        "مقشر شفاه"
+      ]
+    },
+    {
+      "name": "Ascending price order",
+      "passed": true,
+      "actual": [
+        "مقشر شفاه",
+        "غسول وجه لطيف",
+        "بلسم للشعر",
+        "زيت شعر",
+        "مرطب بشرة يومي",
+        "واقي شمس",
+        "عطر ورد",
+        "عطر عود"
+      ]
+    },
+    {
+      "name": "Descending price order",
+      "passed": true,
+      "actual": [
+        "عطر عود",
+        "عطر ورد",
+        "واقي شمس",
+        "مرطب بشرة يومي",
+        "زيت شعر",
+        "بلسم للشعر",
+        "غسول وجه لطيف",
+        "مقشر شفاه"
+      ]
+    },
+    {
+      "name": "Original order restored",
+      "passed": true,
+      "actual": [
+        "غسول وجه لطيف",
+        "مرطب بشرة يومي",
+        "واقي شمس",
+        "زيت شعر",
+        "بلسم للشعر",
+        "عطر ورد",
+        "عطر عود",
+        "مقشر شفاه"
+      ]
+    },
+    {
+      "name": "Clear cart removes saved contents",
+      "passed": true,
+      "actual": "0"
+    },
+    {
+      "name": "Saved quantities validated",
+      "passed": true,
+      "actual": "90"
+    },
+    {
+      "name": "Corrupt saved cart does not break page",
+      "passed": true,
+      "actual": "تعذر حفظ السلة أو قراءة نسختها السابقة. يمكنك متابعة التجربة، لكن قد لا تبقى التغييرات بعد تحديث الصفحة."
+    },
+    {
+      "name": "Cart recovers after corrupt storage",
+      "passed": true,
+      "actual": "[{\"id\":\"cleanser\",\"quantity\":1}]"
+    },
+    {
+      "name": "Empty form focuses name",
+      "passed": true,
+      "actual": "nm"
+    },
+    {
+      "name": "Required fields report errors",
+      "passed": true,
+      "actual": 4
+    },
+    {
+      "name": "Weekday offers all three periods",
+      "passed": true,
+      "actual": "اختر الفترةصباحًا — 9 إلى 12ظهرًا — 12 إلى 4مساءً — 4 إلى 9"
+    },
+    {
+      "name": "Arabic numerals accepted with local success",
+      "passed": true,
+      "actual": "اختيارك التجريبي: تنظيف الأسنان، بتاريخ 2026-11-15، صباحًا — 9 إلى 12. تم التحقق محليًا؛ لم يُرسل شيء ولم يُحجز موعد."
+    },
+    {
+      "name": "Weekday afternoon accepted",
+      "passed": true,
+      "actual": "اختيارك التجريبي: تنظيف الأسنان، بتاريخ 2026-11-15، ظهرًا — 12 إلى 4. تم التحقق محليًا؛ لم يُرسل شيء ولم يُحجز موعد."
+    },
+    {
+      "name": "Friday has no selectable periods",
+      "passed": true,
+      "actual": "اختر الفترة"
+    },
+    {
+      "name": "Friday is rejected",
+      "passed": true,
+      "actual": "العيادة مغلقة يوم الجمعة. اختر يومًا آخر."
+    },
+    {
+      "name": "Saturday offers 4 to 10 only",
+      "passed": true,
+      "actual": "اختر الفترةمساءً — 4 إلى 10"
+    },
+    {
+      "name": "Saturday morning is rejected",
+      "passed": true,
+      "actual": "اختر إحدى الفترات المتاحة لليوم المحدد."
+    },
+    {
+      "name": "Saturday evening accepted",
+      "passed": true,
+      "actual": "اختيارك التجريبي: تنظيف الأسنان، بتاريخ 2026-11-14، مساءً — 4 إلى 10. تم التحقق محليًا؛ لم يُرسل شيء ولم يُحجز موعد."
+    },
+    {
+      "name": "Past dates rejected and no periods offered",
+      "passed": true,
+      "actual": "اختر تاريخ اليوم أو تاريخًا لاحقًا."
+    },
+    {
+      "name": "Initial menu has three dishes",
+      "passed": true,
+      "actual": 3
+    },
+    {
+      "name": "Beverages tab has two items",
+      "passed": true,
+      "actual": "قهوة سعوديةقهوة بلمسة هيل، تُقدَّم مع التمر لإكمال الجلسة.20 ر.سشاي بالنعناعإبريق شاي بنكهة النعناع، يناسب جلسة ما بعد الطعام.12 ر.س"
+    },
+    {
+      "name": "RTL left arrow wraps to first tab and focuses it",
+      "passed": true,
+      "actual": "menu-tab-0"
+    },
+    {
+      "name": "End key selects final tab",
+      "passed": true,
+      "actual": "menu-tab-3"
+    }
+  ]
+}

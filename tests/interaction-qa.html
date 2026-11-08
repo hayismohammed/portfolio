@@ -39,7 +39,7 @@
       new Promise((resolve, reject) => {
         frame.onload = () => resolve(frame.contentDocument);
         frame.onerror = reject;
-        frame.src = path;
+        frame.src = new URL(".." + path, location.href).href;
       });
     const nextDate = (day) => {
       const d = new Date();
@@ -56,6 +56,9 @@
     document.getElementById("run").onclick = async () => {
       results.length = 0;
       document.getElementById("run").disabled = true;
+      const storageKey = "hayis-portfolio-lamsa-cart-v1";
+      const originalCart = localStorage.getItem(storageKey);
+      localStorage.removeItem(storageKey);
       try {
         document.getElementById("progress").textContent = "Testing store";
         let d = await load("/samples/cosmetics-store/index.html");
@@ -118,9 +121,112 @@
         d.querySelector('[data-add="cleanser"]').click();
         d = await load("/samples/cosmetics-store/index.html?reload-check");
         check(
-          "Cart resets on reload",
-          d.getElementById("cart-total").textContent === "0",
+          "Cart persists on reload",
+          d.getElementById("cart-total").textContent === "45",
           d.getElementById("cart-total").textContent,
+        );
+        const visibleNames = () =>
+          [...d.querySelectorAll("[data-category]:not([hidden]) h3")].map(
+            (h) => h.textContent,
+          );
+        const search = d.getElementById("product-search");
+        const input = (value) => {
+          search.value = value;
+          search.dispatchEvent(
+            new frame.contentWindow.Event("input", { bubbles: true }),
+          );
+        };
+        input("عِطْر");
+        check(
+          "Arabic search ignores diacritics",
+          visibleNames().length === 2,
+          visibleNames(),
+        );
+        d.querySelector('[data-filter="perfume"]').click();
+        input("عود");
+        check(
+          "Search combines with category",
+          visibleNames().length === 1 && visibleNames()[0] === "عطر عود",
+          visibleNames(),
+        );
+        input("غيرموجود");
+        check(
+          "Empty results are announced",
+          visibleNames().length === 0 &&
+            !d.getElementById("no-products").hidden &&
+            d.getElementById("product-results").textContent.includes("0 من 8"),
+          visibleNames(),
+        );
+        d.getElementById("reset-products").click();
+        check(
+          "Reset restores products and search focus",
+          visibleNames().length === 8 &&
+            d.activeElement.id === "product-search",
+          visibleNames(),
+        );
+        const sort = d.getElementById("product-sort");
+        sort.value = "price-asc";
+        sort.dispatchEvent(
+          new frame.contentWindow.Event("change", { bubbles: true }),
+        );
+        check(
+          "Ascending price order",
+          visibleNames()[0] === "مقشر شفاه" && visibleNames()[7] === "عطر عود",
+          visibleNames(),
+        );
+        sort.value = "price-desc";
+        sort.dispatchEvent(
+          new frame.contentWindow.Event("change", { bubbles: true }),
+        );
+        check(
+          "Descending price order",
+          visibleNames()[0] === "عطر عود" && visibleNames()[7] === "مقشر شفاه",
+          visibleNames(),
+        );
+        d.getElementById("reset-products").click();
+        check(
+          "Original order restored",
+          visibleNames()[0] === "غسول وجه لطيف",
+          visibleNames(),
+        );
+        d.getElementById("clear-cart").click();
+        check(
+          "Clear cart removes saved contents",
+          localStorage.getItem(storageKey) === null &&
+            d.getElementById("cart-total").textContent === "0" &&
+            d.activeElement.id === "cart",
+          d.getElementById("cart-total").textContent,
+        );
+        localStorage.setItem(
+          storageKey,
+          JSON.stringify([
+            { id: "cleanser", quantity: 2 },
+            { id: "oud", quantity: -1 },
+            { id: "unknown", quantity: 5 },
+            { id: "lip", quantity: 1.5 },
+          ]),
+        );
+        d = await load("/samples/cosmetics-store/index.html?invalid-entries");
+        check(
+          "Saved quantities validated",
+          d.getElementById("cart-total").textContent === "90" &&
+            d.getElementById("summary-count").textContent === "2",
+          d.getElementById("cart-total").textContent,
+        );
+        localStorage.setItem(storageKey, "invalid json");
+        d = await load("/samples/cosmetics-store/index.html?corrupt-cart");
+        check(
+          "Corrupt saved cart does not break page",
+          d.getElementById("cart-total").textContent === "0" &&
+            d.getElementById("cart-storage-note").textContent.includes("تعذر"),
+          d.getElementById("cart-storage-note").textContent,
+        );
+        d.querySelector('[data-add="cleanser"]').click();
+        check(
+          "Cart recovers after corrupt storage",
+          d.getElementById("cart-total").textContent === "45" &&
+            JSON.parse(localStorage.getItem(storageKey))[0].quantity === 1,
+          localStorage.getItem(storageKey),
         );
         document.getElementById("progress").textContent = "Testing clinic";
         d = await load("/samples/clinic/index.html");
@@ -139,6 +245,15 @@
         d.getElementById("nm").value = "تجربة اختبار";
         d.getElementById("ph").value = "٠٥٠٠٠٠٠٠٠٠";
         d.getElementById("dt").value = nextDate(0);
+        d.getElementById("dt").dispatchEvent(
+          new frame.contentWindow.Event("change", { bubbles: true }),
+        );
+        check(
+          "Weekday offers all three periods",
+          d.getElementById("period").options.length === 4 &&
+            d.getElementById("period").textContent.includes("12 إلى 4"),
+          d.getElementById("period").textContent,
+        );
         d.getElementById("period").value = "morning";
         submit();
         check(
@@ -148,7 +263,25 @@
             .textContent.includes("لم يُرسل شيء"),
           d.getElementById("appointment-status").textContent,
         );
+        d.getElementById("period").value = "afternoon";
+        submit();
+        check(
+          "Weekday afternoon accepted",
+          d
+            .getElementById("appointment-status")
+            .textContent.includes("12 إلى 4"),
+          d.getElementById("appointment-status").textContent,
+        );
         d.getElementById("dt").value = nextDate(5);
+        d.getElementById("dt").dispatchEvent(
+          new frame.contentWindow.Event("change", { bubbles: true }),
+        );
+        check(
+          "Friday has no selectable periods",
+          d.getElementById("period").disabled &&
+            d.getElementById("period").options.length === 1,
+          d.getElementById("period").textContent,
+        );
         submit();
         check(
           "Friday is rejected",
@@ -156,6 +289,15 @@
           d.getElementById("date-error").textContent,
         );
         d.getElementById("dt").value = nextDate(6);
+        d.getElementById("dt").dispatchEvent(
+          new frame.contentWindow.Event("change", { bubbles: true }),
+        );
+        check(
+          "Saturday offers 4 to 10 only",
+          d.getElementById("period").options.length === 2 &&
+            d.getElementById("period").textContent.includes("4 إلى 10"),
+          d.getElementById("period").textContent,
+        );
         d.getElementById("period").value = "morning";
         submit();
         check(
@@ -169,6 +311,17 @@
           "Saturday evening accepted",
           d.querySelectorAll('[aria-invalid="true"]').length === 0,
           d.getElementById("appointment-status").textContent,
+        );
+        d.getElementById("dt").value = "2020-01-01";
+        d.getElementById("dt").dispatchEvent(
+          new frame.contentWindow.Event("change", { bubbles: true }),
+        );
+        submit();
+        check(
+          "Past dates rejected and no periods offered",
+          d.getElementById("dt").getAttribute("aria-invalid") === "true" &&
+            d.getElementById("period").disabled,
+          d.getElementById("date-error").textContent,
         );
         document.getElementById("progress").textContent = "Testing restaurant";
         d = await load("/samples/restaurant/index.html");
@@ -213,6 +366,8 @@
         document.getElementById("progress").textContent =
           "FAILED — " + error.message;
       }
+      if (originalCart === null) localStorage.removeItem(storageKey);
+      else localStorage.setItem(storageKey, originalCart);
       document.getElementById("result").textContent = JSON.stringify(
         results,
         null,

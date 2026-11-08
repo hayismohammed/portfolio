@@ -458,6 +458,35 @@ nav a {
 .footer p {
   margin: 0;
 }
+.hero-availability {
+  color: #f3dfb7;
+  max-width: 42rem;
+}
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 1.5rem;
+}
+.story-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+}
+.story-table caption {
+  text-align: start;
+  font-weight: 750;
+  padding-block: 0.7rem;
+}
+.story-table th,
+.story-table td {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  text-align: start;
+  vertical-align: top;
+}
+.story-table thead {
+  background: var(--soft);
+}
 .sample-hero {
   padding-block: 3rem;
 }
@@ -674,4 +703,13 @@ bdi,
 }
 
 /* Project role stays next to the preview, with restrained emphasis. */
-.work-role{font-size:.9rem;color:var(--green);border-top:1px solid var(--line);padding-top:.7rem;font-weight:700}.work img{object-fit:cover}
+.work-role {
+  font-size: 0.9rem;
+  color: var(--green);
+  border-top: 1px solid var(--line);
+  padding-top: 0.7rem;
+  font-weight: 700;
+}
+.work img {
+  object-fit: cover;
+}

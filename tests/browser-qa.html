@@ -50,7 +50,7 @@
   </header>
   <iframe id="frame" title="Portfolio test viewport" width="390"></iframe>
   <pre id="result"></pre>
-  <script src="axe.min.js"></script>
+
   <script>
     const paths = [
       "/index.html",
@@ -72,12 +72,43 @@
       o.textContent = p;
       select.append(o);
     });
-    function load(path, width) {
+    // In a source preview, inline our own styles/scripts so the iframe remains
+    // same-origin for layout and axe checks. This does not publish the site.
+    const sourceUrl =
+      location.hostname === "htmlpreview.github.io" &&
+      location.search.startsWith("?https://raw.githubusercontent.com/")
+        ? location.search.slice(1)
+        : location.href;
+    async function load(path, width) {
       frame.width = width;
-      return new Promise((resolve, reject) => {
-        frame.onload = () => resolve();
+      const url = new URL(".." + path, sourceUrl);
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Cannot load " + path);
+      const doc = new DOMParser().parseFromString(
+        await response.text(),
+        "text/html",
+      );
+      const base = doc.createElement("base");
+      base.href = url.href;
+      doc.head.prepend(base);
+      for (const link of doc.querySelectorAll('link[rel="stylesheet"]')) {
+        const response = await fetch(new URL(link.getAttribute("href"), url));
+        if (!response.ok) throw new Error("Cannot load stylesheet");
+        const style = doc.createElement("style");
+        style.textContent = await response.text();
+        link.replaceWith(style);
+      }
+      for (const script of doc.querySelectorAll("script[src]")) {
+        const response = await fetch(new URL(script.getAttribute("src"), url));
+        if (!response.ok) throw new Error("Cannot load script");
+        const inline = doc.createElement("script");
+        inline.textContent = await response.text();
+        script.replaceWith(inline);
+      }
+      await new Promise((resolve, reject) => {
+        frame.onload = resolve;
         frame.onerror = reject;
-        frame.src = path;
+        frame.srcdoc = "<!doctype html>" + doc.documentElement.outerHTML;
       });
     }
     document.querySelector("#show").onclick = async () => {
@@ -97,7 +128,8 @@
           const win = frame.contentWindow,
             doc = frame.contentDocument;
           const script = doc.createElement("script");
-          script.src = "/__qa__/axe.min.js";
+          script.src =
+            "https://cdn.jsdelivr.net/npm/axe-core@4.10.3/axe.min.js";
           await new Promise((r, j) => {
             script.onload = r;
             script.onerror = j;

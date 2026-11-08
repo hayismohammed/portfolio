@@ -1,0 +1,30 @@
+{
+  "base_commit": "d7a3bdbcefb6f569a0f2e5dd5b3e4bca3fbfcc68",
+  "files": [
+    {
+      "path": "assets/media/midad-ad-polished.mp4",
+      "unchanged": true,
+      "sha256": "f385324023fb0bc68eef3419197d6017827926f530e6c6333261442e69d7c9ff"
+    },
+    {
+      "path": "assets/media/midad-ad-voiced.mp4",
+      "unchanged": true,
+      "sha256": "0f38acc120612ae85c9699daeab88f667d25d0c0fc47248f54af103b1d0cc49f"
+    },
+    {
+      "path": "assets/media/midad-narration-source.mp3",
+      "unchanged": true,
+      "sha256": "10f58a4adc09f97228e18277e854541717d6a0974e7223b0bd21198a4d281dec"
+    },
+    {
+      "path": "assets/media/midad-voice-ar.vtt",
+      "unchanged": true,
+      "sha256": "41d6068106f945a752b2b8d8da8eb36848f546e63e1d797315428dc366d520ca"
+    },
+    {
+      "path": "LICENSE",
+      "unchanged": true,
+      "sha256": "0e285c3dc7fea3fa0a10da79950db16b4b757b20257a3b8267ad9b00c4a6deb6"
+    }
+  ]
+}

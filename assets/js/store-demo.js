@@ -59,6 +59,56 @@
     },
   ];
   const basket = new Map();
+  const storageKey = "hayis-portfolio-lamsa-cart-v1";
+  const maxQuantity = 99;
+  const storageNote = document.getElementById("cart-storage-note");
+  let storageAvailable = true;
+  let restored = false;
+  try {
+    const saved = localStorage.getItem(storageKey);
+    if (saved !== null) {
+      const entries = JSON.parse(saved);
+      if (!Array.isArray(entries) || entries.length > products.length)
+        throw new Error("Invalid cart");
+      for (const entry of entries) {
+        if (
+          entry &&
+          products.some((p) => p.id === entry.id) &&
+          Number.isSafeInteger(entry.quantity) &&
+          entry.quantity >= 1 &&
+          entry.quantity <= maxQuantity
+        ) {
+          basket.set(entry.id, entry.quantity);
+        }
+      }
+      restored = basket.size > 0;
+    }
+  } catch {
+    storageAvailable = false;
+  }
+  function describeStorage() {
+    storageNote.textContent = storageAvailable
+      ? "تُحفظ المنتجات والكميات محليًا في هذا المتصفح، دون إرسالها إلى خادم. قد يمحو المتصفح بياناتها عند مسح بيانات المواقع أو إنهاء التصفح الخاص."
+      : "تعذر حفظ السلة أو قراءة نسختها السابقة. يمكنك متابعة التجربة، لكن قد لا تبقى التغييرات بعد تحديث الصفحة.";
+  }
+  function saveBasket() {
+    try {
+      if (basket.size) {
+        localStorage.setItem(
+          storageKey,
+          JSON.stringify(
+            [...basket].map(([id, quantity]) => ({ id, quantity })),
+          ),
+        );
+      } else {
+        localStorage.removeItem(storageKey);
+      }
+      storageAvailable = true;
+    } catch {
+      storageAvailable = false;
+    }
+    describeStorage();
+  }
   const money = (value) => String(value);
   const status = document.getElementById("store-status");
   const list = document.getElementById("cart-items");
@@ -95,6 +145,7 @@
           button.disabled = true;
           button.title = "استخدمي زر الحذف لإزالة المنتج";
         }
+        if (key === "plus" && qty === maxQuantity) button.disabled = true;
         controls.append(button);
         if (key === "minus") {
           const amount = document.createElement("span");
@@ -112,6 +163,7 @@
       products.reduce((sum, p) => sum + p.price * (basket.get(p.id) || 0), 0),
     );
     document.getElementById("empty-cart").hidden = count > 0;
+    document.getElementById("clear-cart").disabled = count === 0;
     if (focusId) {
       const row = [...list.querySelectorAll("button")].find(
         (b) =>
@@ -130,7 +182,12 @@
     button.addEventListener("click", () => {
       const id = button.dataset.add,
         item = products.find((p) => p.id === id);
+      if ((basket.get(id) || 0) === maxQuantity) {
+        tell(`الحد الأقصى في التجربة ${maxQuantity} وحدة من ${item.name}.`);
+        return;
+      }
       basket.set(id, (basket.get(id) || 0) + 1);
+      saveBasket();
       renderCart();
       tell(
         `أُضيف ${item.name}. عدد الوحدات ${totalQuantity()}، والإجمالي ${document.getElementById("cart-total").textContent} ريال. سلة تجريبية.`,
@@ -147,26 +204,98 @@
     else
       basket.set(
         id,
-        Math.max(1, basket.get(id) + (action === "plus" ? 1 : -1)),
+        Math.min(
+          maxQuantity,
+          Math.max(1, basket.get(id) + (action === "plus" ? 1 : -1)),
+        ),
       );
+    saveBasket();
     renderCart(id, action);
     tell(
       `${action === "remove" ? "حُذف" : "عُدّل"} ${item.name}. عدد الوحدات ${totalQuantity()}، والإجمالي ${document.getElementById("cart-total").textContent} ريال.`,
     );
   });
-  document.querySelectorAll("[data-filter]").forEach((button) =>
+  document.getElementById("clear-cart").addEventListener("click", () => {
+    basket.clear();
+    saveBasket();
+    renderCart();
+    document.getElementById("cart").focus();
+    tell(
+      storageAvailable
+        ? "أُفرغت السلة التجريبية وحُذفت نسختها المحفوظة من هذا المتصفح."
+        : "أُفرغت السلة في الصفحة، لكن تعذر حذف نسختها المحفوظة من المتصفح.",
+    );
+  });
+  const search = document.getElementById("product-search");
+  const sort = document.getElementById("product-sort");
+  const grid = document.getElementById("product-grid");
+  const cards = [...grid.children].map((card, index) => ({
+    card,
+    index,
+    product: products.find(
+      (p) => p.id === card.querySelector("[data-add]").dataset.add,
+    ),
+  }));
+  const normalize = (value) =>
+    value
+      .toLocaleLowerCase("ar")
+      .replace(/[\u064b-\u065f\u0670\u0640]/g, "")
+      .replace(/[أإآٱ]/g, "ا")
+      .replace(/ى/g, "ي")
+      .replace(/ة/g, "ه");
+  let filter = "all";
+  function showProducts() {
+    const query = normalize(search.value.trim());
+    const ordered = [...cards].sort((a, b) => {
+      if (sort.value === "price-asc")
+        return a.product.price - b.product.price || a.index - b.index;
+      if (sort.value === "price-desc")
+        return b.product.price - a.product.price || a.index - b.index;
+      return a.index - b.index;
+    });
+    let count = 0;
+    for (const { card, product } of ordered) {
+      card.hidden =
+        (filter !== "all" && product.category !== filter) ||
+        !normalize(`${product.name} ${product.desc}`).includes(query);
+      if (!card.hidden) count++;
+      grid.append(card);
+    }
+    document.getElementById("no-products").hidden = count !== 0;
+    document.getElementById("product-results").textContent =
+      `عدد المنتجات المطابقة: ${count} من ${products.length}.`;
+  }
+  const filters = [...document.querySelectorAll("[data-filter]")];
+  function selectFilter(value) {
+    filter = value;
+    filters.forEach((button) =>
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.filter === filter),
+      ),
+    );
+  }
+  filters.forEach((button) =>
     button.addEventListener("click", () => {
-      const filter = button.dataset.filter;
-      document
-        .querySelectorAll("[data-filter]")
-        .forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
-      let count = 0;
-      document.querySelectorAll("[data-category]").forEach((card) => {
-        card.hidden = filter !== "all" && card.dataset.category !== filter;
-        if (!card.hidden) count++;
-      });
-      tell(`تم عرض ${button.textContent}: ${count} منتجات.`);
+      selectFilter(button.dataset.filter);
+      showProducts();
     }),
   );
+  search.addEventListener("input", showProducts);
+  sort.addEventListener("change", showProducts);
+  document.getElementById("reset-products").addEventListener("click", () => {
+    search.value = "";
+    sort.value = "default";
+    selectFilter("all");
+    showProducts();
+    search.focus();
+  });
+  document.getElementById("store-tools").hidden = false;
+  describeStorage();
+  showProducts();
   renderCart();
+  if (restored)
+    tell(
+      `استُعيدت السلة المحفوظة: ${totalQuantity()} وحدة، والإجمالي ${document.getElementById("cart-total").textContent} ريال.`,
+    );
 })();
