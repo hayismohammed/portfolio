@@ -5,6 +5,8 @@ on:
       - rashed/portfolio-upgrade-2026-11-08
     paths:
       - .github/workflows/midad-narration.yml
+      - scripts/generate_midad_narration.py
+      - scripts/update_midad_card.py
 permissions:
   contents: write
 jobs:
