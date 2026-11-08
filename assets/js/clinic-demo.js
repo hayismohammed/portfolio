@@ -113,6 +113,9 @@
       return;
     }
     const service = document.getElementById("sv").value;
-    status.textContent = `اختيارك التجريبي: ${service}، بتاريخ ${date.value}، ${period.selectedOptions[0].textContent}. تم التحقق محليًا؛ لم يُرسل شيء ولم يُحجز موعد.`;
+    const spokenDate = new Intl.DateTimeFormat("ar-SA-u-ca-gregory", {
+      dateStyle: "full",
+    }).format(new Date(date.value + "T12:00:00"));
+    status.textContent = `اختيارك التجريبي: ${service}، بتاريخ ${spokenDate}، ${period.selectedOptions[0].textContent}. تم التحقق محليًا؛ لم يُرسل شيء ولم يُحجز موعد.`;
   });
 })();
