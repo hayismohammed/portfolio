@@ -1,0 +1,71 @@
+{
+  "duration_seconds": 20.0,
+  "video_stream_unchanged": true,
+  "streams": [
+    {
+      "codec_type": "video",
+      "codec_name": "h264",
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "codec_type": "audio",
+      "codec_name": "aac",
+      "sample_rate": "48000",
+      "channels": 1
+    }
+  ],
+  "full_decode_exit_code": 0,
+  "license_unchanged": true,
+  "copyright_blocks_unchanged": {
+    "index.html": true,
+    "samples/clinic/index.html": true,
+    "samples/cosmetics-store/index.html": true,
+    "samples/product-copy/index.html": true,
+    "samples/restaurant/index.html": true,
+    "samples/serum-landing/index.html": true,
+    "samples/short-ad/index.html": true,
+    "samples/voiceover-course/index.html": true
+  },
+  "silent_originals_unchanged": {
+    "assets/media/midad-ad.mp4": true,
+    "assets/media/midad-ar.vtt": true,
+    "assets/media/midad-storyboard.txt": true
+  },
+  "caption_cues": [
+    [
+      0.1,
+      2.4
+    ],
+    [
+      2.6,
+      4.8
+    ],
+    [
+      5.6,
+      8.5
+    ],
+    [
+      11.4,
+      13.1
+    ],
+    [
+      16.3,
+      19.2
+    ]
+  ],
+  "captions_ordered_in_bounds": true,
+  "decoded_sample_peak_dbfs": -1.486,
+  "clipped_samples": 0,
+  "voiced_sha256": "0f38acc120612ae85c9699daeab88f667d25d0c0fc47248f54af103b1d0cc49f",
+  "static_site": {
+    "pages": 8,
+    "local_references": 101,
+    "sitemap_urls": 8,
+    "errors": [],
+    "passed": true
+  },
+  "human_listening_test": false,
+  "speech_review": "Automated Gemini 3.8 Flash transcription of actual MP3; Arabic female, light Gulf inflection, Midad with kasra; no music or truncated ending. Captions use actual performed word وأبدع.",
+  "passed": true
+}
