@@ -1,0 +1,44 @@
+name: Midad Arabic voiceover (authorized branch only)
+on:
+  push:
+    branches:
+      - rashed/portfolio-upgrade-2026-11-08
+    paths:
+      - .github/workflows/midad-narration.yml
+permissions:
+  contents: write
+jobs:
+  narration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout approved branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install no-cost audio dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg espeak-ng
+          python -m pip install --disable-pip-version-check 'piper-tts==1.8.0' 'numpy<3' 'faster-whisper==1.2.1'
+      - name: Download and verify commercial-use MIT Arabic voice
+        run: |
+          mkdir -p /tmp/midad-model
+          curl -fL --retry 3 --max-time 240 'https://huggingface.co/vadimbelsky/arabic-emirati-female-piper/resolve/main/arabic-emirati-female-model.onnx?download=true' -o /tmp/midad-model/arabic-emirati-female-model.onnx
+          curl -fL --retry 3 --max-time 60 'https://huggingface.co/vadimbelsky/arabic-emirati-female-piper/resolve/main/arabic-emirati-female-model.onnx.json?download=true' -o /tmp/midad-model/arabic-emirati-female-model.onnx.json
+          echo '1578a9b27d01a0626227225b148179628b770607dd61bdbbc41865bd399106b1  /tmp/midad-model/arabic-emirati-female-model.onnx' | sha256sum --check
+      - name: Synthesize, recognize, render, verify
+        run: python scripts/generate_midad_narration.py
+      - name: Commit only verified audio to approved branch
+        run: |
+          test "$GITHUB_REF" = 'refs/heads/rashed/portfolio-upgrade-2026-11-08'
+          git config user.name 'Rashed voiceover automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -- assets/media/midad-ad.mp4 assets/media/midad-voiceover.wav assets/media/midad-ar.vtt assets/media/midad-storyboard.txt assets/media/README.md samples/short-ad/index.html README.md docs/midad-voice-qa.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'إضافة صوت مِداد بعد اختبار المدة والكلام'
+          git push origin HEAD:refs/heads/rashed/portfolio-upgrade-2026-11-08
