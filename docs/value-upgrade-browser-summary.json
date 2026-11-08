@@ -1,0 +1,135 @@
+{
+  "environment": "Chrome cloud browser; source loaded into same-origin srcdoc iframes with own CSS/JS inlined by tests/browser-qa.html; axe-core 4.10.3",
+  "source_commit": "94d187ead5c151e17d46e16d00db98e11127ff45",
+  "production_deployment_test": false,
+  "page_count": 8,
+  "viewport_widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "actual_client_widths": [
+    305,
+    375,
+    753,
+    1265
+  ],
+  "overflow_cases": 0,
+  "automated_violations": 0,
+  "failed_eager_images": 0,
+  "pages": [
+    {
+      "path": "index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 6.04
+    },
+    {
+      "path": "samples/voiceover-course/index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 6.39
+    },
+    {
+      "path": "samples/cosmetics-store/index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 7.08
+    },
+    {
+      "path": "samples/clinic/index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 6.39
+    },
+    {
+      "path": "samples/restaurant/index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 6.9
+    },
+    {
+      "path": "samples/serum-landing/index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 7.74
+    },
+    {
+      "path": "samples/product-copy/index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 6.04
+    },
+    {
+      "path": "samples/short-ad/index.html",
+      "automated_violations": 0,
+      "horizontal_overflow": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "minimum_sampled_contrast": 6.04
+    }
+  ],
+  "manual_review": [
+    {
+      "page": "index.html",
+      "rule": "color-contrast",
+      "nodes": 7,
+      "reason": "Decorative arrow glyphs marked aria-hidden; sampled text contrast minimum 6.04:1."
+    },
+    {
+      "page": "samples/serum-landing/index.html",
+      "rule": "video-caption",
+      "reason": "Existing video has no audio stream and has adjacent textual visual description; captions for speech are not applicable."
+    }
+  ],
+  "manual_browser_interactions": [
+    "Store Arabic diacritic search finds both perfumes",
+    "Price-descending selection reorders perfumes",
+    "Cart restores one cleanser, total 45, after page reload",
+    "Clinic Saturday shows 4pm-10pm only and accepts Arabic phone digits"
+  ],
+  "limits": [
+    "Not a VoiceOver/Safari/iPhone test",
+    "Source-preview infrastructure rewrites some navigation links; canonical source links checked separately by static tests",
+    "No Lighthouse or conversion measurements"
+  ]
+}
