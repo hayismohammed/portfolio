@@ -46,6 +46,21 @@ footer{text-align:center;padding:1.3rem 1rem;color:var(--muted)}
 main:focus{outline:3px solid #111;outline-offset:4px}
 @media(max-width:760px){.cols{grid-template-columns:1fr}}
 </style>
+<link rel="stylesheet" href="../../assets/css/samples.css">
+<link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/clinic/">
+<meta property="og:title" content="موقع عيادة مع نموذج موعد | نموذج تجريبي">
+<meta property="og:description" content="نموذج تجريبي لموقع عيادة أسنان افتراضية. نموذج الموعد يتحقق من الحقول محليًا ولا يرسل البيانات ولا يحجز موعدًا.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/clinic/">
+<meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="موقع عيادة مع نموذج موعد | نموذج تجريبي">
+<meta name="twitter:description" content="نموذج تجريبي لموقع عيادة أسنان افتراضية. نموذج الموعد يتحقق من الحقول محليًا ولا يرسل البيانات ولا يحجز موعدًا.">
+<meta name="twitter:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
 </head>
 <body>
 <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
@@ -67,7 +82,7 @@ main:focus{outline:3px solid #111;outline-offset:4px}
   <h1>ابتسامتك بين أيدٍ أمينة</h1>
   <p>نص تجريبي لصفحة تعريف بعيادة، مع نموذج يبيّن رسائل الخطأ دون حفظ ما يُكتب.</p>
 </div>
-<div class="wrap">
+<div class="wrap"><section class="sample-overview" aria-labelledby="overview-h"><h2 id="overview-h">تصميم خدمة مع نموذج واضح</h2><p>تعريف بالخدمات وساعات العمل، ثم تجربة تحقق من المدخلات برسائل مرتبطة بالحقول.</p><p class="sample-meta">البيانات تبقى في الصفحة ولا تُرسل، واستخدم بيانات تجريبية فقط.</p><a href="../../index.html#samples">استكشف النماذج السبعة</a></section>
   <h2 id="services">خدمات افتراضية</h2>
   <div class="svc">
     <article><h3>تنظيف الأسنان</h3><p>وصف افتراضي لتنظيف وتلميع دوري.</p></article>
@@ -93,12 +108,13 @@ main:focus{outline:3px solid #111;outline-offset:4px}
     <section aria-labelledby="book">
       <h2 id="book">جرّب التحقق من النموذج</h2>
       <p>اكتب بيانات تجريبية إن شئت. التحقق يعمل في المتصفح فقط، والرسالة التالية تؤكد أن الطلب لم يُرسل.</p>
-      <form id="f" novalidate>
+      <form id="f" novalidate aria-describedby="form-help">
+<p id="form-help">جميع الحقول مطلوبة ما عدا اختيار الخدمة المحدد مسبقًا. استخدم بيانات تجريبية. لا تُرسل المدخلات.</p>
         <label for="nm">الاسم الكامل</label>
-        <input id="nm" name="name" autocomplete="name" aria-describedby="e1" required>
+        <input id="nm" name="name" autocomplete="off" aria-describedby="e1" required>
         <div class="err" id="e1"></div>
         <label for="ph">رقم الجوال</label>
-        <input id="ph" name="tel" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx" aria-describedby="e2" required>
+        <input id="ph" name="tel" type="tel" dir="ltr" inputmode="tel" autocomplete="off" placeholder="05xxxxxxxx" aria-describedby="e2" required>
         <div class="err" id="e2"></div>
         <label for="sv">الخدمة</label>
         <select id="sv" name="service">
@@ -119,14 +135,24 @@ main:focus{outline:3px solid #111;outline-offset:4px}
 </main>
 <footer>
   <p>تصميم للعرض: هايس محمد عقيل العنزي. النموذج لا يرسل البيانات. <a href="../../index.html#samples">العودة إلى المعرض</a></p>
+
+    <div class="site-copyright" style="font-family:inherit;color:inherit;font-size:inherit;line-height:1.8">
+      <p lang="ar" dir="rtl" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
+      <p lang="en" dir="ltr" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 Hayis Alanazi. All rights reserved.</p>
+    </div>
 </footer>
 <script>
+const dateInput=document.getElementById("dt");
+const today=new Date();
+const localToday=[today.getFullYear(),String(today.getMonth()+1).padStart(2,"0"),String(today.getDate()).padStart(2,"0")].join("-");
+dateInput.min=localToday;
+const normalizeDigits=v=>v.replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-1632)).replace(/[۰-۹]/g,c=>String(c.charCodeAt(0)-1776));
 document.getElementById("f").addEventListener("submit",e=>{
   e.preventDefault();
   const checks=[
     ["nm","e1",v=>v.trim().length>=3,"اكتب الاسم الكامل، ثلاثة أحرف على الأقل."],
-    ["ph","e2",v=>/^05\d{8}$/.test(v.trim()),"اكتب رقم جوال سعودي تجريبيًا: يبدأ بـ 05 ومكوّن من 10 أرقام."],
-    ["dt","e3",v=>!!v,"اختر تاريخًا."]
+    ["ph","e2",v=>/^05\d{8}$/.test(normalizeDigits(v.trim())),"اكتب رقم جوال سعودي تجريبيًا: يبدأ بـ 05 ومكوّن من 10 أرقام."],
+    ["dt","e3",v=>!!v&&v>=localToday,"اختر تاريخ اليوم أو تاريخًا لاحقًا."]
   ];
   let first=null;
   checks.forEach(([id,err,ok,msg])=>{

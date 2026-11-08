@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><title>Portfolio local QA</title
+  ><style>
+    body {
+      font: 16px system-ui;
+      background: #eee;
+      color: #102b3c;
+    }
+    iframe {
+      display: block;
+      height: 850px;
+      border: 2px solid #174f48;
+      margin: 15px auto;
+      background: white;
+    }
+    button,
+    select {
+      font: inherit;
+      padding: 10px;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: white;
+      padding: 10px;
+    }
+  </style>
+  <header>
+    <h1>Portfolio local QA</h1>
+    <label
+      >Page
+      <select id="page"></select
+    ></label>
+    <label
+      >Width
+      <select id="width">
+        <option>320</option>
+        <option selected>390</option>
+        <option>768</option>
+        <option>1280</option>
+      </select></label
+    >
+    <button id="show">Show page</button>
+    <button id="run">Run all checks</button>
+    <p id="progress" role="status">Ready</p>
+  </header>
+  <iframe id="frame" title="Portfolio test viewport" width="390"></iframe>
+  <pre id="result"></pre>
+  <script src="axe.min.js"></script>
+  <script>
+    const paths = [
+      "/index.html",
+      "/samples/voiceover-course/index.html",
+      "/samples/cosmetics-store/index.html",
+      "/samples/clinic/index.html",
+      "/samples/restaurant/index.html",
+      "/samples/serum-landing/index.html",
+      "/samples/product-copy/index.html",
+      "/samples/short-ad/index.html",
+    ];
+    const select = document.querySelector("#page"),
+      frame = document.querySelector("#frame"),
+      out = document.querySelector("#result"),
+      progress = document.querySelector("#progress");
+    paths.forEach((p) => {
+      const o = document.createElement("option");
+      o.value = p;
+      o.textContent = p;
+      select.append(o);
+    });
+    function load(path, width) {
+      frame.width = width;
+      return new Promise((resolve, reject) => {
+        frame.onload = () => resolve();
+        frame.onerror = reject;
+        frame.src = path;
+      });
+    }
+    document.querySelector("#show").onclick = async () => {
+      await load(select.value, document.querySelector("#width").value);
+      progress.textContent =
+        "Showing " + select.value + " at " + frame.width + "px";
+      out.textContent = "";
+    };
+    document.querySelector("#run").onclick = async () => {
+      document.querySelector("#run").disabled = true;
+      const results = [];
+      try {
+        for (const path of paths) {
+          progress.textContent = "Testing " + path;
+          await load(path, 390);
+          await frame.contentDocument.fonts.ready;
+          const win = frame.contentWindow,
+            doc = frame.contentDocument;
+          const script = doc.createElement("script");
+          script.src = "/__qa__/axe.min.js";
+          await new Promise((r, j) => {
+            script.onload = r;
+            script.onerror = j;
+            doc.head.append(script);
+          });
+          const scan = await win.axe.run(doc, {
+            runOnly: {
+              type: "tag",
+              values: [
+                "wcag2a",
+                "wcag2aa",
+                "wcag21a",
+                "wcag21aa",
+                "wcag22aa",
+                "best-practice",
+              ],
+            },
+          });
+          const sizes = [];
+          for (const width of [320, 390, 768, 1280]) {
+            frame.width = width;
+            await new Promise((r) => setTimeout(r, 100));
+            sizes.push({
+              width,
+              scroll: doc.documentElement.scrollWidth,
+              client: doc.documentElement.clientWidth,
+              overflow:
+                doc.documentElement.scrollWidth >
+                doc.documentElement.clientWidth + 1,
+            });
+          }
+          const h = [...doc.querySelectorAll("h1,h2,h3,h4,h5,h6")].map((x) => ({
+            level: x.tagName,
+            text: x.textContent.trim(),
+          }));
+          results.push({
+            path,
+            violations: scan.violations.map((v) => ({
+              id: v.id,
+              impact: v.impact,
+              description: v.description,
+              nodes: v.nodes.map((n) => ({
+                target: n.target,
+                summary: n.failureSummary,
+              })),
+            })),
+            incomplete: scan.incomplete.map((v) => ({
+              id: v.id,
+              nodes: v.nodes.map((n) => ({
+                target: n.target,
+                summary: n.failureSummary,
+              })),
+            })),
+            passes: scan.passes.length,
+            contrastAudit: [
+              ...doc.querySelectorAll(
+                "h1,h2,h3,p,a,span,li,dt,dd,summary,button,label",
+              ),
+            ]
+              .filter((el) =>
+                [...el.childNodes].some(
+                  (n) => n.nodeType === 3 && n.textContent.trim(),
+                ),
+              )
+              .map((el) => {
+                let node = el,
+                  bg = "rgba(0, 0, 0, 0)";
+                while (node && bg === "rgba(0, 0, 0, 0)") {
+                  bg = win.getComputedStyle(node).backgroundColor;
+                  node = node.parentElement;
+                }
+                const st = win.getComputedStyle(el);
+                return {
+                  text: el.textContent.trim().slice(0, 90),
+                  color: st.color,
+                  bg,
+                  size: st.fontSize,
+                  weight: st.fontWeight,
+                };
+              }),
+            sizes,
+            headings: h,
+            images: [...doc.images]
+              .filter((i) => !i.loading || i.loading !== "lazy")
+              .map((i) => ({
+                src: i.getAttribute("src"),
+                ok: i.complete && i.naturalWidth > 0,
+              })),
+            performance: win.performance
+              .getEntriesByType("navigation")
+              .map((n) => ({
+                domContentLoadedMs: Math.round(n.domContentLoadedEventEnd),
+                loadMs: Math.round(n.loadEventEnd),
+              })),
+          });
+        }
+        out.textContent = JSON.stringify(results, null, 2);
+        progress.textContent = "DONE — " + results.length + " pages tested";
+      } catch (e) {
+        out.textContent = String(e);
+        progress.textContent = "FAILED";
+      }
+      document.querySelector("#run").disabled = false;
+    };
+    load(paths[0], 390);
+  </script>
+</html>

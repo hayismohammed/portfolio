@@ -1,0 +1,117 @@
+/* Shared improvements for the retained demonstration pages. */
+body {
+  font-family: "Geeza Pro", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  line-height: 1.9;
+  overflow-wrap: break-word;
+}
+a {
+  text-underline-offset: 0.2em;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+img,
+video {
+  max-width: 100%;
+}
+.sample-overview {
+  max-width: 1050px;
+  margin: 1.4rem auto;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid currentColor;
+  border-radius: 16px;
+}
+.sample-overview h2 {
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  border: 0;
+  padding: 0;
+}
+.sample-overview p {
+  margin: 0.4rem 0;
+}
+.sample-overview .sample-meta {
+  font-size: 0.94rem;
+}
+.sample-overview a {
+  font-weight: 700;
+}
+summary {
+  display: list-item !important;
+  list-style-position: inside;
+}
+summary::marker {
+  font-size: 0.85em;
+}
+button,
+input,
+select {
+  min-height: 44px;
+}
+footer a,
+.banner a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+:focus-visible {
+  outline: 3px solid #a83d13;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 3px #fff;
+}
+input,
+select {
+  max-width: 100%;
+  min-width: 0;
+}
+.err:empty {
+  min-height: 0;
+}
+video {
+  display: block;
+}
+.noscript-menu {
+  padding: 1rem;
+}
+.noscript-menu h3 {
+  margin-top: 1rem;
+}
+@media (max-width: 760px) {
+  header {
+    position: static !important;
+  }
+  nav {
+    position: static !important;
+  }
+  .sample-overview {
+    margin-inline: 1rem;
+  }
+  .bar {
+    flex-wrap: wrap;
+  }
+  .item {
+    flex-wrap: wrap;
+  }
+  .gal {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (forced-colors: active) {
+  button,
+  input,
+  select,
+  .btn {
+    border: 2px solid CanvasText;
+  }
+}

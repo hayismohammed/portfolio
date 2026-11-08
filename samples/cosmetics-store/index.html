@@ -46,6 +46,21 @@ footer{text-align:center;padding:1.3rem 1rem;border-top:1px solid var(--line);co
 main:focus{outline:3px solid #111;outline-offset:4px}
 @media(max-width:720px){.hero{grid-template-columns:1fr}.art{display:none}}
 </style>
+<link rel="stylesheet" href="../../assets/css/samples.css">
+<link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/cosmetics-store/">
+<meta property="og:title" content="متجر لمسة | نموذج تجريبي لواجهة متجر">
+<meta property="og:description" content="نموذج تجريبي لواجهة متجر عناية بعلامة افتراضية اسمها لمسة. السلة محلية في المتصفح، ولا يوجد دفع.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/cosmetics-store/">
+<meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="متجر لمسة | نموذج تجريبي لواجهة متجر">
+<meta name="twitter:description" content="نموذج تجريبي لواجهة متجر عناية بعلامة افتراضية اسمها لمسة. السلة محلية في المتصفح، ولا يوجد دفع.">
+<meta name="twitter:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
 </head>
 <body>
 <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
@@ -66,6 +81,7 @@ main:focus{outline:3px solid #111;outline-offset:4px}
   </div>
   <div class="art" aria-hidden="true">🌸</div>
 </section>
+<section class="sample-overview" aria-labelledby="overview-h"><h2 id="overview-h">واجهة متجر قابلة للاستكشاف</h2><p>تصفية حسب الفئة، وبطاقات منتجات بأسماء واضحة، وتحديثات للسلة يعلنها قارئ الشاشة.</p><p class="sample-meta">المنتجات والأسعار افتراضية، ولا يوجد دفع أو حفظ دائم للسلة.</p><a href="../../index.html#samples">استكشف النماذج السبعة</a></section>
   <h2 id="products">المنتجات</h2>
   <div class="filters" role="group" aria-label="تصفية حسب الفئة">
     <button type="button" aria-pressed="true" data-f="all">الكل</button>
@@ -74,9 +90,14 @@ main:focus{outline:3px solid #111;outline-offset:4px}
     <button type="button" aria-pressed="false" data-f="perfume">العطور</button>
   </div>
   <p id="status" role="status" aria-live="polite"></p>
-  <ul class="grid" id="grid"></ul>
+  <ul class="grid" id="grid"></ul><noscript><section class="sample-overview"><h3>قائمة المنتجات النصية</h3><p>غسول وجه لطيف 45 ر.س، مرطب بشرة يومي 69 ر.س، واقي شمس 79 ر.س، زيت شعر 55 ر.س، بلسم للشعر 49 ر.س، عطر ورد 189 ر.س، عطر عود 240 ر.س، مقشر شفاه 29 ر.س.</p><p>الأسعار افتراضية. التصفية والسلة تحتاجان إلى جافاسكربت؛ لا يوجد دفع.</p></section></noscript>
 </main>
-<footer>تصميم للعرض: هايس محمد عقيل العنزي. <a href="../../index.html#samples">العودة إلى المعرض</a></footer>
+<footer>تصميم للعرض: هايس محمد عقيل العنزي. <a href="../../index.html#samples">العودة إلى المعرض</a>
+    <div class="site-copyright" style="font-family:inherit;color:inherit;font-size:inherit;line-height:1.8">
+      <p lang="ar" dir="rtl" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 هايس العنزي. جميع الحقوق محفوظة.</p>
+      <p lang="en" dir="ltr" style="font-family:inherit;color:inherit;margin:0.25em 0">© 2026 Hayis Alanazi. All rights reserved.</p>
+    </div>
+</footer>
 <script>
 const items=[
  {n:"غسول وجه لطيف",c:"skin",p:45,e:"🧴",bg:"#fde4ef"},
@@ -139,6 +160,6 @@ document.getElementById("cartBtn").addEventListener("click",()=>{
 });
 render("all");
 </script>
-<noscript><p class="wrap" style="padding:1rem">عرض المنتجات في هذا النموذج يحتاج إلى جافاسكربت. لا دفع في الحالتين.</p></noscript>
+
 </body>
 </html>

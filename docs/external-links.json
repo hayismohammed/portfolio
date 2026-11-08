@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-08",
+  "method": "HTTP GET with urllib, no login or purchase",
+  "links": [
+    {
+      "url": "https://hayismohammed.gumroad.com/l/oeuvzz",
+      "status": 200,
+      "title": "دورة صوتية: تعلّم VoiceOver على الآيفون للمكفوفين المبتدئين وأهاليهم"
+    },
+    {
+      "url": "https://www.udemy.com/course/voiceover-x/",
+      "status": 200,
+      "title": "تعلّم VoiceOver على الآيفون للمكفوفين من الصفر"
+    },
+    {
+      "url": "https://x.com/hayismohammed",
+      "status": 200,
+      "title": "أبا فهد🇸🇦 (@hayismohammed) / X"
+    }
+  ],
+  "limitations": "Checkout, course contents, account ownership and certificate authenticity were not independently tested."
+}

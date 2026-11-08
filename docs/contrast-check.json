@@ -1,0 +1,332 @@
+{
+  "method": "WCAG relative luminance of computed foreground and nearest nontransparent ancestor background; no assertion for text over an image or gradient",
+  "text_elements": 428,
+  "pairs": [
+    {
+      "foreground": "rgb(16, 43, 60)",
+      "background": "rgb(233, 189, 103)",
+      "ratio": 8.33
+    },
+    {
+      "foreground": "rgb(16, 43, 60)",
+      "background": "rgb(255, 252, 245)",
+      "ratio": 14.3
+    },
+    {
+      "foreground": "rgb(23, 79, 72)",
+      "background": "rgb(255, 252, 245)",
+      "ratio": 9.12
+    },
+    {
+      "foreground": "rgb(233, 189, 103)",
+      "background": "rgb(16, 43, 60)",
+      "ratio": 8.33
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(16, 43, 60)",
+      "ratio": 14.66
+    },
+    {
+      "foreground": "rgb(218, 229, 231)",
+      "background": "rgb(16, 43, 60)",
+      "ratio": 11.41
+    },
+    {
+      "foreground": "rgb(71, 91, 101)",
+      "background": "rgb(243, 240, 232)",
+      "ratio": 6.25
+    },
+    {
+      "foreground": "rgb(16, 43, 60)",
+      "background": "rgb(243, 240, 232)",
+      "ratio": 12.87
+    },
+    {
+      "foreground": "rgb(102, 64, 23)",
+      "background": "rgb(248, 232, 201)",
+      "ratio": 7.52
+    },
+    {
+      "foreground": "rgb(71, 91, 101)",
+      "background": "rgb(255, 252, 245)",
+      "ratio": 6.94
+    },
+    {
+      "foreground": "rgb(71, 91, 101)",
+      "background": "rgb(232, 238, 232)",
+      "ratio": 6.04
+    },
+    {
+      "foreground": "rgb(22, 72, 53)",
+      "background": "rgb(223, 237, 228)",
+      "ratio": 8.63
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(23, 79, 72)",
+      "ratio": 9.34
+    },
+    {
+      "foreground": "rgb(23, 79, 72)",
+      "background": "rgb(243, 240, 232)",
+      "ratio": 8.2
+    },
+    {
+      "foreground": "rgb(26, 20, 8)",
+      "background": "rgb(255, 211, 77)",
+      "ratio": 12.79
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(20, 48, 79)",
+      "ratio": 13.41
+    },
+    {
+      "foreground": "rgb(255, 211, 77)",
+      "background": "rgb(20, 48, 79)",
+      "ratio": 9.38
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(11, 29, 51)",
+      "ratio": 16.97
+    },
+    {
+      "foreground": "rgb(214, 226, 240)",
+      "background": "rgb(11, 29, 51)",
+      "ratio": 12.92
+    },
+    {
+      "foreground": "rgb(255, 211, 77)",
+      "background": "rgb(31, 74, 120)",
+      "ratio": 6.36
+    },
+    {
+      "foreground": "rgb(214, 226, 240)",
+      "background": "rgb(20, 48, 79)",
+      "ratio": 10.22
+    },
+    {
+      "foreground": "rgb(255, 211, 77)",
+      "background": "rgb(11, 29, 51)",
+      "ratio": 11.86
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(17, 17, 17)",
+      "ratio": 18.88
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(138, 47, 91)",
+      "ratio": 7.96
+    },
+    {
+      "foreground": "rgb(138, 47, 91)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 7.96
+    },
+    {
+      "foreground": "rgb(42, 21, 32)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 17.12
+    },
+    {
+      "foreground": "rgb(109, 36, 72)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 10.52
+    },
+    {
+      "foreground": "rgb(42, 21, 32)",
+      "background": "rgb(255, 248, 251)",
+      "ratio": 16.36
+    },
+    {
+      "foreground": "rgb(92, 58, 72)",
+      "background": "rgb(255, 248, 251)",
+      "ratio": 9.32
+    },
+    {
+      "foreground": "rgb(0, 0, 238)",
+      "background": "rgb(255, 248, 251)",
+      "ratio": 8.98
+    },
+    {
+      "foreground": "rgb(16, 48, 47)",
+      "background": "rgb(231, 244, 243)",
+      "ratio": 12.54
+    },
+    {
+      "foreground": "rgb(8, 52, 47)",
+      "background": "rgb(231, 244, 243)",
+      "ratio": 12.08
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(15, 61, 60)",
+      "ratio": 11.98
+    },
+    {
+      "foreground": "rgb(244, 251, 251)",
+      "background": "rgb(15, 61, 60)",
+      "ratio": 11.43
+    },
+    {
+      "foreground": "rgb(16, 48, 47)",
+      "background": "rgb(244, 251, 251)",
+      "ratio": 13.49
+    },
+    {
+      "foreground": "rgb(0, 0, 238)",
+      "background": "rgb(244, 251, 251)",
+      "ratio": 8.97
+    },
+    {
+      "foreground": "rgb(15, 61, 60)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 11.98
+    },
+    {
+      "foreground": "rgb(16, 48, 47)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 14.13
+    },
+    {
+      "foreground": "rgb(61, 79, 78)",
+      "background": "rgb(244, 251, 251)",
+      "ratio": 8.26
+    },
+    {
+      "foreground": "rgb(63, 52, 43)",
+      "background": "rgb(255, 244, 220)",
+      "ratio": 11.07
+    },
+    {
+      "foreground": "rgb(109, 51, 8)",
+      "background": "rgb(255, 244, 220)",
+      "ratio": 9.04
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(58, 36, 22)",
+      "ratio": 14.54
+    },
+    {
+      "foreground": "rgb(246, 234, 220)",
+      "background": "rgb(58, 36, 22)",
+      "ratio": 12.27
+    },
+    {
+      "foreground": "rgb(43, 26, 14)",
+      "background": "rgb(224, 162, 58)",
+      "ratio": 7.48
+    },
+    {
+      "foreground": "rgb(43, 26, 14)",
+      "background": "rgb(251, 246, 239)",
+      "ratio": 15.54
+    },
+    {
+      "foreground": "rgb(0, 0, 238)",
+      "background": "rgb(251, 246, 239)",
+      "ratio": 8.74
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(122, 62, 18)",
+      "ratio": 8.32
+    },
+    {
+      "foreground": "rgb(58, 36, 22)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 14.54
+    },
+    {
+      "foreground": "rgb(74, 56, 40)",
+      "background": "rgb(251, 246, 239)",
+      "ratio": 10.35
+    },
+    {
+      "foreground": "rgb(43, 26, 14)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 16.71
+    },
+    {
+      "foreground": "rgb(122, 62, 13)",
+      "background": "rgb(251, 246, 239)",
+      "ratio": 7.74
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(106, 52, 16)",
+      "ratio": 9.95
+    },
+    {
+      "foreground": "rgb(63, 52, 43)",
+      "background": "rgb(255, 243, 227)",
+      "ratio": 11.04
+    },
+    {
+      "foreground": "rgb(109, 51, 8)",
+      "background": "rgb(255, 243, 227)",
+      "ratio": 9.02
+    },
+    {
+      "foreground": "rgb(29, 20, 13)",
+      "background": "rgb(251, 246, 239)",
+      "ratio": 16.86
+    },
+    {
+      "foreground": "rgb(74, 59, 46)",
+      "background": "rgb(251, 246, 239)",
+      "ratio": 9.98
+    },
+    {
+      "foreground": "rgb(122, 62, 13)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 8.33
+    },
+    {
+      "foreground": "rgb(109, 51, 8)",
+      "background": "rgb(251, 246, 239)",
+      "ratio": 9.18
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(29, 20, 13)",
+      "ratio": 18.13
+    },
+    {
+      "foreground": "rgb(246, 234, 217)",
+      "background": "rgb(29, 20, 13)",
+      "ratio": 15.27
+    },
+    {
+      "foreground": "rgb(29, 20, 13)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 18.13
+    },
+    {
+      "foreground": "rgb(74, 59, 46)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 10.74
+    },
+    {
+      "foreground": "rgb(29, 20, 13)",
+      "background": "rgb(239, 228, 214)",
+      "ratio": 14.45
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(42, 26, 14)",
+      "ratio": 16.77
+    },
+    {
+      "foreground": "rgb(16, 43, 60)",
+      "background": "rgb(232, 238, 232)",
+      "ratio": 12.44
+    }
+  ],
+  "failures": []
+}

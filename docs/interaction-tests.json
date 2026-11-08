@@ -1,0 +1,39 @@
+{
+  "browser": "Cloud Chromium through ChatGPT Work",
+  "date": "2026-11-08",
+  "tests": [
+    {
+      "name": "Skip link",
+      "result": "PASS: first Tab focuses skip link; Return moves focus to MAIN#main"
+    },
+    {
+      "name": "Clinic empty form",
+      "result": "PASS: 3 invalid fields, explicit descriptions, focus nm"
+    },
+    {
+      "name": "Clinic Arabic digits",
+      "result": "PASS: ٠٥٠١٢٣٤٥٦٧ and 2026-11-09 accepted; status confirms nothing sent or booked"
+    },
+    {
+      "name": "Clinic past date",
+      "result": "PASS: 2026-11-01 rejected, focus dt with error"
+    },
+    {
+      "name": "Store category and cart",
+      "result": "PASS: perfume filter shows عطر ورد and عطر عود; adding عطر ورد increments count to 1 and updates live status"
+    },
+    {
+      "name": "Restaurant RTL keys",
+      "result": "PASS: ArrowLeft moves from الأطباق الرئيسية to المقبلات, shows سمبوسة and سلطة; End selects and focuses المشروبات"
+    },
+    {
+      "name": "MP4 browser playback",
+      "result": "PASS: manual Space starts playback; duration 20, readyState 4, currentTime 6.2881, paused false, no media error"
+    }
+  ],
+  "limits": [
+    "No physical iPhone or Safari/VoiceOver environment available",
+    "No payment or data transmission tested",
+    "Console messages observed were chrome-extension metadata errors, outside page source"
+  ]
+}
