@@ -35,6 +35,21 @@ body{margin:0;font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-ser
 footer{text-align:center;padding:1.3rem 1rem;color:var(--muted)}
 main:focus{outline:3px solid #111;outline-offset:4px}
 </style>
+<link rel="stylesheet" href="../../assets/css/samples.css">
+<link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/restaurant/">
+<meta property="og:title" content="قائمة طعام رقمية | نموذج تجريبي">
+<meta property="og:description" content="نموذج تجريبي لقائمة طعام رقمية لمطعم افتراضي. الأقسام تبويبات بلوحة المفاتيح، والأسعار افتراضية، ولا يوجد طلب من الصفحة.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/restaurant/">
+<meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="قائمة طعام رقمية | نموذج تجريبي">
+<meta name="twitter:description" content="نموذج تجريبي لقائمة طعام رقمية لمطعم افتراضي. الأقسام تبويبات بلوحة المفاتيح، والأسعار افتراضية، ولا يوجد طلب من الصفحة.">
+<meta name="twitter:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
 </head>
 <body>
 <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
@@ -45,8 +60,9 @@ main:focus{outline:3px solid #111;outline-offset:4px}
   <p>نموذج قائمة طعام رقمية بنص واضح، بلا صورة ضرورية للقراءة.</p>
   <a class="btn" href="#menu">تصفّح القائمة</a>
 </header>
-<div class="wrap">
+<div class="wrap"><section class="sample-overview" aria-labelledby="overview-h"><h2 id="overview-h">قائمة نصية سهلة التصفح</h2><p>أقسام واضحة، وأوصاف وأسعار قابلة للقراءة، مع تبويبات تدعم أسهم لوحة المفاتيح في الاتجاه العربي.</p><p class="sample-meta">المطعم والقائمة والأسعار افتراضية، ولا يوجد إرسال طلب.</p><a href="../../index.html#samples">استكشف النماذج السبعة</a></section>
   <h2 id="menu">قائمة الطعام</h2>
+  <noscript><section class="noscript-menu"><h3>قائمة الطعام النصية</h3><p>الأطباق الرئيسية: كبسة لحم 65 ر.س، مندي دجاج 45 ر.س، مرقوق 38 ر.س.</p><p>المقبلات: سمبوسة 18 ر.س، سلطة 12 ر.س.</p><p>الحلى: كليجا 15 ر.س، لقيمات 16 ر.س.</p><p>المشروبات: قهوة سعودية 20 ر.س، شاي بالنعناع 12 ر.س.</p><p>جميع الأصناف والأسعار افتراضية.</p></section></noscript>
   <div role="tablist" aria-label="أقسام القائمة" aria-orientation="horizontal" id="tabs"></div>
   <div id="panel" role="tabpanel" tabindex="0"></div>
   <div class="info">
@@ -117,6 +133,6 @@ keys.forEach((label,i)=>{
 });
 show(0);
 </script>
-<noscript><p class="wrap">أقسام القائمة في هذا النموذج تحتاج إلى جافاسكربت.</p></noscript>
+
 </body>
 </html>

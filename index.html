@@ -1,327 +1,481 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>هايس محمد عقيل العنزي | معلم، ونماذج لصفحات الهبوط والمحتوى الرقمي</title>
-<meta name="description" content="معلم سعودي للطلاب ذوي الإعاقة البصرية منذ 2012، ومستخدم يومي لقارئ الشاشة VoiceOver. خمسة نماذج تجريبية لعلامات افتراضية. خدمات صفحات الهبوط ونصوص المتاجر والفيديو القصير قيد الإعداد على خمسات وغير منشورة.">
-<meta property="og:title" content="هايس محمد عقيل العنزي | معلم، ونماذج لصفحات الهبوط والمحتوى الرقمي">
-<meta property="og:description" content="معلم سعودي للطلاب ذوي الإعاقة البصرية منذ 2012، ومستخدم يومي لقارئ الشاشة VoiceOver. خمسة نماذج تجريبية. خدمات المحتوى قيد الإعداد على خمسات وغير منشورة.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_SA">
-<meta property="og:url" content="https://hayismohammed.github.io/portfolio/">
-<link rel="canonical" href="https://hayismohammed.github.io/portfolio/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c2340'/%3E%3Crect x='6' y='8' width='20' height='4' rx='2' fill='%23f0c14b'/%3E%3Crect x='6' y='16' width='14' height='4' rx='2' fill='%23ffffff'/%3E%3C/svg%3E">
-<style>
-:root{
-  --bg:#f4f1ea;
-  --paper:#fffdf8;
-  --ink:#14202b;
-  --muted:#3f342b;
-  --line:#d9d0c4;
-  --hero:#0c2340;
-  --on-hero:#ffffff;
-  --gold:#f0c14b;
-  --gold-ink:#1a1408;
-  --link:#08342f;
-  --btn:#0e4d45;
-  --status-bg:#e8f3ec;
-  --status-ink:#1e4d3e;
-}
-*{box-sizing:border-box}
-html{scroll-padding-top:1rem}
-body{
-  margin:0;
-  font-family:"Noto Naskh Arabic","Noto Sans Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  line-height:1.85;
-  font-size:1.125rem;
-}
-:focus{scroll-margin-top:1rem;scroll-margin-bottom:1rem}
-:focus-visible{
-  outline:3px solid #111;
-  outline-offset:3px;
-  box-shadow:0 0 0 3px #fff;
-}
-.skip{
-  position:absolute;
-  inset-inline-start:1rem;
-  top:0;
-  transform:translateY(-150%);
-  background:var(--gold);
-  color:var(--gold-ink);
-  font-weight:800;
-  text-decoration:none;
-  padding:.7rem 1rem;
-  z-index:20;
-  border-radius:0 0 10px 10px;
-}
-.skip:focus{position:static;display:block;transform:none}
-a{color:var(--link)}
-.in{max-width:1080px;margin-inline:auto;padding-inline:1.15rem}
-header.hero{background:var(--hero);color:var(--on-hero);padding:2.2rem 0 1.6rem}
-header.hero a{color:#fff}
-h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:0}
-.en{margin:.35rem 0 0;color:#e7eef6;text-align:right}
-.role{
-  display:inline-block;
-  max-width:100%;
-  margin:.9rem 0 0;
-  background:var(--gold);
-  color:var(--gold-ink);
-  font-weight:800;
-  padding:.4rem 1rem;
-  border-radius:999px;
-}
-.lead{max-width:42rem;margin:1rem 0 0;color:#e7eef6}
-nav ul{display:flex;flex-wrap:wrap;gap:.55rem;list-style:none;padding:0;margin:1.1rem 0 0}
-nav a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:44px;
-  padding:.4rem .95rem;
-  color:#fff;
-  text-decoration:underline;
-  text-underline-offset:.18em;
-  border:2px solid var(--gold);
-  border-radius:10px;
-  font-weight:700;
-}
-main{padding-bottom:1rem}
-main:focus{outline:3px solid #111;outline-offset:4px}
-section{padding:1.6rem 0}
-h2{
-  font-size:1.55rem;
-  line-height:1.4;
-  margin:0 0 1rem;
-  border-inline-start:6px solid var(--btn);
-  padding-inline-start:.75rem;
-}
-h3{font-size:1.2rem;line-height:1.45;margin:.2rem 0 .45rem}
-.note{color:var(--muted);margin-top:0}
-.box,.card,.service{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:1.15rem 1.2rem;
-}
-.about{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1rem}
-.services,.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem}
-.service p:last-child{margin-bottom:0}
-.status{
-  display:inline-block;
-  margin:.35rem 0 0;
-  background:var(--status-bg);
-  color:var(--status-ink);
-  border:1px solid var(--status-ink);
-  border-radius:999px;
-  padding:.3rem .85rem;
-  font-weight:800;
-}
-.tag{
-  display:inline-block;
-  background:#fff4dc;
-  color:#5c3b00;
-  border-radius:999px;
-  padding:.15rem .7rem;
-  font-size:.95rem;
-  font-weight:800;
-}
-.work{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.work img{width:100%;height:auto;display:block;background:#efeae2}
-.wb{padding:1rem 1.1rem 1.15rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
-.wb p{margin:0}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:44px;
-  margin-top:.4rem;
-  align-self:flex-start;
-  background:var(--btn);
-  color:#fff;
-  text-decoration:none;
-  padding:.5rem 1rem;
-  border-radius:10px;
-  font-weight:800;
-}
-.skills{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:0}
-.skills li{background:#e7eeeb;color:#08342f;border-radius:999px;padding:.35rem .85rem;font-weight:700}
-.contact a{font-weight:800;overflow-wrap:anywhere}
-footer{
-  padding:1.3rem 1rem 1.6rem;
-  text-align:center;
-  color:var(--muted);
-  border-top:1px solid var(--line);
-}
-@media (max-width:760px){
-  .about{grid-template-columns:1fr}
-  body{font-size:1.05rem}
-}
-</style>
-</head>
-<body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<main id="main" tabindex="-1">
-<header class="hero">
-  <div class="in">
-    <h1>هايس محمد عقيل العنزي</h1>
-    <p class="en" lang="en" dir="ltr">Hayis Mohammed Aqeel Alanazi</p>
-    <p class="role">معلم للطلاب ذوي الإعاقة البصرية</p>
-    <p class="lead">النماذج أدناه تجريبية لعلامات افتراضية. خدمات صفحات الهبوط ونصوص المتاجر والفيديو القصير قيد الإعداد على خمسات، ولم تُنشر.</p>
-    <nav aria-label="أقسام الصفحة">
-      <ul>
-        <li><a href="#about">النبذة</a></li>
-        <li><a href="#services">الخدمات</a></li>
-        <li><a href="#samples">النماذج</a></li>
-        <li><a href="#contact">التواصل</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<div class="in">
-  <section id="about" aria-labelledby="about-h">
-    <h2 id="about-h">نبذة</h2>
-    <div class="about">
-      <div class="box">
-        <p>أنا معلم سعودي للطلاب ذوي الإعاقة البصرية منذ عام 2012، وحاصل على بكالوريوس التاريخ من جامعة الملك سعود في الرياض. أنا كفيف، وأجيد برايل، وأستخدم قارئ الشاشة VoiceOver يوميًا.</p>
-        <p>أبني هذه النماذج بلغة HTML وCSS وJavaScript، وأراجعها بلوحة المفاتيح لأن هذا جزء من استعمالي اليومي. هذا وصف لطريقة العمل في المعرض، وليس إعلانًا عن خدمة تدقيق منشورة.</p>
-        <p>الدورة الصوتية لتعليم VoiceOver على الآيفون متاحة الآن على Gumroad بسعر 25 دولارًا. أما النسخة المصوّرة فهي دورة مستقلة متاحة الآن على يوديمي.</p>
-        <p><a class="btn" href="https://hayismohammed.gumroad.com/l/oeuvzz">اشترِ الدورة الصوتية على Gumroad</a></p>
-        <p><a class="btn" href="https://www.udemy.com/course/voiceover-x/" target="_blank" rel="noopener">اشترِ الدورة المصوّرة على يوديمي</a></p>
-        <p lang="en" dir="ltr">I am a Saudi teacher of visually impaired students since 2012, with a BA in History from King Saud University in Riyadh. I am blind, fluent in Braille, and I use VoiceOver daily. The five samples are fictional demos. The audio VoiceOver course is available on Gumroad now. A separate video course is now available on Udemy. Landing-page, store-copy, and short product-video services are being prepared for Khamsat and are not published yet.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>هايس العنزي | صفحات هبوط عربية ومحتوى رقمي</title>
+    <meta
+      name="description"
+      content="معرض هايس العنزي: سبعة نماذج لصفحات هبوط ووصف منتجات وفيديو قصير، ودورتا VoiceOver على Gumroad وUdemy. خدمات المحتوى قيد التجهيز."
+    />
+    <link rel="canonical" href="https://hayismohammed.github.io/portfolio/" />
+    <meta
+      property="og:title"
+      content="هايس العنزي | صفحات هبوط عربية ومحتوى رقمي"
+    />
+    <meta
+      property="og:description"
+      content="معرض هايس العنزي: سبعة نماذج لصفحات هبوط ووصف منتجات وفيديو قصير، ودورتا VoiceOver على Gumroad وUdemy. خدمات المحتوى قيد التجهيز."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_SA" />
+    <meta property="og:site_name" content="معرض أعمال هايس العنزي" />
+    <meta
+      property="og:url"
+      content="https://hayismohammed.github.io/portfolio/"
+    />
+    <meta
+      property="og:image"
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="معرض هايس العنزي لصفحات الهبوط والمحتوى الرقمي"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="هايس العنزي | صفحات هبوط عربية ومحتوى رقمي"
+    />
+    <meta
+      name="twitter:description"
+      content="معرض هايس العنزي: سبعة نماذج لصفحات هبوط ووصف منتجات وفيديو قصير، ودورتا VoiceOver على Gumroad وUdemy. خدمات المحتوى قيد التجهيز."
+    />
+    <meta
+      name="twitter:image"
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+    />
+    <meta name="theme-color" content="#102b3c" />
+    <link rel="icon" href="assets/media/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "معرض أعمال هايس العنزي",
+        "url": "https://hayismohammed.github.io/portfolio/",
+        "inLanguage": "ar",
+        "about": {
+          "@type": "Person",
+          "name": "هايس محمد عقيل العنزي",
+          "url": "https://hayismohammed.github.io/portfolio/",
+          "sameAs": ["https://x.com/hayismohammed"]
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+    <header class="topbar">
+      <div class="container">
+        <a class="brand" href="index.html"
+          >هايس العنزي<small>صفحات هبوط ومحتوى رقمي</small></a
+        >
+        <nav aria-label="أقسام المعرض">
+          <ul>
+            <li><a href="#samples">النماذج</a></li>
+            <li><a href="#services">الخدمات</a></li>
+            <li><a href="#about">نبذة عني</a></li>
+            <li><a href="#courses">الدورات والشهادة</a></li>
+            <li><a href="#contact">التواصل</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="box">
-        <h3>ما لا تعرضه هذه الصفحة</h3>
-        <ul>
-          <li>لا شهادات عملاء.</li>
-          <li>لا أرقام مبيعات.</li>
-          <li>لا مشاريع لعملاء حقيقيين.</li>
-          <li>لا حجز لخدمات خمسات؛ هي غير منشورة. شراء الدورة الصوتية من رابط Gumroad فقط.</li>
-        </ul>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div>
+            <p class="eyebrow">معرض أعمال هايس محمد عقيل العنزي</p>
+            <h1 id="hero-title">
+              صفحة توضّح فكرتك.<br />ومحتوى يقرّبها لجمهورك.
+            </h1>
+            <p class="lead">
+              نماذج عربية لصفحات الهبوط، ووصف المنتجات، والفيديو الإعلاني
+              القصير. أعرض فيها أسلوبي في تنظيم المحتوى، مع اهتمام بسهولة
+              الاستخدام وإمكانية الوصول.
+            </p>
+            <div class="actions">
+              <a class="button gold" href="#samples">استكشف النماذج السبعة</a
+              ><a class="button outline" href="#courses"
+                >تعرّف على دورات VoiceOver</a
+              >
+            </div>
+            <div class="hero-foot">
+              <span>تصميم يناسب الجوال</span><span>محتوى عربي واضح</span
+              ><span>اهتمام بقارئات الشاشة</span>
+            </div>
+          </div>
+          <img
+            class="hero-art"
+            src="assets/media/portfolio-art.svg"
+            width="420"
+            height="420"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </section>
+      <div class="container">
+        <section class="section" id="services" aria-labelledby="services-h">
+          <div class="section-head">
+            <div>
+              <span class="number">01 / الخدمات</span>
+              <h2 id="services-h">من الفكرة إلى عرض واضح</h2>
+            </div>
+            <p>
+              دورات VoiceOver متاحة للشراء الآن. الخدمات الثلاث التالية قيد
+              التجهيز، ولم تُنشر بعد على خمسات.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="service">
+              <span class="status">قيد التجهيز</span>
+              <h3>تصميم صفحات الهبوط</h3>
+              <p>
+                صفحة عربية تقدّم منتجك أو خدمتك في تسلسل واضح، وتوجّه الزائر إلى
+                الخطوة المناسبة.
+              </p>
+              <ul>
+                <li>تنظيم الفكرة والمزايا والأسئلة الشائعة</li>
+                <li>عرض متجاوب للهاتف والحاسوب</li>
+                <li>عناوين وروابط واضحة للتنقل</li>
+              </ul>
+              <a href="samples/serum-landing/index.html"
+                >استعرض نموذج صفحة منتج</a
+              >
+            </article>
+            <article class="service">
+              <span class="status">قيد التجهيز</span>
+              <h3>كتابة وصف المنتجات</h3>
+              <p>
+                نص تسويقي يساعد الزائر على فهم المنتج، من فائدته الأساسية إلى
+                مواصفاته وطريقة استخدامه.
+              </p>
+              <ul>
+                <li>عنوان يوضح الفائدة</li>
+                <li>مزايا مرتبطة بالمواصفات</li>
+                <li>لغة دقيقة دون وعود غير مثبتة</li>
+              </ul>
+              <a href="samples/product-copy/index.html">اقرأ نموذج الكتابة</a>
+            </article>
+            <article class="service">
+              <span class="status">قيد التجهيز</span>
+              <h3>فيديوهات إعلانية قصيرة</h3>
+              <p>
+                عرض بصري موجز لفكرة المنتج في 15 إلى 30 ثانية، بنص عربي وتسلسل
+                يناسب المشاهدة على الجوال.
+              </p>
+              <ul>
+                <li>فكرة وسيناريو مختصر</li>
+                <li>نصوص ظاهرة على المشاهد</li>
+                <li>نسخة تجريبية صامتة متاحة للعرض</li>
+              </ul>
+              <a href="samples/short-ad/index.html">شاهد نموذج الفيديو</a>
+            </article>
+          </div>
+          <p class="notice">
+            يمكنك الاطلاع على النماذج أو إرسال استفسار بالبريد. سيُضاف رابط طلب
+            الخدمات بعد إطلاقها رسميًا.
+          </p>
+        </section>
+        <section class="section" id="samples" aria-labelledby="samples-h">
+          <div class="section-head">
+            <div>
+              <span class="number">02 / نماذج مختارة</span>
+              <h2 id="samples-h">سبعة نماذج. أساليب عرض مختلفة.</h2>
+            </div>
+            <p>
+              أعمال افتراضية تجريبية لعرض المهارات، وليست مشروعات منفّذة لعملاء.
+              الأسماء والأسعار داخل النماذج تخيلية. في نموذج الدورة فقط، روابط
+              الشراء الخارجية تخص دورتَي VoiceOver الفعليتين.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="work">
+              <img
+                src="assets/shots/voiceover-course.webp"
+                width="960"
+                height="645"
+                alt="صفحة هبوط لدورة صوتية"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <p class="category">01 / صفحات هبوط · نموذج تجريبي</p>
+                <h3>صفحة دورة VoiceOver</h3>
+                <p>
+                  تعريف مرتب بالدورة، ومحاورها وأسئلتها الشائعة. تصميم تجريبي
+                  يربط بدورتَي VoiceOver الحقيقيتين على Gumroad وUdemy.
+                </p>
+                <a href="samples/voiceover-course/index.html"
+                  >افتح نموذج صفحة الدورة <span aria-hidden="true">←</span></a
+                >
+              </div>
+            </article>
+            <article class="work">
+              <img
+                src="assets/shots/cosmetics-store.webp"
+                width="960"
+                height="645"
+                alt="واجهة متجر لمسة التجريبي"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <p class="category">02 / واجهات متاجر · نموذج تجريبي</p>
+                <h3>لمسة · متجر عناية افتراضي</h3>
+                <p>
+                  تصفية حسب الفئة وسلة تجريبية تعلن التحديثات لقارئ الشاشة، مع
+                  أسعار واضحة ودون دفع حقيقي.
+                </p>
+                <a href="samples/cosmetics-store/index.html"
+                  >افتح نموذج متجر لمسة <span aria-hidden="true">←</span></a
+                >
+              </div>
+            </article>
+            <article class="work">
+              <img
+                src="assets/shots/clinic.webp"
+                width="960"
+                height="645"
+                alt="موقع عيادة الشفاء التجريبي"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <p class="category">03 / مواقع خدمات · نموذج تجريبي</p>
+                <h3>الشفاء · عيادة افتراضية</h3>
+                <p>
+                  عرض الخدمات وساعات العمل ونموذج موعد يتحقق من المدخلات محليًا
+                  ويشرح الأخطاء؛ دون إرسال بيانات.
+                </p>
+                <a href="samples/clinic/index.html"
+                  >افتح نموذج العيادة <span aria-hidden="true">←</span></a
+                >
+              </div>
+            </article>
+            <article class="work">
+              <img
+                src="assets/shots/restaurant.webp"
+                width="960"
+                height="645"
+                alt="قائمة مطعم بيت الكرم التجريبي"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <p class="category">04 / قوائم رقمية · نموذج تجريبي</p>
+                <h3>بيت الكرم · مطعم افتراضي</h3>
+                <p>
+                  قائمة طعام نصية بأقسام يمكن تصفحها باللمس وبأسهم لوحة
+                  المفاتيح. لا طلبات أو حجوزات.
+                </p>
+                <a href="samples/restaurant/index.html"
+                  >افتح نموذج قائمة المطعم <span aria-hidden="true">←</span></a
+                >
+              </div>
+            </article>
+            <article class="work">
+              <img
+                src="assets/shots/serum-landing.webp"
+                width="960"
+                height="645"
+                alt="صفحة منتج صفاء التجريبي"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <p class="category">05 / صفحات منتجات · نموذج تجريبي</p>
+                <h3>صفاء · صفحة منتج افتراضي</h3>
+                <p>
+                  تسلسل من الفكرة إلى المزايا وطريقة الاستخدام والأسئلة الشائعة،
+                  دون آراء عملاء أو نتائج مختلقة.
+                </p>
+                <a href="samples/serum-landing/index.html"
+                  >افتح نموذج صفحة صفاء <span aria-hidden="true">←</span></a
+                >
+              </div>
+            </article>
+            <article class="work">
+              <img
+                src="assets/media/notebook-card.png"
+                width="960"
+                height="645"
+                alt="رسم أصلي لدفتر مِداد الافتراضي"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <p class="category">06 / كتابة تسويقية · نموذج تجريبي</p>
+                <h3>مِداد · وصف يشرح قيمة المنتج</h3>
+                <p>
+                  نموذج وصف لدفتر يومي، من عنوان الفائدة إلى المواصفات وطريقة
+                  الاستخدام، مع مثال قبل التحرير وبعده.
+                </p>
+                <a href="samples/product-copy/index.html"
+                  >اقرأ نموذج وصف المنتج <span aria-hidden="true">←</span></a
+                >
+              </div>
+            </article>
+            <article class="work wide">
+              <img
+                src="assets/media/ad-card.png"
+                width="960"
+                height="645"
+                alt="ملصق إعلان دفتر مِداد التجريبي"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <p class="category">07 / فيديو إعلاني · نموذج تجريبي</p>
+                <h3>مِداد · مساحة لفكرتك</h3>
+                <p>
+                  إعلان رأسي أصلي مدته 20 ثانية، برسوم متحركة ونص عربي، مع نص
+                  وصفي كامل. فيديو صامت تجريبي.
+                </p>
+                <a href="samples/short-ad/index.html"
+                  >شاهد الإعلان التجريبي <span aria-hidden="true">←</span></a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="section" id="about" aria-labelledby="about-h">
+          <span class="number">03 / نبذة عني</span>
+          <div class="about-grid">
+            <div>
+              <h2 id="about-h">أهتم بما يقرأه الزائر،<br />وكيف يصل إليه.</h2>
+              <p>
+                أنا هايس محمد عقيل العنزي، معلم سعودي للطلاب ذوي الإعاقة البصرية
+                منذ عام 2012. أستخدم قارئ الشاشة VoiceOver يوميًا وأجيد برايل؛
+                لذلك أهتم بوضوح المحتوى وترتيب القراءة وسهولة التنقل.
+              </p>
+              <p>
+                أبني نماذج صفحات عربية باستخدام HTML وCSS وJavaScript، وأعرض هنا
+                تجاربي في تصميم صفحات الهبوط وكتابة المحتوى الرقمي.
+              </p>
+              <p class="english" lang="en" dir="ltr">
+                I am Hayis Mohammed Aqeel Alanazi, a Saudi teacher of students
+                with visual impairments since 2012 and a daily VoiceOver user.
+                This portfolio presents seven demonstration projects. Content
+                services are being prepared; my audio and video VoiceOver
+                courses are available separately on Gumroad and Udemy.
+              </p>
+            </div>
+            <dl class="facts" id="skills">
+              <div>
+                <dt>المؤهل</dt>
+                <dd>بكالوريوس التاريخ، جامعة الملك سعود بالرياض</dd>
+              </div>
+              <div>
+                <dt>مجال العمل</dt>
+                <dd>تعليم الطلاب ذوي الإعاقة البصرية</dd>
+              </div>
+              <div>
+                <dt>اهتمامي في هذه النماذج</dt>
+                <dd>محتوى واضح وصفحات عربية سهلة الاستخدام</dd>
+              </div>
+              <div>
+                <dt>ما يمكنك استكشافه الآن</dt>
+                <dd>نماذج عملية ودورات لتعلّم VoiceOver</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+        <section class="section" id="courses" aria-labelledby="courses-h">
+          <div class="section-head">
+            <div>
+              <span class="number">04 / التعلّم</span>
+              <h2 id="courses-h">دورات VoiceOver والشهادة التدريبية</h2>
+            </div>
+            <p>
+              دورتان مستقلتان لتعلّم قارئ الشاشة على الآيفون. تفاصيل المحتوى
+              والسعر وشروط الشراء في منصة كل دورة.
+            </p>
+          </div>
+          <div class="courses">
+            <article class="panel course">
+              <p><span class="status available">متاحة الآن · Gumroad</span></p>
+              <h3>الدورة الصوتية لتعلّم VoiceOver</h3>
+              <p>
+                دورة صوتية متاحة على Gumroad. اطّلع على وصفها وتفاصيلها في صفحة
+                المنتج قبل الشراء.
+              </p>
+              <a
+                class="button"
+                href="https://hayismohammed.gumroad.com/l/oeuvzz"
+                >اشترِ الدورة الصوتية على Gumroad</a
+              >
+            </article>
+            <article class="panel course">
+              <p><span class="status available">متاحة الآن · Udemy</span></p>
+              <h3>الدورة المصوّرة لتعلّم VoiceOver</h3>
+              <p>
+                دورة مصوّرة مستقلة متاحة على يوديمي. اطّلع على المنهج والمعاينة
+                والسعر الحالي لدى المنصة.
+              </p>
+              <a class="button" href="https://www.udemy.com/course/voiceover-x/"
+                >اشترِ الدورة المصوّرة على يوديمي</a
+              >
+            </article>
+          </div>
+          <article class="panel certificate" id="certificate">
+            <div>
+              <span class="eyebrow">شهادة تدريبية</span>
+              <h3>تطوير تطبيقات الويب</h3>
+              <p lang="en" dir="ltr">Web Applications Development</p>
+            </div>
+            <dl>
+              <div>
+                <dt>الجهة</dt>
+                <dd>منصة دروب — صندوق تنمية الموارد البشرية (هدف)</dd>
+              </div>
+              <div>
+                <dt>المدة</dt>
+                <dd>ساعتان تدريبيتان</dd>
+              </div>
+              <div>
+                <dt>تاريخ الإصدار</dt>
+                <dd><time datetime="2026-11-06">6 نوفمبر 2026</time></dd>
+              </div>
+            </dl>
+          </article>
+        </section>
+        <section class="section" id="contact" aria-labelledby="contact-h">
+          <div class="contact">
+            <div>
+              <span class="eyebrow">05 / التواصل</span>
+              <h2 id="contact-h">لديك استفسار عن النماذج أو الدورات؟</h2>
+              <p>
+                يسعدني استقبال استفسارك عبر البريد. ولشراء الدورات، استخدم رابط
+                المنصة المناسب أعلاه.
+              </p>
+              <p>
+                خدمات صفحات الهبوط ووصف المنتجات والفيديو القصير قيد التجهيز.
+              </p>
+            </div>
+            <div id="links">
+              <h3>البريد الإلكتروني</h3>
+              <a href="mailto:hayismohammed@yahoo.com"
+                ><bdi>hayismohammed@yahoo.com</bdi></a
+              >
+              <h3>تابعني</h3>
+              <a href="https://x.com/hayismohammed"
+                >حساب هايس العنزي على منصة إكس</a
+              >
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
-  </section>
-
-  <section id="services" aria-labelledby="services-h">
-    <h2 id="services-h">خدمات قيد الإعداد</h2>
-    <p class="note">هذه ثلاث خدمات يجري إعدادها على منصة خمسات. لم تُعتمد ولم تُنشر، لذلك لا رابط لحساب خمسات ولا زر طلب. بعد النشر يمكن إضافة الرابط.</p>
-    <div class="services">
-      <article class="service">
-        <h3>تصميم صفحات الهبوط</h3>
-        <p>صفحة واحدة مرتبة تعرض المنتج أو الدورة أو الخدمة، وتجيب عن أسئلة الزائر، وتناسب شاشة الجوال. تفيد من يريد رابطًا واضحًا يرسله للناس بدل موقع كبير.</p>
-        <p class="status">قريبًا على خمسات</p>
-      </article>
-      <article class="service">
-        <h3>كتابة نصوص المتاجر ووصف المنتجات</h3>
-        <p>نص عربي مفهوم لصفحة المنتج: ماذا يقدّم، ولمن يناسب، وكيف يُستخدم. يفيد الزائر حين يقرر، ويفيد صاحب المتجر في صفحة أوضح.</p>
-        <p class="status">قريبًا على خمسات</p>
-      </article>
-      <article class="service">
-        <h3>فيديوهات إعلانية قصيرة للمنتجات</h3>
-        <p>مقطع من 15 إلى 30 ثانية، بتعليق صوتي سعودي، ونص عربي ظاهر على الصورة. يُبنى من صور المنتج التي يرسلها العميل، ويفيد في عرض المنتج بسرعة.</p>
-        <p class="status">قريبًا على خمسات</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="samples" aria-labelledby="samples-h">
-    <h2 id="samples-h">نماذج تجريبية</h2>
-    <p class="note">النماذج الخمسة أعمال تجريبية لعلامات افتراضية، وليست مشاريع نُفذت لعملاء. الأسماء والأسعار والحجوزات داخلها للعرض فقط، ولا يُشترى منها شيء ولا يُحجز موعد.</p>
-    <div class="works">
-      <article class="work">
-        <img src="assets/shots/voiceover-course.webp" width="960" height="645" alt="لقطة للجزء العلوي من صفحة هبوط تجريبية لدورة صوتية" loading="lazy" decoding="async">
-        <div class="wb">
-          <p class="tag">نموذج تجريبي</p>
-          <h3>صفحة هبوط لدورة صوتية</h3>
-          <p>نموذج لشكل صفحة التعريف. الدورة الصوتية نفسها متاحة على Gumroad، والنسخة المصوّرة متاحة الآن على يوديمي.</p>
-          <a class="btn" href="samples/voiceover-course/index.html">افتح نموذج صفحة الدورة</a>
-        </div>
-      </article>
-      <article class="work">
-        <img src="assets/shots/cosmetics-store.webp" width="960" height="645" alt="لقطة للجزء العلوي من متجر تجميلي تجريبي" loading="lazy" decoding="async">
-        <div class="wb">
-          <p class="tag">نموذج تجريبي</p>
-          <h3>واجهة متجر عناية</h3>
-          <p>علامة افتراضية اسمها لمسة. تعرض تصفية المنتجات وسلة محلية تعلن الإضافة لقارئ الشاشة. لا دفع حقيقي.</p>
-          <a class="btn" href="samples/cosmetics-store/index.html">افتح نموذج المتجر</a>
-        </div>
-      </article>
-      <article class="work">
-        <img src="assets/shots/clinic.webp" width="960" height="645" alt="لقطة للجزء العلوي من موقع عيادة تجريبي" loading="lazy" decoding="async">
-        <div class="wb">
-          <p class="tag">نموذج تجريبي</p>
-          <h3>موقع عيادة مع نموذج موعد</h3>
-          <p>عيادة افتراضية. النموذج يتحقق من الاسم ورقم الجوال والتاريخ ويعرض الخطأ، ثم يوضح أن البيانات لم تُرسل.</p>
-          <a class="btn" href="samples/clinic/index.html">افتح نموذج العيادة</a>
-        </div>
-      </article>
-      <article class="work">
-        <img src="assets/shots/restaurant.webp" width="960" height="645" alt="لقطة للجزء العلوي من قائمة طعام تجريبية" loading="lazy" decoding="async">
-        <div class="wb">
-          <p class="tag">نموذج تجريبي</p>
-          <h3>قائمة طعام رقمية</h3>
-          <p>مطعم افتراضي. أقسام القائمة تبويبات تعمل باللمس وبأسهم لوحة المفاتيح، والنص يُقرأ دون الاعتماد على صورة.</p>
-          <a class="btn" href="samples/restaurant/index.html">افتح نموذج المطعم</a>
-        </div>
-      </article>
-      <article class="work">
-        <img src="assets/shots/serum-landing.webp" width="960" height="645" alt="لقطة للجزء العلوي من صفحة هبوط تجريبية لسيروم" loading="lazy" decoding="async">
-        <div class="wb">
-          <p class="tag">نموذج تجريبي</p>
-          <h3>صفحة هبوط لمنتج</h3>
-          <p>علامة افتراضية اسمها صفاء. صفحة منتج: مشكلة، مزايا، طريقة استخدام، وسعر ظاهر على أنه افتراضي. لا زر طلب ولا آراء عملاء مختلقة.</p>
-          <a class="btn" href="samples/serum-landing/index.html">افتح نموذج صفحة المنتج</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="skills" aria-labelledby="skills-h">
-    <h2 id="skills-h">ما يظهر في هذا المعرض</h2>
-    <ul class="skills">
-      <li>تدريس الطلاب ذوي الإعاقة البصرية منذ 2012</li>
-      <li>برايل</li>
-      <li>استخدام VoiceOver يوميًا</li>
-      <li lang="en" dir="ltr">HTML</li>
-      <li lang="en" dir="ltr">CSS</li>
-      <li lang="en" dir="ltr">JavaScript</li>
-      <li>صفحات عربية من اليمين إلى اليسار</li>
-      <li>صفحات تناسب الجوال</li>
-      <li>مراجعة النماذج بلوحة المفاتيح</li>
-    </ul>
-  </section>
-
-  <section id="certificate" aria-labelledby="cert-h">
-    <h2 id="cert-h">شهادة</h2>
-    <div class="box">
-      <p><strong>تطوير تطبيقات الويب</strong> <span lang="en" dir="ltr">(Web Applications Development)</span></p>
-      <p>منصة دروب، صندوق تنمية الموارد البشرية (هدف). ساعتان تدريبيتان. تاريخ الإصدار: 6 نوفمبر 2026.</p>
-    </div>
-  </section>
-
-  <section id="links" aria-labelledby="links-h">
-    <h2 id="links-h">روابطي</h2>
-    <div class="box">
-      <p><a class="btn" href="https://www.udemy.com/course/voiceover-x/" target="_blank" rel="noopener">دورة VoiceOver للمكفوفين على يوديمي</a></p>
-      <p><a class="btn" href="https://x.com/hayismohammed" target="_blank" rel="noopener">حسابي في منصة إكس</a></p>
-    </div>
-  </section>
-
-  <section id="contact" aria-labelledby="contact-h">
-    <h2 id="contact-h">التواصل</h2>
-    <div class="box contact">
-      <p>البريد الإلكتروني ظاهر للعموم في هذه الصفحة مؤقتًا، إلى أن تُعتمد وسيلة لا تعرض العنوان نفسه:</p>
-      <p><a href="mailto:hayismohammed@yahoo.com" lang="en" dir="ltr">hayismohammed@yahoo.com</a></p>
-      <p>رقم الجوال وواتساب غير معروضين هنا. لا نموذج حجز في هذه الصفحة، حتى لا تُجمع بيانات بلا مسار واضح. بعد اعتماد الخدمات على خمسات يمكن استقبال الطلب من هناك دون نشر الجوال أو البريد، ويُضاف الرابط عندها فقط.</p>
-    </div>
-  </section>
-</div>
-</main>
-<footer>
-  <p>© 2026 هايس محمد عقيل العنزي. النماذج تجريبية، والخدمات على خمسات غير منشورة بعد.</p>
-</footer>
-</body>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 هايس محمد عقيل العنزي · النماذج للعرض التجريبي.</p>
+        <a href="#hero-title">العودة إلى بداية المحتوى</a>
+      </div>
+    </footer>
+  </body>
 </html>
