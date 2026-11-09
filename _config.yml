@@ -1,0 +1,8 @@
+# Keep the public Pages build focused on visitor content; source history stays in GitHub.
+exclude:
+  - docs
+  - tests
+  - scripts
+  - README.md
+  - dist
+  - node_modules

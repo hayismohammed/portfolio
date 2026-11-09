@@ -12,7 +12,7 @@ class Page(HTMLParser):
   a=dict(attrs);self.tags.append((tag,a))
   if 'id' in a:self.ids.append(a['id'])
 def check():
- pages=[ROOT/'index.html', ROOT/'guides/index.html']+sorted((ROOT/'samples').glob('*/index.html'))
+ pages=[ROOT/'index.html']+sorted((ROOT/'guides').glob('**/index.html'))+sorted((ROOT/'samples').glob('*/index.html'))
  parsed={p:Page(p.read_text()) for p in pages};errors=[];link_count=0
  for path,doc in parsed.items():
   rel=str(path.relative_to(ROOT));tags=doc.tags
