@@ -17,6 +17,7 @@
 | --- | --- |
 | الرئيسية | `index.html` |
 | مكتبة الأدلة المجانية | `guides/index.html` |
+| تعريف دليل Hermex وHermes | `guides/hermex-hermes-windows/index.html` |
 | عرض دورات VoiceOver | `samples/voiceover-course/index.html` |
 | متجر لمسة التجريبي | `samples/cosmetics-store/index.html` |
 | عيادة الشفاء التجريبية | `samples/clinic/index.html` |
