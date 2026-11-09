@@ -1,0 +1,76 @@
+{
+  "environment": "Cloud Chrome via local sites-preview; no physical iPhone/NVDA test",
+  "widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "pages": [
+    {
+      "path": "/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": [
+        "decorative-arrow contrast"
+      ]
+    },
+    {
+      "path": "/guides/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": []
+    },
+    {
+      "path": "/samples/voiceover-course/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": []
+    },
+    {
+      "path": "/samples/cosmetics-store/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": []
+    },
+    {
+      "path": "/samples/clinic/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": []
+    },
+    {
+      "path": "/samples/restaurant/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": []
+    },
+    {
+      "path": "/samples/serum-landing/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": [
+        "silent video captions review; ffprobe confirms video-only"
+      ]
+    },
+    {
+      "path": "/samples/product-copy/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": []
+    },
+    {
+      "path": "/samples/short-ad/index.html",
+      "axe_violations": 0,
+      "horizontal_overflow": false,
+      "manual_items": []
+    }
+  ],
+  "interaction_checks": 47,
+  "interaction_failures": 0,
+  "guide_download_verified": true,
+  "guide_docx_bytes": 55649,
+  "guide_rendered_pages": 15,
+  "portrait_original_bytes_preserved": true,
+  "published": false
+}

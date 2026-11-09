@@ -115,3 +115,10 @@ video {
     border: 2px solid CanvasText;
   }
 }
+/* Keep one ownership statement after the footer links on every demo. */
+footer .site-copyright {
+  flex-basis: 100%;
+  display: block;
+  margin-block: 0.8rem 0;
+  text-align: start;
+}
