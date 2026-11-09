@@ -713,3 +713,131 @@ bdi,
 .work img {
   object-fit: cover;
 }
+
+/* Portfolio navigation, portrait and grouped work. Shared colors stay intact. */
+[hidden] {
+  display: none !important;
+}
+.menu-toggle {
+  min-height: 44px;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  color: var(--green);
+  background: var(--paper);
+  font-weight: 750;
+}
+.portrait {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 640 / 641;
+  height: auto;
+  object-fit: cover;
+  border-radius: 24px;
+  justify-self: end;
+  border: 3px solid #a6bcc2;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+}
+.work-group + .work-group {
+  margin-top: 2.5rem;
+}
+.work-group > h3 {
+  margin-block: 0 1.1rem;
+  font-size: 1.4rem;
+}
+.work h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.work-group .grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.work-group .single-work {
+  grid-template-columns: 1fr;
+}
+.single-work .work {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+}
+.single-work .work img {
+  height: 100%;
+  min-height: 230px;
+  object-fit: cover;
+  border-bottom: 0;
+}
+.about-intro,
+.about-role {
+  max-width: 52rem;
+}
+.about-role {
+  color: var(--muted);
+  font-size: 1rem;
+}
+.email-address {
+  font-size: 1.05rem;
+}
+.contact .actions {
+  margin-top: 1rem;
+}
+.contact .button.gold {
+  color: var(--ink);
+}
+.copy-status {
+  min-height: 1.9em;
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+.footer .site-copyright {
+  flex-basis: 100%;
+  margin: 0.3rem 0 0;
+  text-align: start;
+}
+.guide-entry {
+  margin-top: 2rem;
+  max-width: 54rem;
+}
+.file-size {
+  font-weight: 500;
+  margin-inline-start: 0.4em;
+}
+@media (max-width: 760px) {
+  .topbar .container {
+    justify-content: space-between;
+  }
+  .topbar #primary-nav {
+    width: 100%;
+  }
+  #primary-nav ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-block: 0.5rem;
+  }
+  #primary-nav a {
+    display: flex;
+    padding-inline: 0.5rem;
+  }
+}
+@media (max-width: 640px) {
+  .portrait {
+    max-width: 230px;
+    justify-self: center;
+  }
+  .work-group .grid,
+  .single-work .work {
+    grid-template-columns: 1fr;
+  }
+  .single-work .work img {
+    min-height: 0;
+    height: auto;
+  }
+  .guide-entry .button {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}

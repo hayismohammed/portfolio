@@ -12,7 +12,7 @@ class Page(HTMLParser):
   a=dict(attrs);self.tags.append((tag,a))
   if 'id' in a:self.ids.append(a['id'])
 def check():
- pages=[ROOT/'index.html']+sorted((ROOT/'samples').glob('*/index.html'))
+ pages=[ROOT/'index.html', ROOT/'guides/index.html']+sorted((ROOT/'samples').glob('*/index.html'))
  parsed={p:Page(p.read_text()) for p in pages};errors=[];link_count=0
  for path,doc in parsed.items():
   rel=str(path.relative_to(ROOT));tags=doc.tags
@@ -50,7 +50,7 @@ def check():
   for url in ['https://hayismohammed.gumroad.com/l/oeuvzz','https://www.udemy.com/course/voiceover-x/']:
    if url not in path.read_text():errors.append(f'{path}: missing original course link {url}')
  xml=ET.parse(ROOT/'sitemap.xml');urls=xml.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url')
- if len(urls)!=8:errors.append('sitemap must contain eight pages')
+ if len(urls)!=len(pages):errors.append('sitemap count must match visitor pages')
  # Ensure predecessor image/media assets remain byte-for-byte intact.
  result=subprocess.run(['git','diff','--name-only','326eade21fcc50437cd1d9ed707e177e3e9e41df','--','assets/shots','samples/serum-landing/assets'],cwd=ROOT,capture_output=True,text=True)
  if result.stdout.strip():errors.append('Predecessor media changed: '+result.stdout)

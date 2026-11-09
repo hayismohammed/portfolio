@@ -54,6 +54,7 @@
   <script>
     const paths = [
       "/index.html",
+      "/guides/index.html",
       "/samples/voiceover-course/index.html",
       "/samples/cosmetics-store/index.html",
       "/samples/clinic/index.html",
@@ -82,6 +83,14 @@
     async function load(path, width) {
       frame.width = width;
       const url = new URL(".." + path, sourceUrl);
+      if (location.hostname !== "htmlpreview.github.io") {
+        await new Promise((resolve, reject) => {
+          frame.onload = resolve;
+          frame.onerror = reject;
+          frame.src = url.href;
+        });
+        return;
+      }
       const response = await fetch(url);
       if (!response.ok) throw new Error("Cannot load " + path);
       const doc = new DOMParser().parseFromString(
