@@ -74,7 +74,7 @@
         nav.querySelector('a[href="#courses"]').click();
         check("Section link closes menu and moves focus", nav.hidden && home.activeElement.id === 'courses', home.activeElement.id);
         check("Six business examples remain", home.querySelectorAll('#samples article.work').length === 6, home.querySelectorAll('#samples article.work').length);
-        check("Email is the only contact destination", home.querySelectorAll('#contact a').length === 1 && home.querySelector('#contact a').getAttribute('href') === 'mailto:hayismohammed@yahoo.com', home.querySelector('#contact a').href);
+        check("Email is the only contact destination", home.querySelectorAll('#contact a').length === 1 && home.querySelector('#contact a').getAttribute('href') === 'mailto:hayis.mohammed@gmail.com', home.querySelector('#contact a').href);
         check("No personal X or phone link", !home.querySelector('a[href*="x.com/"], a[href^="tel:"]'), true);
         check("Portrait has an accessible name", home.querySelector('.portrait').alt === 'هايس العنزي', home.querySelector('.portrait').alt);
         check("One short copyright", home.querySelectorAll('.site-copyright').length === 1 && home.querySelector('.site-copyright').textContent.trim() === '© 2026 Hayis Alanazi. All rights reserved.', home.querySelector('.site-copyright').textContent);

@@ -45,7 +45,7 @@
   if (copy && status) {
     copy.hidden = false;
     copy.addEventListener('click', async () => {
-      const address = 'hayismohammed@yahoo.com';
+      const address = 'hayis.mohammed@gmail.com';
       try {
         if (navigator.clipboard && window.isSecureContext) {
           await navigator.clipboard.writeText(address);
