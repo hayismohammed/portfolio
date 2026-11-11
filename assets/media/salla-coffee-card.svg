@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="645" viewBox="0 0 960 645"><rect width="960" height="645" fill="#f4efe6"/><svg x="270" y="65" width="420" height="510" viewBox="0 0 280 340">
+  <defs>
+    <linearGradient id="bagBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6d3A22"/>
+      <stop offset="55%" stop-color="#4f2918"/>
+      <stop offset="100%" stop-color="#3A1d12"/>
+    </linearGradient>
+    <linearGradient id="bagFold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8A4d2e"/>
+      <stop offset="100%" stop-color="#6A3820"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="140" cy="318" rx="78" ry="10" fill="rgba(42,31,24,0.18)"/>
+  <path d="M58 78 L78 300 Q140 328 202 300 L222 78 Q140 58 58 78 Z" fill="url(#bagBody)"/>
+  <path d="M62 86 L80 96 Q140 78 200 96 L218 86 Q140 62 62 86 Z" fill="url(#bagFold)"/>
+  <rect x="78" y="128" width="124" height="132" rx="8" fill="#f6ead4"/>
+  <rect x="84" y="134" width="112" height="120" rx="6" fill="#fbf6ea" stroke="#c6A46b" stroke-width="1.2"/>
+  <text x="140" y="168" text-anchor="middle" fill="#4A2c1A" font-size="15" font-family="El Messiri, sans-serif" font-weight="700">صليان الثمام</text>
+  <text x="140" y="196" text-anchor="middle" fill="#9A4f28" font-size="11" font-family="Noto Sans Arabic, sans-serif">إثيوبيا المغسول</text>
+  <text x="140" y="218" text-anchor="middle" fill="#5c4e42" font-size="11" font-family="Noto Sans Arabic, sans-serif">تحميص فاتح</text>
+  <text x="140" y="238" text-anchor="middle" fill="#5c4e42" font-size="11" font-family="Noto Sans Arabic, sans-serif">٢٥٠ جم · حبوب كاملة</text>
+</svg></svg>

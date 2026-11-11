@@ -73,7 +73,7 @@
         menu.click();
         nav.querySelector('a[href="#courses"]').click();
         check("Section link closes menu and moves focus", nav.hidden && home.activeElement.id === 'courses', home.activeElement.id);
-        check("Six business examples remain", home.querySelectorAll('#samples article.work').length === 6, home.querySelectorAll('#samples article.work').length);
+        check("Seven business examples remain", home.querySelectorAll('#samples article.work').length === 7, home.querySelectorAll('#samples article.work').length);
         check("Email is the only contact destination", home.querySelectorAll('#contact a').length === 1 && home.querySelector('#contact a').getAttribute('href') === 'mailto:hayis.mohammed@gmail.com', home.querySelector('#contact a').href);
         check("No personal X or phone link", !home.querySelector('a[href*="x.com/"], a[href^="tel:"]'), true);
         check("Portrait has an accessible name", home.querySelector('.portrait').alt === 'هايس العنزي', home.querySelector('.portrait').alt);
@@ -219,185 +219,415 @@
           localStorage.getItem(storageKey) === null &&
             d.getElementById("cart-total").textContent === "0" &&
             d.activeElement.id === "cart",
-          d.getElementById("cart-total").textContent,
-        );
-        localStorage.setItem(
-          storageKey,
-          JSON.stringify([
-            { id: "cleanser", quantity: 2 },
-            { id: "oud", quantity: -1 },
-            { id: "unknown", quantity: 5 },
-            { id: "lip", quantity: 1.5 },
-          ]),
-        );
-        d = await load("/samples/cosmetics-store/index.html?invalid-entries");
-        check(
-          "Saved quantities validated",
-          d.getElementById("cart-total").textContent === "90" &&
-            d.getElementById("summary-count").textContent === "2",
-          d.getElementById("cart-total").textContent,
-        );
-        localStorage.setItem(storageKey, "invalid json");
-        d = await load("/samples/cosmetics-store/index.html?corrupt-cart");
-        check(
-          "Corrupt saved cart does not break page",
-          d.getElementById("cart-total").textContent === "0" &&
-            d.getElementById("cart-storage-note").textContent.includes("تعذر"),
-          d.getElementById("cart-storage-note").textContent,
-        );
-        d.querySelector('[data-add="cleanser"]').click();
-        check(
-          "Cart recovers after corrupt storage",
-          d.getElementById("cart-total").textContent === "45" &&
-            JSON.parse(localStorage.getItem(storageKey))[0].quantity === 1,
-          localStorage.getItem(storageKey),
-        );
-        document.getElementById("progress").textContent = "Testing clinic";
-        d = await load("/samples/clinic/index.html");
-        const submit = () => d.querySelector('button[type="submit"]').click();
-        submit();
-        check(
-          "Empty form focuses name",
-          d.activeElement.id === "nm",
-          d.activeElement.id,
-        );
-        check(
-          "Required fields report errors",
-          d.querySelectorAll('[aria-invalid="true"]').length === 4,
-          d.querySelectorAll('[aria-invalid="true"]').length,
-        );
-        d.getElementById("nm").value = "تجربة اختبار";
-        d.getElementById("ph").value = "٠٥٠٠٠٠٠٠٠٠";
-        d.getElementById("dt").value = nextDate(0);
-        d.getElementById("dt").dispatchEvent(
-          new frame.contentWindow.Event("change", { bubbles: true }),
-        );
-        check(
-          "Weekday offers all three periods",
-          d.getElementById("period").options.length === 4 &&
-            d.getElementById("period").textContent.includes("12 إلى 4"),
-          d.getElementById("period").textContent,
-        );
-        d.getElementById("period").value = "morning";
-        submit();
-        check(
-          "Arabic numerals accepted with local success",
-          d
-            .getElementById("appointment-status")
-            .textContent.includes("لم يُرسل شيء"),
-          d.getElementById("appointment-status").textContent,
-        );
-        d.getElementById("period").value = "afternoon";
-        submit();
-        check(
-          "Weekday afternoon accepted",
-          d
-            .getElementById("appointment-status")
-            .textContent.includes("12 إلى 4"),
-          d.getElementById("appointment-status").textContent,
-        );
-        d.getElementById("dt").value = nextDate(5);
-        d.getElementById("dt").dispatchEvent(
-          new frame.contentWindow.Event("change", { bubbles: true }),
-        );
-        check(
-          "Friday has no selectable periods",
-          d.getElementById("period").disabled &&
-            d.getElementById("period").options.length === 1,
-          d.getElementById("period").textContent,
-        );
-        submit();
-        check(
-          "Friday is rejected",
-          d.getElementById("dt").getAttribute("aria-invalid") === "true",
-          d.getElementById("date-error").textContent,
-        );
-        d.getElementById("dt").value = nextDate(6);
-        d.getElementById("dt").dispatchEvent(
-          new frame.contentWindow.Event("change", { bubbles: true }),
-        );
-        check(
-          "Saturday offers 4 to 10 only",
-          d.getElementById("period").options.length === 2 &&
-            d.getElementById("period").textContent.includes("4 إلى 10"),
-          d.getElementById("period").textContent,
-        );
-        d.getElementById("period").value = "morning";
-        submit();
-        check(
-          "Saturday morning is rejected",
-          d.getElementById("period").getAttribute("aria-invalid") === "true",
-          d.getElementById("period-error").textContent,
-        );
-        d.getElementById("period").value = "evening";
-        submit();
-        check(
-          "Saturday evening accepted",
-          d.querySelectorAll('[aria-invalid="true"]').length === 0,
-          d.getElementById("appointment-status").textContent,
-        );
-        d.getElementById("dt").value = "2020-01-01";
-        d.getElementById("dt").dispatchEvent(
-          new frame.contentWindow.Event("change", { bubbles: true }),
-        );
-        submit();
-        check(
-          "Past dates rejected and no periods offered",
-          d.getElementById("dt").getAttribute("aria-invalid") === "true" &&
-            d.getElementById("period").disabled,
-          d.getElementById("date-error").textContent,
-        );
-        document.getElementById("progress").textContent = "Testing restaurant";
-        d = await load("/samples/restaurant/index.html");
-        check(
-          "Initial menu has three dishes",
-          d.querySelectorAll("#menu-panel article").length === 3,
-          d.querySelectorAll("#menu-panel article").length,
-        );
-        d.getElementById("menu-tab-3").click();
-        check(
-          "Beverages tab has two items",
-          d.querySelectorAll("#menu-panel article").length === 2 &&
-            d.getElementById("menu-panel").textContent.includes("قهوة سعودية"),
-          d.getElementById("menu-panel").textContent,
-        );
-        d.getElementById("menu-tab-3").dispatchEvent(
-          new frame.contentWindow.KeyboardEvent("keydown", {
-            key: "ArrowLeft",
-            bubbles: true,
-          }),
-        );
-        check(
-          "RTL left arrow wraps to first tab and focuses it",
-          d.activeElement.id === "menu-tab-0" &&
-            d.activeElement.getAttribute("aria-selected") === "true",
-          d.activeElement.id,
-        );
-        d.activeElement.dispatchEvent(
-          new frame.contentWindow.KeyboardEvent("keydown", {
-            key: "End",
-            bubbles: true,
-          }),
-        );
-        check(
-          "End key selects final tab",
-          d.activeElement.id === "menu-tab-3",
-          d.activeElement.id,
-        );
-        document.getElementById("progress").textContent =
-          "DONE — " + results.length + " checks passed";
-      } catch (error) {
-        document.getElementById("progress").textContent =
-          "FAILED — " + error.message;
-      }
-      if (originalCart === null) localStorage.removeItem(storageKey);
-      else localStorage.setItem(storageKey, originalCart);
-      document.getElementById("result").textContent = JSON.stringify(
-        results,
-        null,
-        2,
-      );
-      document.getElementById("run").disabled = false;
-    };
-  </script>
+      …3940 tokens truncated…der.top {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .top-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0 10px;
+    }
+    .brand {
+      font-family: "El Messiri", "Noto Naskh Arabic", "Segoe UI", Tahoma, sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--ink);
+      text-decoration: none;
+      line-height: 1.25;
+    }
+    .brand small {
+      display: block;
+      font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .tools {
+      display: flex;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .tool {
+      border: 1px solid var(--line);
+      background: var(--cream);
+      border-radius: 999px;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+    nav.links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      padding: 0 0 12px;
+    }
+    nav.links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .crumb {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 16px 0 0;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      padding: 12px 0 28px;
+    }
+    .bag-stage {
+      background: linear-gradient(180deg, #f7ecd8 0%, #ead9bd 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .bag-art { width: min(260px, 70%); height: auto; display: block; }
+    .kicker {
+      color: var(--copper);
+      font-weight: 700;
+      font-size: 12px;
+      margin: 0 0 6px;
+    }
+    h1, h2, h3 {
+      font-family: "El Messiri", "Noto Naskh Arabic", "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.35;
+      margin: 0 0 10px;
+    }
+    h1 { font-size: 30px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 20px; }
+    p { margin: 0 0 12px; color: var(--muted); }
+    .price {
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 18px;
+      margin: 16px 0 12px;
+    }
+    .buy-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .qty, .btn, .btn-ghost {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+    }
+    .qty {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--muted);
+      padding: 10px 14px;
+    }
+    .btn, .btn-ghost {
+      display: inline-block;
+      padding: 11px 20px;
+      text-decoration: none;
+      border: 0;
+      cursor: not-allowed;
+    }
+    .btn { background: var(--copper); color: #fff7ed; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--espresso);
+      border: 1px solid var(--gold);
+    }
+    .disabled-note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+    .trust {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .trust span {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 12px;
+    }
+    .blocks, .products, .pages {
+      display: grid;
+      gap: 14px;
+      padding-bottom: 36px;
+    }
+    .block, .page, .product-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+    }
+    .section-title { padding: 6px 0 12px; }
+    .section-title p { margin: 0; }
+    .mini-bag {
+      width: 54px;
+      height: 64px;
+      border-radius: 8px 8px 12px 12px;
+      background: linear-gradient(180deg, #7A4328, #4A2c1A);
+      color: #f8e7c5;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+    .meta { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .specs { margin: 0 0 12px; display: grid; gap: 6px; }
+    .specs div { display: grid; grid-template-columns: 7.2rem 1fr; gap: 8px; border-bottom: 1px dashed var(--line); padding: 4px 0; }
+    .specs dt { font-weight: 700; color: var(--ink); font-size: 13px; }
+    .specs dd { margin: 0; font-size: 13px; color: var(--muted); }
+    .channels { display: grid; gap: 8px; margin: 12px 0; }
+    .channel { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--cream); }
+    .channel strong { display: block; color: var(--ink); font-size: 14px; }
+    .channel span { font-size: 13px; color: var(--muted); }
+    .faq-item { border-bottom: 1px solid var(--line); padding: 6px 0; }
+    .faq-item:last-child { border-bottom: 0; }
+    summary { cursor: pointer; font-weight: 700; color: var(--ink); padding: 6px 0; }
+    .fake-form { display: grid; gap: 10px; margin-top: 12px; }
+    .fake-form label { font-size: 13px; font-weight: 700; color: var(--ink); display: grid; gap: 6px; }
+    .form-note { font-size: 13px; color: var(--muted); margin: 0; }
+    .fake-form input, .fake-form textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      background: var(--cream);
+      color: var(--muted);
+    }
+    .sources { font-size: 13px; padding-inline-start: 18px; }
+    footer {
+      background: var(--espresso);
+      color: #f3eee4;
+      padding: 28px 0;
+      font-size: 13px;
+    }
+    footer a { color: var(--gold); }
+    footer .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-bottom: 12px;
+    }
+    footer .foot-links a { text-decoration: none; font-weight: 700; }
+    #store-pages, #about, #faq, #contact, #privacy, #returns, #intro, #landing-rest, #products {
+      scroll-margin-top: 58px;
+    }
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: 0.9fr 1.1fr; align-items: center; gap: 40px; }
+      .hero .copy { order: 1; }
+      .hero .bag-stage { order: 2; }
+      .blocks { grid-template-columns: 1fr 1fr; }
+      .blocks .block:last-child { grid-column: 1 / -1; }
+      .products { grid-template-columns: repeat(3, 1fr); }
+      h1 { font-size: 38px; }
+      body { font-size: 17px; }
+      .trust { grid-template-columns: 1fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="sample-banner">متجر نموذجي لأعمال هايس العنزي؛ الأسعار توضيحية والسياسات مسودات.</div>
+  <header class="top">
+    <div class="wrap">
+      <div class="top-inner">
+        <a class="brand" href="#intro">محمصة صليان الثمام<small>بُن مختص</small></a>
+        <div class="tools" aria-hidden="true">
+          <span class="tool">بحث</span>
+          <span class="tool">حساب</span>
+          <span class="tool">السلة ٠</span>
+        </div>
+      </div>
+      <nav class="links" aria-label="صفحات المتجر">
+        <a href="#about">من نحن</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#contact">تواصل معنا</a>
+        <a href="#privacy">سياسة الخصوصية</a>
+        <a href="#returns">الاستبدال والاسترجاع</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap">
+      <p class="crumb">الرئيسية / البُن المختص / إثيوبيا المغسول</p>
+      <section class="hero" id="intro">
+        <div class="bag-stage"><svg class="bag-art" viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="bagBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6d3A22"/>
+      <stop offset="55%" stop-color="#4f2918"/>
+      <stop offset="100%" stop-color="#3A1d12"/>
+    </linearGradient>
+    <linearGradient id="bagFold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8A4d2e"/>
+      <stop offset="100%" stop-color="#6A3820"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="140" cy="318" rx="78" ry="10" fill="rgba(42,31,24,0.18)"/>
+  <path d="M58 78 L78 300 Q140 328 202 300 L222 78 Q140 58 58 78 Z" fill="url(#bagBody)"/>
+  <path d="M62 86 L80 96 Q140 78 200 96 L218 86 Q140 62 62 86 Z" fill="url(#bagFold)"/>
+  <rect x="78" y="128" width="124" height="132" rx="8" fill="#f6ead4"/>
+  <rect x="84" y="134" width="112" height="120" rx="6" fill="#fbf6ea" stroke="#c6A46b" stroke-width="1.2"/>
+  <text x="140" y="168" text-anchor="middle" fill="#4A2c1A" font-size="15" font-family="El Messiri, sans-serif" font-weight="700">صليان الثمام</text>
+  <text x="140" y="196" text-anchor="middle" fill="#9A4f28" font-size="11" font-family="Noto Sans Arabic, sans-serif">إثيوبيا المغسول</text>
+  <text x="140" y="218" text-anchor="middle" fill="#5c4e42" font-size="11" font-family="Noto Sans Arabic, sans-serif">تحميص فاتح</text>
+  <text x="140" y="238" text-anchor="middle" fill="#5c4e42" font-size="11" font-family="Noto Sans Arabic, sans-serif">٢٥٠ جم · حبوب كاملة</text>
+</svg></div>
+        <div class="copy">
+          <p class="kicker">البُن المختص</p>
+          <h1>إثيوبيا المغسول — تحميص فاتح</h1>
+          <p>إثيوبيا المغسول بتحميص فاتح يناسب فنجان الترشيح. عبوة ٢٥٠ جم من الحبوب الكاملة، مع بطاقة للمحصول ووصف للنكهة.</p>
+          <p class="price">٢٥٠ جم · ٧٢ ر.س</p>
+          <div class="buy-row">
+            <span class="qty">الكمية: ١</span>
+            <button class="btn" type="button" disabled>أضف إلى السلة</button>
+            <a class="btn-ghost" href="#about">صفحات المتجر</a>
+          </div>
+          
+          <div class="trust">
+            <span>سياسة الاستبدال والاسترجاع</span>
+            <span>تاريخ التحميص على الكيس</span>
+            <span>الأصل والمعالجة والتحميص في البطاقة</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="blocks" id="landing-rest">
+        <section class="block" id="flavor">
+  <p class="kicker">إيحاءات النكهة</p>
+  <h2>إيحاءات النكهة</h2>
+  <p>زهر خفيف، وحموضة مشرقة، وحلاوة تشبه الفاكهة ذات النواة، مع ختام نظيف. تتضح صورة الكوب قبل اختيار طريقة التحضير، وقد تختلف النتيجة بحسب التحضير والماء.</p>
+</section>
+<section class="block" id="brew">
+  <p class="kicker">طريقة مقترحة</p>
+  <h2>التحضير ودرجة الطحن</h2>
+  <p>يُقترح الترشيح اليدوي أو التقطير، بطحن متوسط ناعم، وماء عند نحو اثنتين وتسعين درجة مئوية. نسبة بداية تقديرية: خمسة عشر غرامًا من البُن إلى مئتين وخمسين غرامًا من الماء. يمكن اختيار طحن الحبوب عند الطلب إن أُتيح. وهذه نقطة بداية تقديرية، لا ضمانًا للنتيجة.</p>
+</section>
+<section class="block" id="specs">
+  <p class="kicker">بيانات الكيس</p>
+  <h2>بطاقة المحصول</h2>
+  <p>الأصل: إثيوبيا. المعالجة: غسل. التحميص: فاتح. المحتوى: حبوب كاملة وزنها مئتان وخمسون غرامًا. يُذكر تاريخ التحميص أو نطاقه على الكيس.</p>
+</section>
+<section class="block" id="before">
+  <p class="kicker">بعد الطلب</p>
+  <h2>التجهيز والاستلام</h2>
+  <p>يُجهَّز الطلب بعد تأكيده، ويختلف التوصيل بحسب المدينة وقد يتأثر بالمواسم. يُرجى كتابة العنوان بدقة ومتابعة الشحنة. راجع سياسة الاسترجاع عند التلف أو الخطأ.</p>
+</section>
+      </div>
+
+      <div class="section-title" id="products">
+        <h2>البُن المختص</h2>
+        <p>ثلاثة أكياس من البُن المختص.</p>
+      </div>
+      <div class="products"><article class="product-card" id="product-ethiopia">
+  <div class="mini-bag" aria-hidden="true"><span>٢٥٠ جم</span></div>
+  <h3>إثيوبيا المغسول — تحميص فاتح</h3>
+  <p class="meta">٧٢ ر.س</p>
+  <dl class="specs"><div><dt>الأصل</dt><dd>إثيوبيا</dd></div><div><dt>المعالجة</dt><dd>غسل</dd></div><div><dt>التحميص</dt><dd>فاتح</dd></div><div><dt>الإيحاءات</dt><dd>زهر خفيف، حموضة مشرقة، فاكهة ذات نواة</dd></div><div><dt>التحضير</dt><dd>ترشيح يدوي أو تقطير</dd></div><div><dt>الوزن</dt><dd>٢٥٠ جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
+  <p>محصول بتحميص فاتح يناسب فنجان الترشيح، ببطاقة واضحة للأصل والمعالجة والتحميص والوزن، مع إيحاءات النكهة وإرشاد التحضير.</p>
+</article>
+<article class="product-card" id="product-colombia">
+  <div class="mini-bag" aria-hidden="true"><span>٢٥٠ جم</span></div>
+  <h3>كولومبيا معالجة عسلية — تحميص متوسط</h3>
+  <p class="meta">٦٨ ر.س</p>
+  <dl class="specs"><div><dt>الأصل</dt><dd>كولومبيا</dd></div><div><dt>المعالجة</dt><dd>معالجة عسلية</dd></div><div><dt>التحميص</dt><dd>متوسط</dd></div><div><dt>الإيحاءات</dt><dd>حلاوة هادئة، كراميل خفيف، جسم متوازن</dd></div><div><dt>التحضير</dt><dd>إسبريسو، أو إبريق مكبس</dd></div><div><dt>الوزن</dt><dd>٢٥٠ جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
+  <p>وصف لمن يبحث عن كوب يومي أكثر كثافة، مع بيان المعالجة والتحميص وطريقة التحضير.</p>
+</article>
+<article class="product-card" id="product-house">
+  <div class="mini-bag" aria-hidden="true"><span>٢٥٠ جم</span></div>
+  <h3>خلطة الدار — تحميص متوسط غامق</h3>
+  <p class="meta">٥٩ ر.س</p>
+  <dl class="specs"><div><dt>الأصل</dt><dd>خلطة الدار</dd></div><div><dt>المعالجة</dt><dd>غير محددة لهذه الخلطة</dd></div><div><dt>التحميص</dt><dd>متوسط غامق</dd></div><div><dt>الإيحاءات</dt><dd>مرارة معتدلة، كاكاو خفيف، ختام نظيف</dd></div><div><dt>التحضير</dt><dd>إبريق يومي أو مع الحليب</dd></div><div><dt>الوزن</dt><dd>٢٥٠ جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
+  <p>خلطة يومية بتحميص متوسط غامق، تناسب الإبريق اليومي أو التحضير مع الحليب.</p>
+</article></div>
+
+      <div class="section-title" id="store-pages">
+        <h2>صفحات المتجر</h2>
+        <p>خمس صفحات أساسية تُكتب ضمن الخدمة الأساسية: تجهيز صفحات المتجر الأساسية في سلة.</p>
+      </div>
+      <div class="pages">
+        <section class="page" id="about">
+          <h2>من نحن</h2>
+          <p>تعرض محمصة صليان الثمام بنًا مختصًا في أكياس واضحة البيانات: يُختار المحصول، ويُذكر أصله ومعالجته ودرجة تحميصه، ويُقترح أسلوب تحضيره في الكوب، حتى يعرف المشتري ماذا في الكيس قبل أن يطلب.</p>
+        </section>
+        <section class="page" id="faq">
+          <h2>الأسئلة الشائعة</h2>
+          <details class="faq-item">
+<summary>كم يستغرق تجهيز الطلب وشحنه؟</summary>
+<p>يُجهَّز الطلب خلال أيام عمل بعد تأكيده. وتختلف مدة التوصيل بحسب المدينة وشركة الشحن، وقد تمتد في المواسم.</p>
+</details>
+          <details class="faq-item">
+<summary>هل يصل البُن مطحونًا أم حبوبًا كاملة؟</summary>
+<p>يُعرض البُن حبوبًا كاملة، ويمكن اختيار درجة الطحن عند الطلب إن أُتيح.</p>
+</details>
+          <details class="faq-item">
+<summary>كيف يُعرف تاريخ التحميص؟</summary>
+<p>يُذكر تاريخ التحميص أو نطاقه على الكيس أو في صفحة المنتج. وإذا أُعلن نطاق ووصل كيس أقدم منه، يُعالج ذلك بوصفه مخالفة للوصف.</p>
+</details>
+          <details class="faq-item">
+<summary>ماذا أفعل إذا وصل الطلب تالفًا أو مختلفًا؟</summary>
+<p>إذا ظهر ضرر على الشحنة يُستحسن تصويرها وإبلاغ الناقل عند الاستلام، ثم التواصل مع المتجر برقم الطلب وصور الكيس والملصق. والتصوير مستحسن وليس شرطًا لقبول المطالبة. ويُعالج التلف أو الخطأ أو النقص من غير أن يتحمل المستهلك تكلفة ذلك.</p>
+</details>
+          <details class="faq-item">
+<summary>ما وسائل الدفع، وهل يمكن الاسترجاع؟</summary>
+<p>تُعرض وسائل الدفع المعتمدة عند إتمام الطلب. وأحكام الاسترجاع مبيّنة في صفحتها، مع مراعاة طبيعة البُن بوصفه منتجًا غذائيًا.</p>
+</details>
+        </section>
+        <section class="page" id="contact">
+          <h2>تواصل معنا</h2>
+          <p>للاستفسار أو لطلب التجزئة، استخدم نموذج الرسالة في هذه الصفحة.</p>
+          <p>المدينة: الرياض، المملكة العربية السعودية.</p>
+          <div class="fake-form" role="group" aria-label="نموذج رسالة، لا يُرسل بيانات">
+            <label>الاسم
+              <input type="text" name="name" autocomplete="off">
+            </label>
+            <label>الرسالة
+              <textarea name="message" rows="4"></textarea>
+            </label>
+            <button class="btn" type="button" disabled>إرسال الرسالة</button>
+            <p class="form-note">لا يُرسل هذا النموذج بيانات.</p>
+          </div>
+        </section>
+        <section class="page" id="privacy">
+          <h2>سياسة الخصوصية</h2>
+          <p>يُقتصر جمع البيانات على ما يلزم لتنفيذ الطلب، مثل الاسم ووسيلة التواصل وعنوان التوصيل.</p><p>تُشارك البيانات مع مزودي الدفع والتوصيل بالقدر اللازم لتنفيذ الطلب ووفق الضوابط النظامية. وتُحدَّد مدد الاحتفاظ وفق أغراض الجمع وما تقتضيه أنظمة المملكة، ثم تُحذف أو تُتلف بأمان.</p><p>ولصاحب البيانات —وفق النظام— الحق في العلم، والوصول إلى بياناته، والحصول على نسخة واضحة، وطلب التصحيح أو الإتمام أو التحديث، وطلب الإتلاف عند انتهاء الحاجة مع مراعاة الأحكام النظامية، والرجوع عن الموافقة حيث ينطبق. تُمارَس هذه الحقوق عبر نموذج الرسالة في صفحة «تواصل معنا».</p><p>التسويق المباشر اختياري وبموافقة مستقلة عن إتمام الطلب، ويمكن سحبها عبر النموذج نفسه.</p><p>وبحسب إرشاد مركز مساعدة سلة، تستقبل الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا) الشكاوى المتعلقة بنظام حماية البيانات الشخصية.</p>
+        </section>
+        <section class="page" id="returns">
+          <h2>سياسة الاستبدال والاسترجاع</h2>
+          <p>تُطبَّق هذه السياسة وفق نظام التجارة الإلكترونية ولائحته التنفيذية وممارسات المتجر، ولا تنتقص من حقوق المستهلك الإلزامية.</p><p>وفق المادة الثالثة عشرة من نظام التجارة الإلكترونية، للمستهلك —في غير الحالات المستثناة— فسخ العقد خلال الأيام السبعة التالية لتاريخ تسلّمه المنتج أو لتاريخ التعاقد على تقديم الخدمة، ما دام أنه لم يستخدم المنتج أو لم يستفد من الخدمة أو لم يحصل على منفعة من أيّ منهما. ويتحمل المستهلك تكاليف الفسخ إلا إذا اتفق أطراف العقد على غير ذلك.</p><p>وتُراعى استثناءات الفقرة (2) من المادة نفسها، واستثناءات المادة الحادية عشرة من اللائحة —ومنها المنتج المعرض للتلف خلال مدة جواز الفسخ، والمنتج الذي لا يمكن إعادة بيعه لأسباب صحية— بحسب طبيعة المنتج، من غير استبعاد شامل غير نظامي.</p><p>وللبُن يُفرَّق بين تغيير الرأي والعيب والخطأ: لا يُقبل عادةً إرجاع الكيس بعد فتحه أو فض ختمه لتغيير الرأي إن تعذر إعادة بيعه لأسباب صحية. أما طحن يخالف الاختيار، أو منتج يخالف الوصف —ومن ذلك كيس أقدم من نطاق التحميص المعلن— فلا يُعالج كاختلاف ذوق. واختلاف المذاق وحده لا يُعد عيبًا إذا طابق المنتج وصفه.</p><p>إذا وصل المنتج تالفًا أو مختلفًا أو ناقصًا يُعالج على نفقة المتجر بعد التحقق. والتصوير عند الاستلام مستحسن لا شرطًا للمطالبة. إعادة الشحن على المستهلك فقط لسبب مثبت راجع إليه وبتكلفة فعلية معلنة، لا لخطأ المتجر أو الناقل. بعد التحقق وفق السياسة والحقوق يُرد المستحق لوسيلة الدفع الأصلية إن أتيح، والتحقق ليس رفضًا مطلقًا.</p><p>يُقدَّم طلب الاسترجاع عبر نموذج الرسالة في صفحة «تواصل معنا»، مع رقم الطلب ووصف الحالة، وصور الكيس والملصق إن تيسّرت. وبعد استلام الطلب يُراجع وفق هذه السياسة والحقوق النظامية، ثم يُبلَّغ المشتري بنتيجة المعالجة.</p><p>يُطلب البلاغ فور اكتشاف المشكلة. ولا يُسقط مجرد تأخر البلاغ حق العيب أو الخطأ، مع مراعاة المدد والأحكام النظامية ذات العلاقة.</p><p>وفق المادة الرابعة عشرة، ما لم يُتفق على مدة أخرى للتسليم، يحق للمستهلك فسخ العقد إذا تأخر التسليم أو التنفيذ مدة تزيد على خمسة عشر يومًا من تاريخ إبرام العقد أو عن الموعد المتفق عليه، وله استرداد ما دفعه وما ترتب على التأخير، ما لم يكن التأخير بسبب قوة قاهرة. ويلتزم المتجر بإبلاغ المستهلك عند توقع تأخير، أو عند ظهور صعوبات ذات تأثير جوهري في التسليم أو التنفيذ.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div class="foot-links">
+        <a href="#about">من نحن</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#contact">تواصل معنا</a>
+        <a href="#privacy">سياسة الخصوصية</a>
+        <a href="#returns">الاستبدال والاسترجاع</a>
+      </div>
+      <p>محمصة صليان الثمام</p>
+    </div>
+  </footer>
+</body>
 </html>
