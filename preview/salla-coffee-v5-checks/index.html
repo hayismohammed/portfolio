@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coffee v5 interaction checks</title>
+<style>body{font:16px system-ui;margin:1rem}button{font:inherit;padding:.7rem}iframe{display:block;width:100%;height:700px;border:2px solid #4a2c1a}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style>
+<h1>Coffee v5 interaction checks</h1>
+<p>This temporary same-origin observer does not change the coffee page or send form data.</p>
+<button id="arm" disabled>Start observation</button>
+<p id="state" role="status">Loading coffee page</p>
+<pre id="evidence"></pre>
+<iframe id="coffee" title="Coffee preview under test" src="../salla-coffee-v5/"></iframe>
+<script>
+const frame=document.getElementById('coffee');
+const arm=document.getElementById('arm');
+const output=document.getElementById('evidence');
+const state=document.getElementById('state');
+let loads=0,baseline=null;
+function read(){
+ const w=frame.contentWindow,d=frame.contentDocument;
+ return {loads,url:w.location.href,timeOrigin:w.performance.timeOrigin,
+ resources:w.performance.getEntriesByType('resource').map(e=>({name:e.name,type:e.initiatorType})),
+ navigation:w.performance.getEntriesByType('navigation').map(e=>({name:e.name,type:e.type})),
+ forms:d.querySelectorAll('form').length,scripts:d.querySelectorAll('script').length,
+ name:d.querySelector('#contact input')?.value??null,
+ message:d.querySelector('#contact textarea')?.value??null,
+ buttonDisabled:d.querySelector('#contact button')?.disabled??null};
+}
+function render(){
+ if(!baseline)return;
+ const current=read();
+ const checks={sameDocument:current.timeOrigin===baseline.timeOrigin,
+ noReload:current.loads===baseline.loads,
+ sameURL:current.url===baseline.url,
+ noNewResourceRequests:JSON.stringify(current.resources)===JSON.stringify(baseline.resources),
+ noFormOrScript:current.forms===0&&current.scripts===0,
+ disabledButton:current.buttonDisabled===true,
+ nameRetained:current.name==='اختبار راشد',
+ messageRetainedWithEnter:current.message==='رسالة اختبار محلية\n'};
+ const passed=Object.values(checks).every(Boolean);
+ output.textContent=JSON.stringify({passed,checks,baseline,current},null,2);
+ state.textContent=passed?'PASS — no reload, URL change, or new resource request':'Observation active — enter the test values in the coffee fields';
+}
+frame.addEventListener('load',()=>{loads++;arm.disabled=false;state.textContent='Coffee page ready';render()});
+arm.addEventListener('click',()=>{baseline=read();render()});
+setInterval(render,250);
+</script>
+</html>
