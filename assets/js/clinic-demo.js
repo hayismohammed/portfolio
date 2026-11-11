@@ -76,13 +76,13 @@
         "nm",
         "name-error",
         (v) => v.trim().length >= 3,
-        "اكتب اسمًا تجريبيًا من ثلاثة أحرف على الأقل.",
+        "اكتب اسمًا من ثلاثة أحرف على الأقل.",
       ],
       [
         "ph",
         "phone-error",
         (v) => /^05\d{8}$/.test(normalize(v.trim())),
-        "اكتب رقمًا تجريبيًا من 10 أرقام يبدأ بـ 05.",
+        "اكتب رقمًا من 10 أرقام يبدأ بـ 05.",
       ],
       [
         "dt",
@@ -116,6 +116,6 @@
     const spokenDate = new Intl.DateTimeFormat("ar-SA-u-ca-gregory", {
       dateStyle: "full",
     }).format(new Date(date.value + "T12:00:00"));
-    status.textContent = `اختيارك التجريبي: ${service}، بتاريخ ${spokenDate}، ${period.selectedOptions[0].textContent}. تم التحقق محليًا؛ لم يُرسل شيء ولم يُحجز موعد.`;
+    status.textContent = `تمت معاينة اختيارك: ${service}، بتاريخ ${spokenDate}، ${period.selectedOptions[0].textContent}. لم يُرسل شيء؛ هذه معاينة وليست تأكيد حجز.`;
   });
 })();
