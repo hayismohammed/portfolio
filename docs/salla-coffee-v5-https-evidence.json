@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "previewURL": "https://hayismohammed.github.io/portfolio/preview/salla-coffee-v5/",
+  "checks": {
+    "sameDocument": true,
+    "noReload": true,
+    "sameURL": true,
+    "noNewResourceRequests": true,
+    "noFormOrScript": true,
+    "disabledButton": true,
+    "nameRetained": true,
+    "messageRetainedWithEnter": true
+  },
+  "before": {
+    "loads": 1,
+    "timeOrigin": 1794437491443.2,
+    "resources": [],
+    "forms": 0,
+    "scripts": 0,
+    "buttonDisabled": true,
+    "name": "",
+    "message": ""
+  },
+  "after": {
+    "loads": 1,
+    "timeOrigin": 1794437491443.2,
+    "resources": [],
+    "forms": 0,
+    "scripts": 0,
+    "buttonDisabled": true,
+    "name": "اختبار راشد",
+    "message": "رسالة اختبار محلية\n"
+  },
+  "sourceSHA256": "649e58497b2e779613c463a9881b6e6c1e9e52f5ea3b487d9f5882fdd11edcae",
+  "sourceIdentical": true,
+  "testedAtRiyadh": "2026-11-12 01:52",
+  "previewCommit": "dbe932357dbfb9e7f83a4f0caa3a701ccfebd3f6",
+  "observerCommit": "2b4ab00ebbd5afac285d496459b9b1f2c820de1f",
+  "method": "Real browser keyboard input in a same-origin HTTPS iframe, with a separate authored observer reading navigation/resource timing; this is not a raw network HAR.",
+  "promotionChanges": [
+    "Remove noindex",
+    "Replace top banner with one store notice",
+    "Add metadata, canonical URL and keyboard skip link; preserve product/policy/contact text",
+    "Add portfolio card and original inline-art thumbnail",
+    "Delete both temporary preview pages"
+  ],
+  "scope": "Portfolio demonstration only; not Salla acceptance or entry into Salla."
+}
