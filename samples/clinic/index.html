@@ -77,8 +77,8 @@
     <main id="main" class="wrap" tabindex="-1">
       <nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../index.html">الرئيسية</a></li><li aria-current="page">الشفاء</li></ol></nav>
       <p class="demo-note">
-        عيادة افتراضية لعرض التصميم. نموذج الموعد للتجربة فقط ولا يحجز موعدًا
-        حقيقيًا.
+        نموذج تجريبي لعيادة الشفاء؛ لا يحجز موعدًا حقيقيًا ولا يقدّم استشارة طبية.
+        استخدم بيانات اختبار، دون معلومات شخصية حقيقية.
       </p>
       <section class="hero">
         <div>
@@ -89,7 +89,7 @@
             خطوات واضحة.
           </p>
           <div class="actions">
-            <a class="btn" href="#book">جرّب نموذج الموعد</a
+            <a class="btn" href="#book">استعرض اختيار الموعد</a
             ><a class="btn secondary" href="#services">تعرّف على الخدمات</a>
           </div>
         </div>
@@ -134,7 +134,7 @@
           </article>
         </div>
         <p class="art-note">
-          أوصاف لعيادة افتراضية، وليست استشارة أو توصية علاجية.
+          تعرّف على الخدمات قبل اختيار سبب الزيارة.
         </p>
       </section>
       <section class="section" aria-labelledby="visit">
@@ -149,14 +149,14 @@
             <span class="eyebrow">02 / اختر</span>
             <h3>حدد وقتًا مناسبًا</h3>
             <p>
-              استعرض ساعات العمل، ثم اختر تاريخًا وفترة في النموذج التجريبي.
+              استعرض ساعات العمل، ثم اختر التاريخ والفترة المناسبين.
             </p>
           </article>
           <article class="card">
             <span class="eyebrow">03 / راجع</span>
             <h3>تحقق من التفاصيل</h3>
             <p>
-              ستظهر خلاصة محلية للاختيارات. لا تُرسل البيانات ولا يُحجز موعد.
+              راجع الخدمة والتاريخ والفترة في خلاصة اختيارك.
             </p>
           </article>
         </div>
@@ -166,7 +166,7 @@
           <h2 id="hours">أوقات العمل</h2>
           <table>
             <caption>
-              جدول العيادة الافتراضية
+              ساعات استقبال المراجعين
             </caption>
             <thead>
               <tr>
@@ -190,15 +190,14 @@
             </tbody>
           </table>
           <div class="card" style="margin-top: 1.5rem">
-            <h3>خصوصية التجربة</h3>
+            <h3>خصوصية المدخلات</h3>
             <p>
-              استخدم اسمًا ورقمًا تجريبيين. لا يوجد اتصال بخادم أو حفظ دائم،
-              وتختفي المدخلات عند إغلاق الصفحة.
+              تُعالج الحقول داخل الصفحة دون إرسالها إلى خادم أو حفظها في تخزين دائم.
             </p>
           </div>
         </div>
         <div>
-          <h2 id="book">جرّب اختيار الموعد</h2>
+          <h2 id="book">اختيار الموعد</h2>
           <form
             id="appointment-form"
             class="card"
@@ -206,7 +205,7 @@
             aria-describedby="form-help"
           >
             <p id="form-help">
-              جميع الحقول مطلوبة. التجربة تتحقق من البيانات فقط.
+              جميع الحقول مطلوبة لمعاينة الاختيار.
             </p>
             <label for="nm">الاسم الكامل</label
             ><input
@@ -217,7 +216,7 @@
               aria-describedby="name-error"
             />
             <div class="err" id="name-error"></div>
-            <label for="ph">رقم الجوال التجريبي</label
+            <label for="ph">رقم الجوال</label
             ><input
               id="ph"
               name="tel"
@@ -262,7 +261,7 @@
               إلى 9 مساءً. السبت: 4 مساءً إلى 10 مساءً. الجمعة مغلق.
             </p>
             <div class="err" id="period-error"></div>
-            <button type="submit" class="btn">اعرض خلاصة التجربة</button>
+            <button type="submit" class="btn">معاينة الاختيار</button>
             <p
               id="appointment-status"
               class="status"
@@ -272,7 +271,7 @@
             ></p>
             <noscript
               ><p>
-                التحقق والخلاصة يحتاجان إلى JavaScript. لا يوجد حجز من الصفحة.
+                فعّل JavaScript للتحقق من الحقول ومعاينة الاختيار.
               </p></noscript
             >
           </form>

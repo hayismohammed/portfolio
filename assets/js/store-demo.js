@@ -89,7 +89,7 @@
   function describeStorage() {
     storageNote.textContent = storageAvailable
       ? "تُحفظ المنتجات والكميات محليًا في هذا المتصفح، دون إرسالها إلى خادم. قد يمحو المتصفح بياناتها عند مسح بيانات المواقع أو إنهاء التصفح الخاص."
-      : "تعذر حفظ السلة أو قراءة نسختها السابقة. يمكنك متابعة التجربة، لكن قد لا تبقى التغييرات بعد تحديث الصفحة.";
+      : "تعذر حفظ السلة أو قراءة نسختها السابقة. يمكنك متابعة استخدام السلة، لكن قد لا تبقى التغييرات بعد تحديث الصفحة.";
   }
   function saveBasket() {
     try {
@@ -183,14 +183,14 @@
       const id = button.dataset.add,
         item = products.find((p) => p.id === id);
       if ((basket.get(id) || 0) === maxQuantity) {
-        tell(`الحد الأقصى في التجربة ${maxQuantity} وحدة من ${item.name}.`);
+        tell(`الحد الأقصى لكل منتج ${maxQuantity} وحدة من ${item.name}.`);
         return;
       }
       basket.set(id, (basket.get(id) || 0) + 1);
       saveBasket();
       renderCart();
       tell(
-        `أُضيف ${item.name}. عدد الوحدات ${totalQuantity()}، والإجمالي ${document.getElementById("cart-total").textContent} ريال. سلة تجريبية.`,
+        `أُضيف ${item.name}. عدد الوحدات ${totalQuantity()}، والإجمالي ${document.getElementById("cart-total").textContent} ريال.`,
       );
     }),
   );
@@ -222,7 +222,7 @@
     document.getElementById("cart").focus();
     tell(
       storageAvailable
-        ? "أُفرغت السلة التجريبية وحُذفت نسختها المحفوظة من هذا المتصفح."
+        ? "أُفرغت السلة وحُذفت نسختها المحفوظة من هذا المتصفح."
         : "أُفرغت السلة في الصفحة، لكن تعذر حذف نسختها المحفوظة من المتصفح.",
     );
   });
