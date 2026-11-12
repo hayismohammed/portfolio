@@ -25,7 +25,9 @@
       const link = event.target.closest('a');
       if (!link || !narrow.matches) return;
       close();
-      const target = document.querySelector(link.getAttribute('href'));
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const target = document.querySelector(href);
       if (target) {
         target.setAttribute('tabindex', '-1');
         target.focus();
@@ -69,3 +71,4 @@
     });
   }
 })();
+
