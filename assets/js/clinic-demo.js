@@ -118,4 +118,6 @@
     }).format(new Date(date.value + "T12:00:00"));
     status.textContent = `تمت معاينة اختيارك: ${service}، بتاريخ ${spokenDate}، ${period.selectedOptions[0].textContent}. لم يُرسل شيء؛ هذه معاينة وليست تأكيد حجز.`;
   });
+  form.querySelector('button[type="submit"]').disabled = false;
 })();
+

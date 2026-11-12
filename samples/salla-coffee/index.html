@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="واجهة عربية لمحمصة صليان الثمام، تعرض البُن المختص وصفحات المتجر والسياسات وحقول التواصل.">
+  <meta name="description" content="متجر قهوة نموذجي في معرض هايس العنزي: منتجات افتراضية وسلة تجريبية وصفحات تعريفية وسياسات توضيحية، دون دفع أو إرسال طلبات.">
   <link rel="canonical" href="https://hayismohammed.github.io/portfolio/samples/salla-coffee/">
-  <meta property="og:title" content="محمصة صليان الثمام | متجر قهوة">
-  <meta property="og:description" content="واجهة عربية لمحمصة صليان الثمام، تعرض البُن المختص وصفحات المتجر والسياسات وحقول التواصل.">
+  <meta property="og:title" content="متجر قهوة نموذجي | هايس العنزي">
+  <meta property="og:description" content="محمصة صليان الثمام نموذج لعرض المنتجات والسلة وصفحات المتجر، دون دفع أو إرسال طلبات حقيقية.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:url" content="https://hayismohammed.github.io/portfolio/samples/salla-coffee/">
   <meta property="og:image" content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png">
   <meta property="og:image:alt" content="معرض أعمال هايس العنزي">
-  <title>محمصة صليان الثمام</title>
+  <title>متجر قهوة نموذجي | محمصة صليان الثمام | هايس العنزي</title>
+  <script defer src="../../assets/js/coffee-demo.js"></script>
   <style>
     .skip { position: absolute; top: 0; right: 1rem; transform: translateY(-150%); z-index: 100; padding: 1rem; background: #fff; color: #1f1612; }
     .skip:focus { transform: translateY(0); }
@@ -266,6 +267,20 @@
       font-size: 13px;
     }
     footer a { color: var(--gold); }
+    footer p { color: #f3eee4; }
+    :focus-visible { outline: 3px solid #9a4f28; outline-offset: 4px; box-shadow: 0 0 0 3px #fff; }
+    a, button, summary { touch-action: manipulation; }
+    button, .tool, nav.links a, footer a, summary { min-height: 44px; }
+    .tool, nav.links a, footer a { display: inline-flex; align-items: center; }
+    .coffee-cart { margin-block: 28px; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); }
+    .coffee-cart ul { list-style: none; padding: 0; }
+    .coffee-cart li { padding-block: 16px; border-bottom: 1px solid var(--line); }
+    .cart-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .cart-controls button { padding: 8px 14px; border: 1px solid var(--espresso); border-radius: 8px; background: var(--cream); color: var(--ink); font: inherit; cursor: pointer; }
+    button:disabled { cursor: default; opacity: .65; }
+    .cart-status { min-height: 1.85em; font-weight: 700; }
+    .product-card .btn { margin-top: 10px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     footer .foot-links {
       display: flex;
       flex-wrap: wrap;
@@ -273,7 +288,7 @@
       margin-bottom: 12px;
     }
     footer .foot-links a { text-decoration: none; font-weight: 700; }
-    #store-pages, #about, #faq, #contact, #privacy, #returns, #intro, #landing-rest, #products {
+    #store-pages, #about, #faq, #contact, #privacy, #returns, #intro, #landing-rest, #products, #cart {
       scroll-margin-top: 58px;
     }
     @media (min-width: 900px) {
@@ -291,16 +306,15 @@
 </head>
 <body>
   <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-  <div class="sample-banner">متجر نموذجي لأعمال هايس العنزي؛ الأسعار توضيحية والسياسات مسودات.</div>
+  <div class="sample-banner">متجر نموذجي لأعمال هايس العنزي؛ الأسعار والسياسات توضيحية، والسلة للتجربة دون دفع أو إرسال طلب.</div>
   <header class="top">
     <div class="wrap">
       <div class="top-inner">
         <a class="brand" href="#intro">محمصة صليان الثمام<small>بُن مختص</small></a>
-        <div class="tools" aria-hidden="true">
-          <span class="tool">بحث</span>
-          <span class="tool">حساب</span>
-          <span class="tool">السلة ٠</span>
-        </div>
+        <nav class="tools" aria-label="التسوق التجريبي">
+          <a class="tool" href="#products">المنتجات</a>
+          <a class="tool" href="#cart">السلة: <span id="coffee-cart-count">0</span> وحدة</a>
+        </nav>
       </div>
       <nav class="links" aria-label="صفحات المتجر">
         <a href="#about">من نحن</a>
@@ -344,8 +358,7 @@
           <p>إثيوبيا المغسول بتحميص فاتح يناسب فنجان الترشيح. عبوة ٢٥٠ جم من الحبوب الكاملة، مع بطاقة للمحصول ووصف للنكهة.</p>
           <p class="price">٢٥٠ جم · ٧٢ ر.س</p>
           <div class="buy-row">
-            <span class="qty">الكمية: ١</span>
-            <button class="btn" type="button" disabled>أضف إلى السلة</button>
+            <button class="btn" type="button" data-coffee-add="ethiopia" aria-label="أضف إثيوبيا المغسول إلى السلة" disabled>أضف إلى السلة</button>
             <a class="btn-ghost" href="#about">صفحات المتجر</a>
           </div>
           
@@ -359,7 +372,6 @@
 
       <div class="blocks" id="landing-rest">
         <section class="block" id="flavor">
-  <p class="kicker">إيحاءات النكهة</p>
   <h2>إيحاءات النكهة</h2>
   <p>زهر خفيف، وحموضة مشرقة، وحلاوة تشبه الفاكهة ذات النواة، مع ختام نظيف. تتضح صورة الكوب قبل اختيار طريقة التحضير، وقد تختلف النتيجة بحسب التحضير والماء.</p>
 </section>
@@ -382,33 +394,42 @@
 
       <div class="section-title" id="products">
         <h2>البُن المختص</h2>
-        <p>ثلاثة أكياس من البُن المختص.</p>
       </div>
       <div class="products"><article class="product-card" id="product-ethiopia">
   <div class="mini-bag" aria-hidden="true"><span>٢٥٠ جم</span></div>
   <h3>إثيوبيا المغسول — تحميص فاتح</h3>
   <p class="meta">٧٢ ر.س</p>
   <dl class="specs"><div><dt>الأصل</dt><dd>إثيوبيا</dd></div><div><dt>المعالجة</dt><dd>غسل</dd></div><div><dt>التحميص</dt><dd>فاتح</dd></div><div><dt>الإيحاءات</dt><dd>زهر خفيف، حموضة مشرقة، فاكهة ذات نواة</dd></div><div><dt>التحضير</dt><dd>ترشيح يدوي أو تقطير</dd></div><div><dt>الوزن</dt><dd>٢٥٠ جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
-  <p>محصول بتحميص فاتح يناسب فنجان الترشيح، ببطاقة واضحة للأصل والمعالجة والتحميص والوزن، مع إيحاءات النكهة وإرشاد التحضير.</p>
+  <button class="btn" type="button" data-coffee-add="ethiopia" aria-label="أضف إثيوبيا المغسول إلى السلة" disabled>أضف إلى السلة</button>
 </article>
 <article class="product-card" id="product-colombia">
   <div class="mini-bag" aria-hidden="true"><span>٢٥٠ جم</span></div>
   <h3>كولومبيا معالجة عسلية — تحميص متوسط</h3>
   <p class="meta">٦٨ ر.س</p>
   <dl class="specs"><div><dt>الأصل</dt><dd>كولومبيا</dd></div><div><dt>المعالجة</dt><dd>معالجة عسلية</dd></div><div><dt>التحميص</dt><dd>متوسط</dd></div><div><dt>الإيحاءات</dt><dd>حلاوة هادئة، كراميل خفيف، جسم متوازن</dd></div><div><dt>التحضير</dt><dd>إسبريسو، أو إبريق مكبس</dd></div><div><dt>الوزن</dt><dd>٢٥٠ جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
-  <p>وصف لمن يبحث عن كوب يومي أكثر كثافة، مع بيان المعالجة والتحميص وطريقة التحضير.</p>
+  <button class="btn" type="button" data-coffee-add="colombia" aria-label="أضف كولومبيا المعالجة العسلية إلى السلة" disabled>أضف إلى السلة</button>
 </article>
 <article class="product-card" id="product-house">
   <div class="mini-bag" aria-hidden="true"><span>٢٥٠ جم</span></div>
   <h3>خلطة الدار — تحميص متوسط غامق</h3>
   <p class="meta">٥٩ ر.س</p>
   <dl class="specs"><div><dt>الأصل</dt><dd>خلطة الدار</dd></div><div><dt>المعالجة</dt><dd>غير محددة لهذه الخلطة</dd></div><div><dt>التحميص</dt><dd>متوسط غامق</dd></div><div><dt>الإيحاءات</dt><dd>مرارة معتدلة، كاكاو خفيف، ختام نظيف</dd></div><div><dt>التحضير</dt><dd>إبريق يومي أو مع الحليب</dd></div><div><dt>الوزن</dt><dd>٢٥٠ جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
-  <p>خلطة يومية بتحميص متوسط غامق، تناسب الإبريق اليومي أو التحضير مع الحليب.</p>
+  <button class="btn" type="button" data-coffee-add="house" aria-label="أضف خلطة الدار إلى السلة" disabled>أضف إلى السلة</button>
 </article></div>
+
+      <section class="coffee-cart" id="cart" aria-labelledby="coffee-cart-title" tabindex="-1">
+        <h2 id="coffee-cart-title">سلتك</h2>
+        <p id="coffee-cart-help">تبقى المنتجات والكميات أثناء فتح هذه الصفحة فقط، ولا تُرسل محتويات السلة إلى خادم.</p>
+        <p class="cart-status" id="coffee-cart-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <p id="coffee-cart-empty">السلة فارغة. أضف منتجًا لتجربتها.</p>
+        <ul id="coffee-cart-items" aria-label="منتجات السلة"></ul>
+        <p>عدد الوحدات: <span id="coffee-summary-count">0</span> · الإجمالي: <strong><span id="coffee-cart-total">0</span> ر.س</strong></p>
+        <button class="btn-ghost" type="button" id="coffee-clear-cart" disabled>إفراغ السلة</button>
+        <noscript><p>فعّل JavaScript لتجربة السلة. تبقى المنتجات وصفحات المتجر متاحة للقراءة.</p></noscript>
+      </section>
 
       <div class="section-title" id="store-pages">
         <h2>صفحات المتجر</h2>
-        <p>خمس صفحات أساسية تُكتب ضمن الخدمة الأساسية: تجهيز صفحات المتجر الأساسية في سلة.</p>
       </div>
       <div class="pages">
         <section class="page" id="about">
@@ -440,7 +461,7 @@
         </section>
         <section class="page" id="contact">
           <h2>تواصل معنا</h2>
-          <p>للاستفسار أو لطلب التجزئة، استخدم نموذج الرسالة في هذه الصفحة.</p>
+          <p>جرّب حقول الرسالة للمعاينة باستخدام نص تجريبي دون معلومات شخصية.</p>
           <p>المدينة: الرياض، المملكة العربية السعودية.</p>
           <div class="fake-form" role="group" aria-label="نموذج رسالة، لا يُرسل بيانات">
             <label>الاسم
@@ -467,14 +488,16 @@
   <footer>
     <div class="wrap">
       <div class="foot-links">
+        <a href="../../index.html#samples">العودة إلى معرض الأعمال</a>
         <a href="#about">من نحن</a>
         <a href="#faq">الأسئلة الشائعة</a>
         <a href="#contact">تواصل معنا</a>
         <a href="#privacy">سياسة الخصوصية</a>
         <a href="#returns">الاستبدال والاسترجاع</a>
       </div>
-      <p>محمصة صليان الثمام</p>
+      <p class="site-copyright" dir="ltr" lang="en">© 2026 Hayis Alanazi. All rights reserved.</p>
     </div>
   </footer>
 </body>
 </html>
+
