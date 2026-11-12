@@ -73,6 +73,7 @@
     }
     .top-inner {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
@@ -96,6 +97,7 @@
     }
     .tools {
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
       color: var(--muted);
       font-size: 12px;
@@ -185,7 +187,7 @@
       padding: 11px 20px;
       text-decoration: none;
       border: 0;
-      cursor: not-allowed;
+      cursor: pointer;
     }
     .btn { background: var(--copper); color: #fff7ed; }
     .btn-ghost {
@@ -281,6 +283,7 @@
     .cart-status { min-height: 1.85em; font-weight: 700; }
     .product-card .btn { margin-top: 10px; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (max-width: 760px) { .sample-banner { position: static; } }
     footer .foot-links {
       display: flex;
       flex-wrap: wrap;
