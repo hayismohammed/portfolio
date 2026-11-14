@@ -1,0 +1,32 @@
+name: Site quality checks
+on:
+  push:
+    branches:
+      - main
+      - 'rashed/**'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out complete history for original media comparison
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Python syntax
+        run: python -m compileall -q tests
+      - name: Check site resources and sitemap
+        run: python tests/check_site.py
+      - name: Check navigation and demonstration context
+        run: python tests/check_navigation.py
+      - name: Validate JavaScript syntax
+        run: find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+      - name: Inspect tracked text for common secret signatures
+        run: python tests/check_public_secrets.py

@@ -51,8 +51,15 @@ def check():
    if url not in path.read_text():errors.append(f'{path}: missing original course link {url}')
  xml=ET.parse(ROOT/'sitemap.xml');urls=xml.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url')
  if len(urls)!=len(pages):errors.append('sitemap count must match visitor pages')
+ sitemap_ns='{http://www.sitemaps.org/schemas/sitemap/0.9}'
+ actual_urls=[(node.findtext(sitemap_ns+'loc') or '').strip() for node in urls]
+ expected_urls={'https://hayismohammed.github.io/portfolio/'+p.relative_to(ROOT).as_posix().removesuffix('index.html') for p in pages}
+ if len(actual_urls)!=len(set(actual_urls)):errors.append('sitemap has duplicate URLs')
+ if set(actual_urls)!=expected_urls:
+  errors.append('sitemap paths mismatch: missing='+str(sorted(expected_urls-set(actual_urls)))+' unexpected='+str(sorted(set(actual_urls)-expected_urls)))
  # Ensure predecessor image/media assets remain byte-for-byte intact.
  result=subprocess.run(['git','diff','--name-only','326eade21fcc50437cd1d9ed707e177e3e9e41df','--','assets/shots','samples/serum-landing/assets'],cwd=ROOT,capture_output=True,text=True)
+ if result.returncode:errors.append('Could not verify predecessor media: '+result.stderr.strip())
  if result.stdout.strip():errors.append('Predecessor media changed: '+result.stdout)
  result={'pages':len(pages),'local_references':link_count,'sitemap_urls':len(urls),'errors':errors,'passed':not errors}
  print(json.dumps(result,ensure_ascii=False,indent=2));return result
