@@ -8,16 +8,16 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PATTERNS = {
     "private-key header": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----"),
-    "GitHub token": re.compile(r"\\b(?:gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{40,})\\b"),
-    "AWS access key": re.compile(r"\\b(?:AKIA|ASIA)[A-Z0-9]{16}\\b"),
-    "Google API key": re.compile(r"\\bAIza[0-9A-Za-z_-]{35}\\b"),
+    "GitHub token": re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{40,})\b"),
+    "AWS access key": re.compile(r"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b"),
+    "Google API key": re.compile(r"\bAIza[0-9A-Za-z_-]{35}\b"),
 }
 result = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True)
 if result.returncode:
     sys.exit("Unable to list tracked files: " + result.stderr.decode(errors="replace"))
 scanned = 0
 findings = []
-for item in result.stdout.split(b"\\0"):
+for item in result.stdout.split(b"\0"):
     if not item:
         continue
     relative = item.decode("utf-8", errors="replace")
@@ -25,7 +25,7 @@ for item in result.stdout.split(b"\\0"):
     if not path.is_file():
         continue
     raw = path.read_bytes()
-    if b"\\0" in raw:
+    if b"\0" in raw:
         continue
     try:
         content = raw.decode("utf-8")
