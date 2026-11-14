@@ -1,0 +1,75 @@
+name: One-time postdeploy Lighthouse and HTTPS browser checks
+on:
+  push:
+    branches:
+      - rashed/postdeploy-performance-2026-11-14
+    paths:
+      - .github/workflows/postdeploy-audit-once.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify new version is live over HTTPS
+        run: |
+          python3 - <<'PYTHON'
+          from urllib.request import urlopen
+          import time
+          for i in range(24):
+              home=urlopen("https://hayismohammed.github.io/portfolio/",timeout=20).read().decode("utf-8")
+              coffee=urlopen("https://hayismohammed.github.io/portfolio/samples/salla-coffee/",timeout=20).read().decode("utf-8")
+              if "js-nav-pending" in home and 'href="../../assets/media/favicon.svg"' in coffee:
+                  print("PASS: newer mobile-menu and coffee-favicon fixes served over HTTPS")
+                  break
+              print("Waiting for GitHub Pages new revision",i+1,flush=True)
+              time.sleep(10)
+          else: raise SystemExit("Postdeploy changes not visible on published website")
+          PYTHON
+      - name: Install Lighthouse and browser driver
+        run: npm install --no-save --ignore-scripts lighthouse@13.6.0 puppeteer-core@24
+      - name: Audit actual public website on simulated mobile
+        shell: bash
+        run: |
+          mkdir -p /tmp/lh
+          npx lighthouse https://hayismohammed.github.io/portfolio/ --output=json --output-path=/tmp/lh/home-mobile.json --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --quiet
+          npx lighthouse https://hayismohammed.github.io/portfolio/samples/salla-coffee/ --output=json --output-path=/tmp/lh/coffee-mobile.json --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --quiet
+      - name: Print Lighthouse metrics
+        run: |
+          node --input-type=module <<'JAVASCRIPT'
+          import {readFileSync} from 'node:fs';
+          for(const n of ['home-mobile','coffee-mobile']){
+            const l=JSON.parse(readFileSync('/tmp/lh/'+n+'.json','utf8'));
+            const categories=Object.fromEntries(Object.entries(l.categories).map(([k,v])=>[k,Math.round((v.score||0)*100)]));
+            const metrics=Object.fromEntries(['largest-contentful-paint','cumulative-layout-shift','total-blocking-time'].map(k=>[k,{value:l.audits[k]?.numericValue,display:l.audits[k]?.displayValue}]));
+            const consoleErrors=l.audits['errors-in-console']?.details?.items?.map(x=>({description:x.description,url:x.sourceLocation?.url}))||[];
+            console.log('POSTDEPLOY_LIGHTHOUSE '+JSON.stringify({name:n,version:l.lighthouseVersion,categories,metrics,consoleErrors,warnings:l.runWarnings}));
+          }
+          JAVASCRIPT
+      - name: Test published mobile navigation and no-JS fallback in Chrome
+        run: |
+          node --input-type=module <<'JAVASCRIPT'
+          import puppeteer from 'puppeteer-core';
+          const browser=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['--headless=new','--no-sandbox','--disable-dev-shm-usage']});
+          const page=await browser.newPage();
+          await page.setViewport({width:375,height:812});
+          await page.goto('https://hayismohammed.github.io/portfolio/',{waitUntil:'networkidle0'});
+          let data=await page.evaluate(()=>({navHidden:document.querySelector('#primary-nav').hidden,toggleHidden:document.querySelector('.menu-toggle').hidden,pending:document.documentElement.classList.contains('js-nav-pending')}));
+          if(!data.navHidden||data.toggleHidden||data.pending)throw Error('Live mobile menu initial failed: '+JSON.stringify(data));
+          await page.click('.menu-toggle');
+          if(await page.$eval('#primary-nav',e=>e.hidden))throw Error('Live menu did not open');
+          await page.keyboard.press('Escape');
+          if(!await page.$eval('#primary-nav',e=>e.hidden))throw Error('Live Escape did not close');
+          const nojs=await browser.newPage();
+          await nojs.setViewport({width:375,height:812});
+          await nojs.setJavaScriptEnabled(false);
+          await nojs.goto('https://hayismohammed.github.io/portfolio/',{waitUntil:'load'});
+          if(await nojs.$eval('#primary-nav',e=>e.hidden||getComputedStyle(e).display==='none'))throw Error('Live no-JS navigation not visible');
+          console.log('PASS: actual HTTPS live mobile menu, Escape and no-JavaScript fallback in Chrome');
+          await browser.close();
+          JAVASCRIPT
