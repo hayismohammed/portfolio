@@ -37,6 +37,7 @@ jobs:
           current=await page.evaluate(()=>({hidden:document.querySelector('#primary-nav').hidden,expanded:document.querySelector('.menu-toggle').getAttribute('aria-expanded')}));
           if(!current.hidden||current.expanded!=='false')throw Error('Mobile Escape failed: '+JSON.stringify(current));
           await page.setViewport({width:1280,height:800});
+          await page.waitForFunction(()=>document.querySelector('.menu-toggle').hidden && !document.querySelector('#primary-nav').hidden,{timeout:5000});
           current=await page.evaluate(()=>({hidden:document.querySelector('#primary-nav').hidden,button:document.querySelector('.menu-toggle').hidden}));
           if(current.hidden||!current.button)throw Error('Desktop nav state incorrect: '+JSON.stringify(current));
           const nojs=await browser.newPage();
