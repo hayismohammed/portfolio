@@ -27,10 +27,11 @@
 python3 tests/check_site.py
 python3 tests/check_navigation.py
 python3 tests/check_public_secrets.py
+python3 tests/check_inline_scripts.py
 find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 ```
 
-نجح [تشغيل GitHub Actions المؤرخ 14 نوفمبر 2026](https://github.com/hayismohammed/portfolio/actions/runs/43555288050) على الالتزام `85af543560beb3c8ddc953b4be12ee4658473c59`: فحص 11 صفحة، و207 مراجع محلية، و7 نماذج، وصياغة JavaScript، و98 ملفًا نصيًا ضمن الفحص الأولي للأسرار. ملف `.github/workflows/site-quality.yml` يكرر هذه الفحوص عند كل تحديث أو طلب دمج. نجاحها لا يثبت تشغيل كل تفاعل في المتصفح أو امتثال WCAG الكامل. ينبغي توثيق الإصدار، الجهاز، قارئ الشاشة، المتصفح والنتائج في جولة منفصلة.
+نجح [تشغيل GitHub Actions المؤرخ 14 نوفمبر 2026](https://github.com/hayismohammed/portfolio/actions/runs/43555288050) على الالتزام `85af543560beb3c8ddc953b4be12ee4658473c59`: فحص 11 صفحة، و207 مراجع محلية، و7 نماذج، وصياغة JavaScript، و98 ملفًا نصيًا ضمن الفحص الأولي للأسرار. ملف `.github/workflows/site-quality.yml` يكرر هذه الفحوص عند كل تحديث أو طلب دمج، بما في ذلك فحص JavaScript المضمّن في ملفات HTML واختبارات المتصفح. نجاحها لا يثبت تشغيل كل تفاعل في المتصفح أو امتثال WCAG الكامل. ينبغي توثيق الإصدار، الجهاز، قارئ الشاشة، المتصفح والنتائج في جولة منفصلة.
 
 ### مصادر أساسية
 

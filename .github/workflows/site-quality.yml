@@ -28,5 +28,7 @@ jobs:
         run: python tests/check_navigation.py
       - name: Validate JavaScript syntax
         run: find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+      - name: Check inline JavaScript, including browser QA fixtures
+        run: python tests/check_inline_scripts.py
       - name: Inspect tracked text for common secret signatures
         run: python tests/check_public_secrets.py
