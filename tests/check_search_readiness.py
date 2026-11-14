@@ -62,7 +62,7 @@ for page in pages:
     if not title or title in titles: errors.append(f"{rel}: missing or duplicate title")
     if len(desc) != 1 or not desc[0] or desc[0] in descriptions: errors.append(f"{rel}: missing or duplicate meta description")
     if canonical != [expected]: errors.append(f"{rel}: expected canonical {expected}; got {canonical}")
-    if re.search(r"\\bnoindex\\b", robots): errors.append(f"{rel}: noindex blocks discovery")
+    if re.search(r"\bnoindex\b", robots): errors.append(f"{rel}: noindex blocks discovery")
     if expected not in entries: errors.append(f"{rel}: absent from sitemap")
     for block in a.structured_data:
         try: json.loads(block)
