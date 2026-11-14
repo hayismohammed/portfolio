@@ -1,0 +1,50 @@
+name: One-time responsive menu browser regression
+on:
+  push:
+    branches:
+      - rashed/performance-seo-profile-2026-11-14
+    paths:
+      - .github/workflows/menu-browser-once.yml
+permissions:
+  contents: read
+jobs:
+  menu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser driver
+        run: npm install --no-save --ignore-scripts puppeteer-core@24
+      - name: Test responsive navigation and no-JS fallback using real Chrome
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/portfolio-server.log 2>&1 &
+          node --input-type=module <<'JAVASCRIPT'
+          import puppeteer from 'puppeteer-core';
+          const browser=await puppeteer.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage','--headless=new']});
+          const page=await browser.newPage();
+          await page.setViewport({width:375,height:812,deviceScaleFactor:1});
+          await page.goto('http://127.0.0.1:8765/index.html',{waitUntil:'networkidle0'});
+          let current=await page.evaluate(()=>({hidden:document.querySelector('#primary-nav').hidden,button:document.querySelector('.menu-toggle').hidden,pending:document.documentElement.classList.contains('js-nav-pending')}));
+          if(!current.hidden||current.button||current.pending)throw Error('Mobile initial nav state incorrect: '+JSON.stringify(current));
+          await page.click('.menu-toggle');
+          current=await page.evaluate(()=>({hidden:document.querySelector('#primary-nav').hidden,expanded:document.querySelector('.menu-toggle').getAttribute('aria-expanded')}));
+          if(current.hidden||current.expanded!=='true')throw Error('Mobile open failed: '+JSON.stringify(current));
+          await page.keyboard.press('Escape');
+          current=await page.evaluate(()=>({hidden:document.querySelector('#primary-nav').hidden,expanded:document.querySelector('.menu-toggle').getAttribute('aria-expanded')}));
+          if(!current.hidden||current.expanded!=='false')throw Error('Mobile Escape failed: '+JSON.stringify(current));
+          await page.setViewport({width:1280,height:800});
+          current=await page.evaluate(()=>({hidden:document.querySelector('#primary-nav').hidden,button:document.querySelector('.menu-toggle').hidden}));
+          if(current.hidden||!current.button)throw Error('Desktop nav state incorrect: '+JSON.stringify(current));
+          const nojs=await browser.newPage();
+          await nojs.setJavaScriptEnabled(false);
+          await nojs.setViewport({width:375,height:812});
+          await nojs.goto('http://127.0.0.1:8765/index.html',{waitUntil:'load'});
+          const fallback=await nojs.evaluate(()=>({hidden:document.querySelector('#primary-nav').hidden,display:getComputedStyle(document.querySelector('#primary-nav')).display}));
+          if(fallback.hidden||fallback.display==='none')throw Error('No-JS navigation hidden: '+JSON.stringify(fallback));
+          console.log('PASS: real-Chrome mobile open/Escape, desktop nav, and no-JS mobile navigation fallback.');
+          await browser.close();
+          JAVASCRIPT
