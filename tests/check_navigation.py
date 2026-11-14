@@ -54,7 +54,7 @@ for name in sorted(DEMOS):
         errors.append(f"{path}: one footer ownership line required")
     returns = []
     for link in page.links:
-        dest = urlsplit(urljoin(SITE + path, link["href"]))
+        dest = urlsplit(urljoin(SITE + path.removesuffix("index.html"), link["href"]))
         if dest.netloc != "hayismohammed.github.io":
             continue
         if dest.path.startswith("/portfolio/guides/") or "/voiceover-course/" in dest.path:
