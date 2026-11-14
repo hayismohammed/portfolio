@@ -33,17 +33,19 @@ def check():
    if t=='video':need('controls' in a and 'autoplay' not in a,'video must have controls and no autoplay')
    for name in ['aria-labelledby','aria-describedby']:
     for ref in a.get(name,'').split():need(ref in doc.ids,'missing ARIA target '+ref)
-   for attr in ('href','src','poster'):
-    value=a.get(attr)
-    if not value:continue
-    u=urlsplit(value)
-    if u.scheme or u.netloc:continue
-    link_count+=1
-    target=(path.parent/unquote(u.path)).resolve() if u.path else path
-    if target.is_dir():target=target/'index.html'
-    need(target.is_relative_to(ROOT),'link escapes repo: '+value)
-    need(target.is_file(),'missing local resource: '+value)
-    if u.fragment and target in parsed:need(unquote(u.fragment) in parsed[target].ids,'missing fragment '+value)
+   for attr in ('href','src','poster','srcset'):
+    raw=a.get(attr)
+    if not raw:continue
+    candidates=[item.strip().split()[0] for item in raw.split(',') if item.strip()] if attr=='srcset' else [raw]
+    for value in candidates:
+     u=urlsplit(value)
+     if u.scheme or u.netloc:continue
+     link_count+=1
+     target=(path.parent/unquote(u.path)).resolve() if u.path else path
+     if target.is_dir():target=target/'index.html'
+     need(target.is_relative_to(ROOT),'link escapes repo: '+value)
+     need(target.is_file(),'missing local resource: '+value)
+     if u.fragment and target in parsed:need(unquote(u.fragment) in parsed[target].ids,'missing fragment '+value)
   need('قيد المراجعة لدى يوديمي' not in path.read_text(),'stale Udemy status')
  # Course destinations must survive on both the home page and the retained demo.
  for path in [ROOT/'index.html',ROOT/'samples/voiceover-course/index.html']:
