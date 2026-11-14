@@ -59,17 +59,17 @@ for name in sorted(DEMOS):
             continue
         if dest.path.startswith("/portfolio/guides/") or "/voiceover-course/" in dest.path:
             errors.append(f"{path}: educational link mixed into a demonstration")
-        if link["footer"] and dest.path == "/portfolio/index.html":
+        if link["footer"] and dest.path == "/portfolio/":
             returns.append(link)
-        if "/samples/" in dest.path and dest.path != "/portfolio/" + path:
+        if "/samples/" in dest.path and dest.path != "/portfolio/" + path.removesuffix("index.html"):
             allowed = {
-                "product-copy": "/portfolio/samples/short-ad/index.html",
-                "short-ad": "/portfolio/samples/product-copy/index.html",
+                "product-copy": "/portfolio/samples/short-ad/",
+                "short-ad": "/portfolio/samples/product-copy/",
             }.get(name)
             if dest.path != allowed:
                 errors.append(f"{path}: unrelated model cross-link {link['href']}")
         if link["brand"] and name in {"clinic", "cosmetics-store", "restaurant", "salla-coffee"}:
-            if dest.path != "/portfolio/" + path or not dest.fragment:
+            if dest.path != "/portfolio/" + path.removesuffix("index.html") or not dest.fragment:
                 errors.append(f"{path}: model brand must stay inside its own page")
     if len(returns) != 1 or returns[0]["text"].strip() != "العودة إلى معرض الأعمال":
         errors.append(f"{path}: footer needs one explicitly named portfolio return")
@@ -77,10 +77,10 @@ for name in sorted(DEMOS):
 home = Page((ROOT / "index.html").read_text())
 if home.sections != ["services", "samples", "courses", "free-guides", "about", "contact"]:
     errors.append("index.html: visitor sections must follow the declared order")
-if not any("guides/index.html" == link["href"] for link in home.links):
+if not any(urlsplit(urljoin(SITE, link["href"])).path == "/portfolio/guides/" for link in home.links):
     errors.append("index.html: library must remain discoverable from the home page")
 course = Page((ROOT / "samples/voiceover-course/index.html").read_text())
-if not any("guides/index.html" in link["href"] for link in course.links):
+if not any(urlsplit(urljoin(SITE + "samples/voiceover-course/", link["href"])).path == "/portfolio/guides/" for link in course.links):
     errors.append("course: retain the relevant educational library link")
 
 result = {"demonstrations": len(DEMOS), "home_sections": home.sections,
