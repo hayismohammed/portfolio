@@ -33,17 +33,19 @@ def check():
    if t=='video':need('controls' in a and 'autoplay' not in a,'video must have controls and no autoplay')
    for name in ['aria-labelledby','aria-describedby']:
     for ref in a.get(name,'').split():need(ref in doc.ids,'missing ARIA target '+ref)
-   for attr in ('href','src','poster'):
-    value=a.get(attr)
-    if not value:continue
-    u=urlsplit(value)
-    if u.scheme or u.netloc:continue
-    link_count+=1
-    target=(path.parent/unquote(u.path)).resolve() if u.path else path
-    if target.is_dir():target=target/'index.html'
-    need(target.is_relative_to(ROOT),'link escapes repo: '+value)
-    need(target.is_file(),'missing local resource: '+value)
-    if u.fragment and target in parsed:need(unquote(u.fragment) in parsed[target].ids,'missing fragment '+value)
+   for attr in ('href','src','poster','srcset'):
+    raw=a.get(attr)
+    if not raw:continue
+    candidates=[item.strip().split()[0] for item in raw.split(',') if item.strip()] if attr=='srcset' else [raw]
+    for value in candidates:
+     u=urlsplit(value)
+     if u.scheme or u.netloc:continue
+     link_count+=1
+     target=(path.parent/unquote(u.path)).resolve() if u.path else path
+     if target.is_dir():target=target/'index.html'
+     need(target.is_relative_to(ROOT),'link escapes repo: '+value)
+     need(target.is_file(),'missing local resource: '+value)
+     if u.fragment and target in parsed:need(unquote(u.fragment) in parsed[target].ids,'missing fragment '+value)
   need('قيد المراجعة لدى يوديمي' not in path.read_text(),'stale Udemy status')
  # Course destinations must survive on both the home page and the retained demo.
  for path in [ROOT/'index.html',ROOT/'samples/voiceover-course/index.html']:
@@ -51,8 +53,15 @@ def check():
    if url not in path.read_text():errors.append(f'{path}: missing original course link {url}')
  xml=ET.parse(ROOT/'sitemap.xml');urls=xml.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url')
  if len(urls)!=len(pages):errors.append('sitemap count must match visitor pages')
+ sitemap_ns='{http://www.sitemaps.org/schemas/sitemap/0.9}'
+ actual_urls=[(node.findtext(sitemap_ns+'loc') or '').strip() for node in urls]
+ expected_urls={'https://hayismohammed.github.io/portfolio/'+p.relative_to(ROOT).as_posix().removesuffix('index.html') for p in pages}
+ if len(actual_urls)!=len(set(actual_urls)):errors.append('sitemap has duplicate URLs')
+ if set(actual_urls)!=expected_urls:
+  errors.append('sitemap paths mismatch: missing='+str(sorted(expected_urls-set(actual_urls)))+' unexpected='+str(sorted(set(actual_urls)-expected_urls)))
  # Ensure predecessor image/media assets remain byte-for-byte intact.
  result=subprocess.run(['git','diff','--name-only','326eade21fcc50437cd1d9ed707e177e3e9e41df','--','assets/shots','samples/serum-landing/assets'],cwd=ROOT,capture_output=True,text=True)
+ if result.returncode:errors.append('Could not verify predecessor media: '+result.stderr.strip())
  if result.stdout.strip():errors.append('Predecessor media changed: '+result.stdout)
  result={'pages':len(pages),'local_references':link_count,'sitemap_urls':len(urls),'errors':errors,'passed':not errors}
  print(json.dumps(result,ensure_ascii=False,indent=2));return result
