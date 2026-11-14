@@ -1,11 +1,11 @@
 {
   "pages": 11,
-  "local_references": 207,
+  "local_references": 209,
   "sitemap_urls": 11,
   "errors": [],
   "passed": true,
   "checked_on": "2026-11-14",
-  "checked_commit": "85af543560beb3c8ddc953b4be12ee4658473c59",
-  "evidence_url": "https://github.com/hayismohammed/portfolio/actions/runs/43555288050",
-  "scope": "GitHub Actions source checks; not published-browser or screen-reader testing"
+  "checked_commit": "0a4e909648bdd7017a1593d4b0b51f1c63220a2c",
+  "evidence_url": "https://github.com/hayismohammed/portfolio/actions/runs/43556299425",
+  "scope": "Current GitHub Actions source checks including srcset; not full browser or VoiceOver testing"
 }
