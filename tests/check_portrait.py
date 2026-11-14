@@ -18,7 +18,7 @@ for width, height in [(480, 481), (640, 641)]:
     assert payload[:4] == b"RIFF" and payload[8:12] == b"WEBP", f"Invalid WebP signature: {filename}"
     assert int.from_bytes(payload[4:8], "little") + 8 == len(payload), f"Broken WebP file size: {filename}"
     assert payload[12:16] == b"VP8 ", f"Unexpected WebP encoding: {filename}"
-    assert payload[23:26] == b"\\x9d\\x01\\x2a", f"Missing WebP frame marker: {filename}"
+    assert payload[23:26] == b"\x9d\x01\x2a", f"Missing WebP frame marker: {filename}"
     actual_width = int.from_bytes(payload[26:28], "little") & 0x3FFF
     actual_height = int.from_bytes(payload[28:30], "little") & 0x3FFF
     assert (actual_width, actual_height) == (width, height), f"Incorrect size: {filename}"
