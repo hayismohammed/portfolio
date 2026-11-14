@@ -14,7 +14,7 @@
 |---|---|---|
 | الحضور المهني | رابط المعرض داخل README، وحقل homepage وموضوعات المستودع فارغة في [بيانات GitHub](https://api.github.com/repos/hayismohammed/portfolio) عند الفحص | أُبرزت حقوق العرض في README؛ بيانات حساب GitHub والمواضيع وhomepage تتطلب إعدادات منفصلة ولا يتغير شيء فيها بهذا الفرع |
 | الوصول والجوال | في مصادر الصفحات الإحدى عشرة توجد معالم رئيسية وعناوين وروابط تخطي؛ فحص سابق محلي (9 صفحات، 47 تفاعلًا) لا يغطي iPhone حقيقي | أضيف تشغيل تلقائي لفحوص الشفرة والتنقل؛ **باقٍ** اختبار VoiceOver/Safari وNVDA ولوحة المفاتيح على النسخة المنشورة |
-| توثيق الاختبارات | [خريطة الموقع](https://github.com/hayismohammed/portfolio/blob/c663a7013caaf93f5c6fd797aaf090160f798896/sitemap.xml) بها 11 رابطًا، والتقرير [static-tests.json](https://github.com/hayismohammed/portfolio/blob/c663a7013caaf93f5c6fd797aaf090160f798896/docs/static-tests.json) تاريخي ويحصي 8 فقط | تشديد فحص تطابق الروابط *فعليًا* مع ملفات الصفحات، وفحص نجاح مقارنة وسائط الإصدار السابق، وإضافة CI؛ لا نُعدّ التقرير التاريخي نتيجة حديثة |
+| توثيق الاختبارات | [خريطة الموقع](https://github.com/hayismohammed/portfolio/blob/c663a7013caaf93f5c6fd797aaf090160f798896/sitemap.xml) بها 11 رابطًا، وكان تقرير الفحص الساكن في main القديم يحصي 8 فقط | **أُعيد الفحص فعليًا بنجاح:** 11 صفحة و207 مراجع محلية و11 رابطًا في خريطة الموقع دون أخطاء. جرى تحديث `docs/static-tests.json` وفق نتيجة [GitHub Actions](https://github.com/hayismohammed/portfolio/actions/runs/43555288050)، مع تشديد مطابقة المسارات ومقارنة الوسائط |
 | الأداء | ملف الصورة الأصلية `assets/media/hayis-alanazi.png` حجمه 610644 بايت وفق [شجرة GitHub](https://github.com/hayismohammed/portfolio/tree/c663a7013caaf93f5c6fd797aaf090160f798896/assets/media) | **باقٍ** ضغط الصورة وإنشاء srcset مع فحص تطابق المظهر، ثم قياس أثرها؛ لم يُعدّل ملف الصورة دون نسخة ثنائية صحيحة |
 | SEO | ملفات `robots.txt` والخريطتين موجودة في المصدر، لكن ذلك لا يثبت قبولها في Google | **باقٍ** التأكد من Search Console وقياسات الفهرسة عبر الحساب المصرح به؛ لا ادعاء بنجاح الفهرسة |
 | التقنية والأمان | شفرة نموذج القهوة تستخدم أزرارًا غير مرسلة وسلة محلية بالذاكرة؛ متجر لمسة يستخدم localStorage | فحص أولي لتواقيع أسرار شائعة للملفات النصية المتتبعة داخل CI؛ لا يمثل مراجعة أمنية شاملة أو فحص سجل Git السابق |
@@ -30,7 +30,7 @@ python3 tests/check_public_secrets.py
 find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 ```
 
-ملف `.github/workflows/site-quality.yml` ينفذ تلك الفحوص تلقائيًا في GitHub Actions. نجاحها لا يثبت تشغيل كل تفاعل في المتصفح أو امتثال WCAG الكامل. ينبغي توثيق الإصدار، الجهاز، قارئ الشاشة، المتصفح والنتائج في جولة منفصلة.
+نجح [تشغيل GitHub Actions المؤرخ 14 نوفمبر 2026](https://github.com/hayismohammed/portfolio/actions/runs/43555288050) على الالتزام `85af543560beb3c8ddc953b4be12ee4658473c59`: فحص 11 صفحة، و207 مراجع محلية، و7 نماذج، وصياغة JavaScript، و98 ملفًا نصيًا ضمن الفحص الأولي للأسرار. ملف `.github/workflows/site-quality.yml` يكرر هذه الفحوص عند كل تحديث أو طلب دمج. نجاحها لا يثبت تشغيل كل تفاعل في المتصفح أو امتثال WCAG الكامل. ينبغي توثيق الإصدار، الجهاز، قارئ الشاشة، المتصفح والنتائج في جولة منفصلة.
 
 ### مصادر أساسية
 
@@ -40,4 +40,4 @@ find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 - [خريطة المعرض](https://github.com/hayismohammed/portfolio/blob/c663a7013caaf93f5c6fd797aaf090160f798896/sitemap.xml)
 - [فحص التفاعل السابق](https://github.com/hayismohammed/portfolio/blob/c663a7013caaf93f5c6fd797aaf090160f798896/docs/interaction-tests.json)
 
-*ملاحظة: جميع نتائج الفحص الجديدة مشروطة بما تنفذه أدوات CI فعليًا بعد إنشاء هذا الالتزام؛ أي فشل لاحق يجب إصلاحه قبل الموافقة على الدمج.*
+*ملاحظة: نجاح الفحوص يتعلق بالشفرة التي تحقق منها التشغيل أعلاه؛ لا يستبدل فحص الموقع المنشور أو VoiceOver أو NVDA، ولا يغني عن قياسات الأداء والفهرسة.*

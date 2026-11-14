@@ -1,7 +1,11 @@
 {
-  "pages": 8,
-  "local_references": 98,
-  "sitemap_urls": 8,
+  "pages": 11,
+  "local_references": 207,
+  "sitemap_urls": 11,
   "errors": [],
-  "passed": true
+  "passed": true,
+  "checked_on": "2026-11-14",
+  "checked_commit": "85af543560beb3c8ddc953b4be12ee4658473c59",
+  "evidence_url": "https://github.com/hayismohammed/portfolio/actions/runs/43555288050",
+  "scope": "GitHub Actions source checks; not published-browser or screen-reader testing"
 }
