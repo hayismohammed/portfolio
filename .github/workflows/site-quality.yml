@@ -34,3 +34,6 @@ jobs:
         run: python tests/check_inline_scripts.py
       - name: Inspect tracked text for common secret signatures
         run: python tests/check_public_secrets.py
+      - name: Verify actually published GitHub Pages after main deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: python tests/check_published.py
