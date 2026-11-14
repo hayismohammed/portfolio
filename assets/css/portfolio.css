@@ -806,6 +806,11 @@ bdi,
   margin-inline-start: 0.4em;
 }
 @media (max-width: 760px) {
+  /* Prevent a first-paint jump while deferred menu enhancement initializes.
+     No-JS visitors never receive js-nav-pending, so the navigation stays visible. */
+  html.js-nav-pending #primary-nav {
+    display: none;
+  }
   .topbar .container {
     justify-content: space-between;
   }

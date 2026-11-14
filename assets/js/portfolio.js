@@ -15,6 +15,7 @@
       close();
       if (nav.hidden && nav.contains(active)) toggle.focus();
       else if (toggle.hidden && active === toggle) nav.querySelector('a')?.focus();
+      document.documentElement.classList.remove('js-nav-pending');
     };
     toggle.addEventListener('click', () => {
       const open = toggle.getAttribute('aria-expanded') !== 'true';

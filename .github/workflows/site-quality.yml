@@ -28,6 +28,8 @@ jobs:
         run: python tests/check_navigation.py
       - name: Validate crawl-friendly metadata, canonical and sitemap freshness
         run: python tests/check_search_readiness.py
+      - name: Prevent mobile navigation flash and validate coffee favicon
+        run: python tests/check_performance_fixes.py
       - name: Validate JavaScript syntax
         run: find assets/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
       - name: Verify responsive portrait assets and original preservation
