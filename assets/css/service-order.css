@@ -18,3 +18,12 @@ html body, button, input, textarea, select { font-family: "Noto Sans Arabic", "S
 
 .course-preview { margin: 1rem 0 2rem; max-width: 42rem; }
 .course-preview img { width: 100%; height: auto; display: block; border: 1px solid #b7c5cb; border-radius: .75rem; }
+
+@media (max-width: 768px) {
+  p a[href]:not(.button):not(.btn):not(.btn-ghost):not(.order-email) {
+    display: inline;
+    min-height: 0;
+    min-width: 0;
+    padding-block: .7em;
+  }
+}
