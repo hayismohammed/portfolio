@@ -1,0 +1,138 @@
+[
+  {
+    "file": "assets/shots/serum-landing.webp",
+    "source": "local preview of current working tree /portfolio/samples/serum-landing/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "8e0a8539c2a9fd23d0a661b33fe83a69957e0c0e45adff9f89ebf0ecd6bca2af",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لصفحة صفاء: عنوان المنتج وصورة عبوة بقطّارة وأزرار الحجم والسعر وطريقة الاستخدام"
+  },
+  {
+    "file": "assets/shots/cosmetics-store.webp",
+    "source": "local preview of current working tree /portfolio/samples/cosmetics-store/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "300c61a500ceb8859ba3c2c8a3cd18d2ba46d3461981556dee505112290d98e4",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لمتجر لمسة: واجهة وردية بعنوان اختيارات صغيرة لروتين يشبهك وأزرار المجموعة والسلة"
+  },
+  {
+    "file": "assets/shots/clinic.webp",
+    "source": "local preview of current working tree /portfolio/samples/clinic/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "000cdf87308ee75e1b26802d6a3341aa7aafafa80fd209ea61370d17e5c4d7da",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لعيادة الشفاء: عنوان ابتسامتك بين أيد أمينة وزرا اختيار الموعد والتعرف على الخدمات"
+  },
+  {
+    "file": "assets/shots/restaurant.webp",
+    "source": "local preview of current working tree /portfolio/samples/restaurant/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "bbdd60dbae4b73a29fa8f618c6fd47ac724b655aba04ab1b553484f58f9f0e8c",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لقائمة بيت الكرم: رسم طبق وعنوان على المائدة حكاية كرم وزر تصفح القائمة"
+  },
+  {
+    "file": "assets/shots/salla-coffee.webp",
+    "source": "local preview of current working tree /portfolio/samples/salla-coffee/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "f93d4a12d74812ca450c2e64750855b5938ab418987ef5ff3977908d6dcdfb66",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لمتجر محمصة صليان الثمام: اسم المتجر والتنبيه التوضيحي ومنتج إثيوبيا وزر الإضافة إلى السلة"
+  },
+  {
+    "file": "assets/shots/product-copy.webp",
+    "source": "local preview of current working tree /portfolio/samples/product-copy/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "ec9657c8f4b6d51369b5ae2edddaff67b002b79220e98192ff0082604094d7e3",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لنموذج وصف مِداد: رسم دفتر وعنوان مساحة لفكرتك وبداية ليوم أوضح"
+  },
+  {
+    "file": "assets/shots/short-ad.webp",
+    "source": "local preview of current working tree /portfolio/samples/short-ad/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "3a4e650f56e21d1626a628a3f3632845245acf811b8d64abec2505300074f99c",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لصفحة إعلان مِداد: عنوان فكرة واحدة في عشرين ثانية ومشغل الفيديو"
+  },
+  {
+    "file": "assets/shots/voiceover-course.webp",
+    "source": "local preview of current working tree /portfolio/samples/voiceover-course/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "sha256": "083679d038b6cd7cc2a545b7b38c446af0428da54676c4e042d3339e8141fc4d",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
+    "alt": "لقطة فعلية لصفحة دورات VoiceOver: عنوان الدورة وصورة هاتف وروابط مقارنة الدورات والمعاينات"
+  }
+]

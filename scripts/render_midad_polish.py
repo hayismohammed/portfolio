@@ -100,7 +100,7 @@ def main():
         process.stdin.write(frame(i / 24).tobytes())
     process.stdin.close()
     assert process.wait() == 0
-    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(silent), "-i", str(OUT / "midad-ad-voiced.mp4"), "-map", "0:v:0", "-map", "1:a:0", "-c", "copy", "-t", "20", "-movflags", "+faststart", str(voiced)], check=True)
+    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(silent), "-i", str(ROOT / "docs/archived-media/assets/media/midad-ad-voiced.mp4"), "-map", "0:v:0", "-map", "1:a:0", "-c", "copy", "-t", "20", "-movflags", "+faststart", str(voiced)], check=True)
     frame(1.5).save(OUT / "midad-polished-poster.png", optimize=True)
     card = Image.new("RGB", (960, 645), INK)
     card.paste(frame(1.5).resize((340, 604), Image.Resampling.LANCZOS), (60, 20))

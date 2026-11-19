@@ -1,0 +1,108 @@
+[
+  {
+    "page": "/portfolio/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/guides/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/guides/hermex-hermes-windows/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/serum-landing/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/cosmetics-store/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/clinic/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/restaurant/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/salla-coffee/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/product-copy/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/short-ad/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/samples/voiceover-course/",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/portfolio/404.html",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/404.html",
+    "smallTargets": [],
+    "overflow": false,
+    "arabic": true,
+    "mail": true
+  },
+  {
+    "page": "/missing-audit",
+    "status": 404,
+    "arabic404": false
+  },
+  {
+    "page": "/portfolio/missing-audit/deeper",
+    "status": 404,
+    "arabic404": false
+  },
+  {
+    "page": "/portfolio/samples/missing-audit",
+    "status": 404,
+    "arabic404": false
+  }
+]

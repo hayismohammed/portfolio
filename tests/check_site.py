@@ -59,10 +59,15 @@ def check():
  if len(actual_urls)!=len(set(actual_urls)):errors.append('sitemap has duplicate URLs')
  if set(actual_urls)!=expected_urls:
   errors.append('sitemap paths mismatch: missing='+str(sorted(expected_urls-set(actual_urls)))+' unexpected='+str(sorted(set(actual_urls)-expected_urls)))
- # Ensure predecessor image/media assets remain byte-for-byte intact.
- result=subprocess.run(['git','diff','--name-only','326eade21fcc50437cd1d9ed707e177e3e9e41df','--','assets/shots','samples/serum-landing/assets'],cwd=ROOT,capture_output=True,text=True)
- if result.returncode:errors.append('Could not verify predecessor media: '+result.stderr.strip())
- if result.stdout.strip():errors.append('Predecessor media changed: '+result.stdout)
+ # Refreshed previews and poster retain the original bytes in an excluded archive.
+ baseline='326eade21fcc50437cd1d9ed707e177e3e9e41df'
+ tracked=subprocess.check_output(['git','ls-tree','-r','--name-only',baseline,'--','assets/shots','samples/serum-landing/assets'],cwd=ROOT,text=True).splitlines()
+ for name in tracked:
+  if name.startswith('assets/shots/') or name.endswith('/drop.jpg'):
+   target=ROOT/'docs/original-assets'/Path(name).name
+  else: target=ROOT/name
+  original=subprocess.run(['git','show',baseline+':'+name],cwd=ROOT,capture_output=True)
+  if original.returncode or not target.is_file() or original.stdout!=target.read_bytes():errors.append('Original media not preserved: '+name)
  result={'pages':len(pages),'local_references':link_count,'sitemap_urls':len(urls),'errors':errors,'passed':not errors}
  print(json.dumps(result,ensure_ascii=False,indent=2));return result
 if __name__=='__main__':raise SystemExit(0 if check()['passed'] else 1)

@@ -1,0 +1,62 @@
+[
+  {
+    "test": "check_inline_scripts.py",
+    "exit": 0,
+    "output": "Checked syntax of 5 inline JavaScript blocks across HTML pages.\n"
+  },
+  {
+    "test": "check_navigation.py",
+    "exit": 0,
+    "output": "{\n  \"demonstrations\": 7,\n  \"home_sections\": [\n    \"services\",\n    \"samples\",\n    \"courses\",\n    \"free-guides\",\n    \"about\",\n    \"contact\"\n  ],\n  \"checks\": \"context, cross-links, model brands, return labels, ownership, learning routes\",\n  \"errors\": [],\n  \"passed\": true\n}\n"
+  },
+  {
+    "test": "check_performance_fixes.py",
+    "exit": 0,
+    "output": "PASS: mobile menu starts without first-paint flash; no-JS menu unaffected; coffee favicon resolves.\n"
+  },
+  {
+    "test": "check_portrait.py",
+    "exit": 0,
+    "output": "hayis-alanazi-480.webp: 26650 bytes, 480x481, original preserved.\nhayis-alanazi-640.webp: 40206 bytes, 640x641, original preserved.\n"
+  },
+  {
+    "test": "check_public_secrets.py",
+    "exit": 0,
+    "output": "Scanned 122 tracked UTF-8 text files for common secret signatures.\n"
+  },
+  {
+    "test": "check_search_readiness.py",
+    "exit": 0,
+    "output": "{\n  \"pages\": 11,\n  \"sitemap_urls\": 11,\n  \"unique_titles\": 11,\n  \"unique_descriptions\": 11,\n  \"errors\": [],\n  \"passed\": true\n}\n"
+  },
+  {
+    "test": "check_site.py",
+    "exit": 0,
+    "output": "{\n  \"pages\": 11,\n  \"local_references\": 268,\n  \"sitemap_urls\": 11,\n  \"errors\": [],\n  \"passed\": true\n}\n"
+  },
+  {
+    "test": "portfolio/assets/js/clinic-demo.js",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "test": "portfolio/assets/js/menu-demo.js",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "test": "portfolio/assets/js/store-demo.js",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "test": "portfolio/assets/js/coffee-demo.js",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "test": "portfolio/assets/js/portfolio.js",
+    "exit": 0,
+    "output": ""
+  }
+]
