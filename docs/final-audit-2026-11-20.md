@@ -6,8 +6,8 @@
 | الملف والموضع بعد التغيير | التغيير |
 |---|---|
 | [الرئيسية، 87 و120–194](https://github.com/hayismohammed/portfolio/blob/rashed/final-audit-2026-11-20/index.html#L87) | اختصار جملة تكرر توفر الخدمات، وإفراغ alt للقطات الثماني مع بقاء العنوان والوصف والرابط المجاور. |
-| [القهوة، 369–370 و412 و476–503](https://github.com/hayismohammed/portfolio/blob/rashed/final-audit-2026-11-20/samples/salla-coffee/index.html#L369) | عنوان منتج إثيوبيا الكامل مرة واحدة، والتنبيه «النموذج لا يرسل رسائل» مرة واحدة، ورابط خدمة واحد بالبريد؛ احتفظنا بالتحذير من البيانات الحقيقية وبالحقوق والسياسات. |
-| [صفاء، 401–520](https://github.com/hayismohammed/portfolio/blob/rashed/final-audit-2026-11-20/samples/serum-landing/index.html#L401) | حذف الصورة المكررة، والقسم والعبارات التي تعيد مزايا البطاقات، والأسئلة التي تعيد بيانات الحجم والقطارة. بقيت الصور الأخرى ذات alt مستقل. |
+| [القهوة، 369–396 و456–483](https://github.com/hayismohammed/portfolio/blob/rashed/final-audit-2026-11-20/samples/salla-coffee/index.html#L369) | عنوان منتج إثيوبيا الكامل مرة واحدة، والتنبيه «النموذج لا يرسل رسائل» مرة واحدة، ورابط خدمة واحد بالبريد؛ احتفظنا بالتحذير من البيانات الحقيقية وبالحقوق والسياسات. |
+| [صفاء، 401–528](https://github.com/hayismohammed/portfolio/blob/rashed/final-audit-2026-11-20/samples/serum-landing/index.html#L401) | حذف الصورة المكررة، والقسم والعبارات التي تعيد مزايا البطاقات، والأسئلة التي تعيد بيانات الحجم والقطارة. بقيت الصور الأخرى ذات alt مستقل. |
 | [الجذر، 48](https://github.com/hayismohammed/hayismohammed.github.io/blob/rashed/final-audit-2026-11-20/index.html#L48) | «افتح المعرض» للرابط الاحتياطي؛ العنوان الطويل مرة واحدة. |
 
 راجع [جرد التكرار](repetition-audit-2026-11-20.md) الصفحات الأربع عشرة واحدة واحدة. التغييرات مقصودة للمصدر، ولا تثبت الحالة الحية.
