@@ -7,7 +7,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لصفحة صفاء: عنوان المنتج وصورة عبوة بقطّارة وأزرار الحجم والسعر وطريقة الاستخدام"
   },
   {
@@ -18,7 +23,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لمتجر لمسة: واجهة وردية بعنوان اختيارات صغيرة لروتين يشبهك وأزرار المجموعة والسلة"
   },
   {
@@ -29,7 +39,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لعيادة الشفاء: عنوان ابتسامتك بين أيد أمينة وزرا اختيار الموعد والتعرف على الخدمات"
   },
   {
@@ -40,7 +55,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لقائمة بيت الكرم: رسم طبق وعنوان على المائدة حكاية كرم وزر تصفح القائمة"
   },
   {
@@ -51,7 +71,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لمتجر محمصة صليان الثمام: اسم المتجر والتنبيه التوضيحي ومنتج إثيوبيا وزر الإضافة إلى السلة"
   },
   {
@@ -62,7 +87,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لنموذج وصف مِداد: رسم دفتر وعنوان مساحة لفكرتك وبداية ليوم أوضح"
   },
   {
@@ -73,7 +103,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لصفحة إعلان مِداد: عنوان فكرة واحدة في عشرين ثانية ومشغل الفيديو"
   },
   {
@@ -84,7 +119,12 @@
       960,
       645
     ],
-    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "crop": {
+      "right_px_approx": 28,
+      "bottom_px_approx": 28,
+      "removed_right_padding_px": 15
+    },
+    "method": "CUA browser screenshot; increased the effective right/bottom crop from 20px to approximately 28px to remove scrollbar/cursor artifacts; removed the 15px right-side white fit margin; resampled to 960x645 without added padding",
     "alt": "لقطة فعلية لصفحة دورات VoiceOver: عنوان الدورة وصورة هاتف وروابط مقارنة الدورات والمعاينات"
   }
 ]
