@@ -5,7 +5,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
 directory = root / "assets/media"
-original = directory / "hayis-alanazi.png"
+original = root / "docs/archived-media/assets/media/hayis-alanazi.png"
 expected_sha = "e6f3efef49da925098b81de9375dfdb0c5f28190"
 sha = subprocess.check_output(["git", "hash-object", str(original)], cwd=root, text=True).strip()
 assert sha == expected_sha, "The original portrait PNG has changed."
@@ -23,5 +23,5 @@ for width, height in [(480, 481), (640, 641)]:
     actual_height = int.from_bytes(payload[28:30], "little") & 0x3FFF
     assert (actual_width, actual_height) == (width, height), f"Incorrect size: {filename}"
     assert len(payload) < original.stat().st_size, f"No savings: {filename}"
-    assert html.count(f"assets/media/{filename}") == 2 if width == 640 else html.count(f"assets/media/{filename}") == 1, f"Image not referenced: {filename}"
+    assert html.count(f"assets/media/{filename}") == 3 if width == 640 else html.count(f"assets/media/{filename}") == 1, f"Image not referenced: {filename}"
     print(f"{filename}: {len(payload)} bytes, {width}x{height}, original preserved.")

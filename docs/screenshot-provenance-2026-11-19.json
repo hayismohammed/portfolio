@@ -1,0 +1,90 @@
+[
+  {
+    "file": "assets/shots/serum-landing.webp",
+    "source": "local preview of current working tree /portfolio/samples/serum-landing/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لصفحة صفاء: عنوان المنتج وصورة عبوة بقطّارة وأزرار الحجم والسعر وطريقة الاستخدام"
+  },
+  {
+    "file": "assets/shots/cosmetics-store.webp",
+    "source": "local preview of current working tree /portfolio/samples/cosmetics-store/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لمتجر لمسة: واجهة وردية بعنوان اختيارات صغيرة لروتين يشبهك وأزرار المجموعة والسلة"
+  },
+  {
+    "file": "assets/shots/clinic.webp",
+    "source": "local preview of current working tree /portfolio/samples/clinic/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لعيادة الشفاء: عنوان ابتسامتك بين أيد أمينة وزرا اختيار الموعد والتعرف على الخدمات"
+  },
+  {
+    "file": "assets/shots/restaurant.webp",
+    "source": "local preview of current working tree /portfolio/samples/restaurant/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لقائمة بيت الكرم: رسم طبق وعنوان على المائدة حكاية كرم وزر تصفح القائمة"
+  },
+  {
+    "file": "assets/shots/salla-coffee.webp",
+    "source": "local preview of current working tree /portfolio/samples/salla-coffee/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لمتجر محمصة صليان الثمام: اسم المتجر والتنبيه التوضيحي ومنتج إثيوبيا وزر الإضافة إلى السلة"
+  },
+  {
+    "file": "assets/shots/product-copy.webp",
+    "source": "local preview of current working tree /portfolio/samples/product-copy/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لنموذج وصف مِداد: رسم دفتر وعنوان مساحة لفكرتك وبداية ليوم أوضح"
+  },
+  {
+    "file": "assets/shots/short-ad.webp",
+    "source": "local preview of current working tree /portfolio/samples/short-ad/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لصفحة إعلان مِداد: عنوان فكرة واحدة في عشرين ثانية ومشغل الفيديو"
+  },
+  {
+    "file": "assets/shots/voiceover-course.webp",
+    "source": "local preview of current working tree /portfolio/samples/voiceover-course/",
+    "capture_date": "2026-11-19",
+    "size": [
+      960,
+      645
+    ],
+    "method": "CUA browser screenshot; crop 20px from right/bottom outside content to remove scrollbar/cursor; proportional fit with white padding to 960x645",
+    "alt": "لقطة فعلية لصفحة دورات VoiceOver: عنوان الدورة وصورة هاتف وروابط مقارنة الدورات والمعاينات"
+  }
+]

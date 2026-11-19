@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://hayismohammed.gumroad.com/l/oeuvzz",
+    "status": 200,
+    "final_url": "https://hayismohammed.gumroad.com/l/oeuvzz",
+    "ok": true
+  },
+  {
+    "url": "https://hermes-agent.nousresearch.com/docs/user-guide/windows-native",
+    "status": 200,
+    "final_url": "https://hermes-agent.nousresearch.com/docs/user-guide/windows-native",
+    "ok": true
+  },
+  {
+    "url": "https://hermexapp.com/setup",
+    "status": 200,
+    "final_url": "https://hermexapp.com/setup",
+    "ok": true
+  },
+  {
+    "url": "https://mc.gov.sa/ar/ECC/ECC_Docs/E-commerce-system.pdf",
+    "ok": false,
+    "error": "HTTP Error 503: Service Unavailable"
+  },
+  {
+    "url": "https://tailscale.com/docs/features/tailscale-serve",
+    "status": 200,
+    "final_url": "https://tailscale.com/docs/features/tailscale-serve",
+    "ok": true
+  },
+  {
+    "url": "https://www.udemy.com/course/voiceover-x/?referralCode=7AC554AC18ADE0541D29",
+    "status": 200,
+    "final_url": "https://www.udemy.com/course/voiceover-x/?referralCode=7AC554AC18ADE0541D29",
+    "ok": true
+  }
+]

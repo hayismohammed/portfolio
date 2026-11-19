@@ -73,6 +73,6 @@ expected_urls={prefix+page.relative_to(root).as_posix().removesuffix("index.html
 if expected_urls != set(entries): errors.append("Sitemap has nonmatching URLs")
 for loc in (prefix,prefix+"samples/salla-coffee/"):
     lastmod = entries.get(loc).findtext(namespace+"lastmod") if loc in entries else None
-    if lastmod != "2026-11-14": errors.append("Changed page has stale sitemap lastmod: "+loc)
+    if lastmod != "2026-11-19": errors.append("Changed page has stale sitemap lastmod: "+loc)
 print(json.dumps({"pages":len(pages),"sitemap_urls":len(entries),"unique_titles":len(titles),"unique_descriptions":len(descriptions),"errors":errors,"passed":not errors},ensure_ascii=False,indent=2))
 sys.exit(1 if errors else 0)

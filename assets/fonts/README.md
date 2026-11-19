@@ -1,0 +1,1 @@
+Noto Sans Arabic regular and bold, converted from the installed original TTF files to WOFF without changing glyphs. License: SIL OFL 1.1; copyright retained in LICENSE.txt. Project: https://github.com/notofonts/arabic

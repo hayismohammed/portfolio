@@ -23,7 +23,7 @@
       const heading = document.createElement("h3");
       heading.textContent = product.name;
       const price = document.createElement("p");
-      price.textContent = `${product.price} ر.س للوحدة · المجموع ${product.price * qty} ر.س`;
+      price.textContent = `${product.price} ريال سعودي للوحدة · المجموع ${product.price * qty} ريال سعودي`;
       const controls = document.createElement("div");
       controls.className = "cart-controls";
       const amount = document.createElement("span");
@@ -61,7 +61,7 @@
   }
   function announce(message) {
     const { count, total } = summary();
-    status.textContent = `${message} عدد الوحدات ${count}، والإجمالي ${total} ريال.`;
+    status.textContent = `${message} عدد الوحدات ${count}، والإجمالي ${total} ريال سعودي.`;
   }
   document.querySelectorAll("[data-coffee-add]").forEach(button => {
     const id = button.dataset.coffeeAdd;
