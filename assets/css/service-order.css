@@ -1,5 +1,5 @@
-@font-face { font-family: "Noto Sans Arabic"; src: url("../fonts/NotoSansArabic-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Noto Sans Arabic"; src: url("../fonts/NotoSansArabic-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Noto Sans Arabic"; src: url("../fonts/NotoSansArabic-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: optional; }
+@font-face { font-family: "Noto Sans Arabic"; src: url("../fonts/NotoSansArabic-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: optional; }
 html body, button, input, textarea, select { font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif; }
 /* Shared service ordering and touch targets, without changing demo actions. */
 .service-order { box-sizing: border-box; width: min(100% - 2rem, 72rem); margin: 2rem auto; padding: clamp(1rem, 3vw, 2rem); border: 1px solid #b7c5cb; border-radius: 1rem; background: #fff; color: #102b3c; font: 1rem/1.9 "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif; }
@@ -25,5 +25,17 @@ html body, button, input, textarea, select { font-family: "Noto Sans Arabic", "S
     min-height: 0;
     min-width: 0;
     padding-block: .7em;
+  }
+}
+
+@media (min-width: 769px) {
+  a.large-target {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 }

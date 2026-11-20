@@ -3,6 +3,8 @@
 <html dir="rtl" lang="ar">
 <head>
 <meta charset="utf-8"/>
+<link rel="preload" href="../../assets/fonts/NotoSansArabic-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../../assets/fonts/NotoSansArabic-Bold.woff" as="font" type="font/woff" crossorigin>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>لمسة | متجر عناية تجريبي | هايس العنزي</title>
 <meta content="واجهة متجر تجريبية بصور منتجات أصلية وتصفية وسلة قابلة للتعديل، دون دفع أو إرسال طلب." name="description"/>
@@ -84,29 +86,25 @@
       <div class="wrap bar">
         <a class="brand" href="#main">لمسة</a>
         <nav aria-label="أقسام الصفحة">
-          <a href="#products">المنتجات</a><a href="#cart">السلة</a>
+          <a class="large-target" href="#products">المنتجات</a><a class="large-target" href="#cart"><span>السلة: <span id="cart-count">0</span><span class="sr-only"> وحدة</span></span></a>
         </nav>
       </div>
     </header>
     <main id="main" class="wrap" tabindex="-1">
-      <nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../#samples">معرض الأعمال</a></li><li aria-current="page">متجر لمسة</li></ol></nav>
+      <nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../#samples">معرض الأعمال</a></li></ol></nav>
       <p class="demo-note">
         نموذج تجريبي لمتجر لمسة؛ المنتجات والأسعار توضيحية، ولا يوجد دفع أو إرسال طلب.
       </p>
-      <section class="hero" aria-labelledby="store-title">
+      <section class="hero">
         <div>
-          <span class="eyebrow">لمسة / العناية بتفاصيل يومك</span>
+          <span class="eyebrow">العناية بتفاصيل يومك</span>
           <h1 id="store-title">اختيارات صغيرة.<br />لروتين يشبهك.</h1>
           <p class="lead">
             استكشفي مجموعة العناية والعطور، وقارني المنتجات والأسعار في مكان
             واحد.
           </p>
           <div class="actions">
-            <a class="btn" href="#products">استكشفي المجموعة</a
-            ><a class="btn secondary" id="cart-link" href="#cart"
-              >السلة: <span id="cart-count">0</span
-              ><span class="sr-only"> وحدة</span></a
-            >
+            <a class="large-target btn" href="#products">استكشفي المجموعة</a>
           </div>
         </div>
         <img
@@ -116,7 +114,7 @@
           alt="رسوم توضيحية لعبوات لمسة بألوان وردية وخضراء"
         />
       </section>
-      <section class="section" aria-labelledby="products">
+      <section class="section">
         <div class="section-head">
           <span class="eyebrow">المجموعة</span>
           <h2 id="products">العناية، على طريقتك</h2>
@@ -300,7 +298,7 @@
           </li>
         </ul>
       </section>
-      <section class="section" aria-labelledby="cart">
+      <section class="section">
         <h2 id="cart" tabindex="-1">سلتك</h2>
         <p class="muted" id="cart-storage-note">
           يحتاج حفظ السلة إلى JavaScript وإتاحة التخزين في المتصفح.
@@ -313,10 +311,9 @@
             <ul
               id="cart-items"
               class="cart-list"
-              aria-describedby="cart-storage-note"
             ></ul>
           </div>
-          <section class="cart-summary" aria-labelledby="summary-title">
+          <section class="cart-summary">
             <h3 id="summary-title">ملخص السلة</h3>
             <p>عدد الوحدات: <span id="summary-count">0</span></p>
             <p class="cart-total">
@@ -333,7 +330,7 @@
             >
               إفراغ السلة
             </button>
-            <a href="#products">العودة إلى المنتجات</a>
+            <a class="large-target" href="#products">العودة إلى المنتجات</a>
           </section>
         </div>
         <noscript
@@ -344,7 +341,7 @@
         >
       </section>
 
-<section class="service-order" id="request-service" aria-labelledby="request-service-h">
+<section class="service-order" id="request-service">
   <h2 id="request-service-h">تواصل واطلب خدمة</h2>
   <p>لطلب خدمة حقيقية من هايس العنزي، أرسل بريدًا يوضح نوع الخدمة، وفكرة المشروع، والمخرجات المطلوبة، والموعد المناسب، وروابط أو ملفات مرجعية إن وجدت. تُحدَّد التكلفة والمدة بعد مراجعة التفاصيل والاتفاق عليها.</p>
   <p>البريد: <bdi>hayis.mohammed@gmail.com</bdi></p>

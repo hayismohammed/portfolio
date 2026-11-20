@@ -8,3 +8,7 @@ exclude:
   - node_modules
   - private-drafts
   - .openai
+  - samples/serum-landing/assets/8054400.jpg
+  - samples/serum-landing/assets/8101532.jpg
+  - samples/serum-landing/assets/8100775.jpg
+  - samples/serum-landing/assets/35899861.jpg

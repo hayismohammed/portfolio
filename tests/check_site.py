@@ -65,7 +65,11 @@ def check():
  for name in tracked:
   if name.startswith('assets/shots/') or name.endswith('/drop.jpg'):
    target=ROOT/'docs/original-assets'/Path(name).name
-  else: target=ROOT/name
+  else:
+   # Keep the original Pexels bytes outside the published site when a sharper
+   # licensed copy replaces an older serum image at its original URL.
+   archived=ROOT/'docs/original-assets'/('serum-'+Path(name).name)
+   target=archived if archived.is_file() else ROOT/name
   original=subprocess.run(['git','show',baseline+':'+name],cwd=ROOT,capture_output=True)
   if original.returncode or not target.is_file() or original.stdout!=target.read_bytes():errors.append('Original media not preserved: '+name)
  result={'pages':len(pages),'local_references':link_count,'sitemap_urls':len(urls),'errors':errors,'passed':not errors}
