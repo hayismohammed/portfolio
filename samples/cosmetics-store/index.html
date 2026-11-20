@@ -84,29 +84,25 @@
       <div class="wrap bar">
         <a class="brand" href="#main">لمسة</a>
         <nav aria-label="أقسام الصفحة">
-          <a href="#products">المنتجات</a><a href="#cart">السلة</a>
+          <a class="large-target" href="#products">المنتجات</a><a class="large-target" href="#cart">السلة: <span id="cart-count">0</span><span class="sr-only"> وحدة</span></a>
         </nav>
       </div>
     </header>
     <main id="main" class="wrap" tabindex="-1">
-      <nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../#samples">معرض الأعمال</a></li><li aria-current="page">متجر لمسة</li></ol></nav>
+      <nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../#samples">معرض الأعمال</a></li></ol></nav>
       <p class="demo-note">
         نموذج تجريبي لمتجر لمسة؛ المنتجات والأسعار توضيحية، ولا يوجد دفع أو إرسال طلب.
       </p>
       <section class="hero" aria-labelledby="store-title">
         <div>
-          <span class="eyebrow">لمسة / العناية بتفاصيل يومك</span>
+          <span class="eyebrow">العناية بتفاصيل يومك</span>
           <h1 id="store-title">اختيارات صغيرة.<br />لروتين يشبهك.</h1>
           <p class="lead">
             استكشفي مجموعة العناية والعطور، وقارني المنتجات والأسعار في مكان
             واحد.
           </p>
           <div class="actions">
-            <a class="btn" href="#products">استكشفي المجموعة</a
-            ><a class="btn secondary" id="cart-link" href="#cart"
-              >السلة: <span id="cart-count">0</span
-              ><span class="sr-only"> وحدة</span></a
-            >
+            <a class="large-target btn" href="#products">استكشفي المجموعة</a>
           </div>
         </div>
         <img
@@ -313,7 +309,6 @@
             <ul
               id="cart-items"
               class="cart-list"
-              aria-describedby="cart-storage-note"
             ></ul>
           </div>
           <section class="cart-summary" aria-labelledby="summary-title">
@@ -333,7 +328,7 @@
             >
               إفراغ السلة
             </button>
-            <a href="#products">العودة إلى المنتجات</a>
+            <a class="large-target" href="#products">العودة إلى المنتجات</a>
           </section>
         </div>
         <noscript

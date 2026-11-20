@@ -83,12 +83,15 @@
       padding: 14px 0 10px;
     }
     .brand {
-      font-family: "El Messiri", "Noto Naskh Arabic", "Segoe UI", Tahoma, sans-serif;
+      font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
       font-weight: 700;
       font-size: 22px;
       color: var(--ink);
       text-decoration: none;
       line-height: 1.25;
+    }
+    @media (min-width: 769px) {
+      .brand.large-target { flex-direction: column; align-items: flex-start; justify-content: center; }
     }
     .brand small {
       display: block;
@@ -154,7 +157,7 @@
       margin: 0 0 6px;
     }
     h1, h2, h3 {
-      font-family: "El Messiri", "Noto Naskh Arabic", "Segoe UI", Tahoma, sans-serif;
+      font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
       line-height: 1.35;
       margin: 0 0 10px;
     }
@@ -308,6 +311,15 @@
       body { font-size: 17px; }
       .trust { grid-template-columns: 1fr 1fr 1fr; }
     }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
   </style>
 
 <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">
@@ -322,7 +334,7 @@
   <header class="top">
     <div class="wrap">
       <div class="top-inner">
-        <a class="brand" href="#intro">محمصة صليان الثمام<small>بُن مختص</small></a>
+        <a class="large-target brand" href="#intro">محمصة صليان الثمام<small>بُن مختص</small></a>
         <nav class="tools" aria-label="أدوات التسوق">
           <a class="tool" href="#products">المنتجات</a>
           <a class="tool" href="#cart">السلة: <span id="coffee-cart-count">0</span> وحدة</a>
@@ -333,14 +345,14 @@
         <a href="#faq">الأسئلة الشائعة</a>
         <a href="#contact">تواصل معنا</a>
         <a href="#privacy">سياسة الخصوصية</a>
-        <a href="#returns">الاستبدال والاسترجاع</a>
+        <a class="large-target" href="#returns">الاستبدال والاسترجاع</a>
       </nav>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
     <div class="wrap">
-<nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../#samples">معرض الأعمال</a></li><li aria-current="page">متجر القهوة</li></ol></nav>
+<nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../#samples">معرض الأعمال</a></li></ol></nav>
       <section class="hero" id="intro">
         <div class="bag-stage"><svg class="bag-art" viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <defs>
@@ -359,20 +371,14 @@
   <path d="M62 86 L80 96 Q140 78 200 96 L218 86 Q140 62 62 86 Z" fill="url(#bagFold)"/>
   <rect x="78" y="128" width="124" height="132" rx="8" fill="#f6ead4"/>
   <rect x="84" y="134" width="112" height="120" rx="6" fill="#fbf6ea" stroke="#c6A46b" stroke-width="1.2"/>
-  <text x="140" y="168" text-anchor="middle" fill="#4A2c1A" font-size="15" font-family="El Messiri, sans-serif" font-weight="700">صليان الثمام</text>
+  <text x="140" y="168" text-anchor="middle" fill="#4A2c1A" font-size="15" font-family="Noto Sans Arabic, sans-serif" font-weight="700">صليان الثمام</text>
   <text x="140" y="196" text-anchor="middle" fill="#9A4f28" font-size="11" font-family="Noto Sans Arabic, sans-serif">إثيوبيا المغسول</text>
   <text x="140" y="218" text-anchor="middle" fill="#5c4e42" font-size="11" font-family="Noto Sans Arabic, sans-serif">تحميص فاتح</text>
   <text x="140" y="238" text-anchor="middle" fill="#5c4e42" font-size="11" font-family="Noto Sans Arabic, sans-serif">250 جم · حبوب كاملة</text>
 </svg></div>
         <div class="copy">
-          <p class="kicker">البُن المختص</p>
           <h1>قهوة مختصة للترشيح</h1>
           <p>ثلاثة أكياس تختلف في المعالجة ودرجة التحميص.</p>
-          <div class="buy-row">
-            <button class="btn" type="button" data-coffee-add="ethiopia" aria-label="أضف إثيوبيا المغسول إلى السلة" disabled>أضف إلى السلة</button>
-            <a class="btn-ghost" href="#about">صفحات المتجر</a>
-          </div>
-
         </div>
       </section>
 
@@ -390,27 +396,28 @@
 
       <div class="section-title" id="products">
         <h2>البُن المختص</h2>
+        <p>كل الأكياس 250 جم حبوبًا كاملة، ويمكن اختيار الطحن عند الطلب.</p>
       </div>
       <div class="products"><article class="product-card" id="product-ethiopia">
   <div class="mini-bag" aria-hidden="true"><span>250 جم</span></div>
   <h3>إثيوبيا المغسول — تحميص فاتح</h3>
   <p class="meta">72 ريال سعودي</p>
-  <dl class="specs"><div><dt>الأصل</dt><dd>إثيوبيا</dd></div><div><dt>المعالجة</dt><dd>غسل</dd></div><div><dt>التحميص</dt><dd>فاتح</dd></div><div><dt>الإيحاءات</dt><dd>زهر خفيف، حموضة مشرقة، فاكهة ذات نواة</dd></div><div><dt>التحضير</dt><dd>ترشيح يدوي أو تقطير</dd></div><div><dt>الوزن</dt><dd>250 جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
-  <button class="btn" type="button" data-coffee-add="ethiopia" aria-label="أضف إثيوبيا المغسول إلى السلة" disabled>أضف إلى السلة</button>
+  <dl class="specs"><div><dt>الأصل</dt><dd>إثيوبيا</dd></div><div><dt>المعالجة</dt><dd>غسل</dd></div><div><dt>التحميص</dt><dd>فاتح</dd></div><div><dt>الإيحاءات</dt><dd>زهر خفيف، حموضة مشرقة، فاكهة ذات نواة</dd></div><div><dt>التحضير</dt><dd>ترشيح يدوي أو تقطير</dd></div></dl>
+  <button class="btn" type="button" data-coffee-add="ethiopia" disabled>أضف إلى السلة<span class="sr-only">: إثيوبيا المغسول</span></button>
 </article>
 <article class="product-card" id="product-colombia">
   <div class="mini-bag" aria-hidden="true"><span>250 جم</span></div>
   <h3>كولومبيا معالجة عسلية — تحميص متوسط</h3>
   <p class="meta">68 ريال سعودي</p>
-  <dl class="specs"><div><dt>الأصل</dt><dd>كولومبيا</dd></div><div><dt>المعالجة</dt><dd>معالجة عسلية</dd></div><div><dt>التحميص</dt><dd>متوسط</dd></div><div><dt>الإيحاءات</dt><dd>حلاوة هادئة، كراميل خفيف، جسم متوازن</dd></div><div><dt>التحضير</dt><dd>إسبريسو، أو إبريق مكبس</dd></div><div><dt>الوزن</dt><dd>250 جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
-  <button class="btn" type="button" data-coffee-add="colombia" aria-label="أضف كولومبيا المعالجة العسلية إلى السلة" disabled>أضف إلى السلة</button>
+  <dl class="specs"><div><dt>الأصل</dt><dd>كولومبيا</dd></div><div><dt>المعالجة</dt><dd>معالجة عسلية</dd></div><div><dt>التحميص</dt><dd>متوسط</dd></div><div><dt>الإيحاءات</dt><dd>حلاوة هادئة، كراميل خفيف، جسم متوازن</dd></div><div><dt>التحضير</dt><dd>إسبريسو، أو إبريق مكبس</dd></div></dl>
+  <button class="btn" type="button" data-coffee-add="colombia" disabled>أضف إلى السلة<span class="sr-only">: كولومبيا المعالجة العسلية</span></button>
 </article>
 <article class="product-card" id="product-house">
   <div class="mini-bag" aria-hidden="true"><span>250 جم</span></div>
   <h3>خلطة الدار — تحميص متوسط غامق</h3>
   <p class="meta">59 ريال سعودي</p>
-  <dl class="specs"><div><dt>الأصل</dt><dd>خلطة الدار</dd></div><div><dt>المعالجة</dt><dd>غير محددة لهذه الخلطة</dd></div><div><dt>التحميص</dt><dd>متوسط غامق</dd></div><div><dt>الإيحاءات</dt><dd>مرارة معتدلة، كاكاو خفيف، ختام نظيف</dd></div><div><dt>التحضير</dt><dd>إبريق يومي أو مع الحليب</dd></div><div><dt>الوزن</dt><dd>250 جم، حبوب كاملة</dd></div><div><dt>الطحن</dt><dd>حبوب كاملة، ويمكن اختيار الطحن عند الطلب</dd></div></dl>
-  <button class="btn" type="button" data-coffee-add="house" aria-label="أضف خلطة الدار إلى السلة" disabled>أضف إلى السلة</button>
+  <dl class="specs"><div><dt>الأصل</dt><dd>خلطة الدار</dd></div><div><dt>المعالجة</dt><dd>غير محددة لهذه الخلطة</dd></div><div><dt>التحميص</dt><dd>متوسط غامق</dd></div><div><dt>الإيحاءات</dt><dd>مرارة معتدلة، كاكاو خفيف، ختام نظيف</dd></div><div><dt>التحضير</dt><dd>إبريق يومي أو مع الحليب</dd></div></dl>
+  <button class="btn" type="button" data-coffee-add="house" disabled>أضف إلى السلة<span class="sr-only">: خلطة الدار</span></button>
 </article></div>
 
       <section class="coffee-cart" id="cart" aria-labelledby="coffee-cart-title" tabindex="-1">
@@ -444,7 +451,7 @@
 </details>
           <details class="faq-item">
 <summary>ماذا أفعل إذا وصل الطلب تالفًا أو مختلفًا؟</summary>
-<p>تُعالج حالات التلف أو الاختلاف أو النقص وفق <a href="#returns">سياسة الاستبدال والاسترجاع</a>، وفيها طريقة تقديم الطلب.</p>
+<p>تُعالج حالات التلف أو الاختلاف أو النقص وفق <a class="large-target" href="#returns">سياسة الاستبدال والاسترجاع</a>، وفيها طريقة تقديم الطلب.</p>
 </details>
           <details class="faq-item">
 <summary>ما وسائل الدفع، وهل يمكن الاسترجاع؟</summary>
@@ -462,7 +469,7 @@
             <label>الرسالة
               <textarea name="message" rows="4"></textarea>
             </label>
-            <button class="btn" type="button" disabled aria-describedby="coffee-form-button-note">إرسال الرسالة</button>
+            <button class="btn" type="button" disabled>إرسال الرسالة</button>
             <p id="coffee-form-button-note">زر معطّل في هذه المعاينة.</p>
           </div>
         </section>
@@ -472,7 +479,7 @@
         </section>
         <section class="page" id="returns">
           <h2>سياسة الاستبدال والاسترجاع</h2>
-          <p>تُطبَّق هذه السياسة وفق <a href="https://mc.gov.sa/ar/ECC/ECC_Docs/E-commerce-system.pdf" target="_blank" rel="noopener noreferrer">نظام التجارة الإلكترونية</a> ولائحته التنفيذية وممارسات المتجر، ولا تنتقص من حقوق المستهلك الإلزامية.</p><p>وفق المادة الثالثة عشرة من نظام التجارة الإلكترونية، للمستهلك —في غير الحالات المستثناة— فسخ العقد خلال الأيام السبعة التالية لتاريخ تسلّمه المنتج أو لتاريخ التعاقد على تقديم الخدمة، ما دام أنه لم يستخدم المنتج أو لم يستفد من الخدمة أو لم يحصل على منفعة من أيّ منهما. ويتحمل المستهلك تكاليف الفسخ إلا إذا اتفق أطراف العقد على غير ذلك.</p><p>وتُراعى استثناءات الفقرة (2) من المادة نفسها، واستثناءات المادة الحادية عشرة من اللائحة —ومنها المنتج المعرض للتلف خلال مدة جواز الفسخ، والمنتج الذي لا يمكن إعادة بيعه لأسباب صحية— بحسب طبيعة المنتج، من غير استبعاد شامل غير نظامي.</p><p>وللبُن يُفرَّق بين تغيير الرأي والعيب والخطأ: لا يُقبل عادةً إرجاع الكيس بعد فتحه أو فض ختمه لتغيير الرأي إن تعذر إعادة بيعه لأسباب صحية. أما طحن يخالف الاختيار، أو منتج يخالف الوصف —ومن ذلك كيس أقدم من نطاق التحميص المعلن— فلا يُعالج كاختلاف ذوق. واختلاف المذاق وحده لا يُعد عيبًا إذا طابق المنتج وصفه.</p><p>إذا وصل المنتج تالفًا أو مختلفًا أو ناقصًا يُعالج على نفقة المتجر بعد التحقق. والتصوير عند الاستلام مستحسن لا شرطًا للمطالبة. إعادة الشحن على المستهلك فقط لسبب مثبت راجع إليه وبتكلفة فعلية معلنة، لا لخطأ المتجر أو الناقل. بعد التحقق وفق السياسة والحقوق يُرد المستحق لوسيلة الدفع الأصلية إن أتيح، والتحقق ليس رفضًا مطلقًا.</p><p>في المتجر الفعلي يُقدَّم طلب الاسترجاع عبر بريد المتجر المعتمد، مع رقم الطلب ووصف الحالة، وصور الكيس والملصق إن تيسّرت. وبعد استلام الطلب يُراجع وفق هذه السياسة والحقوق النظامية، ثم يُبلَّغ المشتري بنتيجة المعالجة.</p><p>يُطلب البلاغ فور اكتشاف المشكلة. ولا يُسقط مجرد تأخر البلاغ حق العيب أو الخطأ، مع مراعاة المدد والأحكام النظامية ذات العلاقة.</p><p>وفق المادة الرابعة عشرة، ما لم يُتفق على مدة أخرى للتسليم، يحق للمستهلك فسخ العقد إذا تأخر التسليم أو التنفيذ مدة تزيد على خمسة عشر يومًا من تاريخ إبرام العقد أو عن الموعد المتفق عليه، وله استرداد ما دفعه وما ترتب على التأخير، ما لم يكن التأخير بسبب قوة قاهرة. ويلتزم المتجر بإبلاغ المستهلك عند توقع تأخير، أو عند ظهور صعوبات ذات تأثير جوهري في التسليم أو التنفيذ.</p>
+          <p>تُطبَّق هذه السياسة وفق <a class="large-target" href="https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/360de590-0286-4fa5-a243-aa9100c31979/1" target="_blank" rel="noopener noreferrer">نظام التجارة الإلكترونية</a> ولائحته التنفيذية وممارسات المتجر، ولا تنتقص من حقوق المستهلك الإلزامية.</p><p>وفق المادة الثالثة عشرة من نظام التجارة الإلكترونية، للمستهلك —في غير الحالات المستثناة— فسخ العقد خلال الأيام السبعة التالية لتاريخ تسلّمه المنتج أو لتاريخ التعاقد على تقديم الخدمة، ما دام أنه لم يستخدم المنتج أو لم يستفد من الخدمة أو لم يحصل على منفعة من أيّ منهما. ويتحمل المستهلك تكاليف الفسخ إلا إذا اتفق أطراف العقد على غير ذلك.</p><p>وتُراعى استثناءات الفقرة (2) من المادة نفسها، واستثناءات المادة الحادية عشرة من اللائحة —ومنها المنتج المعرض للتلف خلال مدة جواز الفسخ، والمنتج الذي لا يمكن إعادة بيعه لأسباب صحية— بحسب طبيعة المنتج، من غير استبعاد شامل غير نظامي.</p><p>وللبُن يُفرَّق بين تغيير الرأي والعيب والخطأ: لا يُقبل عادةً إرجاع الكيس بعد فتحه أو فض ختمه لتغيير الرأي إن تعذر إعادة بيعه لأسباب صحية. أما طحن يخالف الاختيار، أو منتج يخالف الوصف —ومن ذلك كيس أقدم من نطاق التحميص المعلن— فلا يُعالج كاختلاف ذوق. واختلاف المذاق وحده لا يُعد عيبًا إذا طابق المنتج وصفه.</p><p>إذا وصل المنتج تالفًا أو مختلفًا أو ناقصًا يُعالج على نفقة المتجر بعد التحقق. والتصوير عند الاستلام مستحسن لا شرطًا للمطالبة. إعادة الشحن على المستهلك فقط لسبب مثبت راجع إليه وبتكلفة فعلية معلنة، لا لخطأ المتجر أو الناقل. بعد التحقق وفق السياسة والحقوق يُرد المستحق لوسيلة الدفع الأصلية إن أتيح، والتحقق ليس رفضًا مطلقًا.</p><p>في المتجر الفعلي يُقدَّم طلب الاسترجاع عبر بريد المتجر المعتمد، مع رقم الطلب ووصف الحالة، وصور الكيس والملصق إن تيسّرت. وبعد استلام الطلب يُراجع وفق هذه السياسة والحقوق النظامية، ثم يُبلَّغ المشتري بنتيجة المعالجة.</p><p>يُطلب البلاغ فور اكتشاف المشكلة. ولا يُسقط مجرد تأخر البلاغ حق العيب أو الخطأ، مع مراعاة المدد والأحكام النظامية ذات العلاقة.</p><p>وفق المادة الرابعة عشرة، ما لم يُتفق على مدة أخرى للتسليم، يحق للمستهلك فسخ العقد إذا تأخر التسليم أو التنفيذ مدة تزيد على خمسة عشر يومًا من تاريخ إبرام العقد أو عن الموعد المتفق عليه، وله استرداد ما دفعه وما ترتب على التأخير، ما لم يكن التأخير بسبب قوة قاهرة. ويلتزم المتجر بإبلاغ المستهلك عند توقع تأخير، أو عند ظهور صعوبات ذات تأثير جوهري في التسليم أو التنفيذ.</p>
         </section>
       </div>
     </div>
@@ -491,7 +498,7 @@
         <a href="#faq">الأسئلة الشائعة</a>
         <a href="#contact">تواصل معنا</a>
         <a href="#privacy">سياسة الخصوصية</a>
-        <a href="#returns">الاستبدال والاسترجاع</a>
+        <a class="large-target" href="#returns">الاستبدال والاسترجاع</a>
       </div>
       <p class="site-copyright" dir="ltr" lang="en">© 2026 Hayis Alanazi. All rights reserved.</p>
     </div>
