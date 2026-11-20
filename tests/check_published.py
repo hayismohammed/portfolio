@@ -41,7 +41,7 @@ for page in PAGES:
     document = get(address).decode("utf-8")
     assert "<main" in document and "<title" in document, f"Unexpected HTML response: {address}"
     if page == "/samples/salla-coffee/":
-        assert "E-commerce-system.pdf" in document, "Official commerce policy source absent"
+        assert "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/360de590-0286-4fa5-a243-aa9100c31979/1" in document, "Official commerce policy source absent"
         assert "<form" not in document.lower(), "Coffee demo unexpectedly has a form"
     print(f"PASS: {address}", flush=True)
 
