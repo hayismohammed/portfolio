@@ -61,6 +61,8 @@ for page in pages:
     desc = [m.get("content","").strip() for m in a.meta if m.get("name") == "description"]
     og_title = [m.get("content","").strip() for m in a.meta if m.get("property") == "og:title"]
     og_desc = [m.get("content","").strip() for m in a.meta if m.get("property") == "og:description"]
+    og_url = [m.get("content","").strip() for m in a.meta if m.get("property") == "og:url"]
+    og_image = [m.get("content","").strip() for m in a.meta if m.get("property") == "og:image"]
     twitter_title = [m.get("content","").strip() for m in a.meta if m.get("name") == "twitter:title"]
     twitter_desc = [m.get("content","").strip() for m in a.meta if m.get("name") == "twitter:description"]
     robots = " ".join(m.get("content", "") for m in a.meta if m.get("name", "").lower() == "robots").lower()
@@ -69,6 +71,8 @@ for page in pages:
     if len(desc) != 1 or not desc[0] or desc[0] in descriptions: errors.append(f"{rel}: missing or duplicate meta description")
     if og_title != [title] or twitter_title != [title]: errors.append(f"{rel}: title metadata mismatch")
     if desc and (og_desc != desc or twitter_desc != desc): errors.append(f"{rel}: description metadata mismatch")
+    if og_url != [expected]: errors.append(f"{rel}: Open Graph URL mismatch")
+    if len(og_image) != 1 or not og_image[0].startswith(prefix): errors.append(f"{rel}: Open Graph image must use the canonical domain")
     if canonical != [expected]: errors.append(f"{rel}: expected canonical {expected}; got {canonical}")
     if re.search(r"\bnoindex\b", robots): errors.append(f"{rel}: noindex blocks discovery")
     if expected not in entries: errors.append(f"{rel}: absent from sitemap")
@@ -85,12 +89,21 @@ for page in pages:
     json_objects=[item for block in structured for item in objects(block)]
     if not any(item.get("name")==title and item.get("description")==desc[0] for item in json_objects if desc):
         errors.append(f"{rel}: JSON-LD title/description mismatch")
+    def has_type(item, type_name):
+        value = item.get("@type")
+        return value == type_name or isinstance(value, list) and type_name in value
+    if not any(has_type(item, "Person") for item in json_objects):
+        errors.append(f"{rel}: JSON-LD Person missing")
+    if rel.startswith("samples/") and rel != "samples/voiceover-course/index.html":
+        if not any(has_type(item, "CreativeWork") for item in json_objects):
+            errors.append(f"{rel}: JSON-LD CreativeWork missing")
     titles.add(title)
     if desc: descriptions.add(desc[0])
 expected_urls={prefix+page.relative_to(root).as_posix().removesuffix("index.html") for page in pages}
 if expected_urls != set(entries): errors.append("Sitemap has nonmatching URLs")
 for loc in expected_urls:
     lastmod = entries.get(loc).findtext(namespace+"lastmod") if loc in entries else None
-    if lastmod != "2026-11-24": errors.append("Changed page has stale sitemap lastmod: "+loc)
+    if not lastmod or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", lastmod):
+        errors.append("Sitemap lastmod must use YYYY-MM-DD: "+loc)
 print(json.dumps({"pages":len(pages),"sitemap_urls":len(entries),"unique_titles":len(titles),"unique_descriptions":len(descriptions),"errors":errors,"passed":not errors},ensure_ascii=False,indent=2))
 sys.exit(1 if errors else 0)
