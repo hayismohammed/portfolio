@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://hayismohammed.github.io/portfolio/"
 DEMOS = {
     "serum-landing", "cosmetics-store", "clinic", "restaurant",
-    "salla-coffee", "product-copy", "short-ad",
+    "salla-coffee", "product-copy", "short-ad", "naxos-ad",
 }
 
 class Page(HTMLParser):

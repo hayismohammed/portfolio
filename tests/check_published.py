@@ -10,7 +10,7 @@ PAGES = [
     "/samples/voiceover-course/", "/samples/cosmetics-store/",
     "/samples/clinic/", "/samples/restaurant/",
     "/samples/salla-coffee/", "/samples/serum-landing/",
-    "/samples/product-copy/", "/samples/short-ad/",
+    "/samples/product-copy/", "/samples/short-ad/", "/samples/naxos-ad/",
 ]
 USER_AGENT = "HayisPortfolioPublishedAudit/1.0"
 
@@ -43,6 +43,9 @@ for page in PAGES:
     if page == "/samples/salla-coffee/":
         assert "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/360de590-0286-4fa5-a243-aa9100c31979/1" in document, "Official commerce policy source absent"
         assert "<form" not in document.lower(), "Coffee demo unexpectedly has a form"
+    if page == "/samples/naxos-ad/":
+        assert 'preload="none"' in document and "autoplay" not in document.lower(), "Naxos video loading policy changed"
+        assert 'kind="captions"' in document and 'label="العربية"' in document, "Naxos captions missing"
     print(f"PASS: {address}", flush=True)
 
 for name, size in [("hayis-alanazi-480.webp", 26650), ("hayis-alanazi-640.webp", 40206)]:
@@ -52,6 +55,6 @@ for name, size in [("hayis-alanazi-480.webp", 26650), ("hayis-alanazi-640.webp",
     print(f"PASS: published {name} ({len(image)} bytes)", flush=True)
 
 sitemap = get(BASE + "/sitemap.xml").decode("utf-8")
-assert sitemap.count("<loc>") == 11, "Published sitemap does not list eleven pages"
+assert sitemap.count("<loc>") == 12, "Published sitemap does not list twelve pages"
 assert "Sitemap:" in get(ROOT + "/robots.txt").decode("utf-8")
 print("PASS: both published sitemap reference and robots.txt", flush=True)
