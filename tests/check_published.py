@@ -3,10 +3,11 @@
 import time
 from urllib.request import Request, urlopen
 
-ROOT = "https://hayismohammed.github.io"
+ROOT = "https://hayisalanazi.sa"
 BASE = ROOT + "/portfolio"
 PAGES = [
-    "/", "/guides/", "/guides/hermex-hermes-windows/",
+    "/", "/about/", "/ads/", "/sites/", "/copy/",
+    "/guides/", "/guides/hermex-hermes-windows/",
     "/samples/voiceover-course/", "/samples/cosmetics-store/",
     "/samples/clinic/", "/samples/restaurant/",
     "/samples/salla-coffee/", "/samples/serum-landing/",
@@ -25,7 +26,7 @@ def get(url):
 for attempt in range(20):
     try:
         homepage = get(BASE + "/")
-        if b'href="samples/naxos-ad/"' in homepage:
+        if b'href="ads/"' in homepage and "استعرض إعلاني ناكسوس ومِداد".encode() in homepage:
             break
         print(f"Attempt {attempt + 1}: current Pages version is not deployed yet", flush=True)
     except Exception as exc:
@@ -55,6 +56,6 @@ for name, size in [("hayis-alanazi-480.webp", 26650), ("hayis-alanazi-640.webp",
     print(f"PASS: published {name} ({len(image)} bytes)", flush=True)
 
 sitemap = get(BASE + "/sitemap.xml").decode("utf-8")
-assert sitemap.count("<loc>") == 12, "Published sitemap does not list twelve pages"
+assert sitemap.count("<loc>") == 16, "Published sitemap does not list sixteen pages"
 assert "Sitemap:" in get(ROOT + "/robots.txt").decode("utf-8")
 print("PASS: both published sitemap reference and robots.txt", flush=True)

@@ -808,6 +808,24 @@ bdi,
   margin: 0.3rem 0 0;
   text-align: start;
 }
+.footer .site-copyright[lang="en"] {
+  text-align: right;
+}
+.footer .contact {
+  flex: 1 1 100%;
+  margin-bottom: 1.25rem;
+}
+.hero a:not(.button) {
+  color: var(--gold);
+  font-weight: 750;
+}
+.work img.poster-portrait {
+  object-fit: contain;
+  background: var(--soft);
+}
+.breadcrumbs [aria-current='page'] {
+  font-weight: 750;
+}
 .guide-entry {
   margin-top: 2rem;
   max-width: 54rem;

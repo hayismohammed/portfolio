@@ -1,51 +1,67 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/clinic/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/about/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/cosmetics-store/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/ads/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/product-copy/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/copy/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/restaurant/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/guides/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/serum-landing/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/guides/hermex-hermes-windows/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/short-ad/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/samples/clinic/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/naxos-ad/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/samples/cosmetics-store/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/voiceover-course/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/samples/naxos-ad/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/samples/product-copy/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/guides/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/samples/restaurant/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://hayismohammed.github.io/portfolio/samples/salla-coffee/</loc>
+    <loc>https://hayisalanazi.sa/portfolio/samples/salla-coffee/</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://hayisalanazi.sa/portfolio/samples/serum-landing/</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://hayisalanazi.sa/portfolio/samples/short-ad/</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://hayisalanazi.sa/portfolio/samples/voiceover-course/</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://hayisalanazi.sa/portfolio/sites/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
 </urlset>
