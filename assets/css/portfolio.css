@@ -770,6 +770,17 @@ bdi,
   object-fit: cover;
   border-bottom: 0;
 }
+.single-work.multi-work {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.single-work.multi-work .work {
+  display: flex;
+}
+.single-work.multi-work .work img {
+  height: auto;
+  min-height: 0;
+  border-bottom: 1px solid var(--line);
+}
 .about-intro,
 .about-role {
   max-width: 52rem;
@@ -835,6 +846,9 @@ bdi,
   }
   .work-group .grid,
   .single-work .work {
+    grid-template-columns: 1fr;
+  }
+  .single-work.multi-work {
     grid-template-columns: 1fr;
   }
   .single-work .work img {
