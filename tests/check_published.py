@@ -21,17 +21,17 @@ def get(url):
         assert resp.status == 200, f"HTTP {resp.status}: {url}"
         return content
 
-# Pages may deploy after GitHub Actions starts. Wait until the new home page is visible.
+# Pages may deploy after GitHub Actions starts. Wait until this release's new card is visible.
 for attempt in range(20):
     try:
         homepage = get(BASE + "/")
-        if b"hayis-alanazi-640.webp" in homepage and b"hayis-alanazi-480.webp" in homepage:
+        if b'href="samples/naxos-ad/"' in homepage:
             break
         print(f"Attempt {attempt + 1}: current Pages version is not deployed yet", flush=True)
     except Exception as exc:
         print(f"Attempt {attempt + 1}: {type(exc).__name__}: {exc}", flush=True)
     if attempt == 19:
-        raise SystemExit("Published Pages did not expose the new image references.")
+        raise SystemExit("Published Pages did not expose the new Naxos card.")
     time.sleep(10)
 else:
     raise SystemExit("Published Pages still stale.")
