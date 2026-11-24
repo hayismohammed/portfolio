@@ -1,6 +1,25 @@
 /* Progressive enhancement: all section links remain usable without JavaScript. */
 (() => {
   'use strict';
+  if (document.body.hasAttribute('data-home')) {
+    const legacy = {
+      services: './',
+      samples: './',
+      courses: 'samples/voiceover-course/',
+      'free-guides': 'guides/',
+      about: 'about/',
+      'portfolio-story': 'about/',
+      skills: 'about/',
+      certificate: 'about/#certificate',
+    };
+    const id = location.hash.replace(/^#/, '');
+    if (Object.prototype.hasOwnProperty.call(legacy, id)) location.replace(legacy[id]);
+  }
+  document.querySelectorAll('video, audio').forEach((media) => {
+    media.setAttribute('controlsList', 'nodownload');
+    media.disablePictureInPicture = true;
+    media.addEventListener('contextmenu', (event) => event.preventDefault());
+  });
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.getElementById('primary-nav');
   if (toggle && nav) {

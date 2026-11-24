@@ -11,8 +11,10 @@ import sys
 import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[1]
-prefix = "https://hayismohammed.github.io/portfolio/"
-pages = [root / "index.html"] + sorted((root/"samples").glob("*/index.html")) + sorted((root/"guides").glob("**/index.html"))
+prefix = "https://hayisalanazi.sa/portfolio/"
+pages = [root / "index.html"]
+for folder in ("about", "ads", "copy", "guides", "samples", "sites"):
+    pages.extend(sorted((root / folder).glob("**/index.html")))
 
 class AuditParser(HTMLParser):
     def __init__(self):

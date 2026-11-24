@@ -27,7 +27,9 @@ class Page(HTMLParser):
    value=' '.join(data.split())
    if value:self.errors.append('unisolated English text: '+value)
 def check():
- pages=[ROOT/'index.html']+sorted((ROOT/'guides').glob('**/index.html'))+sorted((ROOT/'samples').glob('*/index.html'))
+ pages=[ROOT/'index.html']
+ for folder in ('about','ads','copy','guides','samples','sites'):
+  pages.extend(sorted((ROOT/folder).glob('**/index.html')))
  inspected=pages+[ROOT/'404.html'];parsed={p:Page(p.read_text()) for p in inspected};errors=[];link_count=0
  for path,doc in parsed.items():
   rel=str(path.relative_to(ROOT));tags=doc.tags
@@ -42,7 +44,23 @@ def check():
   for message in doc.errors:need(False,message)
   visible_link_text=[' '.join(link['text'].split()) for link in doc.links if ' '.join(link['text'].split())]
   need(len(visible_link_text)==len(set(visible_link_text)),'duplicate link text')
-  need('—' not in path.read_text(),'em dash in public HTML')
+  raw_page=path.read_text()
+  need('—' not in raw_page,'em dash in public HTML')
+  need('hayismohammed.github.io' not in raw_page,'old github.io host')
+  need('الحميضي' not in raw_page,'forbidden store name')
+  blocked=('naxos-ad.mp4','naxos-voice-ar.vtt','midad-ad-polished.mp4','midad-ad.mp4','midad-voice-ar.vtt','midad-polished-scenes.vtt','midad-polished-storyboard.txt')
+  for t,a in tags:
+   if t=='a':
+    href=a.get('href') or ''
+    low=href.lower()
+    need(not low.startswith('tel:') and 'wa.me' not in low and 'whatsapp' not in low,'phone or WhatsApp link')
+    if 'download' in a:need(href.endswith('hermex-hermes-windows-guide.docx'),'download outside the free guides')
+    need(not any(name in href for name in blocked),'removed media download '+href)
+   if t in {'video','audio'}:
+    keys={key.lower() for key in a}
+    need('nodownload' in (a.get('controlslist') or '').lower(),'media missing nodownload')
+    need('disablepictureinpicture' in keys,'media missing disablePictureInPicture')
+    need('oncontextmenu' in keys,'media context menu not blocked')
   if path.name=='404.html':
    continue
   for key in ['description']:
@@ -69,15 +87,17 @@ def check():
      need(target.is_file(),'missing local resource: '+value)
      if u.fragment and target in parsed:need(unquote(u.fragment) in parsed[target].ids,'missing fragment '+value)
   need('قيد المراجعة لدى يوديمي' not in path.read_text(),'stale Udemy status')
- # Course destinations must survive on both the home page and the retained demo.
- for path in [ROOT/'index.html',ROOT/'samples/voiceover-course/index.html']:
-  for url in ['https://hayismohammed.gumroad.com/l/oeuvzz','https://www.udemy.com/course/voiceover-x/']:
-   if url not in path.read_text():errors.append(f'{path}: missing original course link {url}')
+ # Purchase links stay on the course page. The homepage points at that page.
+ course_page=(ROOT/'samples/voiceover-course/index.html').read_text()
+ for url in ['https://hayismohammed.gumroad.com/l/oeuvzz','https://www.udemy.com/course/voiceover-x/']:
+  if url not in course_page:errors.append(f'voiceover course: missing original course link {url}')
+ if 'samples/voiceover-course/' not in (ROOT/'index.html').read_text():
+  errors.append('index.html: courses section link missing')
  xml=ET.parse(ROOT/'sitemap.xml');urls=xml.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url')
  if len(urls)!=len(pages):errors.append('sitemap count must match visitor pages')
  sitemap_ns='{http://www.sitemaps.org/schemas/sitemap/0.9}'
  actual_urls=[(node.findtext(sitemap_ns+'loc') or '').strip() for node in urls]
- expected_urls={'https://hayismohammed.github.io/portfolio/'+p.relative_to(ROOT).as_posix().removesuffix('index.html') for p in pages}
+ expected_urls={'https://hayisalanazi.sa/portfolio/'+p.relative_to(ROOT).as_posix().removesuffix('index.html') for p in pages}
  if len(actual_urls)!=len(set(actual_urls)):errors.append('sitemap has duplicate URLs')
  if set(actual_urls)!=expected_urls:
   errors.append('sitemap paths mismatch: missing='+str(sorted(expected_urls-set(actual_urls)))+' unexpected='+str(sorted(set(actual_urls)-expected_urls)))

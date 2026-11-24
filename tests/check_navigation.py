@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE = "https://hayismohammed.github.io/portfolio/"
+SITE = "https://hayisalanazi.sa/portfolio/"
 DEMOS = {
     "serum-landing", "cosmetics-store", "clinic", "restaurant",
     "salla-coffee", "product-copy", "short-ad", "naxos-ad",
@@ -50,16 +50,21 @@ for name in sorted(DEMOS):
     path = f"samples/{name}/index.html"
     text = (ROOT / path).read_text()
     page = Page(text)
-    if page.copyright_count != 1:
-        errors.append(f"{path}: one footer ownership line required")
+    if page.copyright_count != 2 or "هايس محمد عقيل العنزي" not in text or "Hayis Mohammed Aqeel Alanazi" not in text:
+        errors.append(f"{path}: bilingual footer ownership required")
     returns = []
     for link in page.links:
         dest = urlsplit(urljoin(SITE + path.removesuffix("index.html"), link["href"]))
-        if dest.netloc != "hayismohammed.github.io":
+        if dest.netloc != "hayisalanazi.sa":
             continue
         if dest.path.startswith("/portfolio/guides/") or "/voiceover-course/" in dest.path:
             errors.append(f"{path}: educational link mixed into a demonstration")
-        if link["footer"] and dest.path == "/portfolio/":
+        expected_path = {
+            "product-copy": "/portfolio/copy/",
+            "short-ad": "/portfolio/ads/",
+            "naxos-ad": "/portfolio/ads/",
+        }.get(name, "/portfolio/sites/")
+        if link["footer"] and dest.path == expected_path:
             returns.append(link)
         if "/samples/" in dest.path and dest.path != "/portfolio/" + path.removesuffix("index.html"):
             allowed = {
@@ -71,12 +76,20 @@ for name in sorted(DEMOS):
         if link["brand"] and name in {"clinic", "cosmetics-store", "restaurant", "salla-coffee"}:
             if dest.path != "/portfolio/" + path.removesuffix("index.html") or not dest.fragment:
                 errors.append(f"{path}: model brand must stay inside its own page")
-    if len(returns) != 1 or returns[0]["text"].strip() != "العودة إلى معرض الأعمال":
-        errors.append(f"{path}: footer needs one explicitly named portfolio return")
+    expected_return = {
+        "product-copy": "العودة إلى كتابة المحتوى",
+        "short-ad": "العودة إلى قسم الإعلانات",
+        "naxos-ad": "العودة إلى قسم الإعلانات",
+    }.get(name, "العودة إلى الصفحات والمتاجر")
+    if len(returns) != 1 or returns[0]["text"].strip() != expected_return:
+        errors.append(f"{path}: footer needs one return to its section")
 
 home = Page((ROOT / "index.html").read_text())
-if home.sections != ["services", "samples", "courses", "free-guides", "about", "contact"]:
+if home.sections != ["intro", "sections", "contact"]:
     errors.append("index.html: visitor sections must follow the declared order")
+for section in ("/portfolio/ads/", "/portfolio/sites/", "/portfolio/copy/", "/portfolio/about/", "/portfolio/samples/voiceover-course/"):
+    if not any(urlsplit(urljoin(SITE, link["href"])).path == section for link in home.links):
+        errors.append("index.html: missing section link " + section)
 if not any(urlsplit(urljoin(SITE, link["href"])).path == "/portfolio/guides/" for link in home.links):
     errors.append("index.html: library must remain discoverable from the home page")
 course = Page((ROOT / "samples/voiceover-course/index.html").read_text())
