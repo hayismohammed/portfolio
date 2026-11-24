@@ -47,12 +47,14 @@
 ```bash
 python3 tests/check_site.py
 python3 tests/check_navigation.py
+python3 tests/check_search_readiness.py
+python3 tests/check_performance_fixes.py
 python3 tests/check_public_secrets.py
 python3 tests/check_inline_scripts.py
 python3 tests/check_portrait.py
 ```
 
-يجري GitHub Actions فحوصًا آلية للصفحات، ومسارات التنقل، وصياغة JavaScript، والبحث الأولي عن أسرار شائعة عند طلبات الدمج والتحديثات. يوجد سجل التدقيق الحالي في [`docs/site-audit-remediation-2026-11-14.md`](docs/site-audit-remediation-2026-11-14.md). توجد أدوات فحص التفاعلات في `tests/` وسجلات نتائجها السابقة في `docs/`. سجلات الفحص المحلي لا تعني تلقائيًا أن الموقع المنشور قد اختُبر أو أن VoiceOver على iPhone قد اختُبر. اختبارات الوصول الآلية مؤشرات وليست شهادة امتثال.
+يجري GitHub Actions فحوصًا آلية للصفحات، ومسارات التنقل، وصياغة JavaScript، والبحث الأولي عن أسرار شائعة عند طلبات الدمج والتحديثات. يوجد سجل التدقيق الحالي في [`docs/portfolio-organize-2026-11-24.md`](docs/portfolio-organize-2026-11-24.md). توجد أدوات فحص التفاعلات في `tests/` وسجلات نتائجها السابقة في `docs/`. سجلات الفحص المحلي لا تعني تلقائيًا أن الموقع المنشور قد اختُبر أو أن VoiceOver على iPhone قد اختُبر. اختبارات الوصول الآلية مؤشرات وليست شهادة امتثال.
 
 يحدد صاحب المعرض الأفكار والمتطلبات، ويوجه مراجعة النماذج ونتائجها ويعتمدها، بمساعدة أدوات إنتاج رقمية وذكاء اصطناعي. معلومات الأصوات الاصطناعية موضحة بجانب الدورات والفيديو حيث يلزم.
 

@@ -57,22 +57,38 @@ for page in pages:
     expected = prefix + rel.removesuffix("index.html")
     title = "".join(a.title_text).strip()
     desc = [m.get("content","").strip() for m in a.meta if m.get("name") == "description"]
+    og_title = [m.get("content","").strip() for m in a.meta if m.get("property") == "og:title"]
+    og_desc = [m.get("content","").strip() for m in a.meta if m.get("property") == "og:description"]
+    twitter_title = [m.get("content","").strip() for m in a.meta if m.get("name") == "twitter:title"]
+    twitter_desc = [m.get("content","").strip() for m in a.meta if m.get("name") == "twitter:description"]
     robots = " ".join(m.get("content", "") for m in a.meta if m.get("name", "").lower() == "robots").lower()
     canonical = [link.get("href") for link in a.links if "canonical" in link.get("rel", "").split()]
     if not title or title in titles: errors.append(f"{rel}: missing or duplicate title")
     if len(desc) != 1 or not desc[0] or desc[0] in descriptions: errors.append(f"{rel}: missing or duplicate meta description")
+    if og_title != [title] or twitter_title != [title]: errors.append(f"{rel}: title metadata mismatch")
+    if desc and (og_desc != desc or twitter_desc != desc): errors.append(f"{rel}: description metadata mismatch")
     if canonical != [expected]: errors.append(f"{rel}: expected canonical {expected}; got {canonical}")
     if re.search(r"\bnoindex\b", robots): errors.append(f"{rel}: noindex blocks discovery")
     if expected not in entries: errors.append(f"{rel}: absent from sitemap")
+    structured = []
     for block in a.structured_data:
-        try: json.loads(block)
+        try: structured.append(json.loads(block))
         except json.JSONDecodeError as exc: errors.append(f"{rel}: malformed JSON-LD: {exc}")
+    def objects(value):
+        if isinstance(value, dict):
+            yield value
+            for item in value.values(): yield from objects(item)
+        elif isinstance(value, list):
+            for item in value: yield from objects(item)
+    json_objects=[item for block in structured for item in objects(block)]
+    if not any(item.get("name")==title and item.get("description")==desc[0] for item in json_objects if desc):
+        errors.append(f"{rel}: JSON-LD title/description mismatch")
     titles.add(title)
     if desc: descriptions.add(desc[0])
 expected_urls={prefix+page.relative_to(root).as_posix().removesuffix("index.html") for page in pages}
 if expected_urls != set(entries): errors.append("Sitemap has nonmatching URLs")
-for loc in (prefix,prefix+"samples/salla-coffee/",prefix+"samples/serum-landing/",prefix+"samples/voiceover-course/"):
+for loc in expected_urls:
     lastmod = entries.get(loc).findtext(namespace+"lastmod") if loc in entries else None
-    if lastmod != "2026-11-20": errors.append("Changed page has stale sitemap lastmod: "+loc)
+    if lastmod != "2026-11-24": errors.append("Changed page has stale sitemap lastmod: "+loc)
 print(json.dumps({"pages":len(pages),"sitemap_urls":len(entries),"unique_titles":len(titles),"unique_descriptions":len(descriptions),"errors":errors,"passed":not errors},ensure_ascii=False,indent=2))
 sys.exit(1 if errors else 0)

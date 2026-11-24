@@ -7,13 +7,28 @@ import json,re,subprocess,xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 class Page(HTMLParser):
  def __init__(self,text):
-  super().__init__();self.tags=[];self.ids=[];self.errors=[];self.feed(text)
+  super().__init__();self.tags=[];self.ids=[];self.errors=[];self.stack=[];self.headings=[];self.links=[];self.link=None;self.feed(text)
  def handle_starttag(self,tag,attrs):
-  a=dict(attrs);self.tags.append((tag,a))
+  a=dict(attrs);self.tags.append((tag,a));self.stack.append((tag,a))
   if 'id' in a:self.ids.append(a['id'])
+  if tag in {'h1','h2','h3','h4','h5','h6'}:self.headings.append(int(tag[1]))
+  if tag=='a':self.link={'text':'','href':a.get('href','')}
+ def handle_startendtag(self,tag,attrs):
+  self.handle_starttag(tag,attrs);self.stack.pop()
+ def handle_endtag(self,tag):
+  if tag=='a' and self.link is not None:self.links.append(self.link);self.link=None
+  for i in range(len(self.stack)-1,-1,-1):
+   if self.stack[i][0]==tag:self.stack=self.stack[:i];break
+ def handle_data(self,data):
+  if self.link is not None:self.link['text']+=data
+  if not re.search(r'[A-Za-z]',data):return
+  if any(tag in {'script','style','code','pre','title'} for tag,a in self.stack):return
+  if not any(tag=='bdi' or a.get('lang')=='en' for tag,a in self.stack):
+   value=' '.join(data.split())
+   if value:self.errors.append('unisolated English text: '+value)
 def check():
  pages=[ROOT/'index.html']+sorted((ROOT/'guides').glob('**/index.html'))+sorted((ROOT/'samples').glob('*/index.html'))
- parsed={p:Page(p.read_text()) for p in pages};errors=[];link_count=0
+ inspected=pages+[ROOT/'404.html'];parsed={p:Page(p.read_text()) for p in inspected};errors=[];link_count=0
  for path,doc in parsed.items():
   rel=str(path.relative_to(ROOT));tags=doc.tags
   def need(ok,message):
@@ -23,6 +38,13 @@ def check():
   need(sum(t=='main' for t,a in tags)==1,'one main landmark')
   need(sum(t=='h1' for t,a in tags)==1,'one h1')
   need(any(t=='a' and a.get('href')=='#main' for t,a in tags),'skip link')
+  need(not any(level>previous+1 for previous,level in zip(doc.headings,doc.headings[1:])),'heading level jump')
+  for message in doc.errors:need(False,message)
+  visible_link_text=[' '.join(link['text'].split()) for link in doc.links if ' '.join(link['text'].split())]
+  need(len(visible_link_text)==len(set(visible_link_text)),'duplicate link text')
+  need('—' not in path.read_text(),'em dash in public HTML')
+  if path.name=='404.html':
+   continue
   for key in ['description']:
    need(any(t=='meta' and a.get('name')==key and a.get('content') for t,a in tags),'missing '+key)
   for key in ['og:title','og:description','og:type','og:url','og:image','og:image:alt','og:locale']:
@@ -30,7 +52,7 @@ def check():
   need(any(t=='link' and a.get('rel')=='canonical' for t,a in tags),'missing canonical')
   for t,a in tags:
    if t=='img':need('alt' in a,'image without alt')
-   if t=='video':need('controls' in a and 'autoplay' not in a,'video must have controls and no autoplay')
+   if t=='video':need('controls' in a and 'autoplay' not in a,'video must have controls and no autoplay');need(a.get('aria-label') or a.get('aria-labelledby'),'video without text alternative')
    for name in ['aria-labelledby','aria-describedby']:
     for ref in a.get(name,'').split():need(ref in doc.ids,'missing ARIA target '+ref)
    for attr in ('href','src','poster','srcset'):

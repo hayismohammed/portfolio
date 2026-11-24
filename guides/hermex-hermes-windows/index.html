@@ -1,69 +1,468 @@
-<!DOCTYPE html>
-<html dir="rtl" lang="ar"><head><meta charset="utf-8"/>
-<link rel="preload" href="../../assets/fonts/NotoSansArabic-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="../../assets/fonts/NotoSansArabic-Bold.woff" as="font" type="font/woff" crossorigin>
-<meta content="width=device-width,initial-scale=1" name="viewport"/><title>ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي</title><meta content="دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر." name="description"/><link href="https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/" rel="canonical"/><link href="../../assets/css/portfolio.css" rel="stylesheet"/><link href="../../assets/media/favicon.svg" rel="icon" type="image/svg+xml"/><meta content="ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي" property="og:title"/><meta content="دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر." property="og:description"/><meta content="https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/" property="og:url"/><meta content="معرض أعمال هايس العنزي" property="og:site_name"/><meta content="website" property="og:type"/><meta content="ar_SA" property="og:locale"/><meta content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="معرض أعمال هايس العنزي والدورات التعليمية" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي" name="twitter:title"/><meta content="دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر." name="twitter:description"/><meta content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png" name="twitter:image"/><meta content="index,follow,max-image-preview:large" name="robots"/><link href="../../assets/css/navigation.css" rel="stylesheet"/><script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://hayismohammed.github.io/portfolio/#author",
-      "name": "هايس العنزي",
-      "alternateName": "Hayis Alanazi",
-      "url": "https://hayismohammed.github.io/portfolio/#about",
-      "image": "https://hayismohammed.github.io/portfolio/assets/media/hayis-alanazi-640.webp"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/#webpage",
-      "url": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/",
-      "name": "ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي",
-      "description": "دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر.",
-      "inLanguage": "ar",
-      "author": {
-        "@id": "https://hayismohammed.github.io/portfolio/#author"
-      },
-      "breadcrumb": {
-        "@id": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/#breadcrumb"
+<!doctype html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="preload"
+      href="../../assets/fonts/NotoSansArabic-Regular.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../../assets/fonts/NotoSansArabic-Bold.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي</title>
+    <meta
+      content="دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر."
+      name="description"
+    />
+    <link
+      href="https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/"
+      rel="canonical"
+    />
+    <link href="../../assets/css/portfolio.css" rel="stylesheet" />
+    <link
+      href="../../assets/media/favicon.svg"
+      rel="icon"
+      type="image/svg+xml"
+    />
+    <meta
+      content="ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي"
+      property="og:title"
+    />
+    <meta
+      content="دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر."
+      property="og:description"
+    />
+    <meta
+      content="https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/"
+      property="og:url"
+    />
+    <meta content="معرض أعمال هايس العنزي" property="og:site_name" />
+    <meta content="website" property="og:type" />
+    <meta content="ar_SA" property="og:locale" />
+    <meta
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="معرض أعمال هايس العنزي والدورات التعليمية"
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta
+      content="ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي"
+      name="twitter:title"
+    />
+    <meta
+      content="دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر."
+      name="twitter:description"
+    />
+    <meta
+      content="https://hayismohammed.github.io/portfolio/assets/media/share-card.png"
+      name="twitter:image"
+    />
+    <meta content="index,follow,max-image-preview:large" name="robots" />
+    <link href="../../assets/css/navigation.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://hayismohammed.github.io/portfolio/#author",
+            "name": "هايس العنزي",
+            "alternateName": "Hayis Alanazi",
+            "url": "https://hayismohammed.github.io/portfolio/#about",
+            "image": "https://hayismohammed.github.io/portfolio/assets/media/hayis-alanazi-640.webp"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/#webpage",
+            "url": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/",
+            "name": "ربط Hermex بوكيل Hermes على Windows 11 | هايس العنزي",
+            "description": "دليل عربي مجاني لربط Hermex على الآيفون بوكيل Hermes Agent على Windows 11 عبر Tailscale، بمسار لمستخدم NVDA وخطوات للمساعد المبصر.",
+            "inLanguage": "ar",
+            "author": {
+              "@id": "https://hayismohammed.github.io/portfolio/#author"
+            },
+            "breadcrumb": {
+              "@id": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "معرض الأعمال",
+                "item": "https://hayismohammed.github.io/portfolio/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "الأدلة المجانية",
+                "item": "https://hayismohammed.github.io/portfolio/guides/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "ربط Hermex بوكيل Hermes على Windows 11",
+                "item": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/"
+              }
+            ]
+          }
+        ]
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "معرض الأعمال",
-          "item": "https://hayismohammed.github.io/portfolio/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "الأدلة المجانية",
-          "item": "https://hayismohammed.github.io/portfolio/guides/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "ربط Hermex بوكيل Hermes على Windows 11",
-          "item": "https://hayismohammed.github.io/portfolio/guides/hermex-hermes-windows/"
-        }
-      ]
-    }
-  ]
-}</script>
-<link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">
-<link rel="icon" href="../../assets/icons/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png" sizes="180x180">
-<link rel="manifest" href="../../site.webmanifest">
-<link rel="stylesheet" href="../../assets/css/service-order.css">
-</head><body><a class="skip" href="#main">تخطَّ إلى المحتوى</a><header class="topbar"><div class="container"><a class="brand" href="../../">هايس العنزي<small>خدمات رقمية ومحتوى تعليمي</small></a><nav aria-label="التنقل"><ul><li><a href="../../">معرض الأعمال</a></li><li><a href="../../#courses">الدورات</a></li><li><a href="../../#contact">تواصل معي</a></li></ul></nav></div></header><main id="main" tabindex="-1"><nav aria-label="مسار الصفحة" class="breadcrumbs"><ol><li><a href="../../guides/">الأدلة المجانية</a></li></ol></nav><article class="container guide-article"><header><h1>ربط Hermex بوكيل Hermes Agent على Windows 11 باستخدام Tailscale</h1><p>إعداد <a class="large-target" href="../../#about">هايس العنزي</a></p><p class="lead">يشرح الدليل تثبيت الوكيل على كمبيوتر Windows 11 وربط لوحة التحكم بهاتف الآيفون عبر شبكة Tailscale الخاصة. يتضمن خطوات لمستخدم قارئ الشاشة NVDA، ومسارًا مستقلًا يستطيع المساعد المبصر اتباعه دون قارئ شاشة.</p><a class="button" download="" href="../files/hermex-hermes-windows-guide.docx">تنزيل دليل Hermex وHermes بصيغة Word</a></header><section class="section"><h2 id="roles-h">ما وظيفة كل برنامج؟</h2><p>Hermes Agent هو الوكيل الذي يعمل على الكمبيوتر ويتصل بالنموذج والأدوات التي تختارها. تطبيق Hermex هو واجهة المحادثة على الآيفون، أما Tailscale فيربط الجهازين داخل شبكة خاصة. تثبيت الوكيل على الكمبيوتر لا يعني أن نموذج الذكاء الاصطناعي يعمل محليًا؛ يعتمد ذلك على المزود الذي تختاره.</p><p>Hermex تطبيق مستقل من تطوير Uzair Ansar، وليس تابعًا لـ Nous Research المطوّرة لـ Hermes Agent. شيفرته مفتوحة المصدر برخصة MIT. تحقق من <a class="large-target" href="https://apps.apple.com/us/app/hermex/id6767006319">اسم المطوّر في متجر آبل</a> و<a class="large-target" href="https://github.com/uzairansaruzi/hermex">المستودع والترخيص</a>.</p></section><section class="section"><h2 id="install-options-h">الأدوات المثبتة مع Hermes</h2><p>في تثبيت المصدر الرسمي على Windows، يُجهز المثبت Chromium لتصفح Hermes المحلي وcua-driver للتحكم بالحاسوب افتراضيًا. إذا فشل تنزيل أحدهما فقد يكتمل التثبيت مع عرض طريقة المحاولة مجددًا. لاستثناء الأداتين، نفذ في PowerShell عاديًا الأمر التالي بدل أمر التثبيت المختصر:</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere"><code>&amp; ([scriptblock]::Create((irm https://hermes-agent.nousresearch.com/install.ps1))) -SkipBrowser -SkipComputerUse</code></pre><p>لا تقبل صيغة <code dir="ltr">iex (irm ...)</code> تمرير هذين الخيارين إلى سكربت التثبيت. يمكنك استعمال خيار واحد فقط إن أردت استثناء أداة واحدة. يتذكر Hermes اختيارك عند التحديث؛ ولإضافة الأداتين لاحقًا نفذ الأمرين التاليين كلًّا على حدة:</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere"><code>hermes pm install chromium</code></pre><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere"><code>hermes pm install cua-driver</code></pre><p>المصدر: <a class="large-target" href="https://hermes-agent.nousresearch.com/docs/getting-started/installation">دليل تثبيت Hermes الرسمي</a> و<a class="large-target" href="https://hermes-agent.nousresearch.com/docs/user-guide/windows-native">طريقة تمرير الخيارات في PowerShell</a>.</p></section><section class="section"><h2 id="gateway-login-h">بدء بوابة Hermes مع Windows</h2><p>إذا كنت تستخدم بوابة Hermes، نفذ في PowerShell عاديًا:</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere"><code>hermes gateway install</code></pre><p>يسجل Hermes مهمة مجدولة عند تسجيل الدخول بصلاحيات المستخدم العادية، وإن تعذر تسجيل المهمة ينشئ بديلًا في مجلد بدء التشغيل تلقائيًا. قد تظهر مطالبة UAC مرة عند تسجيل المهمة، لكن البوابة نفسها لا تعمل بصلاحيات مسؤول. تحقق بعد إعادة تسجيل الدخول:</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere"><code>hermes gateway status</code></pre><p>تشغيل البوابة لا يشغّل لوحة التحكم التي يتصل بها Hermex في هذا الدليل؛ يشرح ملف Word بدء اللوحة على حدة. المصدر: <a class="large-target" href="https://hermes-agent.nousresearch.com/docs/user-guide/windows-native">دليل Hermes على Windows</a>.</p></section><section class="section"><h2 id="exit-node-h">إعداد Exit Node على الآيفون</h2><p>اختيار جهاز كمخرج للإنترنت يمرّر عبره حركة الإنترنت العامة كلها من الآيفون، وليس اتصال Hermex وحده. لهذا الدليل افتح إعداد Exit Node في Tailscale واختر <bdi>None</bdi>، مع إبقاء Tailscale متصلًا بالشبكة الخاصة. المصدر: <a class="large-target" href="https://tailscale.com/kb/1103/exit-nodes/">توثيق Tailscale لمخارج الإنترنت</a>.</p></section><section class="section"><h2 id="shortcuts-h">أتمتة Tailscale مع Hermex باستخدام VoiceOver</h2><p>هذه خطوة اختيارية. في تطبيق الاختصارات، استخدم السحب يمينًا ويسارًا لسماع أسماء العناصر، وانقر مرتين لتنشيط العنصر:</p><ol><li>افتح تبويب «الأتمتة»، وفعّل «إضافة» أو +، ثم اختر أتمتة «التطبيق». حدّد Hermex واختر «عند الفتح» أو Is Opened.</li><li>اختر إضافة إجراء، وابحث عن Tailscale، ثم اختر Connect، واحفظ الأتمتة. إن ظهر خيار «التشغيل فورًا» أو تشغيل دون تأكيد فاختره.</li><li>أنشئ أتمتة ثانية للتطبيق نفسه، واختر «عند الإغلاق» أو Is Closed. أضف إجراء Tailscale المسمى Disconnect واحفظها مع التشغيل التلقائي إن ظهر.</li><li>افتح Hermex وافحص الاتصال، ثم انتقل إلى تطبيق آخر وافحص الفصل. قد يطلب iOS إذنًا أول مرة، وقد تختلف أسماء الأزرار حسب الإصدار.</li></ol><p>توضح آبل أن حدث الإغلاق يشمل الانتقال من التطبيق إلى غيره؛ إذا احتجت Tailscale في تطبيقات أخرى فاترك اتصاله يدويًا. المصادر: <a class="large-target" href="https://tailscale.com/docs/features/mac-ios-shortcuts">إجراءات Tailscale الرسمية للاختصارات</a> و<a class="large-target" href="https://support.apple.com/guide/shortcuts/apde31e9638b/ios">شرح آبل لمشغّل التطبيق</a>.</p></section><section class="section"><h2 id="covers-h">ماذا يتضمن ملف الدليل؟</h2><ul><li>متطلبات الكمبيوتر والآيفون وإعداد الاتصال بينهما.</li><li>تثبيت Hermes بالطريقة الرسمية، وإعداد مزود النموذج واختبار المحادثة المحلية.</li><li>إعداد رابط HTTPS داخل شبكة Tailscale مع تسجيل الدخول إلى لوحة التحكم.</li><li>خطوات استخدام NVDA وVoiceOver أثناء الإعداد، وطريقة مستقلة للمساعد المبصر.</li><li>التشغيل اليومي وحل المشكلات واختبارات التحقق من نجاح الربط.</li></ul><p>الأوامر التفصيلية والمراجع كاملة داخل ملف Word، ويمكن نسخ الأوامر منه عند التطبيق.</p></section><section class="section"><h2 id="before-h">قبل البدء بالتطبيق</h2><p>تحتاج إلى كمبيوتر Windows 11 وآيفون واتصال إنترنت وحساب Tailscale، وإلى وسيلة تشغيل نموذج يدعمها Hermes. يتطلب المسار غير البصري وجود NVDA على الكمبيوتر وVoiceOver على الهاتف؛ الدليل ليس دورة لتثبيت NVDA أو تعلّم جميع وظائفه.</p><p>لا تفتح لوحة التحكم دون تسجيل دخول، ولا تنشر كلمات المرور أو مفاتيح النموذج. هذا المسار يعتمد اتصالًا خاصًا عبر Tailscale، ولا يتطلب فتح منافذ الراوتر للعامة. اقرأ المتطلبات واختبارات التحقق في الملف قبل التنفيذ.</p><p>أُعد الشرح بالاستناد إلى المراجع الرسمية. لم يُنفذ اختبار تثبيت حي على جهاز المستخدم، وقد تختلف أسماء الأزرار بحسب إصدار البرامج ولغتها.</p></section><section class="section"><h2 id="sources-h">المراجع الرسمية</h2><ul><li><a class="large-target" href="https://hermexapp.com/setup" rel="noreferrer noopener">دليل إعداد Hermex من المطور</a></li><li><a class="large-target" href="https://hermes-agent.nousresearch.com/docs/user-guide/windows-native" rel="noreferrer noopener">دعم Hermes الأصلي على Windows</a></li><li><a class="large-target" href="https://tailscale.com/docs/features/tailscale-serve" rel="noreferrer noopener">شرح Tailscale Serve للشبكة الخاصة</a></li></ul><p>توجد بقية المصادر واختصارات قارئات الشاشة في ملف الدليل.</p></section></article>
-<section class="service-order" id="request-service">
-  <h2 id="request-service-h">تواصل واطلب خدمة</h2>
-  <p>لطلب خدمة حقيقية من هايس العنزي، أرسل بريدًا يوضح نوع الخدمة، وفكرة المشروع، والمخرجات المطلوبة، والموعد المناسب، وروابط أو ملفات مرجعية إن وجدت. تُحدَّد التكلفة والمدة بعد مراجعة التفاصيل والاتفاق عليها.</p>
-  <p>البريد: <bdi>hayis.mohammed@gmail.com</bdi></p>
-  <a class="order-email" href="mailto:hayis.mohammed@gmail.com?subject=%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9">اطلب خدمة عبر البريد الإلكتروني</a>
-</section>
-</main><footer class="footer"><div class="container"><nav aria-label="روابط ختامية"><ul><li><a href="../">مكتبة الأدلة المجانية</a></li><li><a href="../../">معرض الأعمال</a></li></ul></nav><p class="site-copyright" dir="ltr" lang="en">© 2026 Hayis Alanazi. All rights reserved.</p></div></footer></body></html>
-
+    </script>
+    <link
+      rel="icon"
+      href="../../favicon.ico"
+      sizes="16x16 32x32 48x48"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../../assets/icons/favicon-32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../../assets/icons/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="../../site.webmanifest" />
+    <link rel="stylesheet" href="../../assets/css/service-order.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+    <header class="topbar">
+      <div class="container">
+        <a class="brand" href="../../"
+          >هايس العنزي<small>خدمات رقمية ومحتوى تعليمي</small></a
+        >
+        <nav aria-label="التنقل">
+          <ul>
+            <li><a href="../../">معرض الأعمال</a></li>
+            <li><a href="../../#courses">الدورات</a></li>
+            <li><a href="../../#contact">تواصل معي</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <nav aria-label="مسار الصفحة" class="breadcrumbs">
+        <ol>
+          <li><a href="../../guides/">الأدلة المجانية</a></li>
+        </ol>
+      </nav>
+      <article class="container guide-article">
+        <header>
+          <h1>
+            ربط <bdi lang="en">Hermex</bdi> بوكيل
+            <bdi lang="en">Hermes Agent</bdi> على
+            <bdi lang="en">Windows 11</bdi> باستخدام
+            <bdi lang="en">Tailscale</bdi>
+          </h1>
+          <p>
+            إعداد <a class="large-target" href="../../#about">هايس العنزي</a>
+          </p>
+          <p class="lead">
+            يشرح الدليل تثبيت الوكيل على كمبيوتر
+            <bdi lang="en">Windows 11</bdi> وربط لوحة التحكم بهاتف الآيفون عبر
+            شبكة <bdi lang="en">Tailscale</bdi> الخاصة. يتضمن خطوات لمستخدم
+            قارئ الشاشة <bdi lang="en">NVDA</bdi>، ومسارًا مستقلًا يستطيع
+            المساعد المبصر اتباعه دون قارئ شاشة.
+          </p>
+          <a
+            class="button"
+            download=""
+            href="../files/hermex-hermes-windows-guide.docx"
+            >تنزيل دليل <bdi lang="en">Hermex</bdi> و<bdi lang="en">Hermes</bdi>
+            بصيغة <bdi lang="en">Word</bdi></a
+          >
+        </header>
+        <section class="section">
+          <h2 id="roles-h">ما وظيفة كل برنامج؟</h2>
+          <p>
+            <bdi lang="en">Hermes Agent</bdi> هو الوكيل الذي يعمل على الكمبيوتر
+            ويتصل بالنموذج والأدوات التي تختارها. تطبيق
+            <bdi lang="en">Hermex</bdi> هو واجهة المحادثة على الآيفون، أما
+            <bdi lang="en">Tailscale</bdi> فيربط الجهازين داخل شبكة خاصة. تثبيت
+            الوكيل على الكمبيوتر لا يعني أن نموذج الذكاء الاصطناعي يعمل محليًا؛
+            يعتمد ذلك على المزود الذي تختاره.
+          </p>
+          <p>
+            <bdi lang="en">Hermex</bdi> تطبيق مستقل من تطوير
+            <bdi lang="en">Uzair Ansar</bdi>، وليس تابعًا لـ
+            <bdi lang="en">Nous Research</bdi> المطوّرة لـ
+            <bdi lang="en">Hermes Agent</bdi>. شيفرته مفتوحة المصدر برخصة
+            <bdi lang="en">MIT</bdi>.
+            تحقق من
+            <a
+              class="large-target"
+              href="https://apps.apple.com/us/app/hermex/id6767006319"
+              >اسم المطوّر في متجر آبل</a
+            >
+            و<a
+              class="large-target"
+              href="https://github.com/uzairansaruzi/hermex"
+              >المستودع والترخيص</a
+            >.
+          </p>
+        </section>
+        <section class="section">
+          <h2 id="install-options-h">
+            الأدوات المثبتة مع <bdi lang="en">Hermes</bdi>
+          </h2>
+          <p>
+            في تثبيت المصدر الرسمي على <bdi lang="en">Windows</bdi>، يُجهز
+            المثبت <bdi lang="en">Chromium</bdi> لتصفح
+            <bdi lang="en">Hermes</bdi> المحلي و<bdi lang="en">cua-driver</bdi>
+            للتحكم بالحاسوب افتراضيًا. إذا فشل تنزيل أحدهما فقد يكتمل التثبيت مع
+            عرض طريقة المحاولة مجددًا. لاستثناء الأداتين، نفذ في
+            <bdi lang="en">PowerShell</bdi> عاديًا الأمر التالي بدل أمر التثبيت
+            المختصر:
+          </p>
+          <pre
+            dir="ltr"
+            style="white-space: pre-wrap; overflow-wrap: anywhere"
+          ><code>&amp; ([scriptblock]::Create((irm https://hermes-agent.nousresearch.com/install.ps1))) -SkipBrowser -SkipComputerUse</code></pre>
+          <p>
+            لا تقبل صيغة <code dir="ltr">iex (irm ...)</code> تمرير هذين
+            الخيارين إلى سكربت التثبيت. يمكنك استعمال خيار واحد فقط إن أردت
+            استثناء أداة واحدة. يتذكر <bdi lang="en">Hermes</bdi> اختيارك عند التحديث؛ ولإضافة
+            الأداتين لاحقًا نفذ الأمرين التاليين كلًّا على حدة:
+          </p>
+          <pre
+            dir="ltr"
+            style="white-space: pre-wrap; overflow-wrap: anywhere"
+          ><code>hermes pm install chromium</code></pre>
+          <pre
+            dir="ltr"
+            style="white-space: pre-wrap; overflow-wrap: anywhere"
+          ><code>hermes pm install cua-driver</code></pre>
+          <p>
+            المصدر:
+            <a
+              class="large-target"
+              href="https://hermes-agent.nousresearch.com/docs/getting-started/installation"
+              >دليل تثبيت <bdi lang="en">Hermes</bdi> الرسمي</a
+            >
+            و<a
+              class="large-target"
+              href="https://hermes-agent.nousresearch.com/docs/user-guide/windows-native"
+              >طريقة تمرير الخيارات في <bdi lang="en">PowerShell</bdi></a
+            >.
+          </p>
+        </section>
+        <section class="section">
+          <h2 id="gateway-login-h">
+            بدء بوابة <bdi lang="en">Hermes</bdi> مع <bdi lang="en">Windows</bdi>
+          </h2>
+          <p>إذا كنت تستخدم بوابة <bdi lang="en">Hermes</bdi>، نفذ في <bdi lang="en">PowerShell</bdi> عاديًا:</p>
+          <pre
+            dir="ltr"
+            style="white-space: pre-wrap; overflow-wrap: anywhere"
+          ><code>hermes gateway install</code></pre>
+          <p>
+            يسجل <bdi lang="en">Hermes</bdi> مهمة مجدولة عند تسجيل الدخول بصلاحيات المستخدم العادية،
+            وإن تعذر تسجيل المهمة ينشئ بديلًا في مجلد بدء التشغيل تلقائيًا. قد
+            تظهر مطالبة <bdi lang="en">UAC</bdi> مرة عند تسجيل المهمة، لكن البوابة نفسها لا تعمل
+            بصلاحيات مسؤول. تحقق بعد إعادة تسجيل الدخول:
+          </p>
+          <pre
+            dir="ltr"
+            style="white-space: pre-wrap; overflow-wrap: anywhere"
+          ><code>hermes gateway status</code></pre>
+          <p>
+            تشغيل البوابة لا يشغّل لوحة التحكم التي يتصل بها <bdi lang="en">Hermex</bdi> في هذا
+            الدليل؛ يشرح ملف <bdi lang="en">Word</bdi> بدء اللوحة على حدة. المصدر:
+            <a
+              class="large-target"
+              href="https://hermes-agent.nousresearch.com/docs/user-guide/windows-native"
+              >دليل <bdi lang="en">Hermes</bdi> على <bdi lang="en">Windows</bdi></a
+            >.
+          </p>
+        </section>
+        <section class="section">
+          <h2 id="exit-node-h">إعداد <bdi lang="en">Exit Node</bdi> على الآيفون</h2>
+          <p>
+            اختيار جهاز كمخرج للإنترنت يمرّر عبره حركة الإنترنت العامة كلها من
+            الآيفون، وليس اتصال <bdi lang="en">Hermex</bdi> وحده. لهذا الدليل افتح إعداد
+            <bdi lang="en">Exit Node</bdi> في <bdi lang="en">Tailscale</bdi> واختر
+            <bdi lang="en">None</bdi>، مع إبقاء <bdi lang="en">Tailscale</bdi> متصلًا بالشبكة
+            الخاصة. المصدر:
+            <a
+              class="large-target"
+              href="https://tailscale.com/kb/1103/exit-nodes/"
+              >توثيق <bdi lang="en">Tailscale</bdi> لمخارج الإنترنت</a
+            >.
+          </p>
+        </section>
+        <section class="section">
+          <h2 id="shortcuts-h">
+            أتمتة <bdi lang="en">Tailscale</bdi> مع <bdi lang="en">Hermex</bdi>
+            باستخدام <bdi lang="en">VoiceOver</bdi>
+          </h2>
+          <p>
+            هذه خطوة اختيارية. في تطبيق الاختصارات، استخدم السحب يمينًا ويسارًا
+            لسماع أسماء العناصر، وانقر مرتين لتنشيط العنصر:
+          </p>
+          <ol>
+            <li>
+              افتح تبويب «الأتمتة»، وفعّل «إضافة» أو +، ثم اختر أتمتة «التطبيق».
+              حدّد <bdi lang="en">Hermex</bdi> واختر «عند الفتح» أو
+              <bdi lang="en">Is Opened</bdi>.
+            </li>
+            <li>
+              اختر إضافة إجراء، وابحث عن <bdi lang="en">Tailscale</bdi>، ثم اختر
+              <bdi lang="en">Connect</bdi>، واحفظ
+              الأتمتة. إن ظهر خيار «التشغيل فورًا» أو تشغيل دون تأكيد فاختره.
+            </li>
+            <li>
+              أنشئ أتمتة ثانية للتطبيق نفسه، واختر «عند الإغلاق» أو
+              <bdi lang="en">Is Closed</bdi>. أضف إجراء
+              <bdi lang="en">Tailscale</bdi> المسمى
+              <bdi lang="en">Disconnect</bdi> واحفظها مع التشغيل التلقائي
+              إن ظهر.
+            </li>
+            <li>
+              افتح <bdi lang="en">Hermex</bdi> وافحص الاتصال، ثم انتقل إلى تطبيق
+              آخر وافحص الفصل. قد يطلب <bdi lang="en">iOS</bdi> إذنًا أول مرة،
+              وقد تختلف أسماء الأزرار حسب الإصدار.
+            </li>
+          </ol>
+          <p>
+            إذا احتجت <bdi lang="en">Tailscale</bdi> في تطبيقات أخرى فاترك
+            اتصاله يدويًا. تشرح آبل إنشاء التحكم التلقائي وإمكان تشغيله دون
+            مطالبة. المصادر:
+            <a
+              class="large-target"
+              href="https://tailscale.com/docs/features/mac-ios-shortcuts"
+              >إجراءات <bdi lang="en">Tailscale</bdi> الرسمية للاختصارات</a
+            >
+            و<a
+              class="large-target"
+              href="https://support.apple.com/guide/shortcuts/add-automations-apdfbdbd7123/ios"
+              >شرح آبل للتحكم التلقائي</a
+            >.
+          </p>
+        </section>
+        <section class="section">
+          <h2 id="covers-h">ماذا يتضمن ملف الدليل؟</h2>
+          <ul>
+            <li>متطلبات الكمبيوتر والآيفون وإعداد الاتصال بينهما.</li>
+            <li>
+              تثبيت <bdi lang="en">Hermes</bdi> بالطريقة الرسمية، وإعداد مزود النموذج واختبار
+              المحادثة المحلية.
+            </li>
+            <li>
+              إعداد رابط <bdi lang="en">HTTPS</bdi> داخل شبكة <bdi lang="en">Tailscale</bdi> مع تسجيل الدخول إلى لوحة
+              التحكم.
+            </li>
+            <li>
+              خطوات استخدام <bdi lang="en">NVDA</bdi> و<bdi lang="en">VoiceOver</bdi> أثناء الإعداد، وطريقة مستقلة للمساعد
+              المبصر.
+            </li>
+            <li>التشغيل اليومي وحل المشكلات واختبارات التحقق من نجاح الربط.</li>
+          </ul>
+          <p>
+            الأوامر التفصيلية والمراجع كاملة داخل ملف <bdi lang="en">Word</bdi>، ويمكن نسخ الأوامر
+            منه عند التطبيق.
+          </p>
+        </section>
+        <section class="section">
+          <h2 id="before-h">قبل البدء بالتطبيق</h2>
+          <p>
+            تحتاج إلى كمبيوتر <bdi lang="en">Windows 11</bdi> وآيفون واتصال إنترنت
+            وحساب <bdi lang="en">Tailscale</bdi>، وإلى وسيلة تشغيل نموذج يدعمها
+            <bdi lang="en">Hermes</bdi>. يتطلب المسار غير البصري وجود
+            <bdi lang="en">NVDA</bdi> على الكمبيوتر و<bdi lang="en">VoiceOver</bdi>
+            على الهاتف؛ الدليل ليس دورة لتثبيت <bdi lang="en">NVDA</bdi> أو تعلّم
+            جميع وظائفه.
+          </p>
+          <p>
+            لا تفتح لوحة التحكم دون تسجيل دخول، ولا تنشر كلمات المرور أو مفاتيح
+            النموذج. هذا المسار يعتمد اتصالًا خاصًا عبر <bdi lang="en">Tailscale</bdi>، ولا يتطلب فتح
+            منافذ الراوتر للعامة. اقرأ المتطلبات واختبارات التحقق في الملف قبل
+            التنفيذ.
+          </p>
+          <p>
+            أُعد الشرح بالاستناد إلى المراجع الرسمية. لم يُنفذ اختبار تثبيت حي
+            على جهاز المستخدم، وقد تختلف أسماء الأزرار بحسب إصدار البرامج
+            ولغتها.
+          </p>
+        </section>
+        <section class="section">
+          <h2 id="sources-h">المراجع الرسمية</h2>
+          <ul>
+            <li>
+              <a
+                class="large-target"
+                href="https://hermexapp.com/setup"
+                rel="noreferrer noopener"
+                >دليل إعداد <bdi lang="en">Hermex</bdi> من المطور</a
+              >
+            </li>
+            <li>
+              <a
+                class="large-target"
+                href="https://hermes-agent.nousresearch.com/docs/user-guide/windows-native"
+                rel="noreferrer noopener"
+                >دعم <bdi lang="en">Hermes</bdi> الأصلي على <bdi lang="en">Windows</bdi></a
+              >
+            </li>
+            <li>
+              <a
+                class="large-target"
+                href="https://tailscale.com/docs/features/tailscale-serve"
+                rel="noreferrer noopener"
+                >شرح <bdi lang="en">Tailscale Serve</bdi> للشبكة الخاصة</a
+              >
+            </li>
+          </ul>
+          <p>توجد بقية المصادر واختصارات قارئات الشاشة في ملف الدليل.</p>
+        </section>
+      </article>
+      <section class="service-order" id="request-service">
+        <h2 id="request-service-h">تواصل واطلب خدمة</h2>
+        <p>
+          لطلب خدمة حقيقية من هايس العنزي، أرسل بريدًا يوضح نوع الخدمة، وفكرة
+          المشروع، والمخرجات المطلوبة، والموعد المناسب، وروابط أو ملفات مرجعية
+          إن وجدت. تُحدَّد التكلفة والمدة بعد مراجعة التفاصيل والاتفاق عليها.
+        </p>
+        <p>البريد: <bdi>hayis.mohammed@gmail.com</bdi></p>
+        <a
+          class="order-email"
+          href="mailto:hayis.mohammed@gmail.com?subject=%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9"
+          >اطلب خدمة عبر البريد الإلكتروني</a
+        >
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <nav aria-label="روابط ختامية">
+          <ul>
+            <li><a href="../">مكتبة الأدلة المجانية</a></li>
+            <li><a href="../../">العودة إلى معرض الأعمال</a></li>
+          </ul>
+        </nav>
+        <p class="site-copyright" dir="ltr" lang="en">
+          © 2026 Hayis Alanazi. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

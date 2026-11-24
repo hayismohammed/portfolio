@@ -15,6 +15,8 @@
       background: #f4f1eb;
     }
     main { width: min(100% - 2rem, 40rem); margin-inline: auto; padding-block: clamp(2rem, 8vw, 4rem); }
+    .skip { position: absolute; inset-inline-start: 1rem; top: 0; transform: translateY(-150%); }
+    .skip:focus { transform: none; }
     h1 { margin-block: 0 1rem; font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.4; }
     a {
       display: inline-block;
@@ -35,7 +37,8 @@
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" sizes="180x180">
 </head>
 <body>
-  <main>
+  <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+  <main id="main" tabindex="-1">
     <h1>الصفحة غير موجودة</h1>
     <p>قد يكون العنوان غير صحيح، أو نُقلت الصفحة إلى مكان آخر.</p>
     <p>
