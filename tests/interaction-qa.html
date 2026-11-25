@@ -78,7 +78,7 @@
         check("No personal X or phone link", !home.querySelector('a[href*="x.com/"], a[href^="tel:"], a[href*="wa.me"], a[href*="whatsapp"]'), true);
         check("Portrait names Hayis", home.querySelector('.portrait').getAttribute("alt") === "هايس العنزي", home.querySelector('.portrait').alt);
         const marks = [...home.querySelectorAll('.site-copyright')].map((el) => el.textContent.trim());
-        check("Bilingual copyright", marks.length === 2 && marks[0].includes("هايس محمد عقيل العنزي") && marks[1].includes("Hayis Mohammed Aqeel Alanazi"), marks);
+        check("English copyright only", marks.length === 1 && marks[0] === "© 2026 Hayis Mohammed Aqeel Alanazi. All rights reserved.", marks);
         let guides = await load('/guides/index.html');
         const guideLink = guides.querySelector('a[download]');
         const guideResponse = await fetch(guideLink.href);
