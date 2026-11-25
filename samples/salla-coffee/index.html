@@ -69,17 +69,54 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": ["WebPage", "CreativeWork"],
-        "name": "متجر قهوة نموذجي | محمصة صليان الثمام | هايس العنزي",
-        "description": "متجر قهوة مختصة نموذجي في معرض هايس العنزي: منتجات وسلة وصفحات تعريفية وسياسات توضيحية.",
-        "url": "https://hayisalanazi.sa/portfolio/samples/salla-coffee/",
-        "inLanguage": "ar",
-        "author": {
-          "@type": "Person",
-          "name": "هايس العنزي",
-          "alternateName": "Hayis Alanazi",
-          "url": "https://hayisalanazi.sa/portfolio/"
-        }
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://hayisalanazi.sa/portfolio/#author",
+            "name": "هايس العنزي",
+            "alternateName": "Hayis Alanazi",
+            "url": "https://hayisalanazi.sa/portfolio/about/",
+            "image": "https://hayisalanazi.sa/portfolio/assets/media/hayis-alanazi-640.webp"
+          },
+          {
+            "@type": ["WebPage", "CreativeWork"],
+            "@id": "https://hayisalanazi.sa/portfolio/samples/salla-coffee/#webpage",
+            "name": "متجر قهوة نموذجي | محمصة صليان الثمام | هايس العنزي",
+            "description": "متجر قهوة مختصة نموذجي في معرض هايس العنزي: منتجات وسلة وصفحات تعريفية وسياسات توضيحية.",
+            "url": "https://hayisalanazi.sa/portfolio/samples/salla-coffee/",
+            "inLanguage": "ar",
+            "author": {
+              "@id": "https://hayisalanazi.sa/portfolio/#author"
+            },
+            "breadcrumb": {
+              "@id": "https://hayisalanazi.sa/portfolio/samples/salla-coffee/#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://hayisalanazi.sa/portfolio/samples/salla-coffee/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "معرض الأعمال",
+                "item": "https://hayisalanazi.sa/portfolio/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "الصفحات والمتاجر",
+                "item": "https://hayisalanazi.sa/portfolio/sites/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "متجر قهوة نموذجي",
+                "item": "https://hayisalanazi.sa/portfolio/samples/salla-coffee/"
+              }
+            ]
+          }
+        ]
       }
     </script>
     <style>
@@ -654,7 +691,7 @@
       <div class="wrap">
         <nav aria-label="مسار الصفحة" class="breadcrumbs">
           <ol>
-            <li><a href="../../">الرئيسية</a></li>
+            <li><a href="../../">معرض الأعمال</a></li>
           <li><a href="../../sites/">الصفحات والمتاجر</a></li>
           </ol>
         </nav>

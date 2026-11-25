@@ -94,6 +94,14 @@ for page in pages:
         return value == type_name or isinstance(value, list) and type_name in value
     if not any(has_type(item, "Person") for item in json_objects):
         errors.append(f"{rel}: JSON-LD Person missing")
+    if rel != "index.html":
+        breadcrumbs = [item for item in json_objects if has_type(item, "BreadcrumbList")]
+        if len(breadcrumbs) != 1:
+            errors.append(f"{rel}: expected one JSON-LD BreadcrumbList")
+        else:
+            items = breadcrumbs[0].get("itemListElement", [])
+            if not items or items[0].get("name") != "معرض الأعمال" or items[0].get("item") != prefix:
+                errors.append(f"{rel}: breadcrumb root must be معرض الأعمال at {prefix}")
     if rel.startswith("samples/") and rel != "samples/voiceover-course/index.html":
         if not any(has_type(item, "CreativeWork") for item in json_objects):
             errors.append(f"{rel}: JSON-LD CreativeWork missing")
