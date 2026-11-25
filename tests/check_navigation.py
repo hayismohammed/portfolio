@@ -50,8 +50,8 @@ for name in sorted(DEMOS):
     path = f"samples/{name}/index.html"
     text = (ROOT / path).read_text()
     page = Page(text)
-    if page.copyright_count != 2 or "هايس محمد عقيل العنزي" not in text or "Hayis Mohammed Aqeel Alanazi" not in text:
-        errors.append(f"{path}: bilingual footer ownership required")
+    if page.copyright_count != 1 or "Hayis Mohammed Aqeel Alanazi" not in text or "جميع الحقوق محفوظة" in text:
+        errors.append(f"{path}: English footer copyright required")
     returns = []
     for link in page.links:
         dest = urlsplit(urljoin(SITE + path.removesuffix("index.html"), link["href"]))
