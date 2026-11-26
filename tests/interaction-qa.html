@@ -74,8 +74,17 @@
         nav.querySelector('a[href="#contact"]').click();
         check("Section link closes menu and moves focus", nav.hidden && home.activeElement.id === 'contact', home.activeElement.id);
         check("Five section cards", home.querySelectorAll('#sections article.service').length === 5, home.querySelectorAll('#sections article.service').length);
-        check("Email is the only contact destination", home.querySelectorAll('#contact a').length === 1 && home.querySelector('#contact a').getAttribute('href') === 'mailto:hayis.mohammed@gmail.com', home.querySelector('#contact a').href);
-        check("No personal X or phone link", !home.querySelector('a[href*="x.com/"], a[href^="tel:"], a[href*="wa.me"], a[href*="whatsapp"]'), true);
+        const emailLinks = [...home.querySelectorAll('#contact a[href^="mailto:"]')];
+        check("Email remains the order contact destination", emailLinks.length === 1 && emailLinks[0].getAttribute('href') === 'mailto:hayis.mohammed@gmail.com', emailLinks.map((link) => link.getAttribute('href')));
+        const publicProfiles = [
+          'https://github.com/hayismohammed',
+          'https://x.com/hayismohammed',
+          'https://khamsat.com/user/hayismohammed',
+          'https://www.udemy.com/user/hayis-alanazi/',
+          'https://hayismohammed.gumroad.com/',
+        ];
+        check("Approved public profiles are linked", publicProfiles.every((href) => home.querySelector(`#contact a[href="${href}"][target="_blank"][rel="noopener noreferrer"]`)), publicProfiles);
+        check("No phone or WhatsApp link", !home.querySelector('a[href^="tel:"], a[href*="wa.me"], a[href*="whatsapp"]'), true);
         check("Portrait names Hayis", home.querySelector('.portrait').getAttribute("alt") === "هايس العنزي", home.querySelector('.portrait').alt);
         const marks = [...home.querySelectorAll('.site-copyright')].map((el) => el.textContent.trim());
         check("English copyright only", marks.length === 1 && marks[0] === "© 2026 Hayis Mohammed Aqeel Alanazi. All rights reserved.", marks);
